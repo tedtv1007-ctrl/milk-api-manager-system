@@ -27,8 +27,13 @@ plugin_attr:
       port: 9091
   opentelemetry:
     resource:
-      service.name: "apisix"
+      service.name: "apisix-gateway"
+      instance.id: "$hostname" # Use APISIX variable to set instance id
     collector:
-      address: "jaeger:4317" # gRPC endpoint
+      address: "jaeger:4317" # gRPC endpoint for OTLP
       request_timeout: 3
+      # Additional attributes can be added to spans
+      # For example, to add a static attribute:
+      # additional_attributes:
+      #   - "deployment.environment=production"
 
