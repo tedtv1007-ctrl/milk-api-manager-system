@@ -1,0 +1,47 @@
+@page "/apis"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">API Governance & Inventory</MudText>
+    
+    <MudTable Items="@apis" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" LoadingProgressColor="Color.Info">
+        <HeaderContent>
+            <MudTh>Service Name</MudTh>
+            <MudTh>Upstream Path</MudTh>
+            <MudTh>Risk Level</MudTh>
+            <MudTh>Owner</MudTh>
+            <MudTh>Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name">@context.Name</MudTd>
+            <MudTd DataLabel="Path">@context.Uri</MudTd>
+            <MudTd DataLabel="Risk">
+                <MudChip Color="@GetRiskColor(context.RiskLevel)" Size="Size.Small">@context.RiskLevel</MudChip>
+            </MudTd>
+            <MudTd DataLabel="Owner">@context.Owner</MudTd>
+            <MudTd DataLabel="Actions">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small">Edit</MudButton>
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private bool loading = true;
+    private List<ApiRoute> apis = new();
+
+    protected override async Task OnInitializedAsync()
+    {
+        // 模擬從 APISIX Admin API 讀取資料
+        apis = await ApisixService.GetRoutesAsync();
+        loading = false;
+    }
+
+    private Color GetRiskColor(string level) => level switch
+    {
+        "L3" => Color.Error,    // High Risk
+        "L2" => Color.Warning,  // Medium Risk
+        _ => Color.Success      // Low Risk
+    };
+}
