@@ -16,8 +16,8 @@
 4. **可觀測性**: 整合 Prometheus + Grafana 以及 ELK Stack。
 
 ## 📅 開發藍圖 (Roadmap)
-- [ ] **Phase 1**: 基礎設施搭建 (APISIX + Dashboard 容器化佈署)。
-- [ ] **Phase 2**: API 註冊與自動化路由配置功能。
+- [x] **Phase 1**: 基礎設施搭建 (APISIX + Dashboard 容器化佈署)。
+- [x] **Phase 2**: API 註冊與自動化路由配置功能。
 - [ ] **Phase 3**: 整合 Keycloak OIDC 認證流。
 - [ ] **Phase 4**: 實作自定義管理功能 (API 金鑰管理、配額控管)。
 
