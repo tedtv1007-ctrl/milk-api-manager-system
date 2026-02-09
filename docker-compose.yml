@@ -39,10 +39,6 @@ services:
     depends_on:
       - etcd
 
-networks:
-  apisix:
-    driver: bridge
-
   jaeger:
     image: jaegertracing/all-in-one:1.53
     restart: always
@@ -53,3 +49,6 @@ networks:
     networks:
       - apisix
 
+networks:
+  apisix:
+    driver: bridge
