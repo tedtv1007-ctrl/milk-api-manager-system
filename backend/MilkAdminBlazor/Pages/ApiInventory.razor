@@ -1,0 +1,55 @@
+@page "/api-inventory"
+@using Milk.Apim.Admin.Models
+@inject IJSRuntime JSRuntime
+
+<h3>🛡️ API 治理與盤點模組</h3>
+
+<div class="alert alert-info">
+    本模組對齊《保險業辦理資訊安全防護自律規範》Q1 & Q2 要求，提供定期盤點與風險分級管理。
+</div>
+
+<table class="table table-hover">
+    <thead class="table-dark">
+        <tr>
+            <th>API 名稱</th>
+            <th>路徑</th>
+            <th>風險分級</th>
+            <th>負責部門</th>
+            <th>最後盤點日</th>
+            <th>狀態</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var api in mockApis)
+        {
+            <tr>
+                <td>@api.Name</td>
+                <td><code>@api.RoutePath</code></td>
+                <td>
+                    <span class="badge @(api.Risk == RiskLevel.L1 ? "bg-danger" : api.Risk == RiskLevel.L2 ? "bg-warning" : "bg-success")">
+                        @api.Risk.ToString()
+                    </span>
+                </td>
+                <td>@api.Department</td>
+                <td>@api.LastReviewedAt.ToShortDateString()</td>
+                <td>@(api.IsExposed ? "✅ 已發布" : "🟡 草稿")</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<button class="btn btn-primary" @onclick="ExportReport">📥 匯出稽核報表 (PDF/Excel)</button>
+
+@code {
+    private List<ApiEntry> mockApis = new()
+    {
+        new ApiEntry { Name = "理賠申請 API", RoutePath = "/api/v1/claims", Risk = RiskLevel.L1, Department = "理賠部", IsExposed = true },
+        new ApiEntry { Name = "保單試算 API", RoutePath = "/api/v1/quote", Risk = RiskLevel.L2, Department = "精算部", IsExposed = true },
+        new ApiEntry { Name = "公開產品清單", RoutePath = "/api/v1/products", Risk = RiskLevel.L3, Department = "市場部", IsExposed = true }
+    };
+
+    private void ExportReport()
+    {
+        // 實作自動化盤點報表匯出邏輯
+    }
+}
