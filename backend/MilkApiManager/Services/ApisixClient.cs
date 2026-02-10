@@ -209,5 +209,13 @@ namespace MilkApiManager.Services
             response.EnsureSuccessStatusCode();
             _logger.LogInformation($"Successfully updated plugin metadata: {pluginName}");
         }
+
+        public async Task CreateConsumerGroupAsync(string id, object groupConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"consumer_groups/{id}", groupConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation($"Successfully created consumer group {id}");
+        }
     }
 }

@@ -14,6 +14,9 @@ builder.Services.AddHttpClient<AuditLogService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
 builder.Services.AddScoped<SecurityAutomationService>();
 
+builder.Services.AddSingleton<AdGroupSyncService>();
+builder.Services.AddHostedService(sp => sp.GetRequiredService<AdGroupSyncService>());
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
