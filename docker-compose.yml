@@ -7,7 +7,7 @@ services:
     environment:
       - APISIX_ETCD_HOST=http://etcd:2379
     volumes:
-      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:rw
       - ./apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
       - ./apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
     depends_on:
