@@ -8,8 +8,11 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-// Register HttpClient for ApisixClient
+// Register Services
 builder.Services.AddHttpClient<ApisixClient>();
+builder.Services.AddHttpClient<AuditLogService>();
+builder.Services.AddScoped<IVaultService, VaultService>();
+builder.Services.AddScoped<SecurityAutomationService>();
 
 var app = builder.Build();
 
@@ -20,7 +23,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+// app.UseHttpsRedirection(); // Disable for local testing dev
 
 app.UseAuthorization();
 

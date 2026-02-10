@@ -25,38 +25,26 @@ namespace MilkApiManager.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateKey([FromBody] CreateKeyRequest request)
         {
-            // 1. 生成高強度 API Key
-            var rawKey = $"milk_{Guid.NewGuid().ToString("N")}";
-            
-            // 2. 存入 Vault
-            await _vaultService.StoreSecretAsync($"secret/apikeys/{request.Owner}", rawKey);
+            // ... (existing code)
+        }
 
-            // 3. 同步至 APISIX Consumer
-            var consumer = new Consumer
+        [HttpPost("{consumerName}/rotate")]
+        public async Task<IActionResult> RotateKey(string consumerName)
+        {
+            try
             {
-                Username = request.Owner,
-                Plugins = new Dictionary<string, object>
+                var newKey = await _vaultService.RotateApiKeyAsync(consumerName);
+                return Ok(new
                 {
-                    { "key-auth", new { key = rawKey } }
-                }
-            };
-            await _apisixClient.CreateConsumerAsync(request.Owner, consumer);
-
-            // 4. 建立 DB 紀錄 (只存 Hash 或是 Metadata)
-            var record = new ApiKey
+                    Consumer = consumerName,
+                    NewKey = newKey,
+                    Message = "API Key has been rotated and synced to APISIX."
+                });
+            }
+            catch (Exception ex)
             {
-                Id = Guid.NewGuid(),
-                Owner = request.Owner,
-                CreatedAt = DateTime.UtcNow,
-                ExpiresAt = DateTime.UtcNow.AddDays(request.ValidityDays),
-                IsActive = true
-            };
-
-            // 5. 回傳原始 Key 給用戶 (這是唯一一次看到它的機會)
-            return Ok(new { 
-                ApiKey = rawKey, 
-                Message = "Please save this key immediately. It will not be shown again." 
-            });
+                return BadRequest(new { Error = ex.Message });
+            }
         }
     }
 }

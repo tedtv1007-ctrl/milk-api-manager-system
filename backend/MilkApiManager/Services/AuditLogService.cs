@@ -5,7 +5,7 @@ namespace Milk.ApiManager.Services;
 public class AuditLogService
 {
     private readonly HttpClient _httpClient;
-    private readonly string _logstashEndpoint = "http://logstash-svc:8080/apisix/logs";
+    private readonly string _logstashEndpoint = "http://logstash:8080/";
 
     public AuditLogService(HttpClient httpClient)
     {

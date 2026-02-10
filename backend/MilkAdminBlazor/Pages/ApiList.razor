@@ -3,25 +3,32 @@
 @inject ApisixService ApisixService
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true">API Governance & Inventory</MudText>
+    <div class="d-flex align-center mb-4">
+        <MudIcon Icon="@Icons.Material.Filled.Api" Size="Size.Large" Class="mr-3" Color="Color.Primary" />
+        <MudText Typo="Typo.h4">API Governance & Inventory</MudText>
+    </div>
     
-    <MudTable Items="@apis" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" LoadingProgressColor="Color.Info">
+    <MudTable Items="@apis" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" LoadingProgressColor="Color.Info" Elevation="3">
         <HeaderContent>
             <MudTh>Service Name</MudTh>
             <MudTh>Upstream Path</MudTh>
             <MudTh>Risk Level</MudTh>
             <MudTh>Owner</MudTh>
-            <MudTh>Actions</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="Name">@context.Name</MudTd>
-            <MudTd DataLabel="Path">@context.Uri</MudTd>
+            <MudTd DataLabel="Name">
+                <MudText Typo="Typo.body1" Style="font-weight: 500">@context.Name</MudText>
+            </MudTd>
+            <MudTd DataLabel="Path">
+                <code>@context.Uri</code>
+            </MudTd>
             <MudTd DataLabel="Risk">
-                <MudChip Color="@GetRiskColor(context.RiskLevel)" Size="Size.Small">@context.RiskLevel</MudChip>
+                <MudChip Color="@GetRiskColor(context.RiskLevel)" Size="Size.Small" Variant="Variant.Filled">@context.RiskLevel</MudChip>
             </MudTd>
             <MudTd DataLabel="Owner">@context.Owner</MudTd>
-            <MudTd DataLabel="Actions">
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small">Edit</MudButton>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small">Details</MudButton>
             </MudTd>
         </RowTemplate>
     </MudTable>

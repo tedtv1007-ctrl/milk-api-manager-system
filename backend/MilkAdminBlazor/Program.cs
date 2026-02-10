@@ -9,7 +9,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices(); // UI Component Library
-builder.Services.AddSingleton<ApisixService>(); // Our custom service
+
+// Register HttpClient for ApisixService to talk to MilkApiManager
+builder.Services.AddHttpClient<ApisixService>(client =>
+{
+    client.BaseAddress = new Uri("http://localhost:5000/"); // Assuming MilkApiManager runs on 5000
+});
 
 var app = builder.Build();
 

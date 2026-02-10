@@ -1,0 +1,75 @@
+@page "/blacklist"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
+    <MudText Typo="Typo.h4" GutterBottom="true">IP Blacklist Management</MudText>
+    <MudText Typo="Typo.body1" Class="mb-4">Manage blocked IP addresses that are restricted from accessing the APIs.</MudText>
+
+    <MudPaper Class="pa-4 mb-4" Elevation="3">
+        <MudGrid>
+            <MudItem xs="8">
+                <MudTextField @bind-Value="newIp" Label="New IP Address" Variant="Variant.Outlined" Margin="Margin.Dense" Placeholder="e.g. 192.168.1.1"></MudTextField>
+            </MudItem>
+            <MudItem xs="4" Class="d-flex align-center">
+                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="AddIp">Add to Blacklist</MudButton>
+            </MudItem>
+        </MudGrid>
+    </MudPaper>
+
+    <MudTable Items="@blacklistedIps" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" Dense="true" Elevation="3">
+        <HeaderContent>
+            <MudTh>IP Address</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="IP Address">@context</MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveIp(context))" Size="Size.Small" />
+            </MudTd>
+        </RowTemplate>
+        <NoRecordsContent>
+            <MudText>No blacklisted IPs found.</MudText>
+        </NoRecordsContent>
+    </MudTable>
+</MudContainer>
+
+@code {
+    private bool loading = true;
+    private List<string> blacklistedIps = new();
+    private string newIp = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadData();
+    }
+
+    private async Task LoadData()
+    {
+        loading = true;
+        blacklistedIps = await ApisixService.GetBlacklistedIpsAsync();
+        loading = false;
+    }
+
+    private async Task AddIp()
+    {
+        if (string.IsNullOrWhiteSpace(newIp))
+        {
+            Snackbar.Add("Please enter a valid IP address.", Severity.Warning);
+            return;
+        }
+
+        await ApisixService.AddIpToBlacklistAsync(newIp);
+        Snackbar.Add($"IP {newIp} added to blacklist.", Severity.Success);
+        newIp = "";
+        await LoadData();
+    }
+
+    private async Task RemoveIp(string ip)
+    {
+        await ApisixService.RemoveIpFromBlacklistAsync(ip);
+        Snackbar.Add($"IP {ip} removed from blacklist.", Severity.Info);
+        await LoadData();
+    }
+}

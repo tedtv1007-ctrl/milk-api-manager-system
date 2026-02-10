@@ -1,5 +1,7 @@
 using MilkApiManager.Models.Apisix;
 using System.Text.Json;
+using System.Text;
+using System.Text.Json.Serialization;
 
 namespace MilkApiManager.Services
 {
@@ -165,6 +167,38 @@ namespace MilkApiManager.Services
             {
                 _logger.LogWarning($"Failed to delete consumer {username}: {response.StatusCode}");
             }
+        }
+
+        public async Task<List<string>> GetBlacklistAsync()
+        {
+            var request = CreateRequest(HttpMethod.Get, "plugin_metadata/traffic-blocker");
+            var response = await _httpClient.SendAsync(request);
+            
+            if (response.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return new List<string>();
+            }
+
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            var doc = JsonDocument.Parse(json);
+            
+            if (doc.RootElement.TryGetProperty("value", out var value) && 
+                value.TryGetProperty("blacklist", out var blacklist))
+            {
+                return JsonSerializer.Deserialize<List<string>>(blacklist.GetRawText()) ?? new List<string>();
+            }
+
+            return new List<string>();
+        }
+
+        public async Task UpdateBlacklistAsync(List<string> blacklist)
+        {
+            var body = new { blacklist = blacklist };
+            var request = CreateRequest(HttpMethod.Put, "plugin_metadata/traffic-blocker", body);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully updated traffic-blocker blacklist");
         }
     }
 }

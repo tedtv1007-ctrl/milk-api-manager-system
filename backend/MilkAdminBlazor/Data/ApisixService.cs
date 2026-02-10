@@ -1,6 +1,10 @@
 using System;
 using System.Collections.Generic;
+using System.Net.Http;
+using System.Net.Http.Json;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 
 namespace MilkAdminBlazor.Data
 {
@@ -13,60 +17,59 @@ namespace MilkAdminBlazor.Data
         public string Owner { get; set; }
     }
 
-    public class ApiConsumer
+    public class BlacklistRequest
     {
-        public string Username { get; set; }
-        public string Desc { get; set; }
-        public Dictionary<string, object> Plugins { get; set; } = new();
-        public List<string> Labels { get; set; } = new(); // Used for Roles/Scopes
+        [JsonPropertyName("ip")]
+        public string Ip { get; set; }
+        
+        [JsonPropertyName("action")]
+        public string Action { get; set; }
     }
 
     public class ApisixService
     {
-        private List<ApiConsumer> _mockConsumers = new List<ApiConsumer>
-        {
-            new ApiConsumer { Username = "client-app-1", Desc = "External Partner A", Labels = new List<string> { "role:premium", "scope:read", "scope:write" } },
-            new ApiConsumer { Username = "mobile-app", Desc = "Internal Mobile App", Labels = new List<string> { "role:internal", "scope:read" } },
-            new ApiConsumer { Username = "data-aggregator", Desc = "Third-party Analytics", Labels = new List<string> { "role:guest", "scope:read" } }
-        };
+        private readonly HttpClient _httpClient;
 
-        public Task<List<ApiConsumer>> GetConsumersAsync()
+        public ApisixService(HttpClient httpClient)
         {
-            return Task.FromResult(_mockConsumers);
+            _httpClient = httpClient;
         }
 
-        public Task UpdateConsumerAsync(ApiConsumer consumer)
+        public async Task<List<ApiRoute>> GetRoutesAsync()
         {
-            var existing = _mockConsumers.Find(c => c.Username == consumer.Username);
-            if (existing != null)
-            {
-                existing.Desc = consumer.Desc;
-                existing.Labels = consumer.Labels;
-                existing.Plugins = consumer.Plugins;
-            }
-            else
-            {
-                _mockConsumers.Add(consumer);
-            }
-            return Task.CompletedTask;
-        }
-
-        public Task DeleteConsumerAsync(string username)
-        {
-            _mockConsumers.RemoveAll(c => c.Username == username);
-            return Task.CompletedTask;
-        }
-
-        public Task<List<ApiRoute>> GetRoutesAsync()
-        {
-            // Mock Data for now
-            return Task.FromResult(new List<ApiRoute>
+            // For now, still mock or fetch from backend if ready
+            return new List<ApiRoute>
             {
                 new ApiRoute { Id = "1", Name = "User Profile", Uri = "/api/user/*", RiskLevel = "L3", Owner = "Customer Team" },
                 new ApiRoute { Id = "2", Name = "Product List", Uri = "/api/products", RiskLevel = "L1", Owner = "Sales Team" },
                 new ApiRoute { Id = "3", Name = "Payment Gateway", Uri = "/api/payment", RiskLevel = "L3", Owner = "Finance Team" },
                 new ApiRoute { Id = "4", Name = "Branch Locations", Uri = "/api/locations", RiskLevel = "L1", Owner = "Ops Team" }
-            });
+            };
+        }
+
+        public async Task<List<string>> GetBlacklistedIpsAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<List<string>>("api/Blacklist");
+                return response ?? new List<string>();
+            }
+            catch
+            {
+                return new List<string>();
+            }
+        }
+
+        public async Task AddIpToBlacklistAsync(string ip)
+        {
+            var request = new BlacklistRequest { Ip = ip, Action = "add" };
+            await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+        }
+
+        public async Task RemoveIpFromBlacklistAsync(string ip)
+        {
+            var request = new BlacklistRequest { Ip = ip, Action = "remove" };
+            await _httpClient.PostAsJsonAsync("api/Blacklist", request);
         }
     }
 }

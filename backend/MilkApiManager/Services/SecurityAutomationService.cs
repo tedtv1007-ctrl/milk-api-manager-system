@@ -3,10 +3,26 @@ namespace Milk.ApiManager.Services;
 public class SecurityAutomationService
 {
     private readonly ApisixClient _apisixClient;
+    private readonly IVaultService _vaultService;
 
-    public SecurityAutomationService(ApisixClient apisixClient)
+    public SecurityAutomationService(ApisixClient apisixClient, IVaultService vaultService)
     {
         _apisixClient = apisixClient;
+        _vaultService = vaultService;
+    }
+
+    /// <summary>
+    /// 定時執行 API 密鑰輪轉 (可由外部 Cron 觸發)
+    /// </summary>
+    public async Task RotateAllExpiredKeys()
+    {
+        // 這裡示範獲取所有 Consumer 並執行輪轉邏輯
+        // 實際場景會從資料庫獲取需要輪轉的名單
+        var consumersJson = await _apisixClient.GetConsumersAsync();
+        // 解析並過濾...
+        
+        // 範例：針對特定測試 Consumer 進行輪轉
+        await _vaultService.RotateApiKeyAsync("test-consumer");
     }
 
     /// <summary>
