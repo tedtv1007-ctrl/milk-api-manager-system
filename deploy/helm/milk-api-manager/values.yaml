@@ -1,0 +1,49 @@
+# Global values
+global:
+  imagePullSecrets: []
+  domain: milk.example.com
+
+# Backend Service
+backend:
+  replicaCount: 2
+  image:
+    repository: tedtv1007-ctrl/milk-backend
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: ClusterIP
+    port: 80
+  env:
+    ASPNETCORE_ENVIRONMENT: Production
+  vault:
+    enabled: true
+    address: http://vault.vault.svc.cluster.local:8200
+    role: milk-api-manager
+
+# Admin UI
+adminUi:
+  replicaCount: 1
+  image:
+    repository: tedtv1007-ctrl/milk-admin-ui
+    pullPolicy: IfNotPresent
+    tag: "latest"
+  service:
+    type: ClusterIP
+    port: 80
+
+# Dependency: APISIX
+apisix:
+  enabled: true
+  gateway:
+    type: LoadBalancer
+  etcd:
+    enabled: false # Use the separate etcd dependency or external etcd
+    host:
+      - milk-etcd.milk-system.svc.cluster.local
+
+# Dependency: etcd
+etcd:
+  enabled: true
+  auth:
+    rbac:
+      enabled: false

@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "milk-api-manager.fullname" . }}-admin-ui
+  labels:
+    app: milk-admin-ui
+spec:
+  replicas: {{ .Values.adminUi.replicaCount }}
+  selector:
+    matchLabels:
+      app: milk-admin-ui
+  template:
+    metadata:
+      labels:
+        app: milk-admin-ui
+    spec:
+      containers:
+        - name: admin-ui
+          image: "{{ .Values.adminUi.image.repository }}:{{ .Values.adminUi.image.tag }}"
+          ports:
+            - name: http
+              containerPort: 80
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "milk-api-manager.fullname" . }}-admin-ui
+spec:
+  type: {{ .Values.adminUi.service.type }}
+  ports:
+    - port: {{ .Values.adminUi.service.port }}
+      targetPort: http
+      protocol: TCP
+      name: http
+  selector:
+    app: milk-admin-ui

@@ -41,8 +41,21 @@
         <MudTextField @bind-Value="_currentConsumer.Username" Label="使用者名稱" Variant="Variant.Outlined" ReadOnly="@_isEditing" />
         <MudTextField @bind-Value="_currentConsumer.Desc" Label="描述" Variant="Variant.Outlined" Class="mt-4" />
         
-        <MudText Typo="Typo.subtitle2" Class="mt-4">角色與權限 (以逗號分隔, 例如 role:admin, scope:all)</MudText>
-        <MudTextField @bind-Value="_labelsText" Label="Labels" Variant="Variant.Outlined" />
+        <MudText Typo="Typo.subtitle2" Class="mt-4">角色與權限分配</MudText>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+            @foreach (var role in _availableRoles)
+            {
+                <MudChip Color="Color.Primary" Variant="@(_selectedRoles.Contains(role) ? Variant.Filled : Variant.Outlined)" OnClick="@(() => ToggleRole(role))">@role</MudChip>
+            }
+        </div>
+        <div class="d-flex flex-wrap gap-2 mt-2">
+            @foreach (var scope in _availableScopes)
+            {
+                <MudChip Color="Color.Secondary" Variant="@(_selectedScopes.Contains(scope) ? Variant.Filled : Variant.Outlined)" OnClick="@(() => ToggleScope(scope))">@scope</MudChip>
+            }
+        </div>
+        
+        <MudTextField @bind-Value="_labelsText" Label="自定義 Labels (以逗號分隔)" Variant="Variant.Outlined" Class="mt-4" />
     </DialogContent>
     <DialogActions>
         <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="CloseDialog">取消</MudButton>
@@ -58,6 +71,11 @@
     private ApiConsumer _currentConsumer = new();
     private string _labelsText = "";
     private DialogOptions _dialogOptions = new() { FullWidth = true };
+
+    private readonly string[] _availableRoles = { "admin", "developer", "auditor", "operator" };
+    private readonly string[] _availableScopes = { "read:all", "write:all", "user:info", "payment:process", "report:view" };
+    private HashSet<string> _selectedRoles = new();
+    private HashSet<string> _selectedScopes = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -76,6 +94,8 @@
         _isEditing = false;
         _currentConsumer = new ApiConsumer();
         _labelsText = "";
+        _selectedRoles.Clear();
+        _selectedScopes.Clear();
         _editDialogOpen = true;
     }
 
@@ -88,8 +108,24 @@
             Desc = consumer.Desc,
             Labels = new List<string>(consumer.Labels)
         };
-        _labelsText = string.Join(", ", _currentConsumer.Labels);
+        
+        _selectedRoles = _currentConsumer.Labels.Where(l => l.StartsWith("role:")).Select(l => l.Replace("role:", "")).ToHashSet();
+        _selectedScopes = _currentConsumer.Labels.Where(l => l.StartsWith("scope:")).Select(l => l.Replace("scope:", "")).ToHashSet();
+        _labelsText = string.Join(", ", _currentConsumer.Labels.Where(l => !l.StartsWith("role:") && !l.StartsWith("scope:")));
+        
         _editDialogOpen = true;
+    }
+
+    private void ToggleRole(string role)
+    {
+        if (_selectedRoles.Contains(role)) _selectedRoles.Remove(role);
+        else _selectedRoles.Add(role);
+    }
+
+    private void ToggleScope(string scope)
+    {
+        if (_selectedScopes.Contains(scope)) _selectedScopes.Remove(scope);
+        else _selectedScopes.Add(scope);
     }
 
     private async Task SaveConsumer()
@@ -100,10 +136,15 @@
             return;
         }
 
-        _currentConsumer.Labels = _labelsText.Split(',')
+        var labels = _labelsText.Split(',')
             .Select(s => s.Trim())
             .Where(s => !string.IsNullOrEmpty(s))
             .ToList();
+
+        labels.AddRange(_selectedRoles.Select(r => $"role:{r}"));
+        labels.AddRange(_selectedScopes.Select(s => $"scope:{s}"));
+
+        _currentConsumer.Labels = labels;
 
         await ApisixService.UpdateConsumerAsync(_currentConsumer);
         _editDialogOpen = false;
