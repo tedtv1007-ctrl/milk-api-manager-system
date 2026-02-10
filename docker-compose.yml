@@ -2,11 +2,12 @@ version: '3.8'
 
 services:
   apisix:
-    image: apache/apisix:3.8.0-debian
+    image: apache/apisix:3.14.1-debian
     restart: always
     volumes:
       - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
       - ./apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
+      - ./apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
     depends_on:
       - etcd
     ports:
@@ -17,7 +18,7 @@ services:
       - apisix
 
   etcd:
-    image: bitnami/etcd:3.5.11
+    image: bitnamilegacy/etcd:3.5.11
     restart: always
     environment:
       - ALLOW_NONE_AUTHENTICATION=yes
@@ -46,6 +47,60 @@ services:
       - "16686:16686" # Jaeger UI
       - "4317:4317"   # OTLP gRPC
       - "4318:4318"   # OTLP HTTP
+    networks:
+      - apisix
+
+  prometheus:
+    image: prom/prometheus:latest
+    restart: always
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
+    networks:
+      - apisix
+
+  grafana:
+    image: grafana/grafana:latest
+    restart: always
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/audit.json:ro
+    networks:
+      - apisix
+
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.3
+    environment:
+      - discovery.type=single-node
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+    ports:
+      - "9200:9200"
+    networks:
+      - apisix
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:9.2.3
+    volumes:
+      - ./monitoring/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+    ports:
+      - "5044:5044"
+      - "8080:8080"
+    depends_on:
+      - elasticsearch
+    networks:
+      - apisix
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:9.2.3
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
     networks:
       - apisix
 
