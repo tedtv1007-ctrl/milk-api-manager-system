@@ -29,8 +29,20 @@ namespace MilkApiManager.Controllers
             promQuery += string.Join(",", filters);
             promQuery += "}[5m])) by (consumer, route)";
 
-            var result = await _prometheus.GetMetricAsync(promQuery, start, end, query.Step);
+            // Step should be adjusted based on time range
+            var step = string.IsNullOrEmpty(query.Step) ? GetStep(start, end) : query.Step;
+
+            var result = await _prometheus.GetMetricAsync(promQuery, start, end, step);
             return Ok(result);
+        }
+
+        private string GetStep(DateTime start, DateTime end)
+        {
+            var duration = end - start;
+            if (duration.TotalHours <= 1) return "1m";
+            if (duration.TotalDays <= 1) return "10m";
+            if (duration.TotalDays <= 7) return "1h";
+            return "6h";
         }
 
         [HttpGet("latency")]
@@ -46,7 +58,8 @@ namespace MilkApiManager.Controllers
             promQuery += string.Join(",", filters);
             promQuery += "}[5m])) by (le, consumer, route))";
 
-            var result = await _prometheus.GetMetricAsync(promQuery, start, end, query.Step);
+            var step = string.IsNullOrEmpty(query.Step) ? GetStep(start, end) : query.Step;
+            var result = await _prometheus.GetMetricAsync(promQuery, start, end, step);
             return Ok(result);
         }
 
@@ -66,7 +79,8 @@ namespace MilkApiManager.Controllers
             promQuery += string.Join(",", filters);
             promQuery += "}[5m])) * 100";
 
-            var result = await _prometheus.GetMetricAsync(promQuery, start, end, query.Step);
+            var step = string.IsNullOrEmpty(query.Step) ? GetStep(start, end) : query.Step;
+            var result = await _prometheus.GetMetricAsync(promQuery, start, end, step);
             return Ok(result);
         }
     }
