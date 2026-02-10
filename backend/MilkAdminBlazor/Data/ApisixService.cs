@@ -36,6 +36,24 @@ namespace MilkAdminBlazor.Data
 
         [JsonPropertyName("labels")]
         public List<string> Labels { get; set; } = new List<string>();
+
+        [JsonPropertyName("quota")]
+        public ApiQuota Quota { get; set; } = new ApiQuota();
+    }
+
+    public class ApiQuota
+    {
+        [JsonPropertyName("count")]
+        public int Count { get; set; } = 1000;
+
+        [JsonPropertyName("time_window")]
+        public int TimeWindow { get; set; } = 3600;
+
+        [JsonPropertyName("rejected_code")]
+        public int RejectedCode { get; set; } = 429;
+
+        [JsonPropertyName("rejected_msg")]
+        public string RejectedMsg { get; set; } = "API quota exceeded. Please contact support.";
     }
 
     public class SyncStatusResponse

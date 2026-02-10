@@ -56,6 +56,19 @@
         </div>
         
         <MudTextField @bind-Value="_labelsText" Label="自定義 Labels (以逗號分隔)" Variant="Variant.Outlined" Class="mt-4" />
+
+        <MudText Typo="Typo.subtitle2" Class="mt-4">API 配額管理 (Quota Management)</MudText>
+        <MudGrid Class="mt-2">
+            <MudItem xs="6">
+                <MudNumericField @bind-Value="_currentConsumer.Quota.Count" Label="次數限制" Variant="Variant.Outlined" Min="1" />
+            </MudItem>
+            <MudItem xs="6">
+                <MudNumericField @bind-Value="_currentConsumer.Quota.TimeWindow" Label="時間窗口 (秒)" Variant="Variant.Outlined" Min="1" />
+            </MudItem>
+            <MudItem xs="12">
+                <MudTextField @bind-Value="_currentConsumer.Quota.RejectedMsg" Label="超額錯誤訊息" Variant="Variant.Outlined" />
+            </MudItem>
+        </MudGrid>
     </DialogContent>
     <DialogActions>
         <MudButton Variant="Variant.Filled" Color="Color.Default" OnClick="CloseDialog">取消</MudButton>
@@ -106,7 +119,14 @@
         {
             Username = consumer.Username,
             Desc = consumer.Desc,
-            Labels = new List<string>(consumer.Labels)
+            Labels = new List<string>(consumer.Labels),
+            Quota = new ApiQuota
+            {
+                Count = consumer.Quota.Count,
+                TimeWindow = consumer.Quota.TimeWindow,
+                RejectedCode = consumer.Quota.RejectedCode,
+                RejectedMsg = consumer.Quota.RejectedMsg
+            }
         };
         
         _selectedRoles = _currentConsumer.Labels.Where(l => l.StartsWith("role:")).Select(l => l.Replace("role:", "")).ToHashSet();
