@@ -1,0 +1,111 @@
+@page "/consumers"
+@using MilkAdminBlazor.Data
+@using MilkAdminBlazor.Models
+@inject ApisixService ApisixService
+
+<div class="container-fluid mt-4">
+    <h2 class="mb-4">API Consumer Management</h2>
+
+    @if (consumers == null)
+    {
+        <p><em>Loading...</em></p>
+    }
+    else
+    {
+        <table class="table table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Username</th>
+                    <th>Custom ID</th>
+                    <th>API Key</th>
+                    <th>Scopes</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var consumer in consumers)
+                {
+                    <tr>
+                        <td>@consumer.Username</td>
+                        <td>@consumer.CustomId</td>
+                        <td><code>@consumer.Key</code></td>
+                        <td>
+                            @foreach (var scope in consumer.Scopes)
+                            {
+                                <span class="badge bg-info text-dark me-1">@scope</span>
+                            }
+                        </td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" @onclick="() => EditConsumer(consumer)">Edit Scopes</button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</div>
+
+@if (showEditModal)
+{
+    <div class="modal fade show" style="display:block" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Edit Scopes for @editingConsumer?.Username</h5>
+                    <button type="button" class="btn-close" @onclick="CloseModal"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label class="form-label">Scopes (comma separated)</label>
+                        <input type="text" class="form-control" @bind="editingScopesRaw" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" @onclick="CloseModal">Cancel</button>
+                    <button type="button" class="btn btn-primary" @onclick="SaveConsumer">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal-backdrop fade show"></div>
+}
+
+@code {
+    private List<Consumer> consumers;
+    private bool showEditModal = false;
+    private Consumer editingConsumer;
+    private string editingScopesRaw = "";
+
+    protected override async Task OnInitializedAsync()
+    {
+        consumers = await ApisixService.GetConsumersAsync();
+    }
+
+    private void EditConsumer(Consumer consumer)
+    {
+        editingConsumer = consumer;
+        editingScopesRaw = string.Join(", ", consumer.Scopes);
+        showEditModal = true;
+    }
+
+    private void CloseModal()
+    {
+        showEditModal = false;
+        editingConsumer = null;
+    }
+
+    private async Task SaveConsumer()
+    {
+        if (editingConsumer != null)
+        {
+            editingConsumer.Scopes = editingScopesRaw.Split(',')
+                .Select(s => s.Trim())
+                .Where(s => !string.IsNullOrWhiteSpace(s))
+                .ToList();
+            
+            await ApisixService.UpdateConsumerAsync(editingConsumer);
+            showEditModal = false;
+            consumers = await ApisixService.GetConsumersAsync();
+        }
+    }
+}
