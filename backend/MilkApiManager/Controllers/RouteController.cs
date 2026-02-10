@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Services;
 using MilkApiManager.Models.Apisix;
+using ApisixRoute = MilkApiManager.Models.Apisix.Route;
 
 namespace MilkApiManager.Controllers
 {
@@ -52,7 +53,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateRoute([FromBody] Route routeConfig)
+        public async Task<IActionResult> CreateRoute([FromBody] ApisixRoute routeConfig)
         {
             if (routeConfig == null || string.IsNullOrEmpty(routeConfig.Id))
             {
@@ -72,7 +73,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateRoute(string id, [FromBody] Route routeConfig)
+        public async Task<IActionResult> UpdateRoute(string id, [FromBody] ApisixRoute routeConfig)
         {
             if (routeConfig == null)
             {

@@ -1,6 +1,6 @@
 using System.Text.Json;
 
-namespace Milk.ApiManager.Services;
+namespace MilkApiManager.Services;
 
 public class AuditLogService
 {

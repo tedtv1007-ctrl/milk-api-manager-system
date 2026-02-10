@@ -1,4 +1,4 @@
-namespace Milk.ApiManager.Services;
+namespace MilkApiManager.Services;
 
 public class SecurityAutomationService
 {

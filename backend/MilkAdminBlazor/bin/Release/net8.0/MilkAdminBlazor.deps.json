@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "MilkAdminBlazor/1.0.0": {
+        "dependencies": {
+          "MudBlazor": "6.11.0"
+        },
+        "runtime": {
+          "MilkAdminBlazor.dll": {}
+        }
+      },
+      "MudBlazor/6.11.0": {
+        "runtime": {
+          "lib/net7.0/MudBlazor.dll": {
+            "assemblyVersion": "6.11.0.0",
+            "fileVersion": "6.11.0.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "MilkAdminBlazor/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "MudBlazor/6.11.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-gP97w+oP0G0slw2P+EKfHfhN126GBHJpL61haQJy3iAo9JSWMkzlcEQ1yFlHSWJQeI9jOZ6pb1IK9XggFOI7lA==",
+      "path": "mudblazor/6.11.0",
+      "hashPath": "mudblazor.6.11.0.nupkg.sha512"
+    }
+  }
+}

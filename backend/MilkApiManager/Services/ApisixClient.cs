@@ -1,4 +1,5 @@
 using MilkApiManager.Models.Apisix;
+using ApisixRoute = MilkApiManager.Models.Apisix.Route;
 using System.Text.Json;
 using System.Text;
 using System.Text.Json.Serialization;
@@ -37,7 +38,7 @@ namespace MilkApiManager.Services
             return request;
         }
 
-        public async Task CreateRouteAsync(string id, Route routeConfig)
+        public async Task CreateRouteAsync(string id, ApisixRoute routeConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
@@ -62,7 +63,7 @@ namespace MilkApiManager.Services
              return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<Route?> GetRouteAsync(string id)
+        public async Task<ApisixRoute?> GetRouteAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Get, $"routes/{id}");
             var response = await _httpClient.SendAsync(request);
@@ -70,10 +71,10 @@ namespace MilkApiManager.Services
             var json = await response.Content.ReadAsStringAsync();
             // APISIX returns a "node" wrapper
             var node = JsonSerializer.Deserialize<JsonElement>(json).GetProperty("node").GetProperty("value").GetRawText();
-            return JsonSerializer.Deserialize<Route>(node, _jsonSerializerOptions);
+            return JsonSerializer.Deserialize<ApisixRoute>(node, _jsonSerializerOptions);
         }
 
-        public async Task UpdateRouteAsync(string id, Route routeConfig)
+        public async Task UpdateRouteAsync(string id, ApisixRoute routeConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
@@ -199,6 +200,14 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             _logger.LogInformation("Successfully updated traffic-blocker blacklist");
+        }
+
+        public async Task UpdateGlobalPlugin(string pluginName, object body)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"plugin_metadata/{pluginName}", body);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation($"Successfully updated plugin metadata: {pluginName}");
         }
     }
 }
