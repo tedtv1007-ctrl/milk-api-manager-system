@@ -1,0 +1,65 @@
+@page "/sync-status"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudText Typo="Typo.h4" GutterBottom="true">🔄 群組同步狀態 (Group Sync Status)</MudText>
+<MudText Typo="Typo.body1" Class="mb-4">查看與 Active Directory (AD) 的群組同步進度與結果。</MudText>
+
+<MudPaper Class="pa-4">
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">當前狀態</MudText>
+            <MudChip Color="@GetStatusColor(_status)" Variant="Variant.Filled" Size="Size.Large">@_status</MudChip>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudText Typo="Typo.h6">最後同步時間</MudText>
+            <MudText Typo="Typo.body1">@(_lastSyncTime?.ToString("yyyy-MM-dd HH:mm:ss") ?? "從未同步")</MudText>
+        </MudItem>
+    </MudGrid>
+    
+    <MudDivider Class="my-4" />
+    
+    <MudText Typo="Typo.subtitle1" Class="mb-2">同步說明</MudText>
+    <MudAlert Severity="Severity.Info" Variant="Variant.Outlined">
+        此服務會自動將 AD 中的使用者群組同步至 APISIX 的 Consumer Groups。
+        同步頻率：每 30 分鐘一次。
+    </MudAlert>
+
+    <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="RefreshStatus" StartIcon="@Icons.Material.Filled.Refresh" Class="mt-4">
+        重新整理狀態
+    </MudButton>
+</MudPaper>
+
+@code {
+    private string _status = "Loading...";
+    private DateTime? _lastSyncTime;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshStatus();
+    }
+
+    private async Task RefreshStatus()
+    {
+        var result = await ApisixService.GetSyncStatusAsync();
+        if (result != null)
+        {
+            _status = result.Status;
+            _lastSyncTime = result.LastSyncTime;
+        }
+        else
+        {
+            _status = "Unknown";
+        }
+    }
+
+    private Color GetStatusColor(string status) => status switch
+    {
+        "Syncing" => Color.Info,
+        "Success" => Color.Success,
+        "Failed" => Color.Error,
+        "Idle" => Color.Default,
+        _ => Color.Warning
+    };
+}

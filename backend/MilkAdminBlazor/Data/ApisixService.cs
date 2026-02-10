@@ -38,6 +38,15 @@ namespace MilkAdminBlazor.Data
         public List<string> Labels { get; set; } = new List<string>();
     }
 
+    public class SyncStatusResponse
+    {
+        [JsonPropertyName("status")]
+        public string Status { get; set; }
+
+        [JsonPropertyName("lastSyncTime")]
+        public DateTime? LastSyncTime { get; set; }
+    }
+
     public class ApisixService
     {
         private readonly HttpClient _httpClient;
@@ -45,6 +54,18 @@ namespace MilkAdminBlazor.Data
         public ApisixService(HttpClient httpClient)
         {
             _httpClient = httpClient;
+        }
+
+        public async Task<SyncStatusResponse?> GetSyncStatusAsync()
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<SyncStatusResponse>("api/SyncStatus");
+            }
+            catch
+            {
+                return new SyncStatusResponse { Status = "Offline" };
+            }
         }
 
         public async Task<List<ApiRoute>> GetRoutesAsync()
