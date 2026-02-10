@@ -18,6 +18,7 @@ plugins:
   - prometheus
   - limit-count
   - key-auth
+  - openid-connect
   - opentelemetry
 
 plugin_attr:
@@ -36,4 +37,3 @@ plugin_attr:
       # For example, to add a static attribute:
       # additional_attributes:
       #   - "deployment.environment=production"
-

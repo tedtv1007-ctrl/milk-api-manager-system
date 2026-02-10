@@ -39,6 +39,76 @@ services:
     depends_on:
       - etcd
 
+  milk-api-manager:
+    build:
+      context: ./backend/MilkApiManager
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:5000
+      - KEYCLOAK_AUTHORITY=http://keycloak:8080/realms/milk-api-manager
+      - KEYCLOAK_CLIENT_ID=milk-api-manager-client
+      - KEYCLOAK_CLIENT_SECRET=client-secret
+      - KEYCLOAK_URL=http://keycloak:8080
+      - KEYCLOAK_ADMIN_USER=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
+      - APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c8f1
+      - DATABASE_CONNECTION_STRING=Host=milkapi-postgres;Database=milkapi;Username=milkapi;Password=milkapi
+    ports:
+      - "5000:5000"
+    networks:
+      - apisix
+    depends_on:
+      - apisix
+      - keycloak
+      - milkapi-postgres
+
+  keycloak:
+    image: quay.io/keycloak/keycloak:23.0.0
+    restart: always
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_DB=postgres
+      - KC_DB_URL=jdbc:postgresql://postgres:5432/keycloak
+      - KC_DB_USERNAME=keycloak
+      - KC_DB_PASSWORD=keycloak
+      - KC_HOSTNAME_STRICT=false
+      - KC_HTTP_ENABLED=true
+    command: start-dev
+    ports:
+      - "8080:8080"
+    depends_on:
+      - postgres
+    networks:
+      - apisix
+
+  postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=keycloak
+      - POSTGRES_USER=keycloak
+      - POSTGRES_PASSWORD=keycloak
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - apisix
+
+  milkapi-postgres:
+    image: postgres:15
+    restart: always
+    environment:
+      - POSTGRES_DB=milkapi
+      - POSTGRES_USER=milkapi
+      - POSTGRES_PASSWORD=milkapi
+    volumes:
+      - milkapi_postgres_data:/var/lib/postgresql/data
+    networks:
+      - apisix
+
   jaeger:
     image: jaegertracing/all-in-one:1.53
     restart: always
@@ -52,3 +122,7 @@ services:
 networks:
   apisix:
     driver: bridge
+
+volumes:
+  postgres_data:
+  milkapi_postgres_data:

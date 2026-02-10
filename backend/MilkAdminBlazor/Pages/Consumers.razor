@@ -1,0 +1,45 @@
+@page "/consumers"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+
+<h3>API Consumer Management</h3>
+
+@if (consumers == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Username</th>
+                <th>Role</th>
+                <th>Scopes</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var consumer in consumers)
+            {
+                <tr>
+                    <td>@consumer.Username</td>
+                    <td>@consumer.Role</td>
+                    <td>@consumer.Scopes</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm">Edit</button>
+                    </td>
+                </tr>
+            </tbody>
+        }
+    </table>
+}
+
+@code {
+    private List<ApisixService.Consumer> consumers;
+
+    protected override async Task OnInitializedAsync()
+    {
+        consumers = await ApisixService.GetConsumersAsync();
+    }
+}

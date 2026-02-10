@@ -13,6 +13,13 @@ namespace MilkAdminBlazor.Data
         public string Owner { get; set; }
     }
 
+    public class Consumer
+    {
+        public string Username { get; set; }
+        public string Role { get; set; }
+        public string Scopes { get; set; }
+    }
+
     public class ApisixService
     {
         public Task<List<ApiRoute>> GetRoutesAsync()
@@ -24,6 +31,16 @@ namespace MilkAdminBlazor.Data
                 new ApiRoute { Id = "2", Name = "Product List", Uri = "/api/products", RiskLevel = "L1", Owner = "Sales Team" },
                 new ApiRoute { Id = "3", Name = "Payment Gateway", Uri = "/api/payment", RiskLevel = "L3", Owner = "Finance Team" },
                 new ApiRoute { Id = "4", Name = "Branch Locations", Uri = "/api/locations", RiskLevel = "L1", Owner = "Ops Team" }
+            });
+        }
+
+        public Task<List<Consumer>> GetConsumersAsync()
+        {
+            // Mock Data for now
+            return Task.FromResult(new List<Consumer>
+            {
+                new Consumer { Username = "dev-app-01", Role = "Developer", Scopes = "read, write" },
+                new Consumer { Username = "partner-svc", Role = "Partner", Scopes = "read" }
             });
         }
     }

@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 using MilkApiManager.Services;
 using MilkApiManager.Models.Apisix;
 
@@ -6,6 +7,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class ApiController : ControllerBase
     {
         private readonly ApisixClient _apisixClient;
