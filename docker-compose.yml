@@ -104,6 +104,37 @@ services:
     networks:
       - apisix
 
+  milk-backend:
+    build:
+      context: ./backend/MilkApiManager
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
+      - APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c88b
+    ports:
+      - "5001:8080"
+    networks:
+      - apisix
+    depends_on:
+      - apisix
+
+  milk-admin-ui:
+    build:
+      context: ./backend/MilkAdminBlazor
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BackendApiUrl=http://milk-backend:8080
+    ports:
+      - "5000:8080"
+    networks:
+      - apisix
+    depends_on:
+      - milk-backend
+
 networks:
   apisix:
     driver: bridge
