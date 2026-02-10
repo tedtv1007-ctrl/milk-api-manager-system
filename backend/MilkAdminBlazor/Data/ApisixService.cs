@@ -26,6 +26,18 @@ namespace MilkAdminBlazor.Data
         public string Action { get; set; }
     }
 
+    public class ApiConsumer
+    {
+        [JsonPropertyName("username")]
+        public string Username { get; set; }
+
+        [JsonPropertyName("desc")]
+        public string Desc { get; set; }
+
+        [JsonPropertyName("labels")]
+        public List<string> Labels { get; set; } = new List<string>();
+    }
+
     public class ApisixService
     {
         private readonly HttpClient _httpClient;
@@ -70,6 +82,29 @@ namespace MilkAdminBlazor.Data
         {
             var request = new BlacklistRequest { Ip = ip, Action = "remove" };
             await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+        }
+
+        public async Task<List<ApiConsumer>> GetConsumersAsync()
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<List<ApiConsumer>>("api/Consumer");
+                return response ?? new List<ApiConsumer>();
+            }
+            catch
+            {
+                return new List<ApiConsumer>();
+            }
+        }
+
+        public async Task UpdateConsumerAsync(ApiConsumer consumer)
+        {
+            await _httpClient.PostAsJsonAsync("api/Consumer", consumer);
+        }
+
+        public async Task DeleteConsumerAsync(string username)
+        {
+            await _httpClient.DeleteAsync($"api/Consumer/{username}");
         }
     }
 }

@@ -151,7 +151,7 @@ namespace MilkApiManager.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task UpdateConsumerAsync(string username, Consumer consumerConfig)
+        public async Task UpdateConsumerAsync(string username, object consumerConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
