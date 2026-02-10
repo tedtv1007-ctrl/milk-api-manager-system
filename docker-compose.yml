@@ -2,12 +2,14 @@ version: '3.8'
 
 services:
   apisix:
-    image: apache/apisix:3.14.1-debian
+    image: apache/apisix:3.11.0-debian
     restart: always
+    environment:
+      - APISIX_ETCD_HOST=http://etcd:2379
     volumes:
-      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
-      - ./apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
-      - ./apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
+      - /workspaces/milk-api-manager-system/apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+      - /workspaces/milk-api-manager-system/apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
+      - /workspaces/milk-api-manager-system/apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
     depends_on:
       - etcd
     ports:
@@ -18,21 +20,22 @@ services:
       - apisix
 
   etcd:
-    image: bitnamilegacy/etcd:3.5.11
+    image: quay.io/coreos/etcd:v3.5.15
     restart: always
     environment:
       - ALLOW_NONE_AUTHENTICATION=yes
-      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
+      - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
     ports:
       - "2379:2379"
     networks:
       - apisix
 
   apisix-dashboard:
-    image: apache/apisix-dashboard:3.0.1-alpine
+    image: apache/apisix-dashboard:latest
     restart: always
     volumes:
-      - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
+      - /workspaces/milk-api-manager-system/dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
     ports:
       - "9000:9000"
     networks:
@@ -41,12 +44,12 @@ services:
       - etcd
 
   jaeger:
-    image: jaegertracing/all-in-one:1.53
+    image: jaegertracing/all-in-one:latest
     restart: always
     ports:
-      - "16686:16686" # Jaeger UI
-      - "4317:4317"   # OTLP gRPC
-      - "4318:4318"   # OTLP HTTP
+      - "16686:16686"
+      - "4317:4317"
+      - "4318:4318"
     networks:
       - apisix
 
@@ -54,7 +57,7 @@ services:
     image: prom/prometheus:latest
     restart: always
     volumes:
-      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /workspaces/milk-api-manager-system/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
       - "9090:9090"
     networks:
@@ -69,14 +72,15 @@ services:
     ports:
       - "3000:3000"
     volumes:
-      - ./monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/audit.json:ro
+      - /workspaces/milk-api-manager-system/monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/audit.json:ro
     networks:
       - apisix
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:9.2.3
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.1
     environment:
       - discovery.type=single-node
+      - xpack.security.enabled=false
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"
@@ -84,9 +88,9 @@ services:
       - apisix
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:9.2.3
+    image: docker.elastic.co/logstash/logstash:8.17.1
     volumes:
-      - ./monitoring/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
+      - /workspaces/milk-api-manager-system/monitoring/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     ports:
       - "5044:5044"
       - "8080:8080"
@@ -96,44 +100,15 @@ services:
       - apisix
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:9.2.3
+    image: docker.elastic.co/kibana/kibana:8.17.1
+    environment:
+      - xpack.security.enabled=false
     ports:
       - "5601:5601"
     depends_on:
       - elasticsearch
     networks:
       - apisix
-
-  milk-backend:
-    build:
-      context: ./backend/MilkApiManager
-      dockerfile: Dockerfile
-    restart: always
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
-      - APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c88b
-    ports:
-      - "5001:8080"
-    networks:
-      - apisix
-    depends_on:
-      - apisix
-
-  milk-admin-ui:
-    build:
-      context: ./backend/MilkAdminBlazor
-      dockerfile: Dockerfile
-    restart: always
-    environment:
-      - ASPNETCORE_ENVIRONMENT=Development
-      - BackendApiUrl=http://milk-backend:8080
-    ports:
-      - "5000:8080"
-    networks:
-      - apisix
-    depends_on:
-      - milk-backend
 
 networks:
   apisix:

@@ -2,16 +2,15 @@ deployment:
   role: data_plane
   role_data_plane:
     config_provider: etcd
+  etcd:
+    host:
+      - "http://etcd:2379"
+    prefix: "/apisix"
+    timeout: 30
 
 apisix:
   node_listen: 9080
   enable_ipv6: false
-
-etcd:
-  host:
-    - "http://etcd:2379"
-  prefix: "/apisix"
-  timeout: 30
 
 plugins:
   - pii-masker
@@ -19,21 +18,10 @@ plugins:
   - limit-count
   - key-auth
   - opentelemetry
+  - traffic-blocker
 
 plugin_attr:
   prometheus:
     export_addr:
       ip: "0.0.0.0"
       port: 9091
-  opentelemetry:
-    resource:
-      service.name: "apisix-gateway"
-      instance.id: "$hostname" # Use APISIX variable to set instance id
-    collector:
-      address: "jaeger:4317" # gRPC endpoint for OTLP
-      request_timeout: 3
-      # Additional attributes can be added to spans
-      # For example, to add a static attribute:
-      # additional_attributes:
-      #   - "deployment.environment=production"
-
