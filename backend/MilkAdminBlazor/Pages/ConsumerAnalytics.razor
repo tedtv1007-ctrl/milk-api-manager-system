@@ -1,0 +1,130 @@
+@page "/consumer-analytics"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+
+<MudText Typo="Typo.h4" GutterBottom="true">Consumer Analytics</MudText>
+
+<MudPaper Class="pa-4 mb-4">
+    <MudGrid>
+        <MudItem xs="12" sm="3">
+            <MudSelect T="string" Label="Consumer" @bind-Value="_selectedConsumer">
+                <MudSelectItem Value="@("")">All Consumers</MudSelectItem>
+                @foreach (var consumer in _consumers)
+                {
+                    <MudSelectItem Value="@consumer.Username">@consumer.Username</MudSelectItem>
+                }
+            </MudSelect>
+        </MudItem>
+        <MudItem xs="12" sm="3">
+            <MudAutocomplete T="string" Label="API Route" @bind-Value="_selectedRoute" SearchFunc="@SearchRoutes" />
+        </MudItem>
+        <MudItem xs="12" sm="3">
+            <MudDateRangePicker Label="Time Range" @bind-DateRange="_dateRange" />
+        </MudItem>
+        <MudItem xs="12" sm="3" Class="d-flex align-end">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="RefreshData" FullWidth="true">Apply Filter</MudButton>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
+
+@if (_loading)
+{
+    <MudProgressLinear Color="Color.Primary" Indeterminate="true" Class="my-7" />
+}
+else
+{
+    <MudGrid>
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Request Throughput (req/s)</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudChart ChartType="ChartType.Line" ChartSeries="@_requestSeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="350px" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <MudCard Elevation="2">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">P95 Latency (ms)</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudChart ChartType="ChartType.Line" ChartSeries="@_latencySeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="350px" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12">
+            <MudCard Elevation="2">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Error Rate (%)</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudChart ChartType="ChartType.Line" ChartSeries="@_errorSeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="350px" />
+                </MudCardContent>
+            </MudCard>
+        </MudItem>
+    </MudGrid>
+}
+
+@code {
+    private bool _loading = true;
+    private string _selectedConsumer = "";
+    private string _selectedRoute = "";
+    private DateRange _dateRange = new DateRange(DateTime.Now.Date.AddDays(-1), DateTime.Now.Date);
+    private List<ApiConsumer> _consumers = new();
+    private List<ApiRoute> _routes = new();
+
+    private List<ChartSeries> _requestSeries = new();
+    private List<ChartSeries> _latencySeries = new();
+    private List<ChartSeries> _errorSeries = new();
+    private string[] _xAxisLabels = Array.Empty<string>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        _consumers = await ApisixService.GetConsumersAsync();
+        _routes = await ApisixService.GetRoutesAsync();
+        await RefreshData();
+    }
+
+    private async Task RefreshData()
+    {
+        _loading = true;
+        
+        var start = _dateRange.Start ?? DateTime.Now.AddDays(-1);
+        var end = _dateRange.End ?? DateTime.Now;
+
+        var requests = await ApisixService.GetAnalyticsRequestsAsync(_selectedConsumer, _selectedRoute, start, end);
+        var latencies = await ApisixService.GetAnalyticsLatencyAsync(_selectedConsumer, _selectedRoute, start, end);
+        var errors = await ApisixService.GetAnalyticsErrorsAsync(_selectedConsumer, _selectedRoute, start, end);
+
+        _requestSeries = requests.Select(r => new ChartSeries { Name = r.Label, Data = r.Data.Select(d => d.Value).ToArray() }).ToList();
+        _latencySeries = latencies.Select(r => new ChartSeries { Name = r.Label, Data = r.Data.Select(d => d.Value).ToArray() }).ToList();
+        _errorSeries = errors.Select(r => new ChartSeries { Name = r.Label, Data = r.Data.Select(d => d.Value).ToArray() }).ToList();
+
+        // Simple X-Axis labels (just time)
+        if (requests.Any() && requests[0].Data.Any())
+        {
+            _xAxisLabels = requests[0].Data.Select(d => d.Timestamp.ToString("HH:mm")).ToArray();
+        }
+        else
+        {
+            _xAxisLabels = Array.Empty<string>();
+        }
+
+        _loading = false;
+    }
+
+    private async Task<IEnumerable<string>> SearchRoutes(string value)
+    {
+        if (string.IsNullOrEmpty(value))
+            return _routes.Select(r => r.Uri);
+        return _routes.Where(x => x.Uri.Contains(value, StringComparison.InvariantCultureIgnoreCase)).Select(x => x.Uri);
+    }
+}

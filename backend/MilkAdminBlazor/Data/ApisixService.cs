@@ -73,6 +73,22 @@ namespace MilkAdminBlazor.Data
         public DateTime Timestamp { get; set; }
     }
 
+    public class MetricPoint
+    {
+        [JsonPropertyName("timestamp")]
+        public DateTime Timestamp { get; set; }
+        [JsonPropertyName("value")]
+        public double Value { get; set; }
+    }
+
+    public class AnalyticsResult
+    {
+        [JsonPropertyName("label")]
+        public string Label { get; set; }
+        [JsonPropertyName("data")]
+        public List<MetricPoint> Data { get; set; } = new();
+    }
+
     public class ApisixService
     {
         private readonly HttpClient _httpClient;
@@ -176,6 +192,39 @@ namespace MilkAdminBlazor.Data
                 });
             }
             return stats;
+        }
+
+        public async Task<List<AnalyticsResult>> GetAnalyticsRequestsAsync(string consumer, string route, DateTime? start, DateTime? end)
+        {
+            try
+            {
+                var query = $"?consumer={consumer}&route={route}&startTime={start:O}&endTime={end:O}";
+                var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/requests{query}");
+                return response ?? new List<AnalyticsResult>();
+            }
+            catch { return new List<AnalyticsResult>(); }
+        }
+
+        public async Task<List<AnalyticsResult>> GetAnalyticsLatencyAsync(string consumer, string route, DateTime? start, DateTime? end)
+        {
+            try
+            {
+                var query = $"?consumer={consumer}&route={route}&startTime={start:O}&endTime={end:O}";
+                var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/latency{query}");
+                return response ?? new List<AnalyticsResult>();
+            }
+            catch { return new List<AnalyticsResult>(); }
+        }
+
+        public async Task<List<AnalyticsResult>> GetAnalyticsErrorsAsync(string consumer, string route, DateTime? start, DateTime? end)
+        {
+            try
+            {
+                var query = $"?consumer={consumer}&route={route}&startTime={start:O}&endTime={end:O}";
+                var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/errors{query}");
+                return response ?? new List<AnalyticsResult>();
+            }
+            catch { return new List<AnalyticsResult>(); }
         }
     }
 }

@@ -11,6 +11,7 @@ builder.Services.AddSwaggerGen();
 // Register Services
 builder.Services.AddHttpClient<ApisixClient>();
 builder.Services.AddHttpClient<AuditLogService>();
+builder.Services.AddHttpClient<PrometheusService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
 builder.Services.AddScoped<SecurityAutomationService>();
 
