@@ -23,7 +23,7 @@ services:
       - apisix
 
   apisix-dashboard:
-    image: apache/apisix-dashboard:3.0.1-debian
+    image: apache/apisix-dashboard:3.0.1
     volumes:
       - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
     ports:
