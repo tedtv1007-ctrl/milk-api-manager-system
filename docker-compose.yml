@@ -1,6 +1,6 @@
 services:
   etcd:
-    image: bitnami/etcd:3.5.11
+    image: bitnami/etcd:3.5
     environment:
       - ALLOW_NONE_AUTHENTICATION=yes
       - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
@@ -18,7 +18,7 @@ services:
     ports:
       - "9080:9080"
       - "9180:9180"
-      - "9091:9100"
+      - "9091:9091"
     networks:
       - apisix
 
