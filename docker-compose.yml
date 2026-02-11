@@ -57,7 +57,7 @@ services:
     image: prom/prometheus:latest
     restart: always
     volumes:
-      - /workspaces/milk-api-manager-system/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - /workspaces/milk-api-manager-syste/home/runner/work/milk-api-manager-system/milk-api-manager-system/monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
     ports:
       - "9090:9090"
     networks:
