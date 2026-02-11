@@ -55,7 +55,6 @@ services:
   prometheus:
     image: prom/prometheus:latest
     restart: always
-    volumes:
     ports:
       - "9090:9090"
     networks:
