@@ -11,6 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: List workspace
+        run: ls -R
 
       - name: Start containers
         run: docker compose up -d
