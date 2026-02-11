@@ -6,7 +6,7 @@ services:
     environment:
       - APISIX_ETCD_HOST=http://etcd:2379
     volumes:
-      - /workspaces/milk-api-manager-system/apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
+      - /workspaces/milk-api-manager-systeapisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
       - /workspaces/milk-api-manager-system/apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
       - /workspaces/milk-api-manager-system/apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
     depends_on:
