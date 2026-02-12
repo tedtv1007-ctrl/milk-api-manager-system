@@ -1,7 +1,9 @@
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Services;
+using MilkApiManager.Models;
 using MilkApiManager.Models.Apisix;
 using ApisixRoute = MilkApiManager.Models.Apisix.Route;
+using System.Text.Json;
 
 namespace MilkApiManager.Controllers
 {
@@ -11,11 +13,13 @@ namespace MilkApiManager.Controllers
     {
         private readonly ApisixClient _apisixClient;
         private readonly ILogger<RouteController> _logger;
+        private readonly AuditLogService _auditLogService;
 
-        public RouteController(ApisixClient apisixClient, ILogger<RouteController> logger)
+        public RouteController(ApisixClient apisixClient, ILogger<RouteController> logger, AuditLogService auditLogService)
         {
             _apisixClient = apisixClient;
             _logger = logger;
+            _auditLogService = auditLogService;
         }
 
         [HttpGet]
@@ -62,7 +66,19 @@ namespace MilkApiManager.Controllers
 
             try
             {
+                var currentUser = User.Identity?.Name ?? "Anonymous";
+
                 await _apisixClient.CreateRouteAsync(routeConfig.Id, routeConfig);
+
+                // Audit Log: Create
+                await _auditLogService.LogAsync(new AuditLogEntry
+                {
+                    Action = "Create",
+                    Resource = "Route",
+                    User = currentUser,
+                    Details = new { RouteId = routeConfig.Id, Config = routeConfig }
+                });
+
                 return CreatedAtAction(nameof(GetRoute), new { id = routeConfig.Id }, routeConfig);
             }
             catch (Exception ex)
@@ -82,7 +98,19 @@ namespace MilkApiManager.Controllers
 
             try
             {
+                var currentUser = User.Identity?.Name ?? "Anonymous";
+
                 await _apisixClient.UpdateRouteAsync(id, routeConfig);
+
+                // Audit Log: Update
+                await _auditLogService.LogAsync(new AuditLogEntry
+                {
+                    Action = "Update",
+                    Resource = "Route",
+                    User = currentUser,
+                    Details = new { RouteId = id, NewConfig = routeConfig }
+                });
+
                 return NoContent();
             }
             catch (Exception ex)
@@ -97,7 +125,19 @@ namespace MilkApiManager.Controllers
         {
             try
             {
+                var currentUser = User.Identity?.Name ?? "Anonymous";
+
                 await _apisixClient.DeleteRouteAsync(id);
+
+                // Audit Log: Delete
+                await _auditLogService.LogAsync(new AuditLogEntry
+                {
+                    Action = "Delete",
+                    Resource = "Route",
+                    User = currentUser,
+                    Details = new { RouteId = id }
+                });
+
                 return NoContent();
             }
             catch (Exception ex)

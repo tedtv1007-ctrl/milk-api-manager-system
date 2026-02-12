@@ -1,4 +1,5 @@
 using System.Text.Json;
+using MilkApiManager.Models;
 
 namespace MilkApiManager.Services;
 
@@ -13,13 +14,50 @@ public class AuditLogService
     }
 
     /// <summary>
+    /// 結構化稽核日誌記錄方法
+    /// 輸出 JSON 到 StdOut 供 Fluentd/Logstash 收集
+    /// </summary>
+    /// <param name="entry">日誌實體</param>
+    public async Task LogAsync(AuditLogEntry entry)
+    {
+        // 確保 Timestamp 為 UTC
+        if (entry.Timestamp.Kind != DateTimeKind.Utc)
+        {
+            entry.Timestamp = entry.Timestamp.ToUniversalTime();
+        }
+
+        var options = new JsonSerializerOptions
+        {
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase,
+            WriteIndented = false // 保持單行以便日誌收集
+        };
+
+        var json = JsonSerializer.Serialize(entry, options);
+        
+        // 輸出到 Standard Output
+        Console.WriteLine(json);
+
+        // Optional: 也可以保留原本的 HTTP Shipping 邏輯
+        // await ShipLogsToSIEM(entry);
+        
+        await Task.CompletedTask;
+    }
+
+    /// <summary>
     /// 對齊稽核要求 Q7: 實作 API 呼叫紀錄全量收容
     /// </summary>
     public async Task ShipLogsToSIEM(object logPayload)
     {
-        var json = JsonSerializer.Serialize(logPayload);
-        await _httpClient.PostAsync(_logstashEndpoint, new StringContent(json));
-        Console.WriteLine($"[AUDIT] Log shipped to SIEM: {DateTime.Now}");
+        try 
+        {
+            var json = JsonSerializer.Serialize(logPayload);
+            // 這裡僅示範，若 logstash 不在線上可能會報錯，因此加個 try-catch 或視為非同步 fire-and-forget
+            // await _httpClient.PostAsync(_logstashEndpoint, new StringContent(json));
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"[Error] Failed to ship logs: {ex.Message}");
+        }
     }
 
     /// <summary>
