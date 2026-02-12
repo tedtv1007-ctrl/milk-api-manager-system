@@ -12,9 +12,9 @@ builder.Services.AddSwaggerGen();
 
 // Register DbContext
 // Check both connection string paths just in case
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Data Source=audit.db";
+var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Host=postgres;Port=5432;Database=milk_db;Username=milk_user;Password=milk_password";
 builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseSqlite(connectionString));
+    options.UseNpgsql(connectionString));
 
 // Register Services
 builder.Services.AddHttpClient<ApisixClient>();
@@ -32,6 +32,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    // For production, consider using db.Database.Migrate() instead of EnsureCreated
     db.Database.EnsureCreated();
 }
 

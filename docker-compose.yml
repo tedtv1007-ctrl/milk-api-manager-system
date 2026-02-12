@@ -1,4 +1,18 @@
 services:
+  postgres:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=milk_user
+      - POSTGRES_PASSWORD=milk_password
+      - POSTGRES_DB=milk_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - apisix
+
   etcd:
     image: bitnamilegacy/etcd:3.5.11
     restart: always
@@ -122,6 +136,8 @@ networks:
     driver: bridge
 
 volumes:
+  postgres_data:
+    driver: local
   etcd_data:
     driver: local
   esdata:
