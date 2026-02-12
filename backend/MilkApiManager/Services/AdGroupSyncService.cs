@@ -1,7 +1,9 @@
 using System.Text.Json;
 using System.Text.Json.Serialization;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Configuration;
 using MilkApiManager.Models.Apisix;
+using Novell.Directory.Ldap;
 
 namespace MilkApiManager.Services
 {
@@ -10,15 +12,17 @@ namespace MilkApiManager.Services
         private readonly ILogger<AdGroupSyncService> _logger;
         private readonly ApisixClient _apisixClient;
         private readonly IServiceProvider _serviceProvider;
+        private readonly IConfiguration _configuration;
         private Timer? _timer;
         private string _syncStatus = "Idle";
         private DateTime? _lastSyncTime;
 
-        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, ApisixClient apisixClient, IServiceProvider serviceProvider)
+        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, ApisixClient apisixClient, IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _logger = logger;
             _apisixClient = apisixClient;
             _serviceProvider = serviceProvider;
+            _configuration = configuration;
         }
 
         public Task StartAsync(CancellationToken cancellationToken)
@@ -58,8 +62,8 @@ namespace MilkApiManager.Services
             {
                 _logger.LogInformation("Starting AD Group Sync...");
                 
-                // Mock AD Group fetching
-                var adGroups = await FetchAdGroupsMock();
+                // Fetch groups from real LDAP
+                var adGroups = FetchAdGroupsFromLdap();
                 
                 foreach (var group in adGroups)
                 {
@@ -82,16 +86,103 @@ namespace MilkApiManager.Services
             }
         }
 
-        private async Task<List<AdGroup>> FetchAdGroupsMock()
+        private List<AdGroup> FetchAdGroupsFromLdap()
         {
-            // In a real implementation, this would use System.DirectoryServices.AccountManagement
-            await Task.Delay(500); // Simulate network delay
-            return new List<AdGroup>
+            var groups = new List<AdGroup>();
+            var ldapHost = _configuration["Ldap:Host"];
+            var ldapPort = _configuration.GetValue<int>("Ldap:Port");
+            var bindDn = _configuration["Ldap:BindDn"];
+            var bindPassword = _configuration["Ldap:BindPassword"];
+            var searchBase = _configuration["Ldap:SearchBase"];
+            var groupFilter = _configuration["Ldap:GroupFilter"];
+
+            // Basic validation
+            if (string.IsNullOrEmpty(ldapHost))
             {
-                new AdGroup { Name = "Developers", Members = new List<string> { "alice", "bob" } },
-                new AdGroup { Name = "Managers", Members = new List<string> { "charlie" } },
-                new AdGroup { Name = "Testers", Members = new List<string> { "david", "eve" } }
-            };
+                _logger.LogWarning("LDAP Host is not configured. Skipping sync.");
+                return groups;
+            }
+
+            using (var connection = new LdapConnection())
+            {
+                try
+                {
+                    _logger.LogInformation($"Connecting to LDAP at {ldapHost}:{ldapPort}...");
+                    connection.Connect(ldapHost, ldapPort);
+                    connection.Bind(bindDn, bindPassword);
+
+                    var searchResults = connection.Search(
+                        searchBase,
+                        LdapConnection.ScopeSub,
+                        groupFilter,
+                        new string[] { "cn", "member", "uniqueMember" },
+                        false
+                    );
+
+                    while (searchResults.HasMore())
+                    {
+                        try 
+                        {
+                            var entry = searchResults.Next();
+                            var groupNameAttribute = entry.GetAttribute("cn");
+                            if (groupNameAttribute == null) continue;
+                            
+                            var groupName = groupNameAttribute.StringValue;
+                            if (string.IsNullOrEmpty(groupName)) continue;
+
+                            var members = new List<string>();
+                            var memberAttribute = entry.GetAttribute("member") ?? entry.GetAttribute("uniqueMember");
+                            
+                            if (memberAttribute != null)
+                            {
+                                foreach (var value in memberAttribute.StringValues)
+                                {
+                                    // Extract CN from DN (e.g., "cn=alice,ou=users,dc=example,dc=com" -> "alice")
+                                    var memberCn = GetCnFromDn(value); 
+                                    if (!string.IsNullOrEmpty(memberCn))
+                                    {
+                                        members.Add(memberCn);
+                                    }
+                                }
+                            }
+
+                            groups.Add(new AdGroup { Name = groupName, Members = members });
+                        }
+                        catch (LdapReferralException) 
+                        {
+                            // Ignore referrals
+                            continue;
+                        }
+                    }
+                }
+                catch (LdapException ex)
+                {
+                    _logger.LogError(ex, "LDAP error: {LdapError}", ex.LdapErrorMessage);
+                    // For now, rethrow or handle gracefully. 
+                    // In production, we might want to continue or retry.
+                }
+                finally
+                {
+                    if (connection.Connected)
+                    {
+                        connection.Disconnect();
+                    }
+                }
+            }
+            return groups;
+        }
+
+        private string GetCnFromDn(string dn)
+        {
+            var parts = dn.Split(',');
+            foreach (var part in parts)
+            {
+                if (part.Trim().StartsWith("cn=", StringComparison.OrdinalIgnoreCase))
+                {
+                    return part.Trim().Substring(3);
+                }
+            }
+            return dn; 
         }
 
         private async Task SyncGroupToApisix(AdGroup group)
