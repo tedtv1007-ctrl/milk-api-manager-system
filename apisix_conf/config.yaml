@@ -1,35 +1,34 @@
 deployment:
-  role: traditional
-  role_traditional:
+  role: data_plane
+  role_data_plane:
     config_provider: etcd
   etcd:
     host:
       - "http://etcd:2379"
     prefix: "/apisix"
     timeout: 30
-  admin:
-    allow_admin:
-      - 0.0.0.0/0
-    admin_key:
-      - name: admin
-        key: edd1c9f034335f136f87ad84b625c88b
-        role: admin
-    admin_listen:
-      ip: 0.0.0.0
-      port: 9180
 
 apisix:
   node_listen: 9080
   enable_ipv6: false
 
 plugins:
+  - pii-masker
   - prometheus
   - limit-count
   - key-auth
   - opentelemetry
+  - traffic-blocker
 
 plugin_attr:
   prometheus:
     export_addr:
       ip: "0.0.0.0"
       port: 9091
+  opentelemetry:
+    resource:
+      service.name: "apisix-gateway"
+      instance.id: "\$hostname"
+    collector:
+      address: "jaeger:4317"
+      request_timeout: 3

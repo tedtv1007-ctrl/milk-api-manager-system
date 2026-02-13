@@ -18,7 +18,7 @@ namespace MilkApiManager.Services
             _httpClient = httpClient;
             _logger = logger;
             _httpClient.BaseAddress = new Uri(Environment.GetEnvironmentVariable("APISIX_ADMIN_URL") ?? "http://apisix:9180/apisix/admin/");
-            _adminKey = Environment.GetEnvironmentVariable("APISIX_ADMIN_KEY") ?? "edd1c9f034335f136f87ad84b625c8f1";
+            _adminKey = Environment.GetEnvironmentVariable("APISIX_ADMIN_KEY") ?? throw new InvalidOperationException("APISIX_ADMIN_KEY environment variable is not set.");
             
             _jsonSerializerOptions = new JsonSerializerOptions
             {
@@ -38,7 +38,7 @@ namespace MilkApiManager.Services
             return request;
         }
 
-        public async Task CreateRouteAsync(string id, ApisixRoute routeConfig)
+        public virtual async Task CreateRouteAsync(string id, ApisixRoute routeConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
@@ -46,7 +46,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully created route {id}");
         }
 
-        public async Task DeleteRouteAsync(string id)
+        public virtual async Task DeleteRouteAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Delete, $"routes/{id}");
             var response = await _httpClient.SendAsync(request);
@@ -56,14 +56,14 @@ namespace MilkApiManager.Services
             }
         }
         
-        public async Task<string> GetRoutesAsync()
+        public virtual async Task<string> GetRoutesAsync()
         {
              var request = CreateRequest(HttpMethod.Get, "routes");
              var response = await _httpClient.SendAsync(request);
              return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task<ApisixRoute?> GetRouteAsync(string id)
+        public virtual async Task<ApisixRoute?> GetRouteAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Get, $"routes/{id}");
             var response = await _httpClient.SendAsync(request);
@@ -74,7 +74,7 @@ namespace MilkApiManager.Services
             return JsonSerializer.Deserialize<ApisixRoute>(node, _jsonSerializerOptions);
         }
 
-        public async Task UpdateRouteAsync(string id, ApisixRoute routeConfig)
+        public virtual async Task UpdateRouteAsync(string id, ApisixRoute routeConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
@@ -82,7 +82,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully updated route {id}");
         }
 
-        public async Task CreateServiceAsync(string id, Service serviceConfig)
+        public virtual async Task CreateServiceAsync(string id, Service serviceConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"services/{id}", serviceConfig);
             var response = await _httpClient.SendAsync(request);
@@ -90,7 +90,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully created service {id}");
         }
 
-        public async Task<Service?> GetServiceAsync(string id)
+        public virtual async Task<Service?> GetServiceAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Get, $"services/{id}");
             var response = await _httpClient.SendAsync(request);
@@ -100,7 +100,7 @@ namespace MilkApiManager.Services
             return JsonSerializer.Deserialize<Service>(node, _jsonSerializerOptions);
         }
 
-        public async Task<string> GetServicesAsync()
+        public virtual async Task<string> GetServicesAsync()
         {
             var request = CreateRequest(HttpMethod.Get, "services");
             var response = await _httpClient.SendAsync(request);
@@ -108,7 +108,7 @@ namespace MilkApiManager.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task UpdateServiceAsync(string id, Service serviceConfig)
+        public virtual async Task UpdateServiceAsync(string id, Service serviceConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"services/{id}", serviceConfig);
             var response = await _httpClient.SendAsync(request);
@@ -116,7 +116,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully updated service {id}");
         }
 
-        public async Task DeleteServiceAsync(string id)
+        public virtual async Task DeleteServiceAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Delete, $"services/{id}");
             var response = await _httpClient.SendAsync(request);
@@ -126,7 +126,7 @@ namespace MilkApiManager.Services
             }
         }
 
-        public async Task CreateConsumerAsync(string username, Consumer consumerConfig)
+        public virtual async Task CreateConsumerAsync(string username, Consumer consumerConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
@@ -134,7 +134,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully created consumer {username}");
         }
 
-        public async Task<Consumer?> GetConsumerAsync(string username)
+        public virtual async Task<Consumer?> GetConsumerAsync(string username)
         {
             var request = CreateRequest(HttpMethod.Get, $"consumers/{username}");
             var response = await _httpClient.SendAsync(request);
@@ -144,7 +144,7 @@ namespace MilkApiManager.Services
             return JsonSerializer.Deserialize<Consumer>(node, _jsonSerializerOptions);
         }
 
-        public async Task<string> GetConsumersAsync()
+        public virtual async Task<string> GetConsumersAsync()
         {
             var request = CreateRequest(HttpMethod.Get, "consumers");
             var response = await _httpClient.SendAsync(request);
@@ -152,7 +152,7 @@ namespace MilkApiManager.Services
             return await response.Content.ReadAsStringAsync();
         }
 
-        public async Task UpdateConsumerAsync(string username, object consumerConfig)
+        public virtual async Task UpdateConsumerAsync(string username, object consumerConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
@@ -160,7 +160,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully updated consumer {username}");
         }
 
-        public async Task DeleteConsumerAsync(string username)
+        public virtual async Task DeleteConsumerAsync(string username)
         {
             var request = CreateRequest(HttpMethod.Delete, $"consumers/{username}");
             var response = await _httpClient.SendAsync(request);
@@ -170,7 +170,7 @@ namespace MilkApiManager.Services
             }
         }
 
-        public async Task<List<string>> GetBlacklistAsync()
+        public virtual async Task<List<string>> GetBlacklistAsync()
         {
             var request = CreateRequest(HttpMethod.Get, "plugin_metadata/traffic-blocker");
             var response = await _httpClient.SendAsync(request);
@@ -193,7 +193,7 @@ namespace MilkApiManager.Services
             return new List<string>();
         }
 
-        public async Task UpdateBlacklistAsync(List<string> blacklist)
+        public virtual async Task UpdateBlacklistAsync(List<string> blacklist)
         {
             var body = new { blacklist = blacklist };
             var request = CreateRequest(HttpMethod.Put, "plugin_metadata/traffic-blocker", body);
@@ -202,7 +202,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation("Successfully updated traffic-blocker blacklist");
         }
 
-        public async Task UpdateGlobalPlugin(string pluginName, object body)
+        public virtual async Task UpdateGlobalPlugin(string pluginName, object body)
         {
             var request = CreateRequest(HttpMethod.Put, $"plugin_metadata/{pluginName}", body);
             var response = await _httpClient.SendAsync(request);
@@ -210,7 +210,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully updated plugin metadata: {pluginName}");
         }
 
-        public async Task CreateConsumerGroupAsync(string id, ConsumerGroup groupConfig)
+        public virtual async Task CreateConsumerGroupAsync(string id, ConsumerGroup groupConfig)
         {
             var request = CreateRequest(HttpMethod.Put, $"consumer_groups/{id}", groupConfig);
             var response = await _httpClient.SendAsync(request);
@@ -218,7 +218,7 @@ namespace MilkApiManager.Services
             _logger.LogInformation($"Successfully created consumer group {id}");
         }
 
-        public async Task DeleteConsumerGroupAsync(string id)
+        public virtual async Task DeleteConsumerGroupAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Delete, $"consumer_groups/{id}");
             var response = await _httpClient.SendAsync(request);

@@ -20,7 +20,7 @@ public class AuditLogService
         _scopeFactory = scopeFactory;
     }
 
-    public async Task LogAsync(AuditLogEntry entry)
+    public virtual async Task LogAsync(AuditLogEntry entry)
     {
         // 1. Console Logging for Fluentd/Logstash
         if (entry.Timestamp.Kind != DateTimeKind.Utc)
@@ -60,7 +60,7 @@ public class AuditLogService
         }
     }
 
-    public async Task<List<AuditLogEntry>> GetLogsAsync(int limit = 100)
+    public virtual async Task<List<AuditLogEntry>> GetLogsAsync(int limit = 100)
     {
         bool enableDb = _configuration.GetValue<bool>("AuditLog:EnableDatabaseWrite");
         if (!enableDb)
@@ -76,5 +76,12 @@ public class AuditLogService
                 .Take(limit)
                 .ToListAsync();
         }
+    }
+
+    public virtual async Task ShipLogsToSIEM(AuditLogEntry entry)
+    {
+        // Placeholder for SIEM shipping logic (e.g., Splunk, Azure Monitor)
+        // For now, it's handled by Console output which is collected by Fluentd
+        await Task.CompletedTask;
     }
 }

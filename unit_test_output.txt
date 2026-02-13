@@ -1,0 +1,68 @@
+﻿  甇??斗閬???撠?...
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj : warning NU1902: 憟辣 'OpenTelemetry.Instrumentation.AspNetCore' 1.7.0 ?瑟?撌脩??銝剖漲 ?湧??批摹暺?https://github.com/advisories/GHSA-vh2m-22xx-q94f??[D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
+  ???獢?冽??啁????舫脰?????
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj : warning NU1902: 憟辣 'OpenTelemetry.Instrumentation.AspNetCore' 1.7.0 ?瑟?撌脩??銝剖漲 ?湧??批摹暺?https://github.com/advisories/GHSA-vh2m-22xx-q94f??
+  MilkApiManager -> D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\bin\Debug\net8.0\MilkApiManager.dll
+  MilkApiManager.Tests -> D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\bin\Debug\net8.0\MilkApiManager.Tests.dll
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\bin\Debug\net8.0\MilkApiManager.Tests.dll ?葫閰血???(.NETCoreApp,Version=v8.0)
+VSTest ? 17.11.1 (x64)
+
+甇???皜祈岫?瑁?嚗?蝔?..
+蝮賢??1 ?葫閰行?獢????芋撘蝚艾?
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\bin\Debug\net8.0\MilkApiManager.Tests.dll
+[xUnit.net 00:00:00.00] xUnit.net VSTest Adapter v2.5.3.1+6b60a9e56a (64-bit .NET 8.0.23)
+[xUnit.net 00:00:00.13]   Discovering: MilkApiManager.Tests
+[xUnit.net 00:00:00.20]   Discovered:  MilkApiManager.Tests
+[xUnit.net 00:00:00.21]   Starting:    MilkApiManager.Tests
+[SECURITY] 嚙踝蕭嚙踝蕭嚙趣異嚙窯嚙緙嚙緬嚙璀IP: 10.0.0.99, 嚙踝蕭]: DDoS attack. 嚙踝蕭嚙踝蕭菾坁嚙踝蕭_...
+  撌脤? MilkApiManager.Tests.Controllers.KeysControllerTests.CreateKey_EmptyOwner_ReturnsBadRequest [91 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.UpdateRoute_NullConfig_ReturnsBadRequest [110 ms]
+  撌脤? MilkApiManager.Tests.Controllers.KeysControllerTests.RotateKey_ValidConsumer_ReturnsOk [8 ms]
+  撌脤? MilkApiManager.Tests.Controllers.KeysControllerTests.RotateKey_ConsumerNotFound_ReturnsBadRequest [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.GetConsumers_OnException_Returns500 [116 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetRequests_12HourRange_Uses10mStep [116 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.DeleteConsumer_ValidUsername_ReturnsNoContent [2 ms]
+  撌脤? MilkApiManager.Tests.Services.SecurityAutomationServiceTests.CheckAndRotateKeys_ExpiredKey_TriggersRotation [118 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.DeleteRoute_ValidId_Returns204 [8 ms]
+  撌脤? MilkApiManager.Tests.Controllers.KeysControllerTests.CreateKey_ValidRequest_ReturnsCreated [4 ms]
+  撌脤? MilkApiManager.Tests.Services.VaultServiceTests.RotateApiKeyAsync_ValidConsumer_ReturnsNewKey [119 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetErrors_ReturnsOk [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.KeysControllerTests.CreateKey_NullRequest_ReturnsBadRequest [< 1 ms]
+  撌脤? MilkApiManager.Tests.Services.SecurityAutomationServiceTests.CheckAndRotateKeys_NearExpiryKey_DoesNotRotate [1 ms]
+  撌脤? MilkApiManager.Tests.Services.VaultServiceTests.StoreSecretAsync_ReturnsVaultVersion [< 1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.GetRoutes_OnException_Returns500 [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetRequests_30MinRange_Uses1mStep [2 ms]
+  撌脤? MilkApiManager.Tests.Services.SecurityAutomationServiceTests.CheckAndRotateKeys_CompletesWithoutError [1 ms]
+  撌脤? MilkApiManager.Tests.Services.VaultServiceTests.RotateApiKeyAsync_ConsumerWithNullPlugins_InitializesPlugins [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.CreateRoute_NullConfig_ReturnsBadRequest [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetRequests_DefaultQuery_ReturnsOk [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.GetRoutes_ReturnsOk [3 ms]
+  撌脤? MilkApiManager.Tests.Services.SecurityAutomationServiceTests.BlockMaliciousIP_UpdatesGlobalPlugin [4 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetRequests_WithConsumerFilter_PassesCorrectQuery [3 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.GetRoute_NotFound_ReturnsNotFound [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.AnalyticsControllerTests.GetLatency_ReturnsOk [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.GetRoute_ExistingId_ReturnsOk [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.UpdateRoute_ValidConfig_Returns204 [5 ms]
+  撌脤? MilkApiManager.Tests.Services.VaultServiceTests.RotateApiKeyAsync_ConsumerNotFound_ThrowsException [13 ms]
+  撌脤? MilkApiManager.Tests.Services.VaultServiceTests.GetSecretAsync_ReturnsMockSecret [< 1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.DeleteRoute_OnException_Returns500 [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.CreateRoute_ValidConfig_Returns201 [3 ms]
+  撌脤? MilkApiManager.Tests.Controllers.RouteControllerTests.CreateRoute_EmptyId_ReturnsBadRequest [< 1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.GetConsumers_ReturnsOk_WithConsumerList [36 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.UpdateConsumer_ValidData_ReturnsOk [3 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.DeleteConsumer_OnException_Returns500 [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.ConsumerControllerTests.GetConsumers_EmptyList_ReturnsOk [2 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.UpdateBlacklist_RemoveIp_Success [562 ms]
+[xUnit.net 00:00:00.94]   Finished:    MilkApiManager.Tests
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.GetBlacklist_WithDbPersistence_ReturnsDbEntries [34 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.UpdateBlacklist_AddIp_Success [17 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.GetBlacklist_WithoutDbPersistence_ReturnsApisixData [1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.UpdateBlacklist_NullRequest_ReturnsBadRequest [< 1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.UpdateBlacklist_EmptyIp_ReturnsBadRequest [< 1 ms]
+  撌脤? MilkApiManager.Tests.Controllers.BlacklistControllerTests.UpdateBlacklist_InvalidAction_ReturnsBadRequest [< 1 ms]
+蝯?瑼?: D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\TestResults\test-results.trx
+
+皜祈岫??????
+皜祈岫?貊蜇閮? 44
+     ??: 44
+ ??蝮質?: 1.4574 蝘?

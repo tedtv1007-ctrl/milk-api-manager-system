@@ -49,12 +49,13 @@
         <MudTd DataLabel="Duration">@context.Duration</MudTd>
         <MudTd DataLabel="Channels">@string.Join(", ", context.NotificationChannels)</MudTd>
         <MudTd DataLabel="Status">
-            <MudChip Color="@(context.IsEnabled ? Color.Success : Color.Default)">@(context.IsEnabled ? "Enabled" : "Disabled")</MudChip>
+            <MudChip T="string" Color="@(context.IsEnabled ? Color.Success : Color.Default)">@(context.IsEnabled ? "Enabled" : "Disabled")</MudChip>
         </MudTd>
         <MudTd DataLabel="Actions">
             <MudIconButton Icon="@Icons.Material.Filled.PowerSettingsNew" OnClick="@(() => ToggleRule(context.Id))" />
             <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => DeleteRule(context.Id))" />
-        </RowTemplate>
+        </MudTd>
+    </RowTemplate>
 </MudTable>
 
 @code {

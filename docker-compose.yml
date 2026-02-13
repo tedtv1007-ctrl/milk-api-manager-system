@@ -1,49 +1,38 @@
+version: '3.8'
+
 services:
-  postgres:
-    image: postgres:17-alpine
+  apisix:
+    image: apache/apisix:3.11.0-debian
     restart: always
     environment:
-      - POSTGRES_USER=milk_user
-      - POSTGRES_PASSWORD=milk_password
-      - POSTGRES_DB=milk_db
-    ports:
-      - "5432:5432"
+      - APISIX_ETCD_HOST=http://etcd:2379
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:rw
+      - ./apisix_conf/plugins/pii-masker.lua:/usr/local/apisix/apisix/plugins/pii-masker.lua:ro
+      - ./apisix_conf/plugins/traffic-blocker.lua:/usr/local/apisix/apisix/plugins/traffic-blocker.lua:ro
+    depends_on:
+      - etcd
+    ports:
+      - "9080:9080"
+      - "9091:9091"
+      - "9443:9443"
     networks:
       - apisix
 
   etcd:
-    image: bitnamilegacy/etcd:3.5.11
+    image: quay.io/coreos/etcd:v3.5.15
     restart: always
-    volumes:
-      - etcd_data:/bitnami/etcd
     environment:
-      - ETCD_ENABLE_V2=true
       - ALLOW_NONE_AUTHENTICATION=yes
-      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+      - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
     ports:
       - "2379:2379"
     networks:
       - apisix
 
-  apisix:
-    image: apache/apisix:${APISIX_IMAGE_TAG:-3.14.1-debian}
-    restart: always
-    volumes:
-      - ./apisix_conf/config.yaml:/usr/local/apisix/conf/config.yaml:ro
-    depends_on:
-      - etcd
-    ports:
-      - "9080:9080"
-      - "9180:9180"
-      - "9091:9091"
-    networks:
-      - apisix
-
   apisix-dashboard:
-    image: apache/apisix-dashboard:3.0.1-alpine
+    image: apache/apisix-dashboard:latest
     restart: always
     volumes:
       - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
@@ -51,9 +40,21 @@ services:
       - "9000:9000"
     networks:
       - apisix
+    depends_on:
+      - etcd
+
+  jaeger:
+    image: jaegertracing/all-in-one:latest
+    restart: always
+    ports:
+      - "16686:16686" # Jaeger UI
+      - "4317:4317"   # OTLP gRPC
+      - "4318:4318"   # OTLP HTTP
+    networks:
+      - apisix
 
   prometheus:
-    image: prom/prometheus:v2.25.0
+    image: prom/prometheus:latest
     restart: always
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
@@ -63,82 +64,83 @@ services:
       - apisix
 
   grafana:
-    image: grafana/grafana:9.5.3
+    image: grafana/grafana:latest
     restart: always
+    environment:
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
     ports:
       - "3000:3000"
-    networks:
-      - apisix
-
-  jaeger:
-    image: jaegertracing/all-in-one:1.45
-    restart: always
-    ports:
-      - "16686:16686"
-      - "14268:14268"
+    volumes:
+      - ./monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/audit.json:ro
     networks:
       - apisix
 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-9.2.3}
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.17.1
     environment:
-      - node.name=es01
       - discovery.type=single-node
-      - cluster.name=docker-cluster
-      - ELASTIC_PASSWORD=changeme
-      - xpack.security.enabled=true
-      - ES_JAVA_OPTS=-Xms1g -Xmx1g
+      - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"
-      - "9300:9300"
-    volumes:
-      - esdata:/usr/share/elasticsearch/data
-    healthcheck:
-      test: ["CMD-SHELL", "curl -u elastic:changeme -fsSL http://localhost:9200/_cluster/health || exit 1"]
-      interval: 10s
-      timeout: 10s
-      retries: 10
-    networks:
-      - apisix
-
-  kibana:
-    image: docker.elastic.co/kibana/kibana:${ELASTIC_VERSION:-9.2.3}
-    environment:
-      - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
-      - ELASTICSEARCH_USERNAME=kibana_system
-      - ELASTICSEARCH_PASSWORD=changeme
-      - KIBANA_SYSTEM_PASSWORD=changeme
-    ports:
-      - "5601:5601"
-    depends_on:
-      elasticsearch:
-        condition: service_healthy
     networks:
       - apisix
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:${ELASTIC_VERSION:-9.2.3}
+    image: docker.elastic.co/logstash/logstash:8.17.1
+    volumes:
+      - ./monitoring/logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro
     ports:
       - "5044:5044"
       - "8080:8080"
-    environment:
-      - ELASTIC_USERNAME=elastic
-      - ELASTIC_PASSWORD=${ELASTIC_PASSWORD:-changeme}
-    volumes:
-      - ./logstash/pipelines:/usr/share/logstash/pipeline:ro
     depends_on:
       - elasticsearch
     networks:
       - apisix
-      
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:8.17.1
+    environment:
+      - xpack.security.enabled=false
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - apisix
+
+  milk-backend:
+    build:
+      context: ./backend/MilkApiManager
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
+      - APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c88b
+    ports:
+      - "5001:8080"
+    networks:
+      - apisix
+    depends_on:
+      - apisix
+
+  milk-admin-ui:
+    build:
+      context: ./backend/MilkAdminBlazor
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BackendApiUrl=http://milk-backend:8080
+    ports:
+      - "5000:8080"
+    networks:
+      - apisix
+    depends_on:
+      - milk-backend
+
 networks:
   apisix:
     driver: bridge
-
-volumes:
-  postgres_data:
-    driver: local
-  etcd_data:
-    driver: local
-  esdata:
-    driver: local
