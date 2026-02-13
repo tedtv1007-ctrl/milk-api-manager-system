@@ -275,5 +275,54 @@ namespace MilkAdminBlazor.Data
             }
             catch { return new List<AnalyticsResult>(); }
         }
+
+        // --- Whitelist management for specific routes ---
+        public class WhitelistEntryDto
+        {
+            [JsonPropertyName("ip")]
+            public string Ip { get; set; }
+
+            [JsonPropertyName("reason")]
+            public string? Reason { get; set; }
+
+            [JsonPropertyName("addedBy")]
+            public string? AddedBy { get; set; }
+
+            [JsonPropertyName("addedAt")]
+            public DateTime? AddedAt { get; set; }
+
+            [JsonPropertyName("expiresAt")]
+            public DateTime? ExpiresAt { get; set; }
+        }
+
+        public async Task<List<WhitelistEntryDto>> GetRouteWhitelistAsync(string routeId)
+        {
+            try
+            {
+                var response = await _httpClient.GetFromJsonAsync<List<WhitelistEntryDto>>($"api/whitelist/route/{routeId}");
+                return response ?? new List<WhitelistEntryDto>();
+            }
+            catch
+            {
+                return new List<WhitelistEntryDto>();
+            }
+        }
+
+        public async Task AddRouteWhitelistEntryAsync(string routeId, string ip, string? reason = null, string? addedBy = null, DateTime? expiresAt = null)
+        {
+            var payload = new {
+                ip = ip,
+                reason = reason,
+                addedBy = addedBy,
+                expiresAt = expiresAt
+            };
+
+            await _httpClient.PostAsJsonAsync($"api/whitelist/route/{routeId}", payload);
+        }
+
+        public async Task RemoveRouteWhitelistEntryAsync(string routeId, string ip)
+        {
+            await _httpClient.DeleteAsync($"api/whitelist/route/{routeId}/{Uri.EscapeDataString(ip)}");
+        }
     }
 }

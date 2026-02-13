@@ -1,0 +1,79 @@
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@using MudBlazor
+
+@code {
+    [Parameter]
+    public string RouteId { get; set; }
+
+    private List<ApisixService.WhitelistEntryDto> entries = new();
+
+    private string newIp = string.Empty;
+    private string newReason = string.Empty;
+    private DateTime? newExpiresAt;
+
+    protected override async Task OnParametersSetAsync()
+    {
+        await LoadEntriesAsync();
+    }
+
+    private async Task LoadEntriesAsync()
+    {
+        if (string.IsNullOrEmpty(RouteId)) return;
+        entries = await ApisixService.GetRouteWhitelistAsync(RouteId);
+    }
+
+    private async Task AddEntryAsync()
+    {
+        if (string.IsNullOrWhiteSpace(newIp)) return;
+        await ApisixService.AddRouteWhitelistEntryAsync(RouteId, newIp, newReason, "admin", newExpiresAt);
+        newIp = string.Empty; newReason = string.Empty; newExpiresAt = null;
+        await LoadEntriesAsync();
+    }
+
+    private async Task RemoveEntryAsync(string ip)
+    {
+        await ApisixService.RemoveRouteWhitelistEntryAsync(RouteId, ip);
+        await LoadEntriesAsync();
+    }
+}
+
+<MudPaper Elevation="1" Class="pa-4">
+    <MudText Typo="Typo.h6">Whitelist entries</MudText>
+
+    <MudTable Items="entries" Dense="true" Hover="true">
+        <HeaderContent>
+            <MudTh>IP</MudTh>
+            <MudTh>Reason</MudTh>
+            <MudTh>Expires At</MudTh>
+            <MudTh>Added By</MudTh>
+            <MudTh></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd>@context.Ip</MudTd>
+            <MudTd>@context.Reason</MudTd>
+            <MudTd>@(context.ExpiresAt?.ToString("u") ?? "—")</MudTd>
+            <MudTd>@context.AddedBy</MudTd>
+            <MudTd>
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="() => RemoveEntryAsync(context.Ip)" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <MudDivider Class="my-2" />
+
+    <MudGrid>
+        <MudItem xs="12" sm="4">
+            <MudTextField @bind-Value="newIp" Label="IP or CIDR" />
+        </MudItem>
+        <MudItem xs="12" sm="4">
+            <MudTextField @bind-Value="newReason" Label="Reason" />
+        </MudItem>
+        <MudItem xs="12" sm="3">
+            <MudDatePicker @bind-Date="newExpiresAt" Label="Expires At" />
+        </MudItem>
+        <MudItem xs="12" sm="1" Class="d-flex align-end">
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="AddEntryAsync">Add</MudButton>
+        </MudItem>
+    </MudGrid>
+</MudPaper>
