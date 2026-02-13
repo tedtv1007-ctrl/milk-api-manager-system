@@ -16,7 +16,7 @@ namespace MilkApiManager.Services
             _prometheusUrl = Environment.GetEnvironmentVariable("PROMETHEUS_URL") ?? "http://prometheus:9090";
         }
 
-        public async Task<List<AnalyticsResult>> GetMetricAsync(string query, DateTime start, DateTime end, string step)
+        public virtual async Task<List<AnalyticsResult>> GetMetricAsync(string query, DateTime start, DateTime end, string step)
         {
             try
             {

@@ -70,7 +70,13 @@ namespace MilkApiManager.Controllers
         {
             try
             {
-                string username = consumerData.GetProperty("username").GetString();
+                if (!consumerData.TryGetProperty("username", out var usernameProp) || 
+                    string.IsNullOrWhiteSpace(usernameProp.GetString()))
+                {
+                    return BadRequest("Username is required.");
+                }
+
+                string username = usernameProp.GetString()!;
                 
                 // Transform internal model to APISIX-compatible format
                 var apisixFormat = new Dictionary<string, object>

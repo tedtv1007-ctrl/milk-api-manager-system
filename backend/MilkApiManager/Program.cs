@@ -12,12 +12,35 @@ builder.Services.AddSwaggerGen();
 
 // Register DbContext
 // Check both connection string paths just in case
-var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? "Host=postgres;Port=5432;Database=milk_db;Username=milk_user;Password=milk_password";
-builder.Services.AddDbContext<AppDbContext>(options =>
-    options.UseNpgsql(connectionString));
+// Check for Test Mode
+var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+
+if (isTestMode)
+{
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseInMemoryDatabase("MilkApiManagerTestDb"));
+    builder.Services.AddDbContext<AuditContext>(options =>
+        options.UseInMemoryDatabase("AuditLogTestDb"));
+}
+else
+{
+    var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
+        ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    builder.Services.AddDbContext<AppDbContext>(options =>
+        options.UseNpgsql(connectionString));
+    builder.Services.AddDbContext<AuditContext>(options =>
+        options.UseNpgsql(connectionString));
+}
 
 // Register Services
-builder.Services.AddHttpClient<ApisixClient>();
+if (isTestMode)
+{
+    builder.Services.AddHttpClient<ApisixClient, MockApisixClient>();
+}
+else
+{
+    builder.Services.AddHttpClient<ApisixClient>();
+}
 builder.Services.AddHttpClient<AuditLogService>();
 builder.Services.AddHttpClient<PrometheusService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
@@ -32,9 +55,7 @@ builder.Services.AddHttpClient<NotificationService>();
 // Register AlertMonitoringService as Background Service
 builder.Services.AddHostedService<AlertMonitoringService>();
 
-// Register AuditContext (used by AuditLogController)
-builder.Services.AddDbContext<AuditContext>(options =>
-    options.UseNpgsql(connectionString));
+// AuditContext registered above with AppDbContext logic
 
 var app = builder.Build();
 
@@ -46,7 +67,10 @@ using (var scope = app.Services.CreateScope())
     db.Database.EnsureCreated();
 
     // On startup: if configured to persist blacklist to DB, sync DB entries to APISIX
-    var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
+    // Skip in Test Mode to avoid complexity
+    if (!isTestMode)
+    {
+        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
     var apisix = scope.ServiceProvider.GetRequiredService<ApisixClient>();
     var persist = config.GetValue<bool>("Blacklist:PersistToDatabase");
     if (persist)
@@ -64,7 +88,8 @@ using (var scope = app.Services.CreateScope())
                 var logger = scope.ServiceProvider.GetRequiredService<ILoggerFactory>().CreateLogger("Startup");
                 logger.LogError(ex, "Failed to sync blacklist entries to APISIX on startup");
             }
-        }
+            }
+    }
     }
 }
 
@@ -78,6 +103,16 @@ if (app.Environment.IsDevelopment())
 // app.UseHttpsRedirection(); // Disable for local testing dev
 
 app.UseAuthorization();
+
+// Security Headers
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Append("X-Frame-Options", "DENY");
+    context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
+    context.Response.Headers.Append("Server", "MilkApiManager"); // Explicitly set or hide in Kestrel
+    await next();
+});
 
 app.MapControllers();
 
