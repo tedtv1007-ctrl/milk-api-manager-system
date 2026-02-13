@@ -77,4 +77,11 @@ public class AuditLogService
                 .ToListAsync();
         }
     }
+
+    public async Task ShipLogsToSIEM(AuditLogEntry entry)
+    {
+        // Placeholder for SIEM shipping logic (e.g., Splunk, Azure Monitor)
+        // For now, it's handled by Console output which is collected by Fluentd
+        await Task.CompletedTask;
+    }
 }

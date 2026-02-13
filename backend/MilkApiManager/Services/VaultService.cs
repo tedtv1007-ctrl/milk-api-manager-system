@@ -66,14 +66,17 @@ namespace MilkApiManager.Services
             await _apisixClient.UpdateConsumerAsync(consumerName, consumer);
 
             // 4. 稽核日誌紀錄 (Q7 Compliance)
-            await _auditLogService.ShipLogsToSIEM(new
+            await _auditLogService.ShipLogsToSIEM(new Models.AuditLogEntry
             {
-                Event = "API_KEY_ROTATION",
-                Consumer = consumerName,
+                Action = "API_KEY_ROTATION",
+                Resource = $"Consumer/{consumerName}",
                 Timestamp = DateTime.UtcNow,
-                Status = "Success",
-                VaultPath = vaultPath,
-                Actor = "Milk-Vault-Automation"
+                User = "Milk-Vault-Automation",
+                Details = new 
+                {
+                    Status = "Success",
+                    VaultPath = vaultPath
+                }
             });
 
             _logger.LogInformation($"[Vault] API key rotated successfully for {consumerName}");

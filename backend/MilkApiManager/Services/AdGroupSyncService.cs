@@ -35,8 +35,15 @@ namespace MilkApiManager.Services
 
         private async void DoWork(object? state)
         {
-            await DoSync();
-            await DoSecurityCheck();
+            try
+            {
+                await DoSync();
+                await DoSecurityCheck();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Unhandled error in AdGroupSyncService DoWork");
+            }
         }
 
         private async Task DoSecurityCheck()
@@ -135,8 +142,10 @@ namespace MilkApiManager.Services
                             
                             if (memberAttribute != null)
                             {
-                                foreach (var value in memberAttribute.StringValues)
+                                var stringValues = memberAttribute.StringValues;
+                                while (stringValues.MoveNext())
                                 {
+                                    var value = stringValues.Current;
                                     // Extract CN from DN (e.g., "cn=alice,ou=users,dc=example,dc=com" -> "alice")
                                     var memberCn = GetCnFromDn(value); 
                                     if (!string.IsNullOrEmpty(memberCn))

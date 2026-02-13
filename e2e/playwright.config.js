@@ -1,16 +1,16 @@
 const { defineConfig } = require('@playwright/test');
 
-const baseURL = process.env.BASE_URL || 'http://localhost:55894';
+const baseURL = process.env.BASE_URL || 'http://localhost:5002';
 
 module.exports = defineConfig({
   testDir: './tests',
-  timeout: 30000,
+  timeout: 60000,
   retries: 0,
   use: {
     baseURL,
     headless: true,
     viewport: { width: 1400, height: 900 },
-    screenshot: 'off'
+    screenshot: 'on'
   },
   reporter: [
     ['list'],

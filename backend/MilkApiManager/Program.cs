@@ -26,6 +26,16 @@ builder.Services.AddScoped<SecurityAutomationService>();
 builder.Services.AddSingleton<AdGroupSyncService>();
 builder.Services.AddHostedService(sp => sp.GetRequiredService<AdGroupSyncService>());
 
+// Register NotificationService for AlertMonitoringService
+builder.Services.AddHttpClient<NotificationService>();
+
+// Register AlertMonitoringService as Background Service
+builder.Services.AddHostedService<AlertMonitoringService>();
+
+// Register AuditContext (used by AuditLogController)
+builder.Services.AddDbContext<AuditContext>(options =>
+    options.UseNpgsql(connectionString));
+
 var app = builder.Build();
 
 // Auto-migrate/ensure created

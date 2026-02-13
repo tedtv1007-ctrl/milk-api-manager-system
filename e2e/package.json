@@ -2,7 +2,7 @@
   "name": "milk-api-manager-e2e",
   "private": true,
   "devDependencies": {
-    "@playwright/test": "^1.47.2"
+    "@playwright/test": "^1.58.2"
   },
   "scripts": {
     "test": "playwright test",
