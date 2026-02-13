@@ -21,12 +21,16 @@
     <MudTable Items="@blacklistedIps" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" Dense="true" Elevation="3">
         <HeaderContent>
             <MudTh>IP Address</MudTh>
+            <MudTh>Reason</MudTh>
+            <MudTh>Added At</MudTh>
             <MudTh Style="text-align:right">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd DataLabel="IP Address">@context</MudTd>
+            <MudTd DataLabel="IP Address">@context.IpOrCidr</MudTd>
+            <MudTd DataLabel="Reason">@context.Reason</MudTd>
+            <MudTd DataLabel="Added At">@context.AddedAt?.ToString("u")</MudTd>
             <MudTd DataLabel="Actions" Style="text-align:right">
-                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveIp(context))" Size="Size.Small" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveIp(context.IpOrCidr))" Size="Size.Small" />
             </MudTd>
         </RowTemplate>
         <NoRecordsContent>
@@ -37,7 +41,7 @@
 
 @code {
     private bool loading = true;
-    private List<string> blacklistedIps = new();
+    private List<ApisixService.BlacklistEntryDto> blacklistedIps = new();
     private string newIp = "";
 
     protected override async Task OnInitializedAsync()

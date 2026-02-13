@@ -1,5 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Services;
+using MilkApiManager.Data;
+using MilkApiManager.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MilkApiManager.Controllers
 {
@@ -9,11 +12,15 @@ namespace MilkApiManager.Controllers
     {
         private readonly ApisixClient _apisixClient;
         private readonly ILogger<BlacklistController> _logger;
+        private readonly AppDbContext _db;
+        private readonly IConfiguration _config;
 
-        public BlacklistController(ApisixClient apisixClient, ILogger<BlacklistController> logger)
+        public BlacklistController(ApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config)
         {
             _apisixClient = apisixClient;
             _logger = logger;
+            _db = db;
+            _config = config;
         }
 
         [HttpGet]
@@ -21,8 +28,17 @@ namespace MilkApiManager.Controllers
         {
             try
             {
-                var blacklist = await _apisixClient.GetBlacklistAsync();
-                return Ok(blacklist);
+                var persist = _config.GetValue<bool>("Blacklist:PersistToDatabase");
+                if (persist)
+                {
+                    var entries = await _db.BlacklistEntries.OrderByDescending(e => e.AddedAt).ToListAsync();
+                    return Ok(entries);
+                }
+                else
+                {
+                    var blacklist = await _apisixClient.GetBlacklistAsync();
+                    return Ok(blacklist.Select(ip => new BlacklistEntry { IpOrCidr = ip }).ToList());
+                }
             }
             catch (Exception ex)
             {
@@ -47,10 +63,37 @@ namespace MilkApiManager.Controllers
                 if (request.Action == "add")
                 {
                     blacklistSet.Add(request.Ip);
+                    // persist to DB if enabled
+                    if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
+                    {
+                        var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
+                        if (exists == null)
+                        {
+                            var entry = new BlacklistEntry
+                            {
+                                IpOrCidr = request.Ip,
+                                Reason = request.Reason,
+                                AddedBy = request.AddedBy,
+                                ExpiresAt = request.ExpiresAt,
+                                AddedAt = DateTime.UtcNow
+                            };
+                            _db.BlacklistEntries.Add(entry);
+                            await _db.SaveChangesAsync();
+                        }
+                    }
                 }
                 else if (request.Action == "remove")
                 {
                     blacklistSet.Remove(request.Ip);
+                    if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
+                    {
+                        var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
+                        if (exists != null)
+                        {
+                            _db.BlacklistEntries.Remove(exists);
+                            await _db.SaveChangesAsync();
+                        }
+                    }
                 }
                 else
                 {
@@ -72,5 +115,8 @@ namespace MilkApiManager.Controllers
     {
         public string Ip { get; set; }
         public string Action { get; set; } = "add"; // add | remove
+        public string? Reason { get; set; }
+        public string? AddedBy { get; set; }
+        public DateTime? ExpiresAt { get; set; }
     }
 }
