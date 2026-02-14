@@ -14,13 +14,15 @@ namespace MilkApiManager.Controllers
         private readonly ILogger<WhitelistController> _logger;
         private readonly AppDbContext _db;
         private readonly IConfiguration _config;
+        private readonly AuditLogService _auditLog;
 
-        public WhitelistController(ApisixClient apisixClient, ILogger<WhitelistController> logger, AppDbContext db, IConfiguration config)
+        public WhitelistController(ApisixClient apisixClient, ILogger<WhitelistController> logger, AppDbContext db, IConfiguration config, AuditLogService auditLog)
         {
             _apisixClient = apisixClient;
             _logger = logger;
             _db = db;
             _config = config;
+            _auditLog = auditLog;
         }
 
         [HttpGet("route/{routeId}")]
