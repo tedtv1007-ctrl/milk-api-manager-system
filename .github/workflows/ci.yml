@@ -12,8 +12,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Start containers
-        run: docker compose up -d
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Start containers with docker/compose-action
+        uses: docker/compose-action@v2
+        with:
+          files: docker-compose.yml
+          args: up -d --remove-orphans
 
       - name: Wait for APISIX to be ready
         run: |
