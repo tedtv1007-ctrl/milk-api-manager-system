@@ -44,8 +44,10 @@ namespace MilkApiManager.Tests.Controllers
             var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { null, Mock.Of<ILogger<ApisixClient>>() });
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
-            var controller = new WhitelistController(apisixMock.Object, logger, db, config);
+            var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
 
             var result = await controller.GetWhitelistForRoute("route1");
             var ok = Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
@@ -63,8 +65,10 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(false);
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask);
 
-            var controller = new WhitelistController(apisixMock.Object, logger, db, config);
+            var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
 
             var result = await controller.GetWhitelistForRoute("routeX");
             var ok = Assert.IsType<Microsoft.AspNetCore.Mvc.OkObjectResult>(result);
@@ -83,7 +87,10 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var controller = new WhitelistController(apisixMock.Object, logger, db, config);
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
+
+            var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
 
             var req = new WhitelistUpdateRequest { Action = "add", IpCidr = "7.7.7.7/32", AddedBy = "tester" };
 
@@ -97,6 +104,7 @@ namespace MilkApiManager.Tests.Controllers
 
             // Verify sync called
             apisixMock.Verify();
+            auditMock.Verify(a => a.LogAsync(It.Is<AuditLogEntry>(e => e.Action == "Create" && e.Resource == "Whitelist")), Times.Once);
         }
 
         [Fact]
@@ -111,7 +119,10 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var controller = new WhitelistController(apisixMock.Object, logger, db, config);
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
+
+            var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
 
             var req = new WhitelistUpdateRequest { Action = "remove", IpCidr = "3.3.3.0/24" };
             var result = await controller.AddWhitelistEntry("r2", req);
@@ -121,6 +132,7 @@ namespace MilkApiManager.Tests.Controllers
             Assert.Empty(entries);
 
             apisixMock.Verify();
+            auditMock.Verify(a => a.LogAsync(It.Is<AuditLogEntry>(e => e.Action == "Delete" && e.Resource == "Whitelist")), Times.Once);
         }
     }
 }
