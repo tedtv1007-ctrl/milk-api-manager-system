@@ -82,6 +82,22 @@ namespace MilkApiManager.Controllers
                             };
                             _db.WhitelistEntries.Add(entry);
                             await _db.SaveChangesAsync();
+
+                            // Audit log for add
+                            try
+                            {
+                                await _auditLog.LogAsync(new Models.AuditLogEntry
+                                {
+                                    Action = "Create",
+                                    Resource = "Whitelist",
+                                    User = request.AddedBy ?? "Unknown",
+                                    Details = new { RouteId = routeId, IpCidr = request.IpCidr, Reason = request.Reason }
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogWarning(ex, "Failed to write audit log for whitelist add {Route} {Ip}", routeId, request.IpCidr);
+                            }
                         }
                     }
                 }
@@ -94,6 +110,22 @@ namespace MilkApiManager.Controllers
                         {
                             _db.WhitelistEntries.Remove(exists);
                             await _db.SaveChangesAsync();
+
+                            // Audit log for remove
+                            try
+                            {
+                                await _auditLog.LogAsync(new Models.AuditLogEntry
+                                {
+                                    Action = "Delete",
+                                    Resource = "Whitelist",
+                                    User = request.AddedBy ?? "Unknown",
+                                    Details = new { RouteId = routeId, IpCidr = request.IpCidr }
+                                });
+                            }
+                            catch (Exception ex)
+                            {
+                                _logger.LogWarning(ex, "Failed to write audit log for whitelist remove {Route} {Ip}", routeId, request.IpCidr);
+                            }
                         }
                     }
                 }
