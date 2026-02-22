@@ -3,57 +3,62 @@
 @inject ApisixService ApisixService
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <div class="d-flex align-center mb-4">
-        <MudIcon Icon="@Icons.Material.Filled.Api" Size="Size.Large" Class="mr-3" Color="Color.Primary" />
-        <MudText Typo="Typo.h4">API Governance & Inventory</MudText>
+    <div class="d-flex justify-space-between align-center mb-6">
+        <div>
+            <MudText Typo="Typo.h4" Class="font-weight-bold">Service Inventory</MudText>
+            <MudText Typo="Typo.body1" Class="text-muted">Global catalog of internal APIs managed and secured by the Milk platform.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add">Publish API</MudButton>
     </div>
     
-    <MudTable Items="@apis" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" LoadingProgressColor="Color.Info" Elevation="3">
+    <MudTable Items="@apis" Hover="true" Bordered="false" Striped="true" Elevation="4" Loading="@loading" Class="rounded-lg">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Active Endpoints</MudText>
+            <MudSpacer />
+            <MudTextField T="string" Placeholder="Search services..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" />
+        </ToolBarContent>
         <HeaderContent>
             <MudTh>Service Name</MudTh>
-            <MudTh>Upstream Path</MudTh>
-            <MudTh>Risk Level</MudTh>
-            <MudTh>Owner</MudTh>
-            <MudTh Style="text-align:right">Actions</MudTh>
+            <MudTh>Endpoint URI</MudTh>
+            <MudTh>Security Tier</MudTh>
+            <MudTh>Team Owner</MudTh>
+            <MudTh Style="text-align:right">Management</MudTh>
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Name">
-                <MudText Typo="Typo.body1" Style="font-weight: 500">@context.Name</MudText>
+                <div class="d-flex align-center">
+                    <MudAvatar Color="Color.Info" Variant="Variant.Outlined" Size="Size.Small" Class="mr-3">@context.Name[0]</MudAvatar>
+                    <MudText Typo="Typo.body1" Class="fw-bold">@context.Name</MudText>
+                </div>
             </MudTd>
             <MudTd DataLabel="Path">
-                <code>@context.Uri</code>
+                <code class="px-2 py-1 bg-light rounded text-dark">@context.Uri</code>
             </MudTd>
             <MudTd DataLabel="Risk">
-                <MudChip T="string" Color="@GetRiskColor(context.RiskLevel)" Size="Size.Small" Variant="Variant.Filled">@context.RiskLevel</MudChip>
+                <MudChip T="string" Color="@GetRiskColor(context.RiskLevel)" Size="Size.Small" Label="true">@context.RiskLevel</MudChip>
             </MudTd>
-            <MudTd DataLabel="Owner">@context.Owner</MudTd>
-            <MudTd DataLabel="Whitelist">
-                @if (context.WhitelistIps.Any())
-                {
-                    <MudText Typo="Typo.caption">@string.Join(", ", context.WhitelistIps)</MudText>
-                }
-                else
-                {
-                    <MudText Typo="Typo.caption" Color="Color.Default">None</MudText>
-                }
+            <MudTd DataLabel="Owner">
+                <MudText Typo="Typo.body2">@context.Owner</MudText>
             </MudTd>
             <MudTd DataLabel="Actions" Style="text-align:right">
-                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => OpenEditDialog(context))" />
-                <MudButton Variant="Variant.Outlined" Color="Color.Primary" Size="Size.Small">Details</MudButton>
+                <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Primary" Size="Size.Small" OnClick="@(() => OpenEditDialog(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Analytics" Color="Color.Secondary" Size="Size.Small" Href="/consumer-analytics" />
             </MudTd>
         </RowTemplate>
     </MudTable>
 
     <MudDialog @bind-Visible="isDialogOpen" Options="dialogOptions">
         <TitleContent>
-            <MudText Typo="Typo.h6">Edit Route: @editingApi?.Name</MudText>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.Security" Class="mr-2"/> Security Policy: @editingApi?.Name</MudText>
         </TitleContent>
         <DialogContent>
-            <RouteWhitelistManager RouteId="@editingApi?.Id" />
+            <div class="pa-2">
+                <RouteWhitelistManager RouteId="@editingApi?.Id" />
+            </div>
         </DialogContent>
         <DialogActions>
-            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveRoute">Save</MudButton>
-            <MudButton OnClick="@(() => isDialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Text" OnClick="@(() => isDialogOpen = false)">Close</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveRoute" Class="px-6">Update Policy</MudButton>
         </DialogActions>
     </MudDialog>
 </MudContainer>
@@ -63,12 +68,10 @@
     private List<ApiRoute> apis = new();
     private bool isDialogOpen;
     private ApiRoute? editingApi;
-    private string whitelistInput = "";
-    private DialogOptions dialogOptions = new() { MaxWidth = MaxWidth.Small, FullWidth = true };
+    private DialogOptions dialogOptions = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
 
     protected override async Task OnInitializedAsync()
     {
-        // 模擬從 APISIX Admin API 讀取資料
         apis = await ApisixService.GetRoutesAsync();
         loading = false;
     }
@@ -76,7 +79,6 @@
     private void OpenEditDialog(ApiRoute api)
     {
         editingApi = api;
-        whitelistInput = string.Join(", ", api.WhitelistIps);
         isDialogOpen = true;
     }
 
@@ -84,15 +86,8 @@
     {
         if (editingApi != null)
         {
-            // Fetch the current whitelist from APISIX and update the local model
             var ips = await ApisixService.GetRouteWhitelistAsync(editingApi.Id);
-            if (ips != null)
-            {
-                // Convert DTO list to list of IP strings
-                editingApi.WhitelistIps = ips.Select(e => e.Ip).ToList();
-            }
-
-            // Persist the updated route back to backend/APISIX
+            if (ips != null) editingApi.WhitelistIps = ips.Select(e => e.Ip).ToList();
             await ApisixService.UpdateRouteAsync(editingApi);
         }
         isDialogOpen = false;
@@ -100,8 +95,8 @@
 
     private Color GetRiskColor(string level) => level switch
     {
-        "L3" => Color.Error,    // High Risk
-        "L2" => Color.Warning,  // Medium Risk
-        _ => Color.Success      // Low Risk
+        "L3" => Color.Error,
+        "L2" => Color.Warning,
+        _ => Color.Success
     };
 }

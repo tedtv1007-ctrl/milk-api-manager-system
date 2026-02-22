@@ -3,48 +3,77 @@
 @inject ApisixService ApisixService
 @inject ISnackbar Snackbar
 
-<MudContainer MaxWidth="MaxWidth.Medium" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true">IP Blacklist Management</MudText>
-    <MudText Typo="Typo.body1" Class="mb-4">Manage blocked IP addresses that are restricted from accessing the APIs.</MudText>
+<MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
+    <div class="d-flex align-center mb-6">
+        <MudIcon Icon="@Icons.Material.Filled.Block" Size="Size.Large" Color="Color.Error" Class="mr-3" />
+        <div>
+            <MudText Typo="Typo.h4" Class="font-weight-bold">IP Blacklist</MudText>
+            <MudText Typo="Typo.body1" Class="text-muted">Enforce network-level restrictions by blocking malicious or unauthorized IP addresses.</MudText>
+        </div>
+    </div>
 
-    <MudPaper Class="pa-4 mb-4" Elevation="3">
-        <MudGrid>
-            <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="newIp" Label="New IP Address" Variant="Variant.Outlined" Margin="Margin.Dense" Placeholder="e.g. 192.168.1.1"></MudTextField>
-            </MudItem>
-            <MudItem xs="12" sm="6">
-                <MudTextField @bind-Value="reason" Label="Reason" Variant="Variant.Outlined" Margin="Margin.Dense" Placeholder="e.g. suspicious activity"></MudTextField>
-            </MudItem>
-            <MudItem xs="12" sm="6">
-                <MudDatePicker @bind-Date="expiresAt" Label="Expires At" Clearable="true" Margin="Margin.Dense" Variant="Variant.Outlined" />
-            </MudItem>
-            <MudItem xs="12" sm="6" Class="d-flex align-center">
-                <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" OnClick="AddIp">Add to Blacklist</MudButton>
-            </MudItem>
-        </MudGrid>
-    </MudPaper>
+    <MudGrid>
+        <!-- Add IP Card -->
+        <MudItem xs="12" lg="4">
+            <MudCard Elevation="4" Class="rounded-lg border-t-4 border-primary">
+                <MudCardHeader>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.h6">Ban New Entity</MudText>
+                    </CardHeaderContent>
+                </MudCardHeader>
+                <MudCardContent>
+                    <MudStack Spacing="4">
+                        <MudTextField @bind-Value="newIp" Label="IP Address / CIDR" Variant="Variant.Filled" Placeholder="e.g. 192.168.1.1" FullWidth="true" />
+                        <MudTextField @bind-Value="reason" Label="Ban Reason" Variant="Variant.Filled" Placeholder="e.g. Brute-force attack" FullWidth="true" />
+                        <MudDatePicker @bind-Date="expiresAt" Label="Auto-Unban Date (Optional)" Variant="Variant.Filled" Clearable="true" />
+                    </MudStack>
+                </MudCardContent>
+                <MudCardActions>
+                    <MudButton Variant="Variant.Filled" Color="Color.Primary" FullWidth="true" StartIcon="@Icons.Material.Filled.Add" OnClick="AddIp" Class="py-3">Confirm Block</MudButton>
+                </MudCardActions>
+            </MudCard>
+        </MudItem>
 
-    <MudTable Items="@blacklistedIps" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@loading" Dense="true" Elevation="3">
-        <HeaderContent>
-            <MudTh>IP Address</MudTh>
-            <MudTh>Reason</MudTh>
-            <MudTh>Added At</MudTh>
-            <MudTh>Expires At</MudTh>
-            <MudTh Style="text-align:right">Actions</MudTh>
-        </HeaderContent>
-        <RowTemplate>
-            <MudTd DataLabel="IP Address">@context.IpOrCidr</MudTd>
-            <MudTd DataLabel="Reason">@context.Reason</MudTd>
-            <MudTd DataLabel="Added At">@context.AddedAt?.ToString("u")</MudTd>
-            <MudTd DataLabel="Expires At">@context.ExpiresAt?.ToString("u")</MudTd>
-            <MudTd DataLabel="Actions" Style="text-align:right">
-                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" OnClick="@(() => RemoveIp(context.IpOrCidr))" Size="Size.Small" />
-            </MudTd>
-        </RowTemplate>
-        <NoRecordsContent>
-            <MudText>No blacklisted IPs found.</MudText>
-        </NoRecordsContent>
-    </MudTable>
+        <!-- List Table -->
+        <MudItem xs="12" lg="8">
+            <MudTable Items="@blacklistedIps" Hover="true" Bordered="false" Striped="true" Elevation="4" Loading="@loading" Class="rounded-lg">
+                <ToolBarContent>
+                    <MudText Typo="Typo.h6">Active Restrictions</MudText>
+                    <MudSpacer />
+                    <MudTextField T="string" Placeholder="Search list..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" />
+                </ToolBarContent>
+                <HeaderContent>
+                    <MudTh>IP / Range</MudTh>
+                    <MudTh>Reason</MudTh>
+                    <MudTh>Expiration</MudTh>
+                    <MudTh Style="text-align:right">Actions</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd><code class="fw-bold text-primary">@context.IpOrCidr</code></MudTd>
+                    <MudTd>@context.Reason</MudTd>
+                    <MudTd>
+                        @if (context.ExpiresAt.HasValue)
+                        {
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Text" Color="Color.Warning">@context.ExpiresAt.Value.ToString("yyyy-MM-dd")</MudChip>
+                        }
+                        else
+                        {
+                            <MudChip T="string" Size="Size.Small" Variant="Variant.Text" Color="Color.Info">Permanent</MudChip>
+                        }
+                    </MudTd>
+                    <MudTd Style="text-align:right">
+                        <MudIconButton Icon="@Icons.Material.Filled.DeleteSweep" Color="Color.Error" OnClick="@(() => RemoveIp(context.IpOrCidr))" />
+                    </MudTd>
+                </RowTemplate>
+                <NoRecordsContent>
+                    <div class="pa-8 d-flex flex-column align-center">
+                        <MudIcon Icon="@Icons.Material.Filled.Security" Size="Size.Large" Color="Color.Default" Class="mb-2" />
+                        <MudText Color="Color.Default">The perimeter is currently clear.</MudText>
+                    </div>
+                </NoRecordsContent>
+            </MudTable>
+        </MudItem>
+    </MudGrid>
 </MudContainer>
 
 @code {
@@ -54,10 +83,7 @@
     private string? reason = null;
     private DateTime? expiresAt = null;
 
-    protected override async Task OnInitializedAsync()
-    {
-        await LoadData();
-    }
+    protected override async Task OnInitializedAsync() => await LoadData();
 
     private async Task LoadData()
     {
@@ -73,19 +99,16 @@
             Snackbar.Add("Please enter a valid IP address.", Severity.Warning);
             return;
         }
-
-        await ApisixService.AddIpToBlacklistAsync(newIp, reason, addedBy: null, expiresAt);
-        Snackbar.Add($"IP {newIp} added to blacklist.", Severity.Success);
-        newIp = "";
-        reason = null;
-        expiresAt = null;
+        await ApisixService.AddIpToBlacklistAsync(newIp, reason, null, expiresAt);
+        Snackbar.Add($"IP {newIp} successfully blocked.", Severity.Success);
+        newIp = ""; reason = null; expiresAt = null;
         await LoadData();
     }
 
     private async Task RemoveIp(string ip)
     {
         await ApisixService.RemoveIpFromBlacklistAsync(ip);
-        Snackbar.Add($"IP {ip} removed from blacklist.", Severity.Info);
+        Snackbar.Add($"IP {ip} restriction lifted.", Severity.Info);
         await LoadData();
     }
 }

@@ -1,45 +1,86 @@
 @inherits LayoutComponentBase
 
-<MudThemeProvider />
+<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_currentTheme" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="1">
+    <MudAppBar Elevation="4" Color="Color.Primary">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3">Milk API Manager</MudText>
+        <MudText Typo="Typo.h5" Class="ml-3 font-weight-bold">MILK <span style="font-weight: 300;">API MANAGER</span></MudText>
         <MudSpacer />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" />
+        <MudToggleIconButton @bind-Toggled="@_isDarkMode"
+                             Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit"
+                             ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" />
+        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/tedtv1007-ctrl/milk-api-manager-system" Target="_blank" />
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="2">
-        <MudNavMenu>
-            <MudText Typo="Typo.h6" Class="px-4 py-2">Management</MudText>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Responsive">
+        <MudDrawerHeader Class="pa-4 d-flex align-center">
+            <MudAvatar Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mr-3">M</MudAvatar>
+            <MudText Typo="Typo.h6" Class="font-weight-bold">Control Plane</MudText>
+        </MudDrawerHeader>
+        <MudNavMenu Margin="Margin.Dense" Rounded="true" Class="pa-2">
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-2" Color="Color.Primary">MAIN MANAGEMENT</MudText>
             <MudNavLink Href="/apis" Icon="@Icons.Material.Filled.List">API Inventory</MudNavLink>
             <MudNavLink Href="/blacklist" Icon="@Icons.Material.Filled.Block">IP Blacklist</MudNavLink>
             <MudNavLink Href="/consumers" Icon="@Icons.Material.Filled.Group">Consumers</MudNavLink>
             <MudNavLink Href="/consumer-groups" Icon="@Icons.Material.Filled.Layers">Traffic Tiers</MudNavLink>
-            <MudNavLink Href="/dev-portal" Icon="@Icons.Material.Filled.Terminal">Developer Portal</MudNavLink>
-            <MudNavLink Href="/consumer-analytics" Icon="@Icons.Material.Filled.Insights">Consumer Statistics</MudNavLink>
-            <MudNavLink Href="/reports" Icon="@Icons.Material.Filled.BarChart">Legacy Reports</MudNavLink>
-            <MudNavLink Href="/sync-status" Icon="@Icons.Material.Filled.Sync">Group Sync</MudNavLink>
-            <MudNavLink Href="/api-inventory" Icon="@Icons.Material.Filled.Security">Compliance Inventory</MudNavLink>
+            
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Color="Color.Primary">DEVELOPER HUB</MudText>
+            <MudNavLink Href="/dev-portal" Icon="@Icons.Material.Filled.Terminal">Self-Service Portal</MudNavLink>
+            <MudNavLink Href="/mock-lab" Icon="@Icons.Material.Filled.Science">Mocking Lab</MudNavLink>
+            
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Color="Color.Primary">OPERATIONS & ANALYTICS</MudText>
+            <MudNavLink Href="/consumer-analytics" Icon="@Icons.Material.Filled.Insights">Traffic Intelligence</MudNavLink>
             <MudNavLink Href="/pii-management" Icon="@Icons.Material.Filled.Shield">PII Protection</MudNavLink>
-            <MudNavLink Href="/mock-lab" Icon="@Icons.Material.Filled.Science">Mock Lab</MudNavLink>
             <MudNavLink Href="/load-testing" Icon="@Icons.Material.Filled.Speed">Stress Test</MudNavLink>
             <MudNavLink Href="/audit-logs" Icon="@Icons.Material.Filled.History">Audit Logs</MudNavLink>
+            
+            <MudDivider Class="my-4" />
+            <MudNavLink Href="/sync-status" Icon="@Icons.Material.Filled.Sync">System Sync</MudNavLink>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent>
+    <MudMainContent Class="pa-6">
         @Body
     </MudMainContent>
 </MudLayout>
 
 @code {
     bool _drawerOpen = true;
+    bool _isDarkMode = false;
 
     void DrawerToggle()
     {
         _drawerOpen = !_drawerOpen;
     }
+
+    private MudTheme _currentTheme = new MudTheme()
+    {
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#0D47A1",
+            Secondary = "#00B8D4",
+            AppbarBackground = "#0D47A1",
+            DrawerBackground = "#F5F7FA",
+            Background = "#FFFFFF",
+            Surface = "#FFFFFF",
+            ActionDefault = "#546E7A",
+            TextPrimary = "#263238",
+            AppbarText = "#FFFFFF",
+        },
+        PaletteDark = new PaletteDark()
+        {
+            Primary = "#2196F3",
+            Secondary = "#00BCD4",
+            Background = "#121212",
+            Surface = "#1E1E1E",
+            DrawerBackground = "#1A1A1A",
+            AppbarBackground = "#1A1A1A",
+        },
+        LayoutProperties = new LayoutProperties()
+        {
+            DefaultBorderRadius = "12px",
+        }
+    };
 }
