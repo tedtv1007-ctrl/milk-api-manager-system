@@ -45,7 +45,7 @@ flowchart TB
     end
 
     subgraph "Infrastructure"
-        DB[Postgres 15]
+        DB[Postgres 17]
         PROM[Prometheus]
         ELK[ELK Stack 9.2.3]
     end
