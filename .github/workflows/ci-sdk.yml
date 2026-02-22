@@ -1,0 +1,26 @@
+name: SDK Generation (PR)
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+    branches: [ main ]
+
+jobs:
+  generate-sdk:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Generate C# SDK using OpenAPI Generator (Docker)
+        run: |
+          mkdir -p artifacts/sdk/csharp-client
+          docker run --rm -v ${GITHUB_WORKSPACE}:/local openapitools/openapi-generator-cli \
+            generate -i /local/artifacts/openapi.json -g csharp -o /local/artifacts/sdk/csharp-client \
+            --additional-properties=packageName=MilkApiClient
+
+      - name: Upload SDK artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: milk-sdk-csharp
+          path: artifacts/sdk/csharp-client
