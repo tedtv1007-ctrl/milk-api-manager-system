@@ -3,9 +3,12 @@ using System.Net;
 namespace MilkApiManager.Middleware;
 
 /// <summary>
-/// Middleware that validates API Key authentication for all /api/* endpoints.
-/// The key is read from the API_AUTH_KEY environment variable.
-/// Swagger endpoints and the /health endpoint are excluded.
+/// Middleware that validates API access for all /api/* endpoints.
+/// Supports two authentication methods:
+/// 1. API Key via X-API-KEY header (for SDK/programmatic access)
+/// 2. JWT Bearer token via Authorization header (for SSO/user access)
+/// 
+/// Endpoints excluded from auth: /api/auth/login, /health, /swagger
 /// </summary>
 public class ApiKeyAuthMiddleware
 {
@@ -33,15 +36,31 @@ public class ApiKeyAuthMiddleware
             return;
         }
 
-        if (!context.Request.Headers.TryGetValue(API_KEY_HEADER, out var extractedKey) || extractedKey != _apiKey)
+        // Skip auth for login endpoint (must be accessible anonymously)
+        if (path.StartsWith("/api/auth/login", StringComparison.OrdinalIgnoreCase))
         {
-            _logger.LogWarning("Unauthorized API access attempt from {RemoteIp} to {Path}", 
-                context.Connection.RemoteIpAddress, path);
-            context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
-            await context.Response.WriteAsJsonAsync(new { error = "Invalid or missing API Key" });
+            await _next(context);
             return;
         }
 
-        await _next(context);
+        // Check 1: API Key header
+        if (context.Request.Headers.TryGetValue(API_KEY_HEADER, out var extractedKey) && extractedKey == _apiKey)
+        {
+            await _next(context);
+            return;
+        }
+
+        // Check 2: JWT Bearer token (already validated by ASP.NET JWT middleware)
+        if (context.User.Identity?.IsAuthenticated == true)
+        {
+            await _next(context);
+            return;
+        }
+
+        // Neither auth method provided
+        _logger.LogWarning("Unauthorized API access attempt from {RemoteIp} to {Path}", 
+            context.Connection.RemoteIpAddress, path);
+        context.Response.StatusCode = (int)HttpStatusCode.Unauthorized;
+        await context.Response.WriteAsJsonAsync(new { error = "Invalid or missing API Key or JWT token" });
     }
 }

@@ -144,6 +144,7 @@ services:
       - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
       - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
       - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
+      - JWT_SECRET=${JWT_SECRET:-milk-api-default-jwt-secret-change-in-production-32chars!}
     ports:
       - "5001:8080"
     healthcheck:

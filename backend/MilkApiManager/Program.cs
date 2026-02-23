@@ -3,6 +3,9 @@ using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Middleware;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -40,6 +43,34 @@ builder.Services.AddCors(options =>
 
 // Health Checks
 builder.Services.AddHealthChecks();
+
+// JWT Bearer Authentication
+var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") 
+    ?? builder.Configuration["Jwt:Secret"] 
+    ?? "milk-api-default-jwt-secret-change-in-production-32chars!";
+var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "MilkApiManager";
+var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "MilkApiClients";
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuer = true,
+        ValidateAudience = true,
+        ValidateLifetime = true,
+        ValidateIssuerSigningKey = true,
+        ValidIssuer = jwtIssuer,
+        ValidAudience = jwtAudience,
+        IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
+    };
+});
+
+builder.Services.AddAuthorization();
 
 // Register DbContext
 var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
@@ -87,6 +118,9 @@ builder.Services.AddHostedService<AlertMonitoringService>();
 builder.Services.AddHostedService<AutoBlockWorker>();
 builder.Services.AddHostedService<ApisixRouteSyncService>();
 
+// Register AuthService
+builder.Services.AddScoped<AuthService>();
+
 var app = builder.Build();
 
 // ===== HTTP Request Pipeline =====
@@ -116,10 +150,13 @@ if (app.Environment.IsDevelopment())
 // 4. Health Check endpoint (no auth required)
 app.MapHealthChecks("/health");
 
-// 5. API Key Authentication
+// 5. Authentication (JWT Bearer)
+app.UseAuthentication();
+
+// 6. API Key / JWT dual Authentication middleware
 app.UseMiddleware<ApiKeyAuthMiddleware>();
 
-// 6. Authorization
+// 7. Authorization (RBAC)
 app.UseAuthorization();
 
 // 7. Controllers

@@ -86,12 +86,32 @@ docker-compose up -d
 |---|---|---|
 | 管理後台 (Blazor) | `http://localhost:5000` | 無需登入 |
 | Swagger API 文件 | `http://localhost:5001/swagger` | 無需登入 |
-| API 端點 | `http://localhost:5001/api/*` | Header `X-API-KEY: milk-admin-secret-key-change-me` |
+| API 端點 (API Key) | `http://localhost:5001/api/*` | Header `X-API-KEY: milk-admin-secret-key-change-me` |
+| API 端點 (JWT) | `http://localhost:5001/api/*` | 先用下方帳號登入取得 Token |
 | Grafana | `http://localhost:3000` | `admin` / `admin` |
 | Kibana | `http://localhost:5601` | 無需登入 |
 | APISIX Dashboard | `http://localhost:9000` | 見 `dashboard_conf/conf.yaml` |
 | PostgreSQL | `localhost:5432` | `milk_user` / `milk_password` |
 | Health Check | `http://localhost:5001/health` | 無需登入 |
+
+### SSO Demo 帳號 (USE_TEST_MODE=true)
+
+| 帳號 | 密碼 | 角色 | 權限說明 |
+|---|---|---|---|
+| `admin` | `admin` | Admin, Operator, Viewer | 完整管理權限 |
+| `operator` | `operator` | Operator, Viewer | 操作黑白名單、PII 規則 |
+| `viewer` | `viewer` | Viewer | 唯讀 |
+
+```bash
+# 登入取得 JWT Token
+curl -X POST http://localhost:5001/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{"username":"admin","password":"admin"}'
+
+# 使用 JWT Token 呼叫 API
+curl http://localhost:5001/api/blacklist \
+  -H "Authorization: Bearer <token>"
+```
 
 ---
 

@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Services;
 using MilkApiManager.Data;
@@ -8,6 +9,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Roles = "Admin,Operator")]
     public class WhitelistController : ControllerBase
     {
         private readonly ApisixClient _apisixClient;
