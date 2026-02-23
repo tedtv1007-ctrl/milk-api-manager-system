@@ -69,7 +69,7 @@ public class AutoBlockWorker : BackgroundService
                     if ((DateTime.UtcNow - blockedTime).TotalMinutes < 10) continue; // Already handled recently
                 }
 
-                _logger.LogWarning($"[SECURITY ALERT] IP {ip} triggered {errorCount} auth errors in 1min. Initiating BLOCK.");
+                _logger.LogWarning("[SECURITY ALERT] IP {Ip} triggered {ErrorCount} auth errors in 1min. Initiating BLOCK.", ip, errorCount);
 
                 // 1. Add to DB and APISIX via Controller logic (reusing existing logic to ensure consistency)
                 // We construct a BlacklistEntry
@@ -91,7 +91,7 @@ public class AutoBlockWorker : BackgroundService
                     await apisixClient.UpdateBlacklistAsync(currentList);
                     
                     _recentlyBlockedIps[ip] = DateTime.UtcNow;
-                    _logger.LogInformation($"[BLOCKED] IP {ip} has been successfully banned.");
+                    _logger.LogInformation("[BLOCKED] IP {Ip} has been successfully banned.", ip);
 
                     await notifyService.AlertAsync(
                         "Active Defense Triggered", 

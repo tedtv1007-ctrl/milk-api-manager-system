@@ -50,3 +50,8 @@ docker-compose.override.yml
 # Secrets
 .env
 
+# Debug / temp artifacts
+swagger_*.html
+swagger_*.json
+public_methods.txt
+openapitools.json

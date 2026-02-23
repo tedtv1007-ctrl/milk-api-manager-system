@@ -1,0 +1,6 @@
+bin/
+obj/
+TestResults/
+*.log
+vault_storage/
+scripts/

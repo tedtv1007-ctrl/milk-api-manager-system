@@ -6,7 +6,7 @@ using System.Text.Json.Serialization;
 
 namespace MilkApiManager.Services
 {
-    public class ApisixClient
+    public class ApisixClient : IApisixClient
     {
         private readonly HttpClient _httpClient;
         private readonly ILogger<ApisixClient> _logger;
@@ -43,7 +43,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully created route {id}");
+            _logger.LogInformation("Successfully created route {RouteId}", id);
         }
 
         public virtual async Task DeleteRouteAsync(string id)
@@ -52,7 +52,7 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Failed to delete route {id}: {response.StatusCode}");
+                _logger.LogWarning("Failed to delete route {RouteId}: {StatusCode}", id, response.StatusCode);
             }
         }
         
@@ -79,7 +79,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully updated route {id}");
+            _logger.LogInformation("Successfully updated route {RouteId}", id);
         }
 
         public virtual async Task CreateServiceAsync(string id, Service serviceConfig)
@@ -87,7 +87,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"services/{id}", serviceConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully created service {id}");
+            _logger.LogInformation("Successfully created service {ServiceId}", id);
         }
 
         public virtual async Task<Service?> GetServiceAsync(string id)
@@ -113,7 +113,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"services/{id}", serviceConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully updated service {id}");
+            _logger.LogInformation("Successfully updated service {ServiceId}", id);
         }
 
         public virtual async Task DeleteServiceAsync(string id)
@@ -122,7 +122,7 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Failed to delete service {id}: {response.StatusCode}");
+                _logger.LogWarning("Failed to delete service {ServiceId}: {StatusCode}", id, response.StatusCode);
             }
         }
 
@@ -131,7 +131,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully created consumer {username}");
+            _logger.LogInformation("Successfully created consumer {Username}", username);
         }
 
         public virtual async Task<Consumer?> GetConsumerAsync(string username)
@@ -157,7 +157,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully updated consumer {username}");
+            _logger.LogInformation("Successfully updated consumer {Username}", username);
         }
 
         public virtual async Task DeleteConsumerAsync(string username)
@@ -166,7 +166,7 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Failed to delete consumer {username}: {response.StatusCode}");
+                _logger.LogWarning("Failed to delete consumer {Username}: {StatusCode}", username, response.StatusCode);
             }
         }
 
@@ -207,7 +207,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"plugin_metadata/{pluginName}", body);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully updated plugin metadata: {pluginName}");
+            _logger.LogInformation("Successfully updated plugin metadata: {PluginName}", pluginName);
         }
 
         // Whitelist helpers: store per-route whitelist under plugin_metadata/route-whitelist
@@ -238,7 +238,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, "plugin_metadata/route-whitelist", bodyDoc);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully updated route whitelist for {routeId}");
+            _logger.LogInformation("Successfully updated route whitelist for {RouteId}", routeId);
         }
 
         public virtual async Task CreateConsumerGroupAsync(string id, ConsumerGroup groupConfig)
@@ -246,7 +246,7 @@ namespace MilkApiManager.Services
             var request = CreateRequest(HttpMethod.Put, $"consumer_groups/{id}", groupConfig);
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
-            _logger.LogInformation($"Successfully created consumer group {id}");
+            _logger.LogInformation("Successfully created consumer group {GroupId}", id);
         }
 
         public virtual async Task<string> GetConsumerGroupsAsync()
@@ -265,7 +265,7 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning($"Failed to delete consumer group {id}: {response.StatusCode}");
+                _logger.LogWarning("Failed to delete consumer group {GroupId}: {StatusCode}", id, response.StatusCode);
             }
         }
     }

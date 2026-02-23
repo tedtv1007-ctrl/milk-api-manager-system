@@ -1,6 +1,7 @@
 using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
+using MilkApiManager.Middleware;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -11,6 +12,12 @@ builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
+    c.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo
+    {
+        Title = "Milk API Manager",
+        Version = "v1",
+        Description = "Enterprise API Management & Security Governance Platform"
+    });
     var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
     var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
     if (File.Exists(xmlPath))
@@ -19,9 +26,22 @@ builder.Services.AddSwaggerGen(c =>
     }
 });
 
+// CORS — allow Blazor admin UI
+builder.Services.AddCors(options =>
+{
+    options.AddDefaultPolicy(policy =>
+    {
+        policy
+            .WithOrigins("http://localhost:5000", "http://milk-admin-ui:8080")
+            .AllowAnyHeader()
+            .AllowAnyMethod();
+    });
+});
+
+// Health Checks
+builder.Services.AddHealthChecks();
+
 // Register DbContext
-// Check both connection string paths just in case
-// Check for Test Mode
 var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
 
 if (isTestMode)
@@ -62,18 +82,50 @@ builder.Services.AddHostedService(sp => sp.GetRequiredService<AdGroupSyncService
 // Register NotificationService for AlertMonitoringService
 builder.Services.AddHttpClient<NotificationService>();
 
-// Register AlertMonitoringService as Background Service
+// Register Background Services
 builder.Services.AddHostedService<AlertMonitoringService>();
-// Register Auto-Blocking Security Worker
 builder.Services.AddHostedService<AutoBlockWorker>();
-// Register Code-First Route Sync
 builder.Services.AddHostedService<ApisixRouteSyncService>();
-
-// AuditContext registered above with AppDbContext logic
 
 var app = builder.Build();
 
-// Auto-migrate/ensure created
+// ===== HTTP Request Pipeline =====
+
+// 1. Security Headers (first in pipeline, applies to ALL responses)
+app.Use(async (context, next) =>
+{
+    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
+    context.Response.Headers.Append("X-Frame-Options", "DENY");
+    context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
+    context.Response.Headers.Append("Content-Security-Policy", "default-src 'self'");
+    context.Response.Headers.Append("Referrer-Policy", "strict-origin-when-cross-origin");
+    context.Response.Headers.Append("Server", "MilkApiManager");
+    await next();
+});
+
+// 2. CORS
+app.UseCors();
+
+// 3. Swagger (always enabled, gated by configuration if needed)
+app.UseSwagger();
+if (app.Environment.IsDevelopment())
+{
+    app.UseSwaggerUI();
+}
+
+// 4. Health Check endpoint (no auth required)
+app.MapHealthChecks("/health");
+
+// 5. API Key Authentication
+app.UseMiddleware<ApiKeyAuthMiddleware>();
+
+// 6. Authorization
+app.UseAuthorization();
+
+// 7. Controllers
+app.MapControllers();
+
+// Auto-migrate / ensure created
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -82,11 +134,18 @@ using (var scope = app.Services.CreateScope())
     
     try
     {
-        // For production, consider using db.Database.Migrate() instead of EnsureCreated
-        db.Database.EnsureCreated();
-        logger.LogInformation("Database initialized and ensured created.");
+        if (isTestMode)
+        {
+            db.Database.EnsureCreated();
+            logger.LogInformation("Test database initialized with EnsureCreated.");
+        }
+        else
+        {
+            db.Database.Migrate();
+            logger.LogInformation("Database migrated successfully.");
+        }
 
-        // On startup: if configured to persist blacklist to DB, sync DB entries to APISIX
+        // On startup: sync DB entries to APISIX
         if (!isTestMode)
         {
             await InitializeSystemState(services, logger);
@@ -160,28 +219,5 @@ async Task InitializeSystemState(IServiceProvider services, ILogger logger)
         logger.LogError(ex, "Failed to register service in API Catalog on startup.");
     }
 }
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI();
-}
-
-// app.UseHttpsRedirection(); // Disable for local testing dev
-
-app.UseAuthorization();
-
-// Security Headers
-app.Use(async (context, next) =>
-{
-    context.Response.Headers.Append("X-Content-Type-Options", "nosniff");
-    context.Response.Headers.Append("X-Frame-Options", "DENY");
-    context.Response.Headers.Append("X-XSS-Protection", "1; mode=block");
-    context.Response.Headers.Append("Server", "MilkApiManager"); // Explicitly set or hide in Kestrel
-    await next();
-});
-
-app.MapControllers();
 
 app.Run();

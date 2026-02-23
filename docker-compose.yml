@@ -31,7 +31,7 @@ services:
       - apisix
 
   apisix-dashboard:
-    image: apache/apisix-dashboard:latest
+    image: apache/apisix-dashboard:3.0.1-alpine
     restart: always
     volumes:
       - ./dashboard_conf/conf.yaml:/usr/local/apisix-dashboard/conf/conf.yaml:ro
@@ -43,7 +43,7 @@ services:
       - etcd
 
   jaeger:
-    image: jaegertracing/all-in-one:latest
+    image: jaegertracing/all-in-one:1.62
     restart: always
     ports:
       - "16686:16686" # Jaeger UI
@@ -53,7 +53,7 @@ services:
       - apisix
 
   prometheus:
-    image: prom/prometheus:latest
+    image: prom/prometheus:v3.2.1
     restart: always
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
@@ -63,11 +63,12 @@ services:
       - apisix
 
   grafana:
-    image: grafana/grafana:latest
+    image: grafana/grafana:11.5.2
     restart: always
     environment:
       - GF_AUTH_ANONYMOUS_ENABLED=true
-      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
+      - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD:-admin}
     ports:
       - "3000:3000"
     volumes:
@@ -83,6 +84,7 @@ services:
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"
+    mem_limit: 1g
     networks:
       - apisix
 
@@ -94,6 +96,7 @@ services:
       - "5044:5044"
       - "8082:8080"
       - "8081:8081"
+    mem_limit: 1g
     depends_on:
       - elasticsearch
     networks:
@@ -105,6 +108,7 @@ services:
       - xpack.security.enabled=false
     ports:
       - "5601:5601"
+    mem_limit: 1g
     depends_on:
       - elasticsearch
     networks:
@@ -114,13 +118,18 @@ services:
     image: postgres:17-alpine
     restart: always
     environment:
-      - POSTGRES_USER=milk_user
-      - POSTGRES_PASSWORD=milk_password
-      - POSTGRES_DB=milk_db
+      - POSTGRES_USER=${POSTGRES_USER:-milk_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-milk_password}
+      - POSTGRES_DB=${POSTGRES_DB:-milk_db}
     ports:
       - "5432:5432"
     volumes:
       - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-milk_user}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
     networks:
       - apisix
 
@@ -131,16 +140,25 @@ services:
     restart: always
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
-      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=milk_db;Username=milk_user;Password=milk_password;SSL Mode=Disable
+      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable
       - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
-      - APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c88b
+      - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
+      - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
     ports:
       - "5001:8080"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 30s
     networks:
       - apisix
     depends_on:
-      - apisix
-      - milk-db
+      milk-db:
+        condition: service_healthy
+      apisix:
+        condition: service_started
 
   milk-admin-ui:
     build:
@@ -155,7 +173,8 @@ services:
     networks:
       - apisix
     depends_on:
-      - milk-backend
+      milk-backend:
+        condition: service_healthy
 
 networks:
   apisix:
