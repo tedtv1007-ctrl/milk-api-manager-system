@@ -7,8 +7,8 @@ docker-compose up -d
 
 :: 2. Wait for APISIX to be ready (use admin API port 9180)
 echo ⏳ Waiting for APISIX Admin API (http://localhost:9180)...
-:wait_apisix
-curl --fail -s http://localhost:9180/apisix/admin/routes -H "X-API-KEY: edd1c9f034335f136f87ad84b625c88b" >nul 2>&1
+if "%APISIX_ADMIN_KEY%"=="" set APISIX_ADMIN_KEY=edd1c9f034335f136f87ad84b625c88b
+curl --fail -s http://localhost:9180/apisix/admin/routes -H "X-API-KEY: %APISIX_ADMIN_KEY%" >nul 2>&1
 if %errorlevel% neq 0 (
     echo   APISIX not ready yet, retrying in 2s...
     timeout /t 2 >nul
