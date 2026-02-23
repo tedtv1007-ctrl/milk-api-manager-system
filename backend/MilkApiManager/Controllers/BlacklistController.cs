@@ -25,7 +25,12 @@ namespace MilkApiManager.Controllers
             _auditLog = auditLog;
         }
 
+        /// <summary>
+        /// Retrieves the current IP blacklist.
+        /// </summary>
+        /// <returns>A list of blacklisted IPs or CIDR blocks.</returns>
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<BlacklistEntry>))]
         public async Task<IActionResult> GetBlacklist()
         {
             try
@@ -49,12 +54,25 @@ namespace MilkApiManager.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds or removes an IP/CIDR to/from the blacklist.
+        /// </summary>
+        /// <param name="request">The blacklist update instruction.</param>
+        /// <returns>A status message indicating success.</returns>
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> UpdateBlacklist([FromBody] BlacklistUpdateRequest request)
         {
             if (request == null || string.IsNullOrEmpty(request.Ip))
             {
                 return BadRequest("IP is required");
+            }
+
+            if (!IsValidIpOrCidr(request.Ip))
+            {
+                return BadRequest("Invalid IP or CIDR format");
             }
 
             try
@@ -145,6 +163,22 @@ namespace MilkApiManager.Controllers
                 _logger.LogError(ex, "Error updating blacklist for IP {Ip}", request.Ip);
                 return StatusCode(500, "Internal server error");
             }
+        }
+
+        private bool IsValidIpOrCidr(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return false;
+
+            if (value.Contains('/'))
+            {
+                var parts = value.Split('/');
+                if (parts.Length != 2) return false;
+                if (!System.Net.IPAddress.TryParse(parts[0], out _)) return false;
+                if (!int.TryParse(parts[1], out int mask) || mask < 0 || mask > 128) return false;
+                return true;
+            }
+
+            return System.Net.IPAddress.TryParse(value, out _);
         }
     }
 

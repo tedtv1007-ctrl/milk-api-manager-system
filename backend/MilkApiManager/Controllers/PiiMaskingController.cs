@@ -22,15 +22,42 @@ public class PiiMaskingController : ControllerBase
         _logger = logger;
     }
 
+    /// <summary>
+    /// Retrieves all PII masking rules.
+    /// </summary>
+    /// <returns>A list of PII masking rules.</returns>
     [HttpGet]
+    [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<PiiMaskingRule>))]
     public async Task<ActionResult<IEnumerable<PiiMaskingRule>>> GetRules()
     {
         return await _context.PiiMaskingRules.ToListAsync();
     }
 
+    /// <summary>
+    /// Creates a new PII masking rule governing APISIX traffic.
+    /// </summary>
+    /// <param name="rule">The rule definition.</param>
+    /// <returns>The created rule.</returns>
     [HttpPost]
+    [ProducesResponseType(StatusCodes.Status201Created, Type = typeof(PiiMaskingRule))]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<ActionResult<PiiMaskingRule>> CreateRule(PiiMaskingRule rule)
     {
+        if (string.IsNullOrEmpty(rule.RegexPattern))
+        {
+            return BadRequest("Regex pattern is required");
+        }
+
+        try
+        {
+            // Validate regex format
+            _ = new System.Text.RegularExpressions.Regex(rule.RegexPattern);
+        }
+        catch (ArgumentException)
+        {
+            return BadRequest("Invalid Regex pattern");
+        }
+
         rule.UpdatedAt = DateTime.UtcNow;
         _context.PiiMaskingRules.Add(rule);
         await _context.SaveChangesAsync();
@@ -39,10 +66,34 @@ public class PiiMaskingController : ControllerBase
         return CreatedAtAction(nameof(GetRules), new { id = rule.Id }, rule);
     }
 
+    /// <summary>
+    /// Updates an existing PII masking rule.
+    /// </summary>
+    /// <param name="id">The rule ID to update.</param>
+    /// <param name="rule">The new rule content.</param>
+    /// <returns>No content on success.</returns>
     [HttpPut("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> UpdateRule(int id, PiiMaskingRule rule)
     {
         if (id != rule.Id) return BadRequest();
+
+        if (string.IsNullOrEmpty(rule.RegexPattern))
+        {
+            return BadRequest("Regex pattern is required");
+        }
+
+        try
+        {
+            // Validate regex format
+            _ = new System.Text.RegularExpressions.Regex(rule.RegexPattern);
+        }
+        catch (ArgumentException)
+        {
+            return BadRequest("Invalid Regex pattern");
+        }
 
         rule.UpdatedAt = DateTime.UtcNow;
         _context.Entry(rule).State = EntityState.Modified;
@@ -61,7 +112,14 @@ public class PiiMaskingController : ControllerBase
         return NoContent();
     }
 
+    /// <summary>
+    /// Deletes a PII masking rule from the system and APISIX.
+    /// </summary>
+    /// <param name="id">The rule ID to delete.</param>
+    /// <returns>No content on success.</returns>
     [HttpDelete("{id}")]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<IActionResult> DeleteRule(int id)
     {
         var rule = await _context.PiiMaskingRules.FindAsync(id);

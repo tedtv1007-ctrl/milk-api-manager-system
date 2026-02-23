@@ -9,7 +9,15 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
+    if (File.Exists(xmlPath))
+    {
+        c.IncludeXmlComments(xmlPath);
+    }
+});
 
 // Register DbContext
 // Check both connection string paths just in case
@@ -68,62 +76,88 @@ var app = builder.Build();
 // Auto-migrate/ensure created
 using (var scope = app.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-    // For production, consider using db.Database.Migrate() instead of EnsureCreated
-    db.Database.EnsureCreated();
-
-    // On startup: if configured to persist blacklist to DB, sync DB entries to APISIX
-    // Skip in Test Mode to avoid complexity
-    if (!isTestMode)
+    var services = scope.ServiceProvider;
+    var logger = services.GetRequiredService<ILogger<Program>>();
+    var db = services.GetRequiredService<AppDbContext>();
+    
+    try
     {
-        var config = scope.ServiceProvider.GetRequiredService<IConfiguration>();
-        var apisix = scope.ServiceProvider.GetRequiredService<ApisixClient>();
-        var persist = config.GetValue<bool>("Blacklist:PersistToDatabase");
-        
-        // 1. Sync Blacklist
-        if (persist)
+        // For production, consider using db.Database.Migrate() instead of EnsureCreated
+        db.Database.EnsureCreated();
+        logger.LogInformation("Database initialized and ensured created.");
+
+        // On startup: if configured to persist blacklist to DB, sync DB entries to APISIX
+        if (!isTestMode)
         {
-            var entries = db.BlacklistEntries.Select(e => e.IpOrCidr).ToList();
+            await InitializeSystemState(services, logger);
+        }
+    }
+    catch (Exception ex)
+    {
+        logger.LogCritical(ex, "An error occurred during startup initialization.");
+    }
+}
+
+async Task InitializeSystemState(IServiceProvider services, ILogger logger)
+{
+    var db = services.GetRequiredService<AppDbContext>();
+    var config = services.GetRequiredService<IConfiguration>();
+    var apisix = services.GetRequiredService<ApisixClient>();
+    
+    // 1. Sync Blacklist
+    var persistBlacklist = config.GetValue<bool>("Blacklist:PersistToDatabase");
+    if (persistBlacklist)
+    {
+        try
+        {
+            var entries = await db.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync();
             if (entries.Any())
             {
-                try { apisix.UpdateBlacklistAsync(entries).GetAwaiter().GetResult(); }
-                catch { /* Log error */ }
+                await apisix.UpdateBlacklistAsync(entries);
+                logger.LogInformation("Synced {Count} blacklist entries to APISIX.", entries.Count);
             }
         }
-
-        // 2. Register this service in API Catalog
-        try 
+        catch (Exception ex)
         {
-            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-            var coreService = dbContext.ApiServices.FirstOrDefault(s => s.Name == "Milk Manager Core");
-            
-            if (coreService == null)
-            {
-                coreService = new ApiServiceMetadata {
-                    Name = "Milk Manager Core",
-                    Description = "Central API Management Control Plane",
-                    BasePath = "/api",
-                    OpenApiUrl = "http://localhost:5001/swagger/v1/swagger.json",
-                    OwnerTeam = "Platform Team"
-                };
-                dbContext.ApiServices.Add(coreService);
-                dbContext.SaveChanges();
-            }
-
-            // Seed a default test scenario
-            if (!dbContext.ApiTestScenarios.Any(s => s.ServiceId == coreService.Id))
-            {
-                dbContext.ApiTestScenarios.Add(new ApiTestScenario {
-                    ServiceId = coreService.Id,
-                    Name = "Health Check",
-                    Endpoint = "/AuditLogs/stats",
-                    HttpMethod = "GET",
-                    ExpectedStatusCode = 200
-                });
-                dbContext.SaveChanges();
-            }
+            logger.LogError(ex, "Failed to sync blacklist to APISIX on startup.");
         }
-        catch { /* Log error */ }
+    }
+
+    // 2. Register this service in API Catalog and seed default data
+    try 
+    {
+        var coreService = await db.ApiServices.FirstOrDefaultAsync(s => s.Name == "Milk Manager Core");
+        
+        if (coreService == null)
+        {
+            coreService = new ApiServiceMetadata {
+                Name = "Milk Manager Core",
+                Description = "Central API Management Control Plane",
+                BasePath = "/api",
+                OpenApiUrl = "http://localhost:5001/swagger/v1/swagger.json",
+                OwnerTeam = "Platform Team"
+            };
+            db.ApiServices.Add(coreService);
+            await db.SaveChangesAsync();
+            logger.LogInformation("Registered Milk Manager Core in API Catalog.");
+        }
+
+        // Seed a default test scenario
+        if (!await db.ApiTestScenarios.AnyAsync(s => s.ServiceId == coreService.Id))
+        {
+            db.ApiTestScenarios.Add(new ApiTestScenario {
+                ServiceId = coreService.Id,
+                Name = "Health Check",
+                Endpoint = "/AuditLogs/stats",
+                HttpMethod = "GET",
+                ExpectedStatusCode = 200
+            });
+            await db.SaveChangesAsync();
+        }
+    }
+    catch (Exception ex)
+    {
+        logger.LogError(ex, "Failed to register service in API Catalog on startup.");
     }
 }
 

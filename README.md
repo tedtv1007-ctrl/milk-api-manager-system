@@ -89,7 +89,7 @@ docker-compose up -d
 - [x] **Phase 3**: 動態 PII 防護與 AI 自動防禦。
 - [x] **Phase 4**: 開發者自助門戶與 Mock Server。
 - [x] **Phase 5**: ELK 9.2.3 深度日誌分析。
-- [ ] **Phase 6**: API SDK 自動生成器 (C# / Python)。
+- [x] **Phase 6**: API SDK 自動生成器 (C# / Python)。
 - [ ] **Phase 7**: 企業 SSO (LDAP/AD) 深度權限對齊。
 
 ---

@@ -25,7 +25,13 @@ namespace MilkApiManager.Controllers
             _auditLog = auditLog;
         }
 
+        /// <summary>
+        /// Retrieves the IP whitelist for a specific route.
+        /// </summary>
+        /// <param name="routeId">The target APISIX route ID.</param>
+        /// <returns>A list of whitelisted IPs or CIDR blocks.</returns>
         [HttpGet("route/{routeId}")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<WhitelistEntry>))]
         public async Task<IActionResult> GetWhitelistForRoute(string routeId)
         {
             try
@@ -52,12 +58,26 @@ namespace MilkApiManager.Controllers
             }
         }
 
+        /// <summary>
+        /// Adds or removes an IP/CIDR to/from a route's whitelist.
+        /// </summary>
+        /// <param name="routeId">The target APISIX route ID.</param>
+        /// <param name="request">The whitelist update instruction.</param>
+        /// <returns>A status message indicating success.</returns>
         [HttpPost("route/{routeId}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status500InternalServerError)]
         public async Task<IActionResult> AddWhitelistEntry(string routeId, [FromBody] WhitelistUpdateRequest request)
         {
             if (request == null || string.IsNullOrEmpty(request.IpCidr))
             {
                 return BadRequest("IpCidr is required");
+            }
+
+            if (!IsValidIpOrCidr(request.IpCidr))
+            {
+                return BadRequest("Invalid IP or CIDR format");
             }
 
             try
@@ -145,8 +165,24 @@ namespace MilkApiManager.Controllers
             }
         }
 
+        private bool IsValidIpOrCidr(string value)
+        {
+            if (string.IsNullOrWhiteSpace(value)) return false;
+
+            if (value.Contains('/'))
+            {
+                var parts = value.Split('/');
+                if (parts.Length != 2) return false;
+                if (!System.Net.IPAddress.TryParse(parts[0], out _)) return false;
+                if (!int.TryParse(parts[1], out int mask) || mask < 0 || mask > 128) return false;
+                return true;
+            }
+
+            return System.Net.IPAddress.TryParse(value, out _);
+        }
+
         // Sync current valid whitelist entries for a route to APISIX plugin
-        public async Task SyncWhitelistToApisix(string routeId)
+        private async Task SyncWhitelistToApisix(string routeId)
         {
             // gather valid entries
             var entries = await _db.WhitelistEntries.Where(w => w.RouteId == routeId)
