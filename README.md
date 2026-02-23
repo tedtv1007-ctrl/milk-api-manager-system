@@ -77,6 +77,24 @@ docker-compose up -d
 
 ---
 
+## 🔑 Demo 預設帳密 (Default Credentials)
+
+> [!NOTE]
+> 系統內建預設值，**不需要任何 `.env` 即可直接啟動 Demo**。正式上線時請建立 `.env` 覆蓋預設值（參考 `.env.example`）。
+
+| 服務 | URL | 預設帳密 |
+|---|---|---|
+| 管理後台 (Blazor) | `http://localhost:5000` | 無需登入 |
+| Swagger API 文件 | `http://localhost:5001/swagger` | 無需登入 |
+| API 端點 | `http://localhost:5001/api/*` | Header `X-API-KEY: milk-admin-secret-key-change-me` |
+| Grafana | `http://localhost:3000` | `admin` / `admin` |
+| Kibana | `http://localhost:5601` | 無需登入 |
+| APISIX Dashboard | `http://localhost:9000` | 見 `dashboard_conf/conf.yaml` |
+| PostgreSQL | `localhost:5432` | `milk_user` / `milk_password` |
+| Health Check | `http://localhost:5001/health` | 無需登入 |
+
+---
+
 ## 📖 使用與操作
 詳細的操作流程與功能說明，請參考：
 👉 **[Milk API Manager 操作手冊](docs/manual/USER_GUIDE.md)**
