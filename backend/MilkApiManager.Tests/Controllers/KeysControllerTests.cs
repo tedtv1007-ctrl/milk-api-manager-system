@@ -33,7 +33,7 @@ public class KeysControllerTests
         // Arrange
         var request = new CreateKeyRequest { Owner = "test-consumer" };
         _mockVaultService.Setup(v => v.StoreSecretAsync(It.IsAny<string>(), It.IsAny<string>()))
-            .ReturnsAsync("vault-version-1");
+            .Returns(Task.CompletedTask);
         _mockApisixClient.Setup(c => c.CreateConsumerAsync("test-consumer", It.IsAny<Consumer>()))
             .Returns(Task.CompletedTask);
 

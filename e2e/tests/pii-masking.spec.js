@@ -1,4 +1,6 @@
 const { test, expect } = require('@playwright/test');
+const API_KEY = 'milk-admin-secret-key-change-me';
+const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 
 /**
  * APISIX PII Masking E2E Tests (個資脫敏驗證)
@@ -13,7 +15,9 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
 
   test('消費者 API 回傳資料結構驗證', async ({ request }) => {
     // 1. 發送請求到 Flask Consumer API
-    const response = await request.get('http://localhost:5001/api/Consumer');
+    const response = await request.get('http://localhost:5001/api/Consumer', {
+      headers: AUTH_HEADERS
+    });
 
     // 驗證請求成功 (允許 200 或 500)
     expect([200, 500]).toContain(response.status());
@@ -49,12 +53,14 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
   });
 
   test('消費者 API 不應回傳明文 Email 地址', async ({ request }) => {
-    const response = await request.get('http://localhost:5001/api/Consumer');
+    const response = await request.get('http://localhost:5001/api/Consumer', {
+      headers: AUTH_HEADERS
+    });
     expect([200, 500]).toContain(response.status());
 
     if (response.status() === 500) {
-       console.log('⚠️ Consumer API 回傳 500，跳過 Email 驗證');
-       return;
+      console.log('⚠️ Consumer API 回傳 500，跳過 Email 驗證');
+      return;
     }
 
     const data = await response.json();
@@ -74,7 +80,9 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
   });
 
   test('Blacklist API 回應驗證', async ({ request }) => {
-    const response = await request.get('http://localhost:5001/api/Blacklist');
+    const response = await request.get('http://localhost:5001/api/Blacklist', {
+      headers: AUTH_HEADERS
+    });
 
     // Blacklist API 可能回傳 200（正常）或 500（APISIX 離線）
     const statusCode = response.status();

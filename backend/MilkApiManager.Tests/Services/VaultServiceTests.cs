@@ -11,7 +11,6 @@ public class VaultServiceTests
 {
     private readonly Mock<ILogger<VaultService>> _mockLogger;
     private readonly Mock<ApisixClient> _mockApisixClient;
-    private readonly Mock<AuditLogService> _mockAuditLogService;
     private readonly VaultService _vaultService;
 
     public VaultServiceTests()
@@ -22,25 +21,11 @@ public class VaultServiceTests
             Mock.Of<HttpClient>(),
             Mock.Of<ILogger<ApisixClient>>()
         );
-        _mockAuditLogService = new Mock<AuditLogService>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<Microsoft.Extensions.Configuration.IConfiguration>(),
-            Mock.Of<Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>()
-        );
 
         _vaultService = new VaultService(
             _mockLogger.Object,
-            _mockApisixClient.Object,
-            _mockAuditLogService.Object
+            _mockApisixClient.Object
         );
-    }
-
-    [Fact]
-    public async Task StoreSecretAsync_ReturnsVaultVersion()
-    {
-        var result = await _vaultService.StoreSecretAsync("secret/path", "my-secret");
-
-        Assert.Equal("vault-version-1", result);
     }
 
     [Fact]
@@ -66,9 +51,7 @@ public class VaultServiceTests
 
         _mockApisixClient.Setup(c => c.GetConsumerAsync("test-consumer"))
             .ReturnsAsync(consumer);
-        _mockApisixClient.Setup(c => c.UpdateConsumerAsync("test-consumer", It.IsAny<object>()))
-            .Returns(Task.CompletedTask);
-        _mockAuditLogService.Setup(a => a.ShipLogsToSIEM(It.IsAny<AuditLogEntry>()))
+        _mockApisixClient.Setup(c => c.UpdateConsumerAsync("test-consumer", It.IsAny<Consumer>()))
             .Returns(Task.CompletedTask);
 
         // Act
@@ -77,10 +60,8 @@ public class VaultServiceTests
         // Assert
         Assert.NotNull(newKey);
         Assert.NotEmpty(newKey);
-        Assert.Equal(32, newKey.Length); // Guid without dashes = 32 chars
-        _mockApisixClient.Verify(c => c.UpdateConsumerAsync("test-consumer", It.IsAny<object>()), Times.Once);
-        _mockAuditLogService.Verify(a => a.ShipLogsToSIEM(
-            It.Is<AuditLogEntry>(e => e.Action == "API_KEY_ROTATION")), Times.Once);
+        Assert.Equal(64, newKey.Length); // Two GUIDs concatenated = 64 hex chars
+        _mockApisixClient.Verify(c => c.UpdateConsumerAsync("test-consumer", It.IsAny<Consumer>()), Times.Once);
     }
 
     [Fact]
@@ -108,9 +89,7 @@ public class VaultServiceTests
 
         _mockApisixClient.Setup(c => c.GetConsumerAsync("no-plugins"))
             .ReturnsAsync(consumer);
-        _mockApisixClient.Setup(c => c.UpdateConsumerAsync("no-plugins", It.IsAny<object>()))
-            .Returns(Task.CompletedTask);
-        _mockAuditLogService.Setup(a => a.ShipLogsToSIEM(It.IsAny<AuditLogEntry>()))
+        _mockApisixClient.Setup(c => c.UpdateConsumerAsync("no-plugins", It.IsAny<Consumer>()))
             .Returns(Task.CompletedTask);
 
         // Act

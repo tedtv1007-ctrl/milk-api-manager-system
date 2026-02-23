@@ -3,6 +3,8 @@ const fs = require('fs');
 const path = require('path');
 
 const screenshotDir = path.join(__dirname, '..', 'screenshots');
+const API_KEY = 'milk-admin-secret-key-change-me';
+const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 
 /**
  * API 端點 E2E 測試
@@ -16,7 +18,9 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     });
 
     test('Route API - 取得路由清單', async ({ request }) => {
-        const response = await request.get('http://localhost:5001/api/Route');
+        const response = await request.get('http://localhost:5001/api/Route', {
+            headers: AUTH_HEADERS
+        });
 
         // API 可能因 APISIX 離線回傳 500，驗證回應可解析
         const statusCode = response.status();
@@ -36,7 +40,9 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     });
 
     test('Consumer API - 取得消費者清單', async ({ request }) => {
-        const response = await request.get('http://localhost:5001/api/Consumer');
+        const response = await request.get('http://localhost:5001/api/Consumer', {
+            headers: AUTH_HEADERS
+        });
         const statusCode = response.status();
         console.log(`Consumer API 回傳 HTTP ${statusCode}`);
 
@@ -62,7 +68,9 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     });
 
     test('Blacklist API - 取得黑名單', async ({ request }) => {
-        const response = await request.get('http://localhost:5001/api/Blacklist');
+        const response = await request.get('http://localhost:5001/api/Blacklist', {
+            headers: AUTH_HEADERS
+        });
         const statusCode = response.status();
         console.log(`Blacklist API 回傳 HTTP ${statusCode}`);
 
@@ -81,6 +89,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     test('Blacklist API - 新增 IP 至黑名單', async ({ request }) => {
         const testIp = '192.168.99.99';
         const response = await request.post('http://localhost:5001/api/Blacklist', {
+            headers: AUTH_HEADERS,
             data: {
                 ip: testIp,
                 action: 'add',
@@ -100,6 +109,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
 
             // 清理：移除測試用 IP
             const removeResponse = await request.post('http://localhost:5001/api/Blacklist', {
+                headers: AUTH_HEADERS,
                 data: { ip: testIp, action: 'remove' }
             });
             console.log(`清理：移除測試 IP，回傳 HTTP ${removeResponse.status()}`);
@@ -111,6 +121,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
 
     test('Blacklist API - 無效請求回傳 400', async ({ request }) => {
         const response = await request.post('http://localhost:5001/api/Blacklist', {
+            headers: AUTH_HEADERS,
             data: {
                 ip: '',
                 action: 'add'
@@ -125,6 +136,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
 
     test('Keys API - 建立 API 金鑰', async ({ request }) => {
         const response = await request.post('http://localhost:5001/api/Keys', {
+            headers: AUTH_HEADERS,
             data: {
                 owner: 'e2e-test-consumer'
             }
@@ -147,6 +159,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
 
     test('Keys API - 空 Owner 回傳 400', async ({ request }) => {
         const response = await request.post('http://localhost:5001/api/Keys', {
+            headers: AUTH_HEADERS,
             data: {
                 owner: ''
             }
@@ -159,7 +172,9 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     });
 
     test('Analytics API - 請求統計', async ({ request }) => {
-        const response = await request.get('http://localhost:5001/api/Analytics/requests');
+        const response = await request.get('http://localhost:5001/api/Analytics/requests', {
+            headers: AUTH_HEADERS
+        });
         const statusCode = response.status();
         console.log(`Analytics requests API 回傳 HTTP ${statusCode}`);
 
@@ -174,7 +189,9 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
     });
 
     test('API 回應安全標頭驗證', async ({ request }) => {
-        const response = await request.get('http://localhost:5001/api/Route');
+        const response = await request.get('http://localhost:5001/api/Route', {
+            headers: AUTH_HEADERS
+        });
         const headers = response.headers();
 
         // 驗證沒有洩露伺服器版本資訊
