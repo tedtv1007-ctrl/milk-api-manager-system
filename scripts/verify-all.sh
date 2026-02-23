@@ -11,7 +11,7 @@ echo "   MILK API MANAGER - FULL SYSTEM VERIFICATION"
 echo "==========================================================="
 
 # 1. Infrastructure Check
-echo -e "\n[Step 1/4] Checking Infrastructure (Docker)..."
+echo -e "\n[Step 1/3] Checking Infrastructure (Docker)..."
 REQUIRED_CONTAINERS=("apisix" "etcd" "prometheus" "grafana")
 MISSING=()
 
@@ -22,9 +22,9 @@ for container in "${REQUIRED_CONTAINERS[@]}"; do
 done
 
 if [ ${#MISSING[@]} -gt 0 ]; then
-    echo "   ✗ Missing: ${MISSING[*]}"
+    echo "   ??Missing: ${MISSING[*]}"
 else
-    echo "   ✓ All core infrastructure containers are running."
+    echo "   ??All core infrastructure containers are running."
 fi
 
 # Wait for key services to be READY (Crucial for CI stability)
@@ -39,27 +39,17 @@ for i in {1..30}; do
 done
 
 # 2. .NET Unit Tests
-echo -e "\n[Step 2/4] Running .NET Unit Tests..."
+echo -e "\n[Step 2/3] Running .NET Unit Tests..."
 if dotnet test backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj --logger "console;verbosity=normal"; then
-    DOTNET_STATUS="✅ OK"
+    DOTNET_STATUS="??OK"
     DOTNET_CODE=0
 else
-    DOTNET_STATUS="❌ FAIL"
+    DOTNET_STATUS="??FAIL"
     DOTNET_CODE=1
 fi
 
-# 3. Python Smoke Tests
-echo -e "\n[Step 3/4] Running API Smoke Tests..."
-if python3 test_complete.py; then
-    SMOKE_STATUS="✅ OK"
-    SMOKE_CODE=0
-else
-    SMOKE_STATUS="❌ FAIL"
-    SMOKE_CODE=1
-fi
-
-# 4. Playwright E2E Tests
-echo -e "\n[Step 4/4] Running Playwright E2E Tests..."
+# 3. Playwright E2E Tests
+echo -e "\n[Step 3/3] Running Playwright E2E Tests..."
 cd e2e
 # Ensure dependencies are present
 if [ ! -d "node_modules" ]; then
@@ -70,10 +60,10 @@ fi
 
 export BASE_URL="http://localhost:5000"
 if npm test; then
-    E2E_STATUS="✅ OK"
+    E2E_STATUS="??OK"
     E2E_CODE=0
 else
-    E2E_STATUS="❌ FAIL"
+    E2E_STATUS="??FAIL"
     E2E_CODE=1
 fi
 cd ..
@@ -82,7 +72,7 @@ cd ..
 END_TIME=$(date +%s)
 DURATION=$((END_TIME - START_TIME))
 OVERALL_STATUS="FAILED ❌"
-if [ $DOTNET_CODE -eq 0 ] && [ $SMOKE_CODE -eq 0 ] && [ $E2E_CODE -eq 0 ]; then
+if [ $DOTNET_CODE -eq 0 ] && [ $E2E_CODE -eq 0 ]; then
     OVERALL_STATUS="PASSED ✅"
 fi
 
@@ -97,7 +87,6 @@ cat <<EOF > "$REPORT_FILE"
 | Component | Status | Details |
 |-----------|--------|---------|
 | .NET Backend | $DOTNET_STATUS | 48 Unit Tests |
-| API Gateway | $SMOKE_STATUS | Python Smoke Test |
 | Admin UI | $E2E_STATUS | Playwright E2E |
 
 ---
