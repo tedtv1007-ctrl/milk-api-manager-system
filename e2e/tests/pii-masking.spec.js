@@ -97,9 +97,15 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
       console.log(`✅ Blacklist API 回傳 ${data.length} 筆資料`);
     } else {
       // APISIX 離線時，驗證回應包含 error 欄位
-      const data = await response.json();
-      expect(data).toHaveProperty('error');
-      console.log(`⚠️ Blacklist API 回傳錯誤（APISIX 可能離線）: ${data.error}`);
+      // 當APISIX離線時，如果是text可以避免json()掛掉
+      const isJson = response.headers()['content-type']?.includes('application/json');
+      if (isJson) {
+        const data = await response.json();
+        expect(data).toHaveProperty('error');
+        console.log(`⚠️ Blacklist API 回傳錯誤（APISIX 可能離線）: ${data.error}`);
+      } else {
+        console.log(`⚠️ Blacklist API 回傳錯誤且非 JSON`);
+      }
     }
   });
 
