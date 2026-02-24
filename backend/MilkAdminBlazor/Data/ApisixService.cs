@@ -474,9 +474,25 @@ namespace MilkAdminBlazor.Data
 
         public async Task<string> RunLoadTestAsync(string url, int vus, int duration)
         {
-            var response = await _httpClient.PostAsync($"api/LoadTest/run?url={Uri.EscapeDataString(url)}&vus={vus}&duration={duration}", null);
-            var result = await response.Content.ReadFromJsonAsync<JsonElement>();
-            return result.GetProperty("report").GetString() ?? "No report generated.";
+            var request = new HttpRequestMessage(HttpMethod.Post, $"api/LoadTest/run?url={Uri.EscapeDataString(url)}&vus={vus}&duration={duration}");
+            request.Headers.Add("X-API-KEY", "milk-admin-secret-key-change-me");
+            
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorSummary = await response.Content.ReadAsStringAsync();
+                return $"Error: Server returned {(int)response.StatusCode} {response.ReasonPhrase}\n{errorSummary}";
+            }
+
+            try
+            {
+                var result = await response.Content.ReadFromJsonAsync<JsonElement>();
+                return result.GetProperty("report").GetString() ?? "No report generated.";
+            }
+            catch (Exception ex)
+            {
+                return $"Failed to parse response: {ex.Message}";
+            }
         }
 
         // --- Developer Portal / Access Requests ---

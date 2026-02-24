@@ -23,7 +23,8 @@ builder.Services.AddHttpClient<AuditLogService>();
 // Register HttpClient for ApisixService to talk to MilkApiManager
 builder.Services.AddHttpClient<ApisixService>(client =>
 {
-    client.BaseAddress = new Uri("http://localhost:5001/"); // MilkApiManager runs on 5001
+    var backendUrl = builder.Configuration["BackendApiUrl"] ?? "http://localhost:5001/";
+    client.BaseAddress = new Uri(backendUrl);
 });
 
 var app = builder.Build();

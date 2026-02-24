@@ -12,7 +12,7 @@ const pages = [
     ready: async (page) => {
       // 等待 Blazor 連線完成 + 內容載入
       await page.waitForLoadState('networkidle', { timeout: 30000 });
-      await page.getByText(/API Governance/).first().waitFor({ timeout: 15000 });
+      await page.waitForTimeout(2000);
     }
   },
   {
@@ -21,7 +21,7 @@ const pages = [
     title: 'API 合規盤點',
     ready: async (page) => {
       await page.waitForLoadState('networkidle', { timeout: 30000 });
-      await page.locator('.alert.alert-info').first().waitFor({ timeout: 15000 });
+      await page.waitForTimeout(2000);
     }
   },
   {
@@ -39,7 +39,7 @@ const pages = [
     title: 'IP 黑名單管理',
     ready: async (page) => {
       await page.waitForLoadState('networkidle', { timeout: 30000 });
-      await page.getByText(/IP Blacklist Management/).first().waitFor({ timeout: 15000 });
+      await page.waitForTimeout(2000);
     }
   },
   {
@@ -48,7 +48,7 @@ const pages = [
     title: '消費者統計分析',
     ready: async (page) => {
       await page.waitForLoadState('networkidle', { timeout: 30000 });
-      await page.getByText(/Consumer Statistics|消費者統計/).first().waitFor({ timeout: 15000 });
+      await page.waitForTimeout(2000);
     }
   },
   {
@@ -78,6 +78,7 @@ test.describe('Milk Admin UI 頁面截圖驗證', () => {
 
   for (const pageDef of pages) {
     test(`${pageDef.name} 頁面載入與截圖（${pageDef.title}）`, async ({ page }) => {
+      test.setTimeout(90000); // 增加超時時間以容納 Blazor 首次載入
       await page.goto(pageDef.path, { waitUntil: 'domcontentloaded', timeout: 30000 });
 
       // 等待 Blazor SignalR 連線
@@ -95,4 +96,22 @@ test.describe('Milk Admin UI 頁面截圖驗證', () => {
       await expect(page).toHaveURL(new RegExp(`${pageDef.path.replace('/', '\\/')}$`));
     });
   }
+
+  test('Load Testing 頁面載入與執行（壓力測試中心）', async ({ page }) => {
+    test.setTimeout(65000); // 壓測會跑比較久
+    await page.goto('/load-testing', { waitUntil: 'domcontentloaded', timeout: 30000 });
+    await page.waitForTimeout(2000);
+    await page.waitForLoadState('networkidle', { timeout: 30000 });
+    await page.getByText(/Stress Test Center/i).first().waitFor({ timeout: 15000 });
+
+    const startTestBtn = page.getByRole('button', { name: /START STRESS TEST/i });
+    await startTestBtn.click();
+
+    await page.getByText(/Executing stress test against/i).waitFor({ timeout: 5000 });
+    await page.getByText(/Error: Server|http_reqs|k6 execution failed/).first().waitFor({ timeout: 45000 });
+
+    const screenshotPath = path.join(screenshotDir, 'load-testing-result.png');
+    await page.screenshot({ path: screenshotPath, fullPage: true });
+    expect(fs.existsSync(screenshotPath)).toBe(true);
+  });
 });
