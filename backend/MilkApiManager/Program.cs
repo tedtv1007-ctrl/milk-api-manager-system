@@ -117,6 +117,7 @@ builder.Services.AddHttpClient<NotificationService>();
 builder.Services.AddHostedService<AlertMonitoringService>();
 builder.Services.AddHostedService<AutoBlockWorker>();
 builder.Services.AddHostedService<ApisixRouteSyncService>();
+builder.Services.AddHostedService<KeyRotationBackgroundService>();
 
 // Register AuthService
 builder.Services.AddScoped<AuthService>();

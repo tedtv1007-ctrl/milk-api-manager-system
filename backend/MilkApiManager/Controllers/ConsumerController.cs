@@ -33,26 +33,8 @@ namespace MilkApiManager.Controllers
                         var value = item.GetProperty("value");
                         var username = value.GetProperty("username").GetString();
                         
-                        var quota = new { count = 1000, time_window = 3600, rejected_code = 429, rejected_msg = "API quota exceeded. Please contact support." };
-                        
-                        if (value.TryGetProperty("plugins", out var plugins) && plugins.TryGetProperty("limit-count", out var limitCount))
-                        {
-                            quota = new
-                            {
-                                count = limitCount.TryGetProperty("count", out var c) ? c.GetInt32() : 1000,
-                                time_window = limitCount.TryGetProperty("time_window", out var tw) ? tw.GetInt32() : 3600,
-                                rejected_code = limitCount.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 429,
-                                rejected_msg = limitCount.TryGetProperty("rejected_msg", out var rm) ? rm.GetString() : "API quota exceeded. Please contact support."
-                            };
-                        }
-
-                        consumers.Add(new
-                        {
-                            username = username,
-                            desc = "", // APISIX consumers don't have a native 'desc' field in core
-                            labels = new List<string>(),
-                            quota = quota
-                        });
+                        var consumerObj = ParseConsumerFromApisix(value, username!);
+                        consumers.Add(consumerObj);
                     }
                 }
 
@@ -61,6 +43,69 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving consumers");
+                return StatusCode(500, "Internal server error");
+            }
+        }
+
+        /// <summary>
+        /// 取得單一 Consumer 明細（含 quota 與 rate_limit 設定）
+        /// </summary>
+        [HttpGet("{username}")]
+        public async Task<IActionResult> GetConsumer(string username)
+        {
+            try
+            {
+                var consumer = await _apisixClient.GetConsumerAsync(username);
+                if (consumer == null)
+                {
+                    return NotFound(new { Error = $"Consumer '{username}' not found." });
+                }
+
+                // 構建回傳物件
+                var quota = new { count = 1000, time_window = 3600, rejected_code = 429, rejected_msg = "API quota exceeded. Please contact support." };
+                var rateLimit = new { rate = 0, burst = 0, rejected_code = 503, key = "remote_addr" };
+
+                if (consumer.Plugins != null)
+                {
+                    if (consumer.Plugins.TryGetValue("limit-count", out var limitCountObj))
+                    {
+                        var lc = JsonSerializer.SerializeToElement(limitCountObj);
+                        quota = new
+                        {
+                            count = lc.TryGetProperty("count", out var c) ? c.GetInt32() : 1000,
+                            time_window = lc.TryGetProperty("time_window", out var tw) ? tw.GetInt32() : 3600,
+                            rejected_code = lc.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 429,
+                            rejected_msg = lc.TryGetProperty("rejected_msg", out var rm) ? rm.GetString() ?? "API quota exceeded." : "API quota exceeded. Please contact support."
+                        };
+                    }
+
+                    if (consumer.Plugins.TryGetValue("limit-req", out var limitReqObj))
+                    {
+                        var lr = JsonSerializer.SerializeToElement(limitReqObj);
+                        rateLimit = new
+                        {
+                            rate = lr.TryGetProperty("rate", out var r) ? r.GetInt32() : 0,
+                            burst = lr.TryGetProperty("burst", out var b) ? b.GetInt32() : 0,
+                            rejected_code = lr.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 503,
+                            key = lr.TryGetProperty("key", out var k) ? k.GetString() ?? "remote_addr" : "remote_addr"
+                        };
+                    }
+                }
+
+                return Ok(new
+                {
+                    username = consumer.Username,
+                    quota = quota,
+                    rate_limit = rateLimit
+                });
+            }
+            catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
+            {
+                return NotFound(new { Error = $"Consumer '{username}' not found." });
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error retrieving consumer {Username}", username);
                 return StatusCode(500, "Internal server error");
             }
         }
@@ -79,16 +124,11 @@ namespace MilkApiManager.Controllers
                 string username = usernameProp.GetString()!;
                 
                 // Transform internal model to APISIX-compatible format
-                var apisixFormat = new Dictionary<string, object>
-                {
-                    ["username"] = username,
-                    ["plugins"] = new Dictionary<string, object>()
-                };
+                var plugins = new Dictionary<string, object>();
 
-                // Add Quota plugin if present
+                // Add Quota plugin (limit-count) if present
                 if (consumerData.TryGetProperty("quota", out var quota))
                 {
-                    var plugins = (Dictionary<string, object>)apisixFormat["plugins"];
                     plugins["limit-count"] = new
                     {
                         count = quota.GetProperty("count").GetInt32(),
@@ -99,6 +139,24 @@ namespace MilkApiManager.Controllers
                         policy = "local"
                     };
                 }
+
+                // Add Rate Limit plugin (limit-req) if present
+                if (consumerData.TryGetProperty("rate_limit", out var rateLimit))
+                {
+                    plugins["limit-req"] = new
+                    {
+                        rate = rateLimit.GetProperty("rate").GetInt32(),
+                        burst = rateLimit.GetProperty("burst").GetInt32(),
+                        rejected_code = rateLimit.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 503,
+                        key = rateLimit.TryGetProperty("key", out var k) ? k.GetString() : "remote_addr"
+                    };
+                }
+
+                var apisixFormat = new Dictionary<string, object>
+                {
+                    ["username"] = username,
+                    ["plugins"] = plugins
+                };
 
                 await _apisixClient.UpdateConsumerAsync(username, apisixFormat);
                 return Ok();
@@ -123,6 +181,49 @@ namespace MilkApiManager.Controllers
                 _logger.LogError(ex, "Error deleting consumer {Username}", username);
                 return StatusCode(500, "Internal server error");
             }
+        }
+
+        /// <summary>
+        /// 從 APISIX Consumer 原始資料中解析出 quota 和 rate_limit
+        /// </summary>
+        private static object ParseConsumerFromApisix(JsonElement value, string username)
+        {
+            var quota = new { count = 1000, time_window = 3600, rejected_code = 429, rejected_msg = "API quota exceeded. Please contact support." };
+            var rateLimit = new { rate = 0, burst = 0, rejected_code = 503, key = "remote_addr" };
+
+            if (value.TryGetProperty("plugins", out var plugins))
+            {
+                if (plugins.TryGetProperty("limit-count", out var limitCount))
+                {
+                    quota = new
+                    {
+                        count = limitCount.TryGetProperty("count", out var c) ? c.GetInt32() : 1000,
+                        time_window = limitCount.TryGetProperty("time_window", out var tw) ? tw.GetInt32() : 3600,
+                        rejected_code = limitCount.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 429,
+                        rejected_msg = limitCount.TryGetProperty("rejected_msg", out var rm) ? rm.GetString() ?? "API quota exceeded." : "API quota exceeded. Please contact support."
+                    };
+                }
+
+                if (plugins.TryGetProperty("limit-req", out var limitReq))
+                {
+                    rateLimit = new
+                    {
+                        rate = limitReq.TryGetProperty("rate", out var r) ? r.GetInt32() : 0,
+                        burst = limitReq.TryGetProperty("burst", out var b) ? b.GetInt32() : 0,
+                        rejected_code = limitReq.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 503,
+                        key = limitReq.TryGetProperty("key", out var k) ? k.GetString() ?? "remote_addr" : "remote_addr"
+                    };
+                }
+            }
+
+            return new
+            {
+                username = username,
+                desc = "",
+                labels = new List<string>(),
+                quota = quota,
+                rate_limit = rateLimit
+            };
         }
     }
 }

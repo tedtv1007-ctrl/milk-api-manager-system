@@ -6,6 +6,7 @@ namespace MilkApiManager.Data;
 public class AppDbContext : DbContext
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+    public DbSet<ApiKey> ApiKeys { get; set; }
     public DbSet<AuditLogEntry> AuditLogs { get; set; }
     public DbSet<BlacklistEntry> BlacklistEntries { get; set; }
     public DbSet<WhitelistEntry> WhitelistEntries { get; set; }
@@ -19,6 +20,19 @@ public class AppDbContext : DbContext
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
         base.OnModelCreating(modelBuilder);
+
+        modelBuilder.Entity<ApiKey>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.Owner).IsRequired();
+            entity.Property(e => e.KeyHash).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.ExpiresAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
         
         modelBuilder.Entity<PiiMaskingRule>(entity =>
         {

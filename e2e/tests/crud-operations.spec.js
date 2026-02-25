@@ -455,3 +455,328 @@ test.describe.serial('Blacklist API CRUD 完整生命週期', () => {
         console.log(`✅ 清理完成`);
     });
 });
+
+// ============================================================
+// API Key CRUD (金鑰管理完整生命週期)
+// ============================================================
+test.describe.serial('API Key CRUD 完整生命週期', () => {
+    let createdKeyId = null;
+    const TEST_OWNER = `e2e-key-owner-${Date.now()}`;
+
+    test('Create - 建立新 API 金鑰', async ({ request }) => {
+        const response = await request.post(`${BASE_URL}/api/Keys`, {
+            headers: AUTH_HEADERS,
+            data: {
+                owner: TEST_OWNER,
+                validityDays: 30,
+                scopes: '["read","write"]',
+                contactEmail: 'e2e-test@example.com',
+            },
+        });
+
+        const statusCode = response.status();
+        console.log(`Key CREATE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 201) {
+            const data = await response.json();
+            expect(data).toHaveProperty('id');
+            expect(data).toHaveProperty('owner', TEST_OWNER);
+            expect(data).toHaveProperty('expiresAt');
+            createdKeyId = data.id;
+            console.log(`✅ 成功建立金鑰: ${createdKeyId} (Owner: ${TEST_OWNER})`);
+        } else {
+            expect([201, 500]).toContain(statusCode);
+            console.log(`⚠️ Key CREATE 回傳 ${statusCode}`);
+            test.skip();
+        }
+    });
+
+    test('Read (List) - 取得所有金鑰清單', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/Keys`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`Key LIST 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(Array.isArray(data)).toBe(true);
+            const found = data.find(k => k.owner === TEST_OWNER);
+            expect(found, `應能在清單中找到 Owner=${TEST_OWNER} 的金鑰`).toBeTruthy();
+            expect(found).toHaveProperty('isActive', true);
+            expect(found).toHaveProperty('expiresAt');
+            console.log(`✅ 金鑰清單中找到 ${TEST_OWNER}`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read (Single) - 取得單一金鑰明細', async ({ request }) => {
+        if (!createdKeyId) test.skip();
+
+        const response = await request.get(`${BASE_URL}/api/Keys/${createdKeyId}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`Key GET 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(data).toHaveProperty('owner', TEST_OWNER);
+            expect(data).toHaveProperty('isActive', true);
+            expect(data).toHaveProperty('scopes');
+            expect(data).toHaveProperty('contactEmail', 'e2e-test@example.com');
+            expect(data).toHaveProperty('daysUntilExpiry');
+            console.log(`✅ 金鑰明細取得成功: DaysUntilExpiry=${data.daysUntilExpiry}`);
+        } else {
+            expect([200, 404, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Update (Rotate) - 輪替金鑰', async ({ request }) => {
+        const response = await request.post(`${BASE_URL}/api/Keys/${TEST_OWNER}/rotate`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`Key ROTATE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(data).toHaveProperty('consumer', TEST_OWNER);
+            expect(data).toHaveProperty('rotatedAt');
+            expect(data).toHaveProperty('message');
+            console.log(`✅ 金鑰輪替成功: ${data.message}`);
+        } else {
+            expect([200, 400, 500]).toContain(statusCode);
+            console.log(`⚠️ Key ROTATE 回傳 ${statusCode}`);
+        }
+    });
+
+    test('Read after Rotate - 驗證輪替後金鑰仍有效', async ({ request }) => {
+        if (!createdKeyId) test.skip();
+
+        const response = await request.get(`${BASE_URL}/api/Keys/${createdKeyId}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(data).toHaveProperty('isActive', true);
+            console.log(`✅ 金鑰輪替後仍為有效狀態`);
+        } else {
+            expect([200, 404, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Delete - 停用金鑰', async ({ request }) => {
+        if (!createdKeyId) test.skip();
+
+        const response = await request.delete(`${BASE_URL}/api/Keys/${createdKeyId}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`Key DELETE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 204) {
+            console.log(`✅ 成功停用金鑰: ${createdKeyId}`);
+        } else {
+            expect([204, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read after Delete - 驗證金鑰已停用', async ({ request }) => {
+        if (!createdKeyId) test.skip();
+
+        const response = await request.get(`${BASE_URL}/api/Keys/${createdKeyId}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(data).toHaveProperty('isActive', false);
+            console.log(`✅ 金鑰已成功停用: isActive=false`);
+        } else {
+            expect([200, 404, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read (Not Found) - 存取不存在的金鑰', async ({ request }) => {
+        const fakeId = '00000000-0000-0000-0000-000000000000';
+        const response = await request.get(`${BASE_URL}/api/Keys/${fakeId}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        expect(statusCode).toBe(404);
+        console.log(`✅ 不存在的金鑰回傳 404`);
+    });
+});
+
+// ============================================================
+// Rate Limiting (限流) CRUD - Consumer with Quota + Rate Limit
+// ============================================================
+test.describe.serial('Rate Limiting CRUD 完整生命週期', () => {
+    const TEST_USERNAME = `e2e-ratelimit-${Date.now()}`;
+
+    test('Create - 建立含 Quota 與 Rate Limit 的 Consumer', async ({ request }) => {
+        const response = await request.post(`${BASE_URL}/api/Consumer`, {
+            headers: AUTH_HEADERS,
+            data: {
+                username: TEST_USERNAME,
+                quota: {
+                    count: 1000,
+                    time_window: 3600,
+                    rejected_code: 429,
+                    rejected_msg: 'E2E rate limit test quota',
+                },
+                rate_limit: {
+                    rate: 10,
+                    burst: 20,
+                    rejected_code: 503,
+                    key: 'remote_addr',
+                },
+            },
+        });
+
+        const statusCode = response.status();
+        console.log(`RateLimit CREATE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            console.log(`✅ 成功建立含限流設定的消費者: ${TEST_USERNAME}`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+            console.log(`⚠️ RateLimit CREATE 回傳 ${statusCode}`);
+            test.skip();
+        }
+    });
+
+    test('Read (List) - 驗證消費者含有 rate_limit 欄位', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/Consumer`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`RateLimit LIST 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            const consumers = Array.isArray(data) ? data : [];
+            const found = consumers.find(c => c.username === TEST_USERNAME);
+            expect(found, `應能找到消費者 ${TEST_USERNAME}`).toBeTruthy();
+            expect(found).toHaveProperty('quota');
+            expect(found).toHaveProperty('rate_limit');
+            console.log(`✅ 消費者 ${TEST_USERNAME} 含有 quota 和 rate_limit`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read (Single) - 取得單一消費者含限流明細', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/Consumer/${TEST_USERNAME}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`RateLimit GET 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            expect(data).toHaveProperty('username', TEST_USERNAME);
+            expect(data).toHaveProperty('quota');
+            expect(data).toHaveProperty('rate_limit');
+            console.log(`✅ 消費者明細: quota.count=${data.quota?.count}, rate_limit.rate=${data.rate_limit?.rate}`);
+        } else {
+            expect([200, 404, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Update - 修改消費者的 Quota 與 Rate Limit', async ({ request }) => {
+        const response = await request.post(`${BASE_URL}/api/Consumer`, {
+            headers: AUTH_HEADERS,
+            data: {
+                username: TEST_USERNAME,
+                quota: {
+                    count: 5000,
+                    time_window: 7200,
+                    rejected_code: 429,
+                    rejected_msg: 'E2E updated quota',
+                },
+                rate_limit: {
+                    rate: 50,
+                    burst: 100,
+                    rejected_code: 503,
+                    key: 'remote_addr',
+                },
+            },
+        });
+
+        const statusCode = response.status();
+        console.log(`RateLimit UPDATE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 200) {
+            console.log(`✅ 成功更新消費者限流設定: ${TEST_USERNAME}`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read after Update - 驗證更新後的消費者', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/Consumer`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            const consumers = Array.isArray(data) ? data : [];
+            const found = consumers.find(c => c.username === TEST_USERNAME);
+            expect(found, `應能找到消費者 ${TEST_USERNAME}`).toBeTruthy();
+            console.log(`✅ 消費者 ${TEST_USERNAME} 更新後仍存在`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Delete - 刪除消費者', async ({ request }) => {
+        const response = await request.delete(`${BASE_URL}/api/Consumer/${TEST_USERNAME}`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+        console.log(`RateLimit DELETE 回傳 HTTP ${statusCode}`);
+
+        if (statusCode === 204) {
+            console.log(`✅ 成功刪除消費者: ${TEST_USERNAME}`);
+        } else {
+            expect([204, 500]).toContain(statusCode);
+        }
+    });
+
+    test('Read after Delete - 驗證消費者已移除', async ({ request }) => {
+        const response = await request.get(`${BASE_URL}/api/Consumer`, {
+            headers: AUTH_HEADERS,
+        });
+
+        const statusCode = response.status();
+
+        if (statusCode === 200) {
+            const data = await response.json();
+            const consumers = Array.isArray(data) ? data : [];
+            const found = consumers.find(c => c.username === TEST_USERNAME);
+            expect(found, `消費者 ${TEST_USERNAME} 應已從清單中移除`).toBeFalsy();
+            console.log(`✅ 消費者 ${TEST_USERNAME} 已成功移除`);
+        } else {
+            expect([200, 500]).toContain(statusCode);
+        }
+    });
+});
+

@@ -18,6 +18,8 @@ namespace MilkApiManager.Models
     public class CreateKeyRequest
     {
         public required string Owner { get; set; }
-        public int ValidityDays { get; set; }
+        public int ValidityDays { get; set; } = 90; // 預設 90 天
+        public string Scopes { get; set; } = "[\"read\"]";
+        public string ContactEmail { get; set; } = "";
     }
 }
