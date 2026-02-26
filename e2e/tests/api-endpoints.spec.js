@@ -9,6 +9,8 @@ const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 /**
  * API 端點 E2E 測試
  * 驗證後端 API 端點的可用性、回應格式與資料正確性
+ *
+ * 在 Test Mode (MockApisixClient) 下運行，所有斷言為確定性。
  */
 
 test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () => {
@@ -22,48 +24,33 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
             headers: AUTH_HEADERS
         });
 
-        // API 可能因 APISIX 離線回傳 500，驗證回應可解析
-        const statusCode = response.status();
-        console.log(`Route API 回傳 HTTP ${statusCode}`);
-
-        if (statusCode === 200) {
-            const contentType = response.headers()['content-type'];
-            expect(contentType).toMatch(/application\/json|text\/plain/);
-            const body = await response.text();
-            expect(body.length).toBeGreaterThan(0);
-            console.log('✅ Route API 回傳正常');
-        } else {
-            console.log(`⚠️ Route API 回傳 ${statusCode}（APISIX 可能離線）`);
-            // 即使 APISIX 離線，也應回傳有意義的錯誤
-            expect([200, 500]).toContain(statusCode);
-        }
+        expect(response.status()).toBe(200);
+        const contentType = response.headers()['content-type'];
+        expect(contentType).toMatch(/application\/json|text\/plain/);
+        const body = await response.text();
+        expect(body.length).toBeGreaterThan(0);
+        console.log('✅ Route API 回傳正常');
     });
 
     test('Consumer API - 取得消費者清單', async ({ request }) => {
         const response = await request.get('http://localhost:5001/api/Consumer', {
             headers: AUTH_HEADERS
         });
-        const statusCode = response.status();
-        console.log(`Consumer API 回傳 HTTP ${statusCode}`);
 
-        if (statusCode === 200) {
-            const data = await response.json();
-            const consumers = Array.isArray(data) ? data : [];
-            console.log(`✅ Consumer API 回傳 ${consumers.length} 筆消費者資料`);
+        expect(response.status()).toBe(200);
+        const data = await response.json();
+        const consumers = Array.isArray(data) ? data : [];
+        console.log(`✅ Consumer API 回傳 ${consumers.length} 筆消費者資料`);
 
-            // 驗證消費者資料結構
-            for (const consumer of consumers) {
-                expect(consumer).toHaveProperty('username');
-                expect(consumer).toHaveProperty('quota');
+        // 驗證消費者資料結構
+        for (const consumer of consumers) {
+            expect(consumer).toHaveProperty('username');
+            expect(consumer).toHaveProperty('quota');
 
-                // 安全驗證：不應暴露敏感欄位
-                expect(consumer).not.toHaveProperty('password');
-                expect(consumer).not.toHaveProperty('secret');
-                expect(consumer).not.toHaveProperty('access_token');
-            }
-        } else {
-            expect([200, 500]).toContain(statusCode);
-            console.log(`⚠️ Consumer API 回傳 ${statusCode}`);
+            // 安全驗證：不應暴露敏感欄位
+            expect(consumer).not.toHaveProperty('password');
+            expect(consumer).not.toHaveProperty('secret');
+            expect(consumer).not.toHaveProperty('access_token');
         }
     });
 
@@ -71,19 +58,13 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
         const response = await request.get('http://localhost:5001/api/Blacklist', {
             headers: AUTH_HEADERS
         });
-        const statusCode = response.status();
-        console.log(`Blacklist API 回傳 HTTP ${statusCode}`);
 
-        if (statusCode === 200) {
-            const contentType = response.headers()['content-type'];
-            expect(contentType).toContain('application/json');
-            const data = await response.json();
-            expect(Array.isArray(data)).toBe(true);
-            console.log(`✅ Blacklist API 回傳 ${data.length} 筆黑名單資料`);
-        } else {
-            expect([200, 401, 500]).toContain(statusCode);
-            console.log(`⚠️ Blacklist API 回傳 ${statusCode}`);
-        }
+        expect(response.status()).toBe(200);
+        const contentType = response.headers()['content-type'];
+        expect(contentType).toContain('application/json');
+        const data = await response.json();
+        expect(Array.isArray(data)).toBe(true);
+        console.log(`✅ Blacklist API 回傳 ${data.length} 筆黑名單資料`);
     });
 
     test('Blacklist API - 新增 IP 至黑名單', async ({ request }) => {
@@ -98,25 +79,18 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
             }
         });
 
-        const statusCode = response.status();
-        console.log(`Blacklist POST (add) 回傳 HTTP ${statusCode}`);
+        expect(response.status()).toBe(200);
+        const data = await response.json();
+        expect(data).toHaveProperty('message');
+        expect(data.message).toContain(testIp);
+        console.log(`✅ 成功新增 IP ${testIp} 至黑名單`);
 
-        if (statusCode === 200) {
-            const data = await response.json();
-            expect(data).toHaveProperty('message');
-            expect(data.message).toContain(testIp);
-            console.log(`✅ 成功新增 IP ${testIp} 至黑名單`);
-
-            // 清理：移除測試用 IP
-            const removeResponse = await request.post('http://localhost:5001/api/Blacklist', {
-                headers: AUTH_HEADERS,
-                data: { ip: testIp, action: 'remove' }
-            });
-            console.log(`清理：移除測試 IP，回傳 HTTP ${removeResponse.status()}`);
-        } else {
-            expect([200, 401, 500]).toContain(statusCode);
-            console.log(`⚠️ Blacklist POST 回傳 ${statusCode}（APISIX 可能離線）`);
-        }
+        // 清理：移除測試用 IP
+        const removeResponse = await request.post('http://localhost:5001/api/Blacklist', {
+            headers: AUTH_HEADERS,
+            data: { ip: testIp, action: 'remove' }
+        });
+        console.log(`清理：移除測試 IP，回傳 HTTP ${removeResponse.status()}`);
     });
 
     test('Blacklist API - 無效請求回傳 400', async ({ request }) => {
@@ -128,10 +102,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
             }
         });
 
-        const statusCode = response.status();
-        console.log(`Blacklist API 空 IP 回傳 HTTP ${statusCode}`);
-        // 若系統升級了防護，可能返回 401
-        expect([400, 401]).toContain(statusCode);
+        expect(response.status()).toBe(400);
         console.log('✅ 空 IP 請求正確回傳 400 Bad Request');
     });
 
@@ -143,19 +114,11 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
             }
         });
 
-        const statusCode = response.status();
-        console.log(`Keys API 回傳 HTTP ${statusCode}`);
-
-        if (statusCode === 201) {
-            const data = await response.json();
-            expect(data).toHaveProperty('owner');
-            expect(data.owner).toBe('e2e-test-consumer');
-            console.log('✅ 成功建立 API 金鑰');
-        } else {
-            // APISIX 或 Vault 離線時可能失敗
-            expect([201, 400, 500]).toContain(statusCode);
-            console.log(`⚠️ Keys API 回傳 ${statusCode}`);
-        }
+        expect(response.status()).toBe(201);
+        const data = await response.json();
+        expect(data).toHaveProperty('owner');
+        expect(data.owner).toBe('e2e-test-consumer');
+        console.log('✅ 成功建立 API 金鑰');
     });
 
     test('Keys API - 空 Owner 回傳 400', async ({ request }) => {
@@ -166,9 +129,7 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
             }
         });
 
-        const statusCode = response.status();
-        console.log(`Keys API 空 owner 回傳 HTTP ${statusCode}`);
-        expect(statusCode).toBe(400);
+        expect(response.status()).toBe(400);
         console.log('✅ 空 owner 請求正確回傳 400 Bad Request');
     });
 
@@ -176,16 +137,17 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
         const response = await request.get('http://localhost:5001/api/Analytics/requests', {
             headers: AUTH_HEADERS
         });
+
+        // Analytics 依賴 Prometheus，Test Mode 下可能回傳 500
         const statusCode = response.status();
-        console.log(`Analytics requests API 回傳 HTTP ${statusCode}`);
+        expect([200, 500]).toContain(statusCode);
 
         if (statusCode === 200) {
             const data = await response.json();
             expect(Array.isArray(data)).toBe(true);
             console.log(`✅ Analytics API 回傳 ${data.length} 筆統計資料`);
         } else {
-            expect([200, 500]).toContain(statusCode);
-            console.log(`⚠️ Analytics API 回傳 ${statusCode}（Prometheus 可能離線）`);
+            console.log(`⚠️ Analytics API 回傳 ${statusCode}（Prometheus 未啟動，Test Mode 預期行為）`);
         }
     });
 

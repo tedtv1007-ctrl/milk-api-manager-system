@@ -10,11 +10,27 @@ echo "==========================================================="
 echo "   MILK API MANAGER - FULL SYSTEM VERIFICATION"
 echo "==========================================================="
 
+# Determine test mode
+IS_TEST_MODE="${USE_TEST_MODE:-false}"
+
+if [ "$IS_TEST_MODE" = "true" ]; then
+    echo "[Mode] Running in TEST MODE (MockApisixClient, no APISIX required)"
+else
+    echo "[Mode] Running in FULL MODE (real APISIX required)"
+fi
+
 # 1. Infrastructure Check
 echo -e "\n[Step 1/3] Checking Infrastructure (Docker)..."
-REQUIRED_CONTAINERS=("apisix" "etcd" "prometheus" "grafana")
-MISSING=()
 
+if [ "$IS_TEST_MODE" = "true" ]; then
+    # Test Mode: only check essential containers
+    REQUIRED_CONTAINERS=("milk-db" "milk-backend")
+else
+    # Full Mode: check all core containers
+    REQUIRED_CONTAINERS=("apisix" "etcd" "prometheus" "grafana")
+fi
+
+MISSING=()
 for container in "${REQUIRED_CONTAINERS[@]}"; do
     if ! docker ps --format '{{.Names}}' | grep -q "$container"; then
         MISSING+=("$container")
@@ -22,29 +38,43 @@ for container in "${REQUIRED_CONTAINERS[@]}"; do
 done
 
 if [ ${#MISSING[@]} -gt 0 ]; then
-    echo "   ??Missing: ${MISSING[*]}"
+    echo "   ⚠️Missing: ${MISSING[*]}"
 else
-    echo "   ??All core infrastructure containers are running."
+    echo "   ✅All core infrastructure containers are running."
 fi
 
 # Wait for key services to be READY (Crucial for CI stability)
 echo -e "\n[Wait] Verifying Service Connectivity..."
-for i in {1..30}; do
-    if curl -s http://localhost:9180/apisix/admin/routes -H "X-API-KEY: edd1c9f034335f136f87ad84b625c88b" > /dev/null; then
-        echo "   [PASS] APISIX Gateway is READY."
-        break
-    fi
-    [ $i -eq 30 ] && echo "   [WARN] APISIX wait timed out."
-    sleep 2
-done
+
+if [ "$IS_TEST_MODE" = "true" ]; then
+    # Test Mode: only wait for milk-backend health
+    for i in {1..30}; do
+        if curl -sf http://localhost:5001/health > /dev/null 2>&1; then
+            echo "   [PASS] milk-backend is READY."
+            break
+        fi
+        [ $i -eq 30 ] && echo "   [WARN] milk-backend wait timed out."
+        sleep 2
+    done
+else
+    # Full Mode: wait for APISIX Admin API
+    for i in {1..30}; do
+        if curl -s http://localhost:9180/apisix/admin/routes -H "X-API-KEY: edd1c9f034335f136f87ad84b625c88b" > /dev/null; then
+            echo "   [PASS] APISIX Gateway is READY."
+            break
+        fi
+        [ $i -eq 30 ] && echo "   [WARN] APISIX wait timed out."
+        sleep 2
+    done
+fi
 
 # 2. .NET Unit Tests
 echo -e "\n[Step 2/3] Running .NET Unit Tests..."
 if dotnet test backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj --logger "console;verbosity=normal"; then
-    DOTNET_STATUS="??OK"
+    DOTNET_STATUS="✅OK"
     DOTNET_CODE=0
 else
-    DOTNET_STATUS="??FAIL"
+    DOTNET_STATUS="❌FAIL"
     DOTNET_CODE=1
 fi
 
@@ -60,10 +90,10 @@ fi
 
 export BASE_URL="http://localhost:5000"
 if npm test; then
-    E2E_STATUS="??OK"
+    E2E_STATUS="✅OK"
     E2E_CODE=0
 else
-    E2E_STATUS="??FAIL"
+    E2E_STATUS="❌FAIL"
     E2E_CODE=1
 fi
 cd ..
@@ -76,12 +106,18 @@ if [ $DOTNET_CODE -eq 0 ] && [ $E2E_CODE -eq 0 ]; then
     OVERALL_STATUS="PASSED ✅"
 fi
 
+TEST_MODE_LABEL=""
+if [ "$IS_TEST_MODE" = "true" ]; then
+    TEST_MODE_LABEL=" (Test Mode - MockApisixClient)"
+fi
+
 cat <<EOF > "$REPORT_FILE"
-# System Verification Report ($(date '+%Y-%m-%d %H:%M:%S'))
+# System Verification Report ($(date '+%Y-%m-%d %H:%M:%S'))${TEST_MODE_LABEL}
 
 ## Summary
 - **Duration:** ${DURATION} seconds
 - **Overall Status:** $OVERALL_STATUS
+- **Mode:** $([ "$IS_TEST_MODE" = "true" ] && echo "Test Mode (Mock)" || echo "Full Integration")
 
 ## Component Breakdown
 | Component | Status | Details |

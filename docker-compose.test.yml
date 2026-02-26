@@ -1,0 +1,48 @@
+services:
+  milk-db:
+    image: postgres:17-alpine
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-milk_user}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-milk_password}
+      - POSTGRES_DB=${POSTGRES_DB:-milk_db}
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-milk_user}" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - test
+
+  milk-backend:
+    build:
+      context: ./backend/MilkApiManager
+      dockerfile: Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - USE_TEST_MODE=true
+      - APISIX_ADMIN_KEY=mock-key-not-used
+      - APISIX_ADMIN_URL=http://localhost:9180/apisix/admin/
+      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable
+      - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
+      - JWT_SECRET=${JWT_SECRET:-milk-api-default-jwt-secret-change-in-production-32chars!}
+    ports:
+      - "5001:8080"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 20s
+    networks:
+      - test
+    depends_on:
+      milk-db:
+        condition: service_healthy
+
+networks:
+  test:
+    driver: bridge

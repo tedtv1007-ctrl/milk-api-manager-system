@@ -10,6 +10,8 @@ namespace MilkApiManager.Services
         private static readonly ConcurrentDictionary<string, ApisixRoute> _routes = new();
         private static readonly ConcurrentDictionary<string, Consumer> _consumers = new();
         private static readonly ConcurrentDictionary<string, Service> _services = new();
+        private static readonly ConcurrentDictionary<string, ConsumerGroup> _consumerGroups = new();
+        private static readonly ConcurrentDictionary<string, List<string>> _whitelists = new();
         private static List<string> _blacklist = new();
 
         public MockApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger) : base(httpClient, logger)
@@ -101,8 +103,6 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetConsumersAsync()
         {
-            // APISIX returns { list: [ { value: { username: "..." } } ] } or similar
-            // ConsumerController parses "list" property.
             var list = _consumers.Select(kv => new { value = kv.Value }).ToList();
             var response = new { list = list };
             return Task.FromResult(JsonSerializer.Serialize(response));
@@ -110,11 +110,6 @@ namespace MilkApiManager.Services
 
         public override Task UpdateConsumerAsync(string username, object consumerConfig)
         {
-            // consumerConfig is generic object, simplified mock handling
-            // In real app, we might need more logic, but for now assuming it succeeds
-            // Ideally we should deserialize to Consumer, but config is object.
-            // We'll just create a dummy consumer or try to parse if needed.
-            // For E2E tests, we just need the API to return 200.
             if (!_consumers.ContainsKey(username))
             {
                 _consumers[username] = new Consumer { Username = username };
@@ -141,6 +136,42 @@ namespace MilkApiManager.Services
 
         public override Task UpdateGlobalPlugin(string pluginName, object body)
         {
+            return Task.CompletedTask;
+        }
+
+        // --- Whitelist (per-route) ---
+        public override Task<List<string>> GetWhitelistForRouteAsync(string routeId)
+        {
+            if (_whitelists.TryGetValue(routeId, out var list))
+            {
+                return Task.FromResult(list);
+            }
+            return Task.FromResult(new List<string>());
+        }
+
+        public override Task UpdateWhitelistForRouteAsync(string routeId, List<string> whitelist)
+        {
+            _whitelists[routeId] = whitelist;
+            return Task.CompletedTask;
+        }
+
+        // --- Consumer Groups ---
+        public override Task CreateConsumerGroupAsync(string id, ConsumerGroup groupConfig)
+        {
+            _consumerGroups[id] = groupConfig;
+            return Task.CompletedTask;
+        }
+
+        public override Task<string> GetConsumerGroupsAsync()
+        {
+            var list = _consumerGroups.Select(kv => new { value = kv.Value }).ToList();
+            var response = new { node = new { nodes = list } };
+            return Task.FromResult(JsonSerializer.Serialize(response));
+        }
+
+        public override Task DeleteConsumerGroupAsync(string id)
+        {
+            _consumerGroups.TryRemove(id, out _);
             return Task.CompletedTask;
         }
     }

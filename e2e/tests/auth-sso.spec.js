@@ -3,6 +3,8 @@ const { test, expect } = require('@playwright/test');
 /**
  * SSO 認證 E2E 測試
  * 驗證 JWT 登入流程、角色存取控制、API Key 認證
+ *
+ * 在 Test Mode (MockApisixClient) 下運行，所有斷言為確定性。
  */
 
 const BASE_URL = 'http://localhost:5001';
@@ -15,8 +17,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
             data: { username: 'admin', password: 'admin' }
         });
 
-        expect([200, 401]).toContain(response.status());
-        if (response.status() === 401) return;
+        expect(response.status()).toBe(200);
         const body = await response.json();
         expect(body).toHaveProperty('token');
         expect(body).toHaveProperty('expiresAt');
@@ -52,6 +53,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
         const loginResp = await request.post(`${BASE_URL}/api/auth/login`, {
             data: { username: 'admin', password: 'admin' }
         });
+        expect(loginResp.status()).toBe(200);
         const { token } = await loginResp.json();
 
         // Step 2: Access /me with JWT
@@ -59,8 +61,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        expect([200, 401]).toContain(meResp.status());
-        if (meResp.status() === 401) return;
+        expect(meResp.status()).toBe(200);
         const me = await meResp.json();
         expect(me.username).toBe('admin');
         expect(me.isAuthenticated).toBe(true);
@@ -80,6 +81,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
         const loginResp = await request.post(`${BASE_URL}/api/auth/login`, {
             data: { username: 'admin', password: 'admin' }
         });
+        expect(loginResp.status()).toBe(200);
         const { token } = await loginResp.json();
 
         // Access protected endpoint
@@ -87,10 +89,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
-        const status = resp.status();
-        console.log(`Blacklist with JWT: HTTP ${status}`);
-        // 200 or 500 (if APISIX offline), but NOT 401/403
-        expect([200, 401, 500]).toContain(status);
+        expect(resp.status()).toBe(200);
         console.log('✅ JWT Token 成功存取 Blacklist API');
     });
 
@@ -99,8 +98,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
             headers: { 'X-API-KEY': API_KEY }
         });
 
-        const status = resp.status();
-        expect([200, 401, 500]).toContain(status);
+        expect(resp.status()).toBe(200);
         console.log('✅ API Key 認證方式仍然有效');
     });
 
@@ -116,6 +114,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
         const loginResp = await request.post(`${BASE_URL}/api/auth/login`, {
             data: { username: 'viewer', password: 'viewer' }
         });
+        expect(loginResp.status()).toBe(200);
         const { token } = await loginResp.json();
 
         // Try to access Admin-only endpoint
@@ -133,14 +132,16 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
         const loginResp = await request.post(`${BASE_URL}/api/auth/login`, {
             data: { username: 'operator', password: 'operator' }
         });
+        expect(loginResp.status()).toBe(200);
         const { token } = await loginResp.json();
 
         const resp = await request.get(`${BASE_URL}/api/PiiMasking`, {
             headers: { 'Authorization': `Bearer ${token}` }
         });
 
+        // PiiMasking endpoint may return 200 or 404 depending on whether it exists
         const status = resp.status();
-        expect([200, 401, 403, 500]).toContain(status);
+        expect([200, 404]).toContain(status);
         console.log('✅ Operator 角色成功存取 PII Masking 端點');
     });
 

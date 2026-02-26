@@ -29,35 +29,23 @@ jobs:
         with:
           python-version: '3.10'
 
-      # 2. Infrastructure Setup (Muscle)
-      - name: Pull Docker Images with Retries
+      # 2. Infrastructure Setup (Lightweight Test Mode)
+      - name: Start Services via Docker Compose (Test Mode)
         run: |
-          for i in {1..3}; do
-            echo "Attempt $i to pull Docker images..."
-            if docker compose pull; then
-              echo "Successfully pulled images!"
+          docker compose -f docker-compose.test.yml up -d --build
+          echo "Waiting for milk-backend healthcheck..."
+          for i in {1..30}; do
+            if curl -sf http://localhost:5001/health > /dev/null 2>&1; then
+              echo "milk-backend is READY!"
               break
             fi
-            if [ $i -eq 3 ]; then
-              echo "Failed to pull images after 3 attempts."
+            if [ $i -eq 30 ]; then
+              echo "milk-backend failed to start within 60s"
+              docker compose -f docker-compose.test.yml logs
               exit 1
             fi
-            echo "Pull failed, retrying in 15 seconds..."
-            sleep 15
-          done
-
-      - name: Start Services via Docker Compose
-        run: |
-          docker compose up -d
-          echo "Waiting for services to initialize (60s)..."
-          # Wait for APISIX Admin API to be responsive
-          for i in {1..20}; do
-            if curl -s http://localhost:9180/apisix/admin/routes -H "X-API-KEY: edd1c9f034335f136f87ad84b625c88b"; then
-              echo "APISIX is READY!"
-              break
-            fi
-            echo "Waiting for APISIX... ($i/20)"
-            sleep 5
+            echo "Waiting for milk-backend... ($i/30)"
+            sleep 2
           done
 
       # 3. Execution: Unified Verification (The Source of Truth)
@@ -65,11 +53,12 @@ jobs:
         run: bash scripts/verify-all.sh
         env:
           BASE_URL: "http://localhost:5000"
+          USE_TEST_MODE: "true"
 
       # 4. Final Status (Always run to upload artifacts if failed)
       - name: Dump Docker Logs on Failure
         if: failure()
-        run: docker compose logs
+        run: docker compose -f docker-compose.test.yml logs
 
       - name: Upload E2E Results on Failure
         if: failure()
