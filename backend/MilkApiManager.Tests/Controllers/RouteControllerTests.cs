@@ -29,7 +29,8 @@ public class RouteControllerTests
         _mockAuditLogService = new Mock<AuditLogService>(
             Mock.Of<HttpClient>(),
             Mock.Of<Microsoft.Extensions.Configuration.IConfiguration>(),
-            Mock.Of<Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>()
+            Mock.Of<Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>(),
+            Mock.Of<ILogger<AuditLogService>>()
         );
 
         _controller = new RouteController(

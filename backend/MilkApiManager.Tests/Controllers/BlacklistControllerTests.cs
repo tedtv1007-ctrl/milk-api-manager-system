@@ -29,7 +29,7 @@ public class BlacklistControllerTests : IDisposable
             Mock.Of<ILogger<ApisixClient>>()
         );
         _mockLogger = new Mock<ILogger<BlacklistController>>();
-        _mockAuditLog = new Mock<AuditLogService>(MockBehavior.Strict, Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>());
+        _mockAuditLog = new Mock<AuditLogService>(MockBehavior.Strict, Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>());
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
