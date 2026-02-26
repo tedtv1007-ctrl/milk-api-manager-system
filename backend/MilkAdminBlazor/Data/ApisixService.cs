@@ -475,7 +475,7 @@ namespace MilkAdminBlazor.Data
         public async Task<string> RunLoadTestAsync(string url, int vus, int duration)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"api/LoadTest/run?url={Uri.EscapeDataString(url)}&vus={vus}&duration={duration}");
-            request.Headers.Add("X-API-KEY", "milk-admin-secret-key-change-me");
+            // X-API-KEY is now automatically injected by the HttpClient configured in Program.cs
             
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
@@ -586,6 +586,46 @@ namespace MilkAdminBlazor.Data
         {
             try { return await _httpClient.GetFromJsonAsync<SlaDto>("api/Analytics/sla"); }
             catch { return new SlaDto { AvailabilityPercentage = 100, Status = "Offline" }; }
+        }
+
+        // --- Audit Logs ---
+        public class AuditLogEntryDto
+        {
+            [JsonPropertyName("id")]
+            public int Id { get; set; }
+
+            [JsonPropertyName("timestamp")]
+            public DateTime Timestamp { get; set; }
+
+            [JsonPropertyName("user")]
+            public string User { get; set; } = string.Empty;
+
+            [JsonPropertyName("action")]
+            public string Action { get; set; } = string.Empty;
+
+            [JsonPropertyName("resource")]
+            public string Resource { get; set; } = string.Empty;
+
+            [JsonPropertyName("statusCode")]
+            public int StatusCode { get; set; }
+
+            [JsonPropertyName("clientIp")]
+            public string? ClientIp { get; set; }
+
+            [JsonPropertyName("detailsJson")]
+            public string? DetailsJson { get; set; }
+        }
+
+        public async Task<List<AuditLogEntryDto>> GetAuditLogsAsync(int limit = 100)
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<AuditLogEntryDto>>($"api/AuditLogs?limit={limit}") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task<Dictionary<string, int>> GetAuditStatsAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<Dictionary<string, int>>("api/AuditLogs/stats") ?? new(); }
+            catch { return new(); }
         }
     }
 }

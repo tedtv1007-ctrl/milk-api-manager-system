@@ -29,13 +29,15 @@ builder.Services.AddSwaggerGen(c =>
     }
 });
 
-// CORS — allow Blazor admin UI
+// CORS — allow Blazor admin UI dynamically
 builder.Services.AddCors(options =>
 {
+    var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? Array.Empty<string>();
+    
     options.AddDefaultPolicy(policy =>
     {
         policy
-            .WithOrigins("http://localhost:5000", "http://milk-admin-ui:8080")
+            .WithOrigins(allowedOrigins)
             .AllowAnyHeader()
             .AllowAnyMethod();
     });

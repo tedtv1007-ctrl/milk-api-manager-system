@@ -1,7 +1,6 @@
 @page "/audit-logs"
-@using MilkApiManager.Models
-@using MilkApiManager.Services
-@inject AuditLogService AuditLogService
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
 @inject IJSRuntime JSRuntime
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
@@ -35,7 +34,7 @@
         </MudItem>
     </MudGrid>
 
-    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="2" Filter="new Func<AuditLogEntry,bool>(FilterFunc)">
+    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="2" Filter="new Func<ApisixService.AuditLogEntryDto,bool>(FilterFunc)">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Recent Activity Logs</MudText>
             <MudSpacer />
@@ -51,7 +50,16 @@
         </HeaderContent>
         <RowTemplate>
             <MudTd DataLabel="Timestamp">@context.Timestamp.ToLocalTime().ToString("yyyy-MM-dd HH:mm:ss")</MudTd>
-            <MudTd DataLabel="User"><MudAvatar Size="Size.Small" Color="Color.Primary" Class="mr-2">@context.User[0]</MudAvatar> @context.User</MudTd>
+            <MudTd DataLabel="User">
+                @if (!string.IsNullOrEmpty(context.User))
+                {
+                    <MudAvatar Size="Size.Small" Color="Color.Primary" Class="mr-2">@context.User[0]</MudAvatar> @context.User
+                }
+                else
+                {
+                    <span>N/A</span>
+                }
+            </MudTd>
             <MudTd DataLabel="Action">
                 <MudChip T="string" Color="@GetActionColor(context.Action)" Size="Size.Small" Variant="Variant.Text">@context.Action</MudChip>
             </MudTd>
@@ -77,7 +85,7 @@
 
 @code {
     private string _searchString = "";
-    private List<AuditLogEntry> _logs = new();
+    private List<ApisixService.AuditLogEntryDto> _logs = new();
     private int _totalEvents = 0;
     private int _violations = 0;
     private string _topUser = "N/A";
@@ -89,22 +97,23 @@
 
     private async Task LoadData()
     {
-        _logs = await AuditLogService.GetLogsAsync(1000);
+        _logs = await ApisixService.GetAuditLogsAsync(1000);
         
         // Calculate basic stats for the dashboard
         _totalEvents = _logs.Count;
         _violations = _logs.Count(l => l.StatusCode >= 400);
-        _topUser = _logs.GroupBy(l => l.User)
+        _topUser = _logs.Where(l => !string.IsNullOrEmpty(l.User))
+                        .GroupBy(l => l.User)
                         .OrderByDescending(g => g.Count())
                         .Select(g => g.Key)
                         .FirstOrDefault() ?? "N/A";
     }
 
-    private Color GetActionColor(string action) => action.ToLower() switch
+    private Color GetActionColor(string action) => action?.ToLower() switch
     {
-        var a when a.Contains("delete") || a.Contains("remove") => Color.Error,
-        var a when a.Contains("create") || a.Contains("add") => Color.Success,
-        var a when a.Contains("update") || a.Contains("patch") => Color.Warning,
+        var a when a != null && (a.Contains("delete") || a.Contains("remove")) => Color.Error,
+        var a when a != null && (a.Contains("create") || a.Contains("add")) => Color.Success,
+        var a when a != null && (a.Contains("update") || a.Contains("patch")) => Color.Warning,
         _ => Color.Info
     };
 
@@ -120,11 +129,11 @@
         await JSRuntime.InvokeVoidAsync("downloadFile", fileName, "text/csv", base64);
     }
 
-    private bool FilterFunc(AuditLogEntry element)
+    private bool FilterFunc(ApisixService.AuditLogEntryDto element)
     {
         if (string.IsNullOrWhiteSpace(_searchString)) return true;
-        return element.User.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ||
-               element.Action.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ||
-               element.Resource.Contains(_searchString, StringComparison.OrdinalIgnoreCase);
+        return (element.User?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false) ||
+               (element.Action?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false) ||
+               (element.Resource?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false);
     }
 }
