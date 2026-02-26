@@ -26,7 +26,7 @@ services:
       - USE_TEST_MODE=true
       - APISIX_ADMIN_KEY=mock-key-not-used
       - APISIX_ADMIN_URL=http://localhost:9180/apisix/admin/
-      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable
+      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
       - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
       - JWT_SECRET=${JWT_SECRET:-milk-api-default-jwt-secret-change-in-production-32chars!}
     ports:
