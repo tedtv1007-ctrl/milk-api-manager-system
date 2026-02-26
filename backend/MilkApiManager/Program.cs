@@ -42,7 +42,8 @@ builder.Services.AddCors(options =>
 });
 
 // Health Checks
-builder.Services.AddHealthChecks();
+var healthChecksBuilder = builder.Services.AddHealthChecks();
+// PostgreSQL health check will be added after connection string is resolved below
 
 // JWT Bearer Authentication
 var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") 
@@ -90,6 +91,9 @@ else
         options.UseNpgsql(connectionString));
     builder.Services.AddDbContext<AuditContext>(options =>
         options.UseNpgsql(connectionString));
+    
+    // Add PostgreSQL health check for deep /health validation
+    healthChecksBuilder.AddNpgSql(connectionString, name: "postgresql");
 }
 
 // Register Services

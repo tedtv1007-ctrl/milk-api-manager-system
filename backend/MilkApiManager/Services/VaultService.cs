@@ -38,14 +38,14 @@ namespace MilkApiManager.Services
 
         public async Task StoreSecretAsync(string key, string value)
         {
-            _logger.LogInformation($"Storing secret for {key}");
+            _logger.LogInformation("Storing secret for {Key}", key);
             var filePath = Path.Combine(_storagePath, $"{key}.secret");
             await File.WriteAllTextAsync(filePath, value);
         }
 
         public async Task<string> RotateApiKeyAsync(string consumerName)
         {
-            _logger.LogWarning($"Rotating API Key for Consumer: {consumerName}");
+            _logger.LogWarning("Rotating API Key for Consumer: {ConsumerName}", consumerName);
             
             // 1. Generate a new high-entropy key
             var newKey = Guid.NewGuid().ToString("N") + Guid.NewGuid().ToString("N");
