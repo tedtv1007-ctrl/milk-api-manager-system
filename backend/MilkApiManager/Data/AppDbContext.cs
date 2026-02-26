@@ -26,6 +26,8 @@ public class AppDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.Owner).IsRequired();
             entity.Property(e => e.KeyHash).IsRequired();
+            entity.HasIndex(e => new { e.IsActive, e.ExpiresAt });
+            entity.HasIndex(e => e.Owner);
             entity.Property(e => e.CreatedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
@@ -47,6 +49,8 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<AuditLogEntry>(entity =>
         {
             entity.HasKey(e => e.Id);
+            entity.HasIndex(e => e.Timestamp);
+            entity.HasIndex(e => e.Action);
             entity.Property(e => e.Timestamp).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
@@ -56,6 +60,7 @@ public class AppDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.IpOrCidr).IsRequired();
+            entity.HasIndex(e => e.IpOrCidr).IsUnique();
             entity.Property(e => e.AddedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
@@ -66,6 +71,7 @@ public class AppDbContext : DbContext
             entity.HasKey(e => e.Id);
             entity.Property(e => e.RouteId).IsRequired();
             entity.Property(e => e.IpCidr).IsRequired();
+            entity.HasIndex(e => e.RouteId);
             entity.Property(e => e.AddedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));

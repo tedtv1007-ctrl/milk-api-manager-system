@@ -2,6 +2,7 @@ services:
   apisix:
     image: apache/apisix:3.11.0-debian
     restart: always
+    mem_limit: 512m
     environment:
       - APISIX_ETCD_HOST=http://etcd:2379
     volumes:
@@ -117,6 +118,7 @@ services:
   milk-db:
     image: postgres:17-alpine
     restart: always
+    mem_limit: 512m
     environment:
       - POSTGRES_USER=${POSTGRES_USER:-milk_user}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-milk_password}
@@ -138,6 +140,7 @@ services:
       context: ./backend/MilkApiManager
       dockerfile: Dockerfile
     restart: always
+    mem_limit: 512m
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
@@ -166,6 +169,7 @@ services:
       context: ./backend
       dockerfile: MilkAdminBlazor/Dockerfile
     restart: always
+    mem_limit: 256m
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - BackendApiUrl=http://milk-backend:8080
