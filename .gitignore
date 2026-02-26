@@ -49,6 +49,7 @@ docker-compose.override.yml
 
 # Secrets
 .env
+vault_storage/
 
 # Debug / temp artifacts
 swagger_*.html

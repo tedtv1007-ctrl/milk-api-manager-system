@@ -1,4 +1,6 @@
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 
 namespace MilkApiManager.Middleware;
 
@@ -43,8 +45,12 @@ public class ApiKeyAuthMiddleware
             return;
         }
 
-        // Check 1: API Key header
-        if (context.Request.Headers.TryGetValue(API_KEY_HEADER, out var extractedKey) && extractedKey == _apiKey)
+        // Check 1: API Key header (timing-safe comparison to prevent timing attacks)
+        if (context.Request.Headers.TryGetValue(API_KEY_HEADER, out var extractedKey) 
+            && !string.IsNullOrEmpty(extractedKey)
+            && CryptographicOperations.FixedTimeEquals(
+                Encoding.UTF8.GetBytes(extractedKey.ToString()),
+                Encoding.UTF8.GetBytes(_apiKey)))
         {
             await _next(context);
             return;

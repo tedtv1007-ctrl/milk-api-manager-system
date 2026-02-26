@@ -126,6 +126,24 @@ var app = builder.Build();
 
 // ===== HTTP Request Pipeline =====
 
+// 0. Global Exception Handler (catches unhandled exceptions, prevents stack trace leaks)
+app.UseExceptionHandler(appError =>
+{
+    appError.Run(async context =>
+    {
+        var logger = context.RequestServices.GetRequiredService<ILogger<Program>>();
+        var exceptionFeature = context.Features.Get<Microsoft.AspNetCore.Diagnostics.IExceptionHandlerFeature>();
+        if (exceptionFeature != null)
+        {
+            logger.LogError(exceptionFeature.Error, "Unhandled exception on {Method} {Path}", 
+                context.Request.Method, context.Request.Path);
+        }
+        context.Response.StatusCode = 500;
+        context.Response.ContentType = "application/json";
+        await context.Response.WriteAsJsonAsync(new { error = "An internal server error occurred." });
+    });
+});
+
 // 1. Security Headers (first in pipeline, applies to ALL responses)
 app.Use(async (context, next) =>
 {
