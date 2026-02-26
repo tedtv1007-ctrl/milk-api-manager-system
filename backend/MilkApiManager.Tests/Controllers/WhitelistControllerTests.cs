@@ -45,7 +45,7 @@ namespace MilkApiManager.Tests.Controllers
             var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<ILogger<ApisixClient>>() });
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -66,7 +66,7 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(false);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask);
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -88,7 +88,7 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -120,7 +120,7 @@ namespace MilkApiManager.Tests.Controllers
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>() });
+            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
