@@ -22,6 +22,12 @@ test.describe.serial('Route API CRUD 完整生命週期', () => {
         name: 'E2E CRUD Test Route',
         uri: '/e2e-crud-test',
         methods: ['GET', 'POST'],
+        upstream: {
+            type: 'roundrobin',
+            nodes: {
+                'httpbin.org:80': 1
+            }
+        }
     };
 
     test('Create - 建立新路由', async ({ request }) => {
@@ -102,7 +108,7 @@ test.describe.serial('Route API CRUD 完整生命週期', () => {
 // Consumer API CRUD
 // ============================================================
 test.describe.serial('Consumer API CRUD 完整生命週期', () => {
-    const TEST_USERNAME = `e2e-crud-consumer-${Date.now()}`;
+    const TEST_USERNAME = `e2e_crud_consumer_${Date.now()}`;
 
     test('Create - 建立新消費者', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Consumer`, {
@@ -340,7 +346,7 @@ test.describe.serial('Blacklist API CRUD 完整生命週期', () => {
 // ============================================================
 test.describe.serial('API Key CRUD 完整生命週期', () => {
     let createdKeyId = null;
-    const TEST_OWNER = `e2e-key-owner-${Date.now()}`;
+    const TEST_OWNER = `e2e_key_owner_${Date.now()}`;
 
     test('Create - 建立新 API 金鑰', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Keys`, {
@@ -459,7 +465,7 @@ test.describe.serial('API Key CRUD 完整生命週期', () => {
 // Rate Limiting (限流) CRUD - Consumer with Quota + Rate Limit
 // ============================================================
 test.describe.serial('Rate Limiting CRUD 完整生命週期', () => {
-    const TEST_USERNAME = `e2e-ratelimit-${Date.now()}`;
+    const TEST_USERNAME = `e2e_ratelimit_${Date.now()}`;
 
     test('Create - 建立含 Quota 與 Rate Limit 的 Consumer', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Consumer`, {

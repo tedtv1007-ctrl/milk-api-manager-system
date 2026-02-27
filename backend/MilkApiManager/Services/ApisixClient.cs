@@ -42,6 +42,11 @@ namespace MilkApiManager.Services
         {
             var request = CreateRequest(HttpMethod.Put, $"routes/{id}", routeConfig);
             var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to create route {RouteId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
+            }
             response.EnsureSuccessStatusCode();
             _logger.LogInformation("Successfully created route {RouteId}", id);
         }
@@ -63,15 +68,22 @@ namespace MilkApiManager.Services
              return await response.Content.ReadAsStringAsync();
         }
 
+        private string ExtractValueFromJson(string json)
+        {
+            var root = JsonSerializer.Deserialize<JsonElement>(json);
+            if (root.TryGetProperty("value", out var v)) return v.GetRawText();
+            if (root.TryGetProperty("node", out var n) && n.TryGetProperty("value", out var nv)) return nv.GetRawText();
+            return root.GetRawText();
+        }
+
         public virtual async Task<ApisixRoute?> GetRouteAsync(string id)
         {
             var request = CreateRequest(HttpMethod.Get, $"routes/{id}");
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            // APISIX returns a "node" wrapper
-            var node = JsonSerializer.Deserialize<JsonElement>(json).GetProperty("node").GetProperty("value").GetRawText();
-            return JsonSerializer.Deserialize<ApisixRoute>(node, _jsonSerializerOptions);
+            var valueStr = ExtractValueFromJson(json);
+            return JsonSerializer.Deserialize<ApisixRoute>(valueStr, _jsonSerializerOptions);
         }
 
         public virtual async Task UpdateRouteAsync(string id, ApisixRoute routeConfig)
@@ -96,8 +108,8 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            var node = JsonSerializer.Deserialize<JsonElement>(json).GetProperty("node").GetProperty("value").GetRawText();
-            return JsonSerializer.Deserialize<Service>(node, _jsonSerializerOptions);
+            var valueStr = ExtractValueFromJson(json);
+            return JsonSerializer.Deserialize<Service>(valueStr, _jsonSerializerOptions);
         }
 
         public virtual async Task<string> GetServicesAsync()
@@ -140,8 +152,8 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             response.EnsureSuccessStatusCode();
             var json = await response.Content.ReadAsStringAsync();
-            var node = JsonSerializer.Deserialize<JsonElement>(json).GetProperty("node").GetProperty("value").GetRawText();
-            return JsonSerializer.Deserialize<Consumer>(node, _jsonSerializerOptions);
+            var valueStr = ExtractValueFromJson(json);
+            return JsonSerializer.Deserialize<Consumer>(valueStr, _jsonSerializerOptions);
         }
 
         public virtual async Task<string> GetConsumersAsync()
@@ -156,6 +168,11 @@ namespace MilkApiManager.Services
         {
             var request = CreateRequest(HttpMethod.Put, $"consumers/{username}", consumerConfig);
             var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to update consumer {Username}. APISIX returned {StatusCode}: {ErrorResponse}", username, response.StatusCode, errorContent);
+            }
             response.EnsureSuccessStatusCode();
             _logger.LogInformation("Successfully updated consumer {Username}", username);
         }

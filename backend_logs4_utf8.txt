@@ -1,0 +1,500 @@
+﻿milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 0.9779ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.1648ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124090&end=1772124210&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124090&end=1772124210&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 0.8745ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.1938ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/routes
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/routes
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 14.7572ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 15.0633ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.287ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.5345ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772120630&end=1772124230&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772120630&end=1772124230&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.2907ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.4839ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/routes
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/routes
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.1169ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.2765ms - 200
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login failed for user admin
+milk-backend-1  | warn: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       Failed login attempt for user admin
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.28.0.1 to /api/auth/me
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       ORDER BY b."AddedAt" DESC
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.28.0.1 to /api/Blacklist
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user viewer
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User viewer logged in successfully with roles: Viewer
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user operator
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User operator logged in successfully with roles: Operator, Viewer
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (2ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT p."Id", p."Description", p."FieldPath", p."IsActive", p."RegexPattern", p."ReplacePattern", p."RouteId", p."UpdatedAt"
+milk-backend-1  |       FROM "PiiMaskingRules" AS p
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/routes/e2e-crud-route-1772124232804
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/routes/e2e-crud-route-1772124232804
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 8.2419ms - 400
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 8.4195ms - 400
+milk-backend-1  | fail: MilkApiManager.Controllers.RouteController[0]
+milk-backend-1  |       Error creating route e2e-crud-route-1772124232804
+milk-backend-1  |       System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+milk-backend-1  |          at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+milk-backend-1  |          at MilkApiManager.Services.ApisixClient.CreateRouteAsync(String id, Route routeConfig) in /src/Services/ApisixClient.cs:line 45
+milk-backend-1  |          at MilkApiManager.Controllers.RouteController.CreateRoute(Route routeConfig) in /src/Controllers/RouteController.cs:line 71
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/consumers/e2e-crud-consumer-1772124234311
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/consumers/e2e-crud-consumer-1772124234311
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.1488ms - 400
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.2837ms - 400
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error updating consumer
+milk-backend-1  |       System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+milk-backend-1  |          at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+milk-backend-1  |          at MilkApiManager.Services.ApisixClient.UpdateConsumerAsync(String username, Object consumerConfig) in /src/Services/ApisixClient.cs:line 159
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.UpdateConsumer(JsonElement consumerData) in /src/Controllers/ConsumerController.cs:line 161
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.5415ms - 404
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.6877ms - 404
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[@__request_Ip_0='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       WHERE b."IpOrCidr" = @__request_Ip_0
+milk-backend-1  |       LIMIT 1
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (28ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "BlacklistEntries" ("Id", "AddedAt", "AddedBy", "ExpiresAt", "IpOrCidr", "Reason")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:43:55.9877477Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (60ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "AuditLogs" ("Action", "CorrelationId", "DetailsJson", "OperatorIp", "RequestId", "Resource", "StatusCode", "Timestamp", "User")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+milk-backend-1  |       RETURNING "Id";
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 329.8036ms - 201
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 330.078ms - 201
+milk-backend-1  | info: MilkApiManager.Services.ApisixClient[0]
+milk-backend-1  |       Successfully updated traffic-blocker blacklist
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       ORDER BY b."AddedAt" DESC
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.1848ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.3437ms - 200
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[@__request_Ip_0='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       WHERE b."IpOrCidr" = @__request_Ip_0
+milk-backend-1  |       LIMIT 1
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = DateTime), @p2='?', @p3='?' (DbType = DateTime), @p4='?', @p5='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "BlacklistEntries" ("Id", "AddedAt", "AddedBy", "ExpiresAt", "IpOrCidr", "Reason")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:43:56.4912423Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "AuditLogs" ("Action", "CorrelationId", "DetailsJson", "OperatorIp", "RequestId", "Resource", "StatusCode", "Timestamp", "User")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+milk-backend-1  |       RETURNING "Id";
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 6.5985ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 6.8176ms - 200
+milk-backend-1  | info: MilkApiManager.Services.ApisixClient[0]
+milk-backend-1  |       Successfully updated traffic-blocker blacklist
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       ORDER BY b."AddedAt" DESC
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.6818ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.808ms - 200
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[@__request_Ip_0='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       WHERE b."IpOrCidr" = @__request_Ip_0
+milk-backend-1  |       LIMIT 1
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 595.0448ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 595.2594ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 100.2713ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 100.4879ms - 200
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       DELETE FROM "BlacklistEntries"
+milk-backend-1  |       WHERE "Id" = @p0;
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:43:56.6006697Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "AuditLogs" ("Action", "CorrelationId", "DetailsJson", "OperatorIp", "RequestId", "Resource", "StatusCode", "Timestamp", "User")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+milk-backend-1  |       RETURNING "Id";
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.9127ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 4.027ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 4.4652ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 4.592ms - 200
+milk-backend-1  | info: MilkApiManager.Services.ApisixClient[0]
+milk-backend-1  |       Successfully updated traffic-blocker blacklist
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       ORDER BY b."AddedAt" DESC
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.8313ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.9788ms - 200
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (1ms) [Parameters=[@__request_Ip_0='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       SELECT b."Id", b."AddedAt", b."AddedBy", b."ExpiresAt", b."IpOrCidr", b."Reason"
+milk-backend-1  |       FROM "BlacklistEntries" AS b
+milk-backend-1  |       WHERE b."IpOrCidr" = @__request_Ip_0
+milk-backend-1  |       LIMIT 1
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid)], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       DELETE FROM "BlacklistEntries"
+milk-backend-1  |       WHERE "Id" = @p0;
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:43:56.6633393Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Database.Command[20101]
+milk-backend-1  |       Executed DbCommand (3ms) [Parameters=[@p0='?', @p1='?', @p2='?', @p3='?', @p4='?', @p5='?', @p6='?' (DbType = Int32), @p7='?' (DbType = DateTime), @p8='?'], CommandType='Text', CommandTimeout='30']
+milk-backend-1  |       INSERT INTO "AuditLogs" ("Action", "CorrelationId", "DetailsJson", "OperatorIp", "RequestId", "Resource", "StatusCode", "Timestamp", "User")
+milk-backend-1  |       VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6, @p7, @p8)
+milk-backend-1  |       RETURNING "Id";
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/plugin_metadata/traffic-blocker
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.9686ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 4.0754ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 5.0459ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 5.2299ms - 200
+milk-backend-1  | info: MilkApiManager.Services.ApisixClient[0]
+milk-backend-1  |       Successfully updated traffic-blocker blacklist
+milk-backend-1  | info: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Storing secret for secret/data/api-keys/e2e-key-owner-1772124235818
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request PUT http://apisix:9180/apisix/admin/consumers/e2e-ratelimit-1772124238635
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request PUT http://apisix:9180/apisix/admin/consumers/e2e-ratelimit-1772124238635
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.3856ms - 400
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.5916ms - 400
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error updating consumer
+milk-backend-1  |       System.Net.Http.HttpRequestException: Response status code does not indicate success: 400 (Bad Request).
+milk-backend-1  |          at System.Net.Http.HttpResponseMessage.EnsureSuccessStatusCode()
+milk-backend-1  |          at MilkApiManager.Services.ApisixClient.UpdateConsumerAsync(String username, Object consumerConfig) in /src/Services/ApisixClient.cs:line 159
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.UpdateConsumer(JsonElement consumerData) in /src/Controllers/ConsumerController.cs:line 161
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.09ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.2632ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 16.4344ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 16.8181ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.128ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.2784ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.7113ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.8413ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.122ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.3857ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.8542ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.9874ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=topk%285%2C%20sort_desc%28histogram_quantile%280.95%2C%20sum%28rate%28apisix_http_latency_bucket%7Btype%3D%22request%22%7D%5B1h%5D%29%29%20by%20%28le%2C%20route%29%29%29%29&start=1772123960&end=1772124260&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=topk%285%2C%20sort_desc%28histogram_quantile%280.95%2C%20sum%28rate%28apisix_http_latency_bucket%7Btype%3D%22request%22%7D%5B1h%5D%29%29%20by%20%28le%2C%20route%29%29%29%29&start=1772123960&end=1772124260&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.2849ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.4284ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28rate%28apisix_http_status%7Bcode%3D~%22%5B23%5D.%2A%22%7D%5B24h%5D%29%29%20%2F%20sum%28rate%28apisix_http_status%5B24h%5D%29%29%20%2A%20100
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28rate%28apisix_http_status%7Bcode%3D~%22%5B23%5D.%2A%22%7D%5B24h%5D%29%29%20%2F%20sum%28rate%28apisix_http_status%5B24h%5D%29%29%20%2A%20100
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.4055ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.5178ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.6212ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 2.7429ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=topk%285%2C%20sort_desc%28histogram_quantile%280.95%2C%20sum%28rate%28apisix_http_latency_bucket%7Btype%3D%22request%22%7D%5B1h%5D%29%29%20by%20%28le%2C%20route%29%29%29%29&start=1772123960&end=1772124260&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=topk%285%2C%20sort_desc%28histogram_quantile%280.95%2C%20sum%28rate%28apisix_http_latency_bucket%7Btype%3D%22request%22%7D%5B1h%5D%29%29%20by%20%28le%2C%20route%29%29%29%29&start=1772123960&end=1772124260&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.1996ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.3308ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28rate%28apisix_http_status%7Bcode%3D~%22%5B23%5D.%2A%22%7D%5B24h%5D%29%29%20%2F%20sum%28rate%28apisix_http_status%5B24h%5D%29%29%20%2A%20100
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28rate%28apisix_http_status%7Bcode%3D~%22%5B23%5D.%2A%22%7D%5B24h%5D%29%29%20%2F%20sum%28rate%28apisix_http_status%5B24h%5D%29%29%20%2A%20100
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.2826ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.4531ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.6182ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.7876ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 3.6844ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.8136ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 10.0105ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 10.3404ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://apisix:9180/apisix/admin/consumers
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 4.7031ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.ApisixClient.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 4.9172ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.293ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.4125ms - 200
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:44:30 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772124150&end=1772124270&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772124150&end=1772124270&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.5037ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.6313ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124150&end=1772124270&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124150&end=1772124270&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 0.878ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.0206ms - 200
+milk-backend-1  | info: MilkApiManager.Services.LoadTestService[0]
+milk-backend-1  |       Starting load test: http://localhost:9080/, VUs: 10, Duration: 30s
+milk-backend-1  | fail: MilkApiManager.Services.LoadTestService[0]
+milk-backend-1  |       Failed to execute k6. Ensure k6 is installed.
+milk-backend-1  |       System.ComponentModel.Win32Exception (2): An error occurred trying to start process 'k6' with working directory '/app'. No such file or directory
+milk-backend-1  |          at System.Diagnostics.Process.ForkAndExecProcess(ProcessStartInfo startInfo, String resolvedFilename, String[] argv, String[] envp, String cwd, Boolean setCredentials, UInt32 userId, UInt32 groupId, UInt32[] groups, Int32& stdinFd, Int32& stdoutFd, Int32& stderrFd, Boolean usesTerminal, Boolean throwOnNoExec)
+milk-backend-1  |          at System.Diagnostics.Process.StartCore(ProcessStartInfo startInfo)
+milk-backend-1  |          at MilkApiManager.Services.LoadTestService.RunTestAsync(String targetUrl, Int32 vus, Int32 durationSeconds) in /src/Services/LoadTestService.cs:line 57
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.5951ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.7427ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 2.8531ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 3.0456ms - 200
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:45:29 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772124209&end=1772124329&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772124209&end=1772124329&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 1.1851ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 1.3003ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124209&end=1772124329&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772124209&end=1772124329&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[101]
+milk-backend-1  |       Received HTTP response headers after 0.7995ms - 200
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[101]
+milk-backend-1  |       End processing HTTP request after 0.8651ms - 200

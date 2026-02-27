@@ -25,6 +25,7 @@ plugins:
   - pii-masker
   - prometheus
   - limit-count
+  - limit-req
   - key-auth
   - opentelemetry
   - traffic-blocker

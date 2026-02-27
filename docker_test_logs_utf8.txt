@@ -1,0 +1,981 @@
+﻿milk-db-1       | 
+milk-db-1       | PostgreSQL Database directory appears to contain a database; Skipping initialization
+milk-db-1       | 
+milk-db-1       | 2026-02-26 16:11:44.594 UTC [1] LOG:  starting PostgreSQL 17.7 on x86_64-pc-linux-musl, compiled by gcc (Alpine 15.2.0) 15.2.0, 64-bit
+milk-db-1       | 2026-02-26 16:11:44.596 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 0 entities to in-memory store.
+milk-backend-1  | info: Program[0]
+milk-db-1       | 2026-02-26 16:11:44.596 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+milk-db-1       | 2026-02-26 16:11:44.606 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+milk-db-1       | 2026-02-26 16:11:44.622 UTC [29] LOG:  database system was shut down at 2026-02-26 10:46:20 UTC
+milk-db-1       | 2026-02-26 16:11:44.643 UTC [1] LOG:  database system is ready to accept connections
+milk-db-1       | 2026-02-26 16:11:54.322 UTC [39] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:12:04.440 UTC [47] FATAL:  database "milk_user" does not exist
+milk-backend-1  |       Test database initialized with EnsureCreated.
+milk-backend-1  | warn: Microsoft.AspNetCore.DataProtection.Repositories.FileSystemXmlRepository[60]
+milk-backend-1  |       Storing keys in a directory '/root/.aspnet/DataProtection-Keys' that may not be persisted outside of the container. Protected data will be unavailable when container is destroyed. For more information go to https://aka.ms/aspnet/dataprotectionwarning
+milk-backend-1  | warn: Microsoft.AspNetCore.DataProtection.KeyManagement.XmlKeyManager[35]
+milk-backend-1  |       No XML encryptor configured. Key {c88338b9-8d6f-4eea-a755-ce2b19d8b237} may be persisted to storage in unencrypted form.
+milk-backend-1  | info: MilkApiManager.Services.AdGroupSyncService[0]
+milk-backend-1  |       AD Group Sync and Security Automation Service is starting.
+milk-backend-1  | info: MilkApiManager.Services.AdGroupSyncService[0]
+milk-db-1       | 2026-02-26 16:12:14.559 UTC [54] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:12:24.613 UTC [61] FATAL:  database "milk_user" does not exist
+milk-backend-1  |       Starting AD Group Sync...
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:11:56 +00:00
+milk-backend-1  | info: MilkApiManager.Services.AdGroupSyncService[0]
+milk-db-1       | 2026-02-26 16:12:34.724 UTC [68] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:12:44.880 UTC [76] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:12:54.932 UTC [83] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:05.050 UTC [90] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:15.127 UTC [97] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:25.211 UTC [104] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:35.328 UTC [111] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:45.430 UTC [119] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:13:55.479 UTC [126] FATAL:  database "milk_user" does not exist
+milk-backend-1  |       Connecting to LDAP at ldap.example.com:389...
+milk-db-1       | 2026-02-26 16:14:05.585 UTC [133] FATAL:  database "milk_user" does not exist
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122196&end=1772122316&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122196&end=1772122316&step=1m
+milk-backend-1  | info: MilkApiManager.Services.AutoBlockWorker[0]
+milk-db-1       | 2026-02-26 16:14:15.678 UTC [140] FATAL:  database "milk_user" does not exist
+milk-backend-1  |       Auto-Blocking Shield Activated. Monitoring for high error rates...
+milk-db-1       | 2026-02-26 16:14:25.769 UTC [147] FATAL:  database "milk_user" does not exist
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: MilkApiManager.Services.ApisixRouteSyncService[0]
+milk-backend-1  |       Starting APISIX Route Synchronization...
+milk-backend-1  | info: Microsoft.Hosting.Lifetime[14]
+milk-db-1       | 2026-02-26 16:14:35.860 UTC [155] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:14:45.893 UTC [163] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:14:55.998 UTC [170] FATAL:  database "milk_user" does not exist
+milk-backend-1  |       Now listening on: http://[::]:8080
+milk-backend-1  | info: Microsoft.Hosting.Lifetime[0]
+milk-backend-1  |       Application started. Press Ctrl+C to shut down.
+milk-backend-1  | info: Microsoft.Hosting.Lifetime[0]
+milk-backend-1  |       Hosting environment: Development
+milk-db-1       | 2026-02-26 16:15:06.096 UTC [177] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:15:16.172 UTC [184] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:15:26.293 UTC [191] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:15:36.380 UTC [198] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:15:46.453 UTC [206] FATAL:  database "milk_user" does not exist
+milk-backend-1  | info: Microsoft.Hosting.Lifetime[0]
+milk-backend-1  |       Content root path: /app
+milk-backend-1  | fail: MilkApiManager.Services.AdGroupSyncService[0]
+milk-backend-1  |       LDAP error: (null)
+milk-backend-1  |       LdapException: Unable to connect to server ldap.example.com:389 (91) Connect Error
+milk-backend-1  |       System.Net.Sockets.SocketException (00000005, 0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Dns.GetHostEntryOrAddressesCore(String hostName, Boolean justAddresses, AddressFamily addressFamily, Nullable`1 startingTimestamp)
+milk-db-1       | 2026-02-26 16:15:56.573 UTC [213] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:16:06.692 UTC [220] FATAL:  database "milk_user" does not exist
+milk-backend-1  |          at System.Net.Dns.<>c.<GetHostEntryOrAddressesCoreAsync>b__33_0(Object s, Int64 startingTimestamp)
+milk-db-1       | 2026-02-26 16:16:16.752 UTC [227] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:16:26.848 UTC [234] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:16:36.937 UTC [241] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:16:44.331 UTC [27] LOG:  checkpoint starting: time
+milk-backend-1  |          at System.Net.Dns.<>c__DisplayClass39_0`1.<RunAsync>b__0(Task <p0>, Object <p1>)
+milk-db-1       | 2026-02-26 16:16:44.371 UTC [27] LOG:  checkpoint complete: wrote 3 buffers (0.0%); 0 WAL file(s) added, 0 removed, 0 recycled; write=0.011 s, sync=0.004 s, total=0.040 s; sync files=2, longest=0.003 s, average=0.002 s; distance=0 kB, estimate=0 kB; lsn=0/1983FE8, redo lsn=0/1983F90
+milk-db-1       | 2026-02-26 16:16:47.014 UTC [249] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:16:57.114 UTC [256] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:07.222 UTC [263] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:17.341 UTC [270] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:27.466 UTC [277] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:37.563 UTC [284] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:47.634 UTC [293] FATAL:  database "milk_user" does not exist
+milk-db-1       | 2026-02-26 16:17:57.777 UTC [300] FATAL:  database "milk_user" does not exist
+milk-backend-1  |          at System.Threading.Tasks.ContinuationResultTaskFromTask`1.InnerInvoke()
+milk-backend-1  |          at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+milk-backend-1  |       --- End of stack trace from previous location ---
+milk-backend-1  |          at System.Threading.ExecutionContext.RunFromThreadPoolDispatchLoop(Thread threadPoolThread, ExecutionContext executionContext, ContextCallback callback, Object state)
+milk-backend-1  |          at System.Threading.Tasks.Task.ExecuteWithThreadLocal(Task& currentTaskSlot, Thread threadPoolThread)
+milk-backend-1  |       --- End of stack trace from previous location ---
+milk-backend-1  |          at Novell.Directory.Ldap.AsyncExtensions.ResultAndUnwrap[T](Task`1 task)
+milk-backend-1  |          at Novell.Directory.Ldap.Connection.Connect(String host, Int32 port, Int32 semaphoreId)
+milk-backend-1  | info: MilkApiManager.Services.AdGroupSyncService[0]
+milk-backend-1  |       AD Group Sync completed successfully.
+milk-backend-1  | info: MilkApiManager.Services.SecurityAutomationService[0]
+milk-backend-1  |       Starting API Key lifecycle check...
+milk-backend-1  | info: MilkApiManager.Services.SecurityAutomationService[0]
+milk-backend-1  |       Key for tsp-partner-01 will expire in 5 days. Sending notification.
+milk-backend-1  | info: MilkApiManager.Services.SecurityAutomationService[0]
+milk-backend-1  |       [Notification] To: tsp-partner-01, Msg: API Key will expire in 5 days. Please prepare for rotation.
+milk-backend-1  | warn: MilkApiManager.Services.SecurityAutomationService[0]
+milk-backend-1  |       Key for payment-gateway has expired. Executing auto-rotation.
+milk-backend-1  | warn: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Rotating API Key for Consumer: payment-gateway
+milk-backend-1  | fail: MilkApiManager.Services.AdGroupSyncService[0]
+milk-backend-1  |       Error during Security Lifecycle check.
+milk-backend-1  |       System.Net.Http.HttpRequestException: 404 Not Found
+milk-backend-1  |          at MilkApiManager.Services.MockApisixClient.GetConsumerAsync(String username) in /src/Services/MockApisixClient.cs:line 99
+milk-backend-1  |          at MilkApiManager.Services.VaultService.RotateApiKeyAsync(String consumerName) in /src/Services/VaultService.cs:line 54
+milk-backend-1  |          at MilkApiManager.Services.SecurityAutomationService.CheckAndRotateKeys() in /src/Services/SecurityAutomationService.cs:line 41
+milk-backend-1  |          at MilkApiManager.Services.AdGroupSyncService.DoSecurityCheck() in /src/Services/AdGroupSyncService.cs:line 56
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122200&end=1772122320&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122200&end=1772122320&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.ApisixRouteSyncService[0]
+milk-backend-1  |       Failed to sync routes to APISIX
+milk-backend-1  |       System.ArgumentException: The value cannot be an empty string. (Parameter 'oldValue')
+milk-backend-1  |          at System.ArgumentException.ThrowNullOrEmptyException(String argument, String paramName)
+milk-backend-1  |          at System.String.Replace(String oldValue, String newValue)
+milk-backend-1  |          at MilkApiManager.Services.ApisixRouteSyncService.CombinePaths(String p1, String p2) in /src/Services/ApisixRouteSyncService.cs:line 93
+milk-backend-1  |          at MilkApiManager.Services.ApisixRouteSyncService.SyncRoutesAsync() in /src/Services/ApisixRouteSyncService.cs:line 63
+milk-backend-1  |          at MilkApiManager.Services.ApisixRouteSyncService.<StartAsync>b__3_0() in /src/Services/ApisixRouteSyncService.cs:line 30
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | info: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Storing secret for secret/data/api-keys/e2e-test-consumer
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772118779&end=1772122379&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772118779&end=1772122379&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login failed for user admin
+milk-backend-1  | warn: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       Failed login attempt for user admin
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.30.0.1 to /api/auth/me
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.30.0.1 to /api/Blacklist
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user viewer
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User viewer logged in successfully with roles: Viewer
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user operator
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User operator logged in successfully with roles: Operator, Viewer
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:06.9972864Z","user":"Anonymous","action":"Create","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122386986","config":{"id":"e2e-crud-route-1772122386986","name":"E2E CRUD Test Route","uri":"/e2e-crud-test","uris":null,"methods":["GET","POST"],"service_id":null,"plugins":null}},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:07.2346443Z","user":"Anonymous","action":"Update","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122386986","newConfig":{"id":"e2e-crud-route-1772122386986","name":"E2E CRUD Test Route (Updated)","uri":"/e2e-crud-test-updated","uris":null,"methods":["GET","POST"],"service_id":null,"plugins":null}},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:07.3097364Z","user":"Anonymous","action":"Delete","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122386986"},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | fail: MilkApiManager.Controllers.RouteController[0]
+milk-backend-1  |       Error retrieving route e2e-crud-route-1772122386986
+milk-backend-1  |       System.Net.Http.HttpRequestException: 404 Not Found
+milk-backend-1  |          at MilkApiManager.Services.MockApisixClient.GetRouteAsync(String id) in /src/Services/MockApisixClient.cs:line 44
+milk-backend-1  |          at MilkApiManager.Controllers.RouteController.GetRoute(String id) in /src/Controllers/RouteController.cs:line 45
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:13:08 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122268&end=1772122388&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122268&end=1772122388&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:09.3728586Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:09.4441486Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:09.5160312Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:13:09.5588761Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Storing secret for secret/data/api-keys/e2e-key-owner-1772122389240
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122272&end=1772122392&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122272&end=1772122392&step=1m
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:14:19 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122339&end=1772122459&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122339&end=1772122459&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122343&end=1772122463&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122343&end=1772122463&step=1m
+milk-backend-1  | info: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Storing secret for secret/data/api-keys/e2e-test-consumer
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772118865&end=1772122465&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28irate%28apisix_http_status%7B%7D%5B5m%5D%29%29%20by%20%28consumer%2C%20route%29&start=1772118865&end=1772122465&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.DiagnosticsHandler.SendAsyncCore(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login failed for user admin
+milk-backend-1  | warn: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       Failed login attempt for user admin
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.30.0.1 to /api/auth/me
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | warn: MilkApiManager.Middleware.ApiKeyAuthMiddleware[0]
+milk-backend-1  |       Unauthorized API access attempt from ::ffff:172.30.0.1 to /api/Blacklist
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user viewer
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User viewer logged in successfully with roles: Viewer
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user operator
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User operator logged in successfully with roles: Operator, Viewer
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:38.151192Z","user":"Anonymous","action":"Create","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122478122","config":{"id":"e2e-crud-route-1772122478122","name":"E2E CRUD Test Route","uri":"/e2e-crud-test","uris":null,"methods":["GET","POST"],"service_id":null,"plugins":null}},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:38.2162854Z","user":"Anonymous","action":"Update","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122478122","newConfig":{"id":"e2e-crud-route-1772122478122","name":"E2E CRUD Test Route (Updated)","uri":"/e2e-crud-test-updated","uris":null,"methods":["GET","POST"],"service_id":null,"plugins":null}},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:38.2706606Z","user":"Anonymous","action":"Delete","resource":"Route","statusCode":200,"details":{"routeId":"e2e-crud-route-1772122478122"},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | fail: MilkApiManager.Controllers.RouteController[0]
+milk-backend-1  |       Error retrieving route e2e-crud-route-1772122478122
+milk-backend-1  |       System.Net.Http.HttpRequestException: 404 Not Found
+milk-backend-1  |          at MilkApiManager.Services.MockApisixClient.GetRouteAsync(String id) in /src/Services/MockApisixClient.cs:line 44
+milk-backend-1  |          at MilkApiManager.Controllers.RouteController.GetRoute(String id) in /src/Controllers/RouteController.cs:line 45
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | info: MilkApiManager.Services.AuthService[0]
+milk-backend-1  |       Demo login successful for user admin
+milk-backend-1  | info: MilkApiManager.Controllers.AuthController[0]
+milk-backend-1  |       User admin logged in successfully with roles: Admin, Operator, Viewer
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:40.396763Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:40.4684171Z","user":"e2e-crud-test","action":"Blacklist.Add","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:40.5644666Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.1","reason":"E2E CRUD \u6E2C\u8A66 - IP 1","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | {"id":0,"timestamp":"2026-02-26T16:14:40.6247707Z","user":"Unknown","action":"Blacklist.Remove","resource":"Blacklist","statusCode":200,"details":{"ip":"10.99.88.2","reason":"E2E CRUD \u6E2C\u8A66 - IP 2","expiresAt":null},"detailsJson":null,"correlationId":null,"operatorIp":null,"requestId":null}
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request POST http://logstash:8080/
+milk-backend-1  | info: System.Net.Http.HttpClient.AuditLogService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request POST http://logstash:8080/
+milk-backend-1  | info: Microsoft.EntityFrameworkCore.Update[30100]
+milk-backend-1  |       Saved 1 entities to in-memory store.
+milk-backend-1  | info: MilkApiManager.Services.VaultService[0]
+milk-backend-1  |       Storing secret for secret/data/api-keys/e2e-key-owner-1772122480260
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | fail: MilkApiManager.Controllers.ConsumerController[0]
+milk-backend-1  |       Error retrieving consumers
+milk-backend-1  |       System.InvalidOperationException: The requested operation requires an element of type 'Object', but the target element has type 'Null'.
+milk-backend-1  |          at System.Text.Json.ThrowHelper.ThrowJsonElementWrongTypeException(JsonTokenType expectedType, JsonTokenType actualType)
+milk-backend-1  |          at System.Text.Json.JsonDocument.TryGetNamedPropertyValue(Int32 index, ReadOnlySpan`1 propertyName, JsonElement& value)
+milk-backend-1  |          at System.Text.Json.JsonElement.TryGetProperty(String propertyName, JsonElement& value)
+milk-backend-1  |          at MilkApiManager.Controllers.ConsumerController.GetConsumers() in /src/Controllers/ConsumerController.cs:line 38
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:15:31 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122411&end=1772122531&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122411&end=1772122531&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122415&end=1772122535&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122415&end=1772122535&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:16:43 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122483&end=1772122603&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122483&end=1772122603&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122487&end=1772122607&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122487&end=1772122607&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | info: MilkApiManager.Services.AlertMonitoringService[0]
+milk-backend-1  |       Checking alert rules at: 02/26/2026 16:17:54 +00:00
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122554&end=1772122674&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=sum%28rate%28apisix_http_status%7Bcode%3D~%225..%22%7D%5B1m%5D%29%29&start=1772122554&end=1772122674&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query?query=sum%28increase%28apisix_http_status%7Bcode%3D~%22401%7C403%22%7D%5B1m%5D%29%29%20by%20%28client_ip%29
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.LogicalHandler[100]
+milk-backend-1  |       Start processing HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122558&end=1772122678&step=1m
+milk-backend-1  | info: System.Net.Http.HttpClient.PrometheusService.ClientHandler[100]
+milk-backend-1  |       Sending HTTP request GET http://prometheus:9090/api/v1/query_range?query=max%28rate%28apisix_http_requests_total%5B1m%5D%29%29%20by%20%28remote_addr%29&start=1772122558&end=1772122678&step=1m
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error executing vector query: sum(increase(apisix_http_status{code=~"401|403"}[1m])) by (client_ip)
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.QueryVectorAsync(String query) in /src/Services/PrometheusService.cs:line 82
+milk-backend-1  | fail: MilkApiManager.Services.PrometheusService[0]
+milk-backend-1  |       Error querying Prometheus
+milk-backend-1  |       System.Net.Http.HttpRequestException: Name or service not known (prometheus:9090)
+milk-backend-1  |        ---> System.Net.Sockets.SocketException (0xFFFDFFFF): Name or service not known
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.ThrowException(SocketError error, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Sockets.Socket.AwaitableSocketAsyncEventArgs.System.Threading.Tasks.Sources.IValueTaskSource.GetResult(Int16 token)
+milk-backend-1  |          at System.Net.Sockets.Socket.<ConnectAsync>g__WaitForConnectWithCancellation|285_0(AwaitableSocketAsyncEventArgs saea, ValueTask connectTask, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          --- End of inner exception stack trace ---
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectToTcpHostAsync(String host, Int32 port, HttpRequestMessage initialRequest, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.ConnectAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.CreateHttp11ConnectionAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.AddHttp11ConnectionAsync(QueueItem queueItem)
+milk-backend-1  |          at System.Threading.Tasks.TaskCompletionSourceWithCancellation`1.WaitWithCancellationAsync(CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpConnectionPool.SendWithVersionDetectionAndRetryAsync(HttpRequestMessage request, Boolean async, Boolean doRequestAuth, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.RedirectHandler.SendAsync(HttpRequestMessage request, Boolean async, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at Microsoft.Extensions.Http.Logging.LoggingScopeHttpMessageHandler.<SendCoreAsync>g__Core|5_0(HttpRequestMessage request, Boolean useAsync, CancellationToken cancellationToken)
+milk-backend-1  |          at System.Net.Http.HttpClient.<SendAsync>g__Core|83_0(HttpRequestMessage request, HttpCompletionOption completionOption, CancellationTokenSource cts, Boolean disposeCts, CancellationTokenSource pendingRequestsCts, CancellationToken originalCancellationToken)
+milk-backend-1  |          at MilkApiManager.Services.PrometheusService.GetMetricAsync(String query, DateTime start, DateTime end, String step) in /src/Services/PrometheusService.cs:line 28

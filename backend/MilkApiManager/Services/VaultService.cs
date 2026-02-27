@@ -40,6 +40,11 @@ namespace MilkApiManager.Services
         {
             _logger.LogInformation("Storing secret for {Key}", key);
             var filePath = Path.Combine(_storagePath, $"{key}.secret");
+            var directory = Path.GetDirectoryName(filePath);
+            if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
+            {
+                Directory.CreateDirectory(directory);
+            }
             await File.WriteAllTextAsync(filePath, value);
         }
 

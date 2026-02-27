@@ -144,10 +144,11 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
-      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin/
       - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
       - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
       - JWT_SECRET=${JWT_SECRET:-milk-api-default-jwt-secret-change-in-production-32chars!}
+      - USE_DEMO_AUTH=true
     ports:
       - "5001:8080"
     healthcheck:

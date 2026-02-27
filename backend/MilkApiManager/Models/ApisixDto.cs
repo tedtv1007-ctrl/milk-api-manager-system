@@ -23,6 +23,12 @@ namespace MilkApiManager.Models.Apisix
         [JsonPropertyName("service_id")]
         public string? ServiceId { get; set; }
 
+        [JsonPropertyName("upstream")]
+        public Upstream? Upstream { get; set; }
+
+        [JsonPropertyName("upstream_id")]
+        public string? UpstreamId { get; set; }
+
         [JsonPropertyName("plugins")]
         public Dictionary<string, object>? Plugins { get; set; }
     }
