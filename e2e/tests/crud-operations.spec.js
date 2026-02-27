@@ -1,4 +1,4 @@
-const { test, expect } = require('@playwright/test');
+﻿const { test, expect } = require('@playwright/test');
 
 const BASE_URL = 'http://localhost:5001';
 const API_KEY = 'milk-admin-secret-key-change-me';
@@ -16,7 +16,7 @@ const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 // Route API CRUD
 // ============================================================
 test.describe.serial('Route API CRUD 完整生命週期', () => {
-    const TEST_ROUTE_ID = `e2e-crud-route-${Date.now()}`;
+    const TEST_ROUTE_ID = `e2ecrudroute${Date.now()}`;
     const routePayload = {
         id: TEST_ROUTE_ID,
         name: 'E2E CRUD Test Route',
@@ -108,7 +108,7 @@ test.describe.serial('Route API CRUD 完整生命週期', () => {
 // Consumer API CRUD
 // ============================================================
 test.describe.serial('Consumer API CRUD 完整生命週期', () => {
-    const TEST_USERNAME = `e2e_crud_consumer_${Date.now()}`;
+    const TEST_USERNAME = `e2ecrudconsumer${Date.now()}`;
 
     test('Create - 建立新消費者', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Consumer`, {
@@ -346,7 +346,7 @@ test.describe.serial('Blacklist API CRUD 完整生命週期', () => {
 // ============================================================
 test.describe.serial('API Key CRUD 完整生命週期', () => {
     let createdKeyId = null;
-    const TEST_OWNER = `e2e_key_owner_${Date.now()}`;
+    const TEST_OWNER = `e2ekeyowner${Date.now()}`;
 
     test('Create - 建立新 API 金鑰', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Keys`, {
@@ -465,7 +465,7 @@ test.describe.serial('API Key CRUD 完整生命週期', () => {
 // Rate Limiting (限流) CRUD - Consumer with Quota + Rate Limit
 // ============================================================
 test.describe.serial('Rate Limiting CRUD 完整生命週期', () => {
-    const TEST_USERNAME = `e2e_ratelimit_${Date.now()}`;
+    const TEST_USERNAME = `e2eratelimit${Date.now()}`;
 
     test('Create - 建立含 Quota 與 Rate Limit 的 Consumer', async ({ request }) => {
         const response = await request.post(`${BASE_URL}/api/Consumer`, {

@@ -1,11 +1,16 @@
 using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
-using MilkApiManager.Middleware;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.Extensions.Diagnostics.HealthChecks;
+using MilkApiManager.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using OpenTelemetry.Resources;
+using OpenTelemetry.Trace;
+using OpenTelemetry.Metrics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -44,8 +49,22 @@ builder.Services.AddCors(options =>
 });
 
 // Health Checks
-var healthChecksBuilder = builder.Services.AddHealthChecks();
+var healthChecksBuilder = builder.Services.AddHealthChecks()
+    .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" });
 // PostgreSQL health check will be added after connection string is resolved below
+
+// OpenTelemetry Observability
+var otel = builder.Services.AddOpenTelemetry();
+otel.ConfigureResource(resource => resource.AddService("MilkApiManager"));
+otel.WithMetrics(metrics => metrics
+    .AddAspNetCoreInstrumentation()
+    .AddHttpClientInstrumentation()
+    .AddOtlpExporter());
+otel.WithTracing(tracing => tracing
+    .AddAspNetCoreInstrumentation()
+    .AddHttpClientInstrumentation()
+    .AddEntityFrameworkCoreInstrumentation()
+    .AddOtlpExporter());
 
 // JWT Bearer Authentication
 var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") 
@@ -56,8 +75,8 @@ var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "MilkApiClients";
 
 builder.Services.AddAuthentication(options =>
 {
-    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultAuthenticateScheme = "BearerOrApiKey";
+    options.DefaultChallengeScheme = "BearerOrApiKey";
 })
 .AddJwtBearer(options =>
 {
@@ -70,6 +89,17 @@ builder.Services.AddAuthentication(options =>
         ValidIssuer = jwtIssuer,
         ValidAudience = jwtAudience,
         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSecret))
+    };
+})
+.AddScheme<ApiKeyAuthenticationOptions, ApiKeyAuthenticationHandler>(ApiKeyAuthenticationOptions.DefaultScheme, null)
+.AddPolicyScheme("BearerOrApiKey", "BearerOrApiKey", options =>
+{
+    options.ForwardDefaultSelector = context =>
+    {
+        if (context.Request.Headers.ContainsKey("X-API-KEY"))
+            return ApiKeyAuthenticationOptions.DefaultScheme;
+        
+        return JwtBearerDefaults.AuthenticationScheme;
     };
 });
 
@@ -94,36 +124,27 @@ else
     builder.Services.AddDbContext<AuditContext>(options =>
         options.UseNpgsql(connectionString));
     
-    // Add PostgreSQL health check for deep /health validation
-    healthChecksBuilder.AddNpgSql(connectionString, name: "postgresql");
+    // Add PostgreSQL health check for deep /health/ready validation
+    healthChecksBuilder.AddNpgSql(connectionString, name: "postgresql", tags: new[] { "ready" });
 }
 
 // Register Services
 if (isTestMode)
 {
-    builder.Services.AddHttpClient<ApisixClient, MockApisixClient>();
+    builder.Services.AddHttpClient<ApisixClient, MockApisixClient>().AddStandardResilienceHandler();
 }
 else
 {
-    builder.Services.AddHttpClient<ApisixClient>();
+    builder.Services.AddHttpClient<ApisixClient>().AddStandardResilienceHandler();
 }
-builder.Services.AddHttpClient<AuditLogService>();
-builder.Services.AddHttpClient<PrometheusService>();
+builder.Services.AddHttpClient<AuditLogService>().AddStandardResilienceHandler();
+builder.Services.AddHttpClient<PrometheusService>().AddStandardResilienceHandler();
 builder.Services.AddSingleton<LoadTestService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
 builder.Services.AddScoped<SecurityAutomationService>();
 
-builder.Services.AddSingleton<AdGroupSyncService>();
-builder.Services.AddHostedService(sp => sp.GetRequiredService<AdGroupSyncService>());
-
-// Register NotificationService for AlertMonitoringService
-builder.Services.AddHttpClient<NotificationService>();
-
 // Register Background Services
-builder.Services.AddHostedService<AlertMonitoringService>();
-builder.Services.AddHostedService<AutoBlockWorker>();
-builder.Services.AddHostedService<ApisixRouteSyncService>();
-builder.Services.AddHostedService<KeyRotationBackgroundService>();
+// Moved to MilkWorker: AlertMonitoringService, AutoBlockWorker, ApisixRouteSyncService, KeyRotationBackgroundService
 
 // Register AuthService
 builder.Services.AddScoped<AuthService>();
@@ -172,22 +193,29 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-// 4. Health Check endpoint (no auth required)
-app.MapHealthChecks("/health");
+// 4. Health Check endpoints (no auth required)
+app.MapHealthChecks("/health/live", new HealthCheckOptions
+{
+    Predicate = r => r.Tags.Contains("live")
+});
+
+app.MapHealthChecks("/health/ready", new HealthCheckOptions
+{
+    Predicate = r => r.Tags.Contains("ready")
+});
 
 // 5. Authentication (JWT Bearer)
 app.UseAuthentication();
 
-// 6. API Key / JWT dual Authentication middleware
-app.UseMiddleware<ApiKeyAuthMiddleware>();
-
-// 7. Authorization (RBAC)
+// 6. Authorization (RBAC)
 app.UseAuthorization();
 
 // 7. Controllers
 app.MapControllers();
 
 // Auto-migrate / ensure created
+var isMigrateOnly = args.Contains("--migrate-only");
+
 using (var scope = app.Services.CreateScope())
 {
     var services = scope.ServiceProvider;
@@ -201,21 +229,28 @@ using (var scope = app.Services.CreateScope())
             db.Database.EnsureCreated();
             logger.LogInformation("Test database initialized with EnsureCreated.");
         }
-        else
+        else if (isMigrateOnly || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
         {
+            // Only migrate if explicit or in dev
             db.Database.Migrate();
             logger.LogInformation("Database migrated successfully.");
         }
 
         // On startup: sync DB entries to APISIX
-        if (!isTestMode)
+        if (!isTestMode && isMigrateOnly)
         {
             await InitializeSystemState(services, logger);
+            logger.LogInformation("Migration and Seeding complete. Exiting (--migrate-only).");
+            return; // Exit here for Init Container
         }
     }
     catch (Exception ex)
     {
         logger.LogCritical(ex, "An error occurred during startup initialization.");
+        if (isMigrateOnly)
+        {
+            Environment.Exit(1);
+        }
     }
 }
 
@@ -282,4 +317,7 @@ async Task InitializeSystemState(IServiceProvider services, ILogger logger)
     }
 }
 
-app.Run();
+if (!isMigrateOnly)
+{
+    app.Run();
+}

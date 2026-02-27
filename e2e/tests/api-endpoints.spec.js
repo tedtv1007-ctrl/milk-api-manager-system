@@ -110,14 +110,14 @@ test.describe('後端 API 端點驗證 (Backend API Endpoint Verification)', () 
         const response = await request.post('http://localhost:5001/api/Keys', {
             headers: AUTH_HEADERS,
             data: {
-                owner: 'e2e-test-consumer'
+                owner: 'e2etestconsumer'
             }
         });
 
         expect(response.status()).toBe(201);
         const data = await response.json();
         expect(data).toHaveProperty('owner');
-        expect(data.owner).toBe('e2e-test-consumer');
+        expect(data.owner).toBe('e2etestconsumer');
         console.log('✅ 成功建立 API 金鑰');
     });
 

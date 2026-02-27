@@ -135,10 +135,29 @@ services:
     networks:
       - apisix
 
+  milk-db-migration:
+    build:
+      context: ./backend
+      dockerfile: MilkApiManager/Dockerfile
+    mem_limit: 256m
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin/
+      - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
+    command: [ "dotnet", "MilkApiManager.dll", "--migrate-only" ]
+    networks:
+      - apisix
+    depends_on:
+      milk-db:
+        condition: service_healthy
+      apisix:
+        condition: service_started
+
   milk-backend:
     build:
-      context: ./backend/MilkApiManager
-      dockerfile: Dockerfile
+      context: ./backend
+      dockerfile: MilkApiManager/Dockerfile
     restart: always
     mem_limit: 512m
     environment:
@@ -152,7 +171,7 @@ services:
     ports:
       - "5001:8080"
     healthcheck:
-      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health/ready || exit 1" ]
       interval: 15s
       timeout: 5s
       retries: 3
@@ -160,8 +179,27 @@ services:
     networks:
       - apisix
     depends_on:
-      milk-db:
-        condition: service_healthy
+      milk-db-migration:
+        condition: service_completed_successfully
+      apisix:
+        condition: service_started
+
+  milk-worker:
+    build:
+      context: ./backend
+      dockerfile: MilkWorker/Dockerfile
+    restart: always
+    mem_limit: 256m
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
+      - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin/
+      - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
+    networks:
+      - apisix
+    depends_on:
+      milk-db-migration:
+        condition: service_completed_successfully
       apisix:
         condition: service_started
 

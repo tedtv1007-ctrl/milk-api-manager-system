@@ -146,7 +146,7 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
     });
 
     test('Health 端點不需要認證', async ({ request }) => {
-        const resp = await request.get(`${BASE_URL}/health`);
+        const resp = await request.get(`${BASE_URL}/health/live`);
 
         expect(resp.status()).toBe(200);
         console.log('✅ /health 端點不需認證');

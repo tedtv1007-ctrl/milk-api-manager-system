@@ -8,11 +8,22 @@ local schema = {
     },
 }
 
+local metadata_schema = {
+    type = "object",
+    properties = {
+        blacklist = {
+            type = "array",
+            items = {type = "string"}
+        }
+    }
+}
+
 local _M = {
     version = 0.2,
     priority = 10000,
     name = "traffic-blocker",
     schema = schema,
+    metadata_schema = metadata_schema,
 }
 
 function _M.check_schema(conf)
