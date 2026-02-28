@@ -46,13 +46,15 @@ public class AuthService
 
         if (_isTestMode || useDemoAuth)
         {
-            roles = AuthenticateDemo(username, password);
-            if (roles == null) return null;
+            var demoRoles = AuthenticateDemo(username, password);
+            if (demoRoles == null) return null;
+            roles = demoRoles;
         }
         else
         {
-            roles = await Task.Run(() => AuthenticateLdap(username, password));
-            if (roles == null) return null;
+            var ldapRoles = await Task.Run(() => AuthenticateLdap(username, password));
+            if (ldapRoles == null) return null;
+            roles = ldapRoles;
         }
 
         var token = GenerateJwtToken(username, roles);

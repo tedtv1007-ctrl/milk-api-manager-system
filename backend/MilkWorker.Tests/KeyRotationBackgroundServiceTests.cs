@@ -7,7 +7,7 @@ using MilkApiManager.Models;
 using MilkApiManager.Services;
 using Xunit;
 
-namespace MilkApiManager.Tests.Services;
+namespace MilkWorker.Tests;
 
 public class KeyRotationBackgroundServiceTests
 {

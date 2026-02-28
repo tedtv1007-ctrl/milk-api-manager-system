@@ -45,9 +45,9 @@ namespace MilkApiManager.Services
                         if (item.TryGetProperty("metric", out var metric))
                         {
                             // Try to find a meaningful label
-                            if (metric.TryGetProperty("consumer", out var c)) label = c.GetString();
-                            else if (metric.TryGetProperty("route", out var r)) label = r.GetString();
-                            else if (metric.TryGetProperty("code", out var code)) label = $"HTTP {code.GetString()}";
+                            if (metric.TryGetProperty("consumer", out var c)) label = c.GetString() ?? "Value";
+                            else if (metric.TryGetProperty("route", out var r)) label = r.GetString() ?? "Value";
+                            else if (metric.TryGetProperty("code", out var code)) label = $"HTTP {code.GetString() ?? "unknown"}";
                         }
 
                         var analyticsResult = new AnalyticsResult { Label = label };
@@ -57,8 +57,10 @@ namespace MilkApiManager.Services
                             foreach (var v in values.EnumerateArray())
                             {
                                 var ts = DateTimeOffset.FromUnixTimeSeconds((long)v[0].GetDouble()).DateTime;
-                                var val = double.Parse(v[1].GetString());
-                                analyticsResult.Data.Add(new MetricPoint { Timestamp = ts, Value = val });
+                                if (double.TryParse(v[1].GetString(), out var val))
+                                {
+                                    analyticsResult.Data.Add(new MetricPoint { Timestamp = ts, Value = val });
+                                }
                             }
                         }
                         results.Add(analyticsResult);

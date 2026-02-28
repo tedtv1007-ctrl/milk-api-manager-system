@@ -28,7 +28,7 @@ namespace MilkApiManager.Models
     public class CreateKeyRequest
     {
         [Required, StringLength(200)]
-        public string Owner { get; set; }
+        public required string Owner { get; set; }
 
         [Range(1, 3650)]
         public int ValidityDays { get; set; } = 90;

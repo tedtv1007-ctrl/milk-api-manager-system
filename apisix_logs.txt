@@ -1,0 +1,441 @@
+/usr/local/openresty//luajit/bin/luajit ./apisix/cli/apisix.lua init
+/usr/local/openresty//luajit/bin/luajit ./apisix/cli/apisix.lua init_etcd
+2026/02/27 15:47:10 [warn] 60#60: *11 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 59#59: *7 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 58#58: *5 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 52#52: *4 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 63#63: *12 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 61#61: *6 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 67#67: *8 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 50#50: *3 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 49#49: *1 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 55#55: *9 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 66#66: *13 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 61#61: *6 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 52#52: *4 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 59#59: *7 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 60#60: *11 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 63#63: *12 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 58#58: *5 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 50#50: *3 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 54#54: *10 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 49#49: *1 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 51#51: *2 [lua] plugin.lua:205: load(): new plugins: {"traffic-blocker":true,"prometheus":true,"opentelemetry":true,"http-logger":true,"key-auth":true,"limit-count":true,"limit-req":true,"pii-masker":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 55#55: *9 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 59#59: *7 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 67#67: *8 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 52#52: *4 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 60#60: *11 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 50#50: *3 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 61#61: *6 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 63#63: *12 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 66#66: *13 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 55#55: *9 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 51#51: *2 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 49#49: *1 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 58#58: *5 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 54#54: *10 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 66#66: *13 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 51#51: *2 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+2026/02/27 15:47:10 [warn] 54#54: *10 [lua] plugin.lua:255: load_stream(): new plugins: {"ip-restriction":true,"limit-conn":true,"mqtt-proxy":true,"syslog":true}, context: init_worker_by_lua*
+172.28.0.13 - - [27/Feb/2026:15:48:00 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:00 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 33 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:06 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e-test-consumer HTTP/1.1" 400 162 0.000 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:08 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.003 "-" "-" - - - "http://apisix:9180"
+2026/02/27 15:48:13 [error] 49#49: *2114 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 15:48:14 [error] 50#50: *2711 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:12 +0000] apisix:9180 "PUT /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 201 377 0.022 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 200 414 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "PUT /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 200 395 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 200 432 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "DELETE /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 200 79 0.004 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207292826 HTTP/1.1" 404 39 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_crud_consumer_1772207292827 HTTP/1.1" 201 406 0.007 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 464 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_crud_consumer_1772207292827 HTTP/1.1" 200 409 0.005 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 467 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2e_crud_consumer_1772207292827 HTTP/1.1" 200 85 0.010 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 33 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:13 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:14 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 15:48:19 [error] 51#51: *2865 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 15:48:20 [error] 52#52: *2905 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:19 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:20 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.004 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_key_owner_1772207302214 HTTP/1.1" 201 266 0.017 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "GET /apisix/admin/consumers/e2e_key_owner_1772207302214 HTTP/1.1" 200 272 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_key_owner_1772207302214 HTTP/1.1" 200 311 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_ratelimit_1772207302215 HTTP/1.1" 201 554 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 904 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "GET /apisix/admin/consumers/e2e_ratelimit_1772207302215 HTTP/1.1" 200 591 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_ratelimit_1772207302215 HTTP/1.1" 200 547 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:22 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 897 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:23 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2e_ratelimit_1772207302215 HTTP/1.1" 200 81 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:23 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:23 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:23 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:36 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:36 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:43 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:43 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:48 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:48 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:48 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:48:48 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:10 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:15 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e-test-consumer HTTP/1.1" 400 162 0.000 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:16 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 15:50:20 [error] 55#55: *7135 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 15:50:21 [error] 54#54: *7556 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:19 +0000] apisix:9180 "PUT /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 201 377 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 200 414 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "PUT /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 200 395 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 200 432 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "DELETE /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 200 79 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/routes/e2e-crud-route-1772207419952 HTTP/1.1" 404 39 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_crud_consumer_1772207419953 HTTP/1.1" 201 406 0.005 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 756 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_crud_consumer_1772207419953 HTTP/1.1" 200 409 0.011 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 759 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2e_crud_consumer_1772207419953 HTTP/1.1" 200 85 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 325 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:20 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:21 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+2026/02/27 15:50:25 [error] 58#58: *7710 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:25 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 15:50:31 [error] 61#61: *7978 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:31 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:33 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_key_owner_1772207433582 HTTP/1.1" 201 266 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:33 +0000] apisix:9180 "GET /apisix/admin/consumers/e2e_key_owner_1772207433582 HTTP/1.1" 200 272 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:33 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_key_owner_1772207433582 HTTP/1.1" 200 311 0.007 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_ratelimit_1772207433583 HTTP/1.1" 201 554 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1196 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers/e2e_ratelimit_1772207433583 HTTP/1.1" 200 591 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2e_ratelimit_1772207433583 HTTP/1.1" 200 547 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1189 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2e_ratelimit_1772207433583 HTTP/1.1" 200 81 0.007 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:34 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:46 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:46 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:53 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:54 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:58 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:58 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:58 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:15:50:58 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:02:23 +0000] apisix:9180 "PUT /apisix/admin/consumers/debug-user HTTP/1.1" 400 155 0.000 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:02:44 +0000] apisix:9180 "PUT /apisix/admin/consumers/debug-user HTTP/1.1" 400 155 0.000 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:13:01 [error] 66#66: *60021 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 16:13:01 [error] 49#49: *60099 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:00 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.005 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:00 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 617 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:01 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:01 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.004 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:13:06 [error] 49#49: *60276 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 16:13:08 [error] 49#49: *60354 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:06 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:08 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:13:12 [error] 49#49: *60431 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:10 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2etestconsumer HTTP/1.1" 201 242 0.010 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:10 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:11 +0000] apisix:9180 "PUT /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 201 371 0.010 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:11 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 200 408 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:11 +0000] apisix:9180 "PUT /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 200 389 0.013 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 200 426 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "DELETE /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 200 76 0.005 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772208791617 HTTP/1.1" 404 39 0.004 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ecrudconsumer1772208791618 HTTP/1.1" 201 400 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1278 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ecrudconsumer1772208791618 HTTP/1.1" 200 403 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1281 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2ecrudconsumer1772208791618 HTTP/1.1" 200 82 0.011 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 853 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:12 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:13:15 [error] 49#49: *60622 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 16:13:16 [error] 49#49: *60662 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:15 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:16 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:13:23 [error] 49#49: *60958 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:23 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:25 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ekeyowner1772208805699 HTTP/1.1" 201 260 0.007 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers/e2ekeyowner1772208805699 HTTP/1.1" 200 265 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ekeyowner1772208805699 HTTP/1.1" 200 305 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2eratelimit1772208805699 HTTP/1.1" 201 550 0.011 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1714 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers/e2eratelimit1772208805699 HTTP/1.1" 200 587 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2eratelimit1772208805699 HTTP/1.1" 200 543 0.013 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1707 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2eratelimit1772208805699 HTTP/1.1" 200 79 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:26 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:37 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:38 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.001 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:45 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:45 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:50 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:50 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:50 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:13:50 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:18:35 [emerg] 158#158: bind() to 0.0.0.0:9091 failed (98: Address already in use)
+2026/02/27 16:18:35 [warn] 141#141: *73022 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 137#137: *73019 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 139#139: *73023 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 138#138: *73020 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 140#140: *73021 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 139#139: *73023 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 137#137: *73019 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 141#141: *73022 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 138#138: *73020 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 140#140: *73021 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 143#143: *73024 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 144#144: *73026 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 152#152: *73028 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 148#148: *73027 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 156#156: *73029 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 146#146: *73025 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 141#141: *73022 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 139#139: *73023 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 143#143: *73024 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 144#144: *73026 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 148#148: *73027 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 140#140: *73021 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 152#152: *73028 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 156#156: *73029 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 137#137: *73019 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 146#146: *73025 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 155#155: *73030 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 138#138: *73020 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 143#143: *73024 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 155#155: *73030 [lua] utils.lua:418: find_and_log(): Using opentelemetry collector.address with no TLS is a security risk, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 144#144: *73026 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 148#148: *73027 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 146#146: *73025 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 156#156: *73029 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 152#152: *73028 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 155#155: *73030 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 158#158: *73286 [lua] plugin.lua:205: load(): new plugins: {"http-logger":true,"opentelemetry":true,"prometheus":true,"traffic-blocker":true,"key-auth":true,"pii-masker":true,"limit-count":true,"limit-req":true}, context: init_worker_by_lua*
+2026/02/27 16:18:35 [warn] 158#158: *73286 [lua] plugin.lua:255: load_stream(): new plugins: {"syslog":true,"limit-conn":true,"ip-restriction":true,"mqtt-proxy":true}, context: init_worker_by_lua*
+2026/02/27 16:19:48 [error] 137#137: *76080 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 16:19:51 [error] 138#138: *76196 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:48 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:48 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:48 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:19:53 [error] 140#140: *76274 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:51 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:53 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:19:57 [error] 141#141: *76428 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:57 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:20:00 [error] 139#139: *76544 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:59 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2etestconsumer HTTP/1.1" 200 242 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:19:59 +0000] apisix:9180 "GET /apisix/admin/routes HTTP/1.1" 200 33 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "PUT /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 201 371 0.028 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 200 408 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "PUT /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 200 389 0.006 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 200 426 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "DELETE /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 200 76 0.005 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/routes/e2ecrudroute1772209200406 HTTP/1.1" 404 39 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ecrudconsumer1772209200407 HTTP/1.1" 201 400 0.010 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1564 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ecrudconsumer1772209200407 HTTP/1.1" 200 403 0.007 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1567 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2ecrudconsumer1772209200407 HTTP/1.1" 200 82 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1139 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:00 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.002 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:20:03 [error] 143#143: *76698 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+2026/02/27 16:20:05 [error] 144#144: *76776 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:03 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+2026/02/27 16:20:08 [error] 146#146: *76854 lua entry thread aborted: runtime error: /usr/local/apisix/apisix/admin/utils.lua:109: attempt to index local 'conf' (a nil value)
+stack traceback:
+coroutine 0:
+	/usr/local/apisix/apisix/admin/utils.lua: in function 'decrypt_params'
+	/usr/local/apisix/apisix/admin/init.lua:241: in function 'handler'
+	/usr/local/apisix//deps/share/lua/5.1/resty/radixtree.lua:1013: in function 'dispatch'
+	/usr/local/apisix/apisix/init.lua:945: in function 'http_admin'
+	content_by_lua(nginx.conf:227):2: in main chunk, client: 172.28.0.13, server: , request: "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1", host: "apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:05 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:08 +0000] apisix:9180 "GET /apisix/admin/plugin_metadata/traffic-blocker HTTP/1.1" 500 249 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ekeyowner1772209210186 HTTP/1.1" 201 260 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers/e2ekeyowner1772209210186 HTTP/1.1" 200 265 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2ekeyowner1772209210186 HTTP/1.1" 200 305 0.008 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2eratelimit1772209210187 HTTP/1.1" 201 550 0.014 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 2000 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers/e2eratelimit1772209210187 HTTP/1.1" 200 587 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "PUT /apisix/admin/consumers/e2eratelimit1772209210187 HTTP/1.1" 200 543 0.010 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1993 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "DELETE /apisix/admin/consumers/e2eratelimit1772209210187 HTTP/1.1" 200 79 0.009 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:10 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:20 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.003 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:20 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:27 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:28 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:32 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:32 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:32 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.002 "-" "-" - - - "http://apisix:9180"
+172.28.0.13 - - [27/Feb/2026:16:20:33 +0000] apisix:9180 "GET /apisix/admin/consumers HTTP/1.1" 200 1425 0.003 "-" "-" - - - "http://apisix:9180"

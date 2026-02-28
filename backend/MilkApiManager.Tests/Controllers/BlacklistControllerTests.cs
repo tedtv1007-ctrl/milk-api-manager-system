@@ -17,7 +17,6 @@ public class BlacklistControllerTests : IDisposable
     private readonly Mock<ApisixClient> _mockApisixClient;
     private readonly Mock<ILogger<BlacklistController>> _mockLogger;
     private readonly AppDbContext _dbContext;
-    private readonly IConfiguration _configuration;
     private readonly Mock<AuditLogService> _mockAuditLog;
 
     public BlacklistControllerTests()

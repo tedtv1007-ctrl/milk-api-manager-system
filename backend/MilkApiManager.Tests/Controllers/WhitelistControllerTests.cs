@@ -31,7 +31,7 @@ namespace MilkApiManager.Tests.Controllers
             {
                 {"Whitelist:PersistToDatabase", persist ? "true" : "false"}
             };
-            return new ConfigurationBuilder().AddInMemoryCollection(dict).Build();
+            return new ConfigurationBuilder().AddInMemoryCollection(dict.Select(x => new KeyValuePair<string, string?>(x.Key, x.Value))).Build();
         }
 
         [Fact]
