@@ -46,7 +46,7 @@ jobs:
 
       # 1.6 Run Unit Tests (independent of Docker services)
       - name: Run .NET Unit Tests
-        run: dotnet test backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj --logger "trx;LogFileName=unit-results.trx" --results-directory ./test-results
+        run: dotnet test backend/ --logger "trx;LogFileName=unit-results.trx" --results-directory ./test-results
 
       # 2. Infrastructure Setup (Lightweight Test Mode)
       - name: Start Services via Docker Compose (Test Mode)
@@ -54,7 +54,7 @@ jobs:
           docker compose -f docker-compose.test.yml up -d --build
           echo "Waiting for milk-backend healthcheck..."
           for i in {1..30}; do
-            if curl -sf http://localhost:5001/health > /dev/null 2>&1; then
+            if curl -sf http://localhost:5001/health/live > /dev/null 2>&1; then
               echo "milk-backend is READY!"
               break
             fi

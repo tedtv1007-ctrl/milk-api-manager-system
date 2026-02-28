@@ -24,7 +24,7 @@ echo -e "\n[Step 1/3] Checking Infrastructure (Docker)..."
 
 if [ "$IS_TEST_MODE" = "true" ]; then
     # Test Mode: only check essential containers
-    REQUIRED_CONTAINERS=("milk-db" "milk-backend")
+    REQUIRED_CONTAINERS=("milk-db" "milk-backend" "milk-worker")
 else
     # Full Mode: check all core containers
     REQUIRED_CONTAINERS=("apisix" "etcd" "prometheus" "grafana")
@@ -49,7 +49,7 @@ echo -e "\n[Wait] Verifying Service Connectivity..."
 if [ "$IS_TEST_MODE" = "true" ]; then
     # Test Mode: only wait for milk-backend health
     for i in {1..30}; do
-        if curl -sf http://localhost:5001/health > /dev/null 2>&1; then
+        if curl -sf http://localhost:5001/health/live > /dev/null 2>&1; then
             echo "   [PASS] milk-backend is READY."
             break
         fi
@@ -70,7 +70,7 @@ fi
 
 # 2. .NET Unit Tests
 echo -e "\n[Step 2/3] Running .NET Unit Tests..."
-if dotnet test backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj --logger "console;verbosity=normal"; then
+if dotnet test backend/ --logger "console;verbosity=normal"; then
     DOTNET_STATUS="✅OK"
     DOTNET_CODE=0
 else
@@ -122,7 +122,7 @@ cat <<EOF > "$REPORT_FILE"
 ## Component Breakdown
 | Component | Status | Details |
 |-----------|--------|---------|
-| .NET Backend | $DOTNET_STATUS | 48 Unit Tests |
+| .NET Backend | $DOTNET_STATUS | 78 Unit Tests |
 | Admin UI | $E2E_STATUS | Playwright E2E |
 
 ---
