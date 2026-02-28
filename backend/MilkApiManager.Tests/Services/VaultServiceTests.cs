@@ -10,17 +10,13 @@ namespace MilkApiManager.Tests.Services;
 public class VaultServiceTests
 {
     private readonly Mock<ILogger<VaultService>> _mockLogger;
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly VaultService _vaultService;
 
     public VaultServiceTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
         _mockLogger = new Mock<ILogger<VaultService>>();
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
 
         _vaultService = new VaultService(
             _mockLogger.Object,

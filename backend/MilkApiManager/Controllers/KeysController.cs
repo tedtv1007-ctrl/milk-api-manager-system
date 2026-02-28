@@ -11,19 +11,21 @@ using MilkApiManager.Services;
 using MilkApiManager.Models.Apisix;
 using System.Collections.Generic;
 using System.Linq;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public class KeysController : ControllerBase
     {
         private readonly IVaultService _vaultService;
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly AppDbContext _dbContext;
 
-        public KeysController(IVaultService vaultService, ApisixClient apisixClient, AppDbContext dbContext)
+        public KeysController(IVaultService vaultService, IApisixClient apisixClient, AppDbContext dbContext)
         {
             _vaultService = vaultService;
             _apisixClient = apisixClient;

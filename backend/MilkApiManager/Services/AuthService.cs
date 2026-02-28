@@ -1,8 +1,10 @@
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 using MilkApiManager.Models;
+using MilkApiManager.Options;
 using Novell.Directory.Ldap;
 
 namespace MilkApiManager.Services;
@@ -11,10 +13,12 @@ namespace MilkApiManager.Services;
 /// Handles user authentication via LDAP and JWT token generation.
 /// In test mode, allows a built-in demo user for easy demonstration.
 /// </summary>
-public class AuthService
+public class AuthService : IAuthService
 {
     private readonly IConfiguration _configuration;
     private readonly ILogger<AuthService> _logger;
+    private readonly JwtOptions _jwtOptions;
+    private readonly AuthOptions _authOptions;
     private readonly bool _isTestMode;
 
     // LDAP group name → UserRole mapping
@@ -28,11 +32,13 @@ public class AuthService
         { "IT Operations", UserRole.Operator },
     };
 
-    public AuthService(IConfiguration configuration, ILogger<AuthService> logger)
+    public AuthService(IConfiguration configuration, ILogger<AuthService> logger, IOptions<JwtOptions> jwtOptions, IOptions<AuthOptions> authOptions)
     {
         _configuration = configuration;
         _logger = logger;
-        _isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+        _jwtOptions = jwtOptions.Value;
+        _authOptions = authOptions.Value;
+        _isTestMode = _authOptions.UseTestMode;
     }
 
     /// <summary>
@@ -42,9 +48,7 @@ public class AuthService
     {
         List<string> roles;
 
-        var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
-
-        if (_isTestMode || useDemoAuth)
+        if (_isTestMode || _authOptions.UseDemoAuth)
         {
             var demoRoles = AuthenticateDemo(username, password);
             if (demoRoles == null) return null;
@@ -201,12 +205,10 @@ public class AuthService
     /// </summary>
     private string GenerateJwtToken(string username, List<string> roles)
     {
-        var secret = Environment.GetEnvironmentVariable("JWT_SECRET") 
-            ?? _configuration["Jwt:Secret"] 
-            ?? "milk-api-default-jwt-secret-change-in-production-32chars!";
-        var issuer = _configuration["Jwt:Issuer"] ?? "MilkApiManager";
-        var audience = _configuration["Jwt:Audience"] ?? "MilkApiClients";
-        var expMinutes = _configuration.GetValue("Jwt:ExpirationMinutes", 480);
+        var secret = _jwtOptions.Secret;
+        var issuer = _jwtOptions.Issuer;
+        var audience = _jwtOptions.Audience;
+        var expMinutes = _jwtOptions.ExpirationMinutes;
 
         var key = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(secret));
         var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha256);

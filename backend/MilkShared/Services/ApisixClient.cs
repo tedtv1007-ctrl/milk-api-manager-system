@@ -1,8 +1,10 @@
 using MilkApiManager.Models.Apisix;
+using MilkApiManager.Options;
 using ApisixRoute = MilkApiManager.Models.Apisix.Route;
 using System.Text.Json;
 using System.Text;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Options;
 
 namespace MilkApiManager.Services
 {
@@ -13,12 +15,12 @@ namespace MilkApiManager.Services
         private readonly string _adminKey;
         private readonly JsonSerializerOptions _jsonSerializerOptions;
 
-        public ApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger)
+        public ApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger, IOptions<ApisixOptions> options)
         {
             _httpClient = httpClient;
             _logger = logger;
-            _httpClient.BaseAddress = new Uri(Environment.GetEnvironmentVariable("APISIX_ADMIN_URL") ?? "http://apisix:9180/apisix/admin/");
-            _adminKey = Environment.GetEnvironmentVariable("APISIX_ADMIN_KEY") ?? throw new InvalidOperationException("APISIX_ADMIN_KEY environment variable is not set.");
+            _httpClient.BaseAddress = new Uri(options.Value.AdminUrl);
+            _adminKey = options.Value.AdminKey;
             
             _jsonSerializerOptions = new JsonSerializerOptions
             {
@@ -185,6 +187,63 @@ namespace MilkApiManager.Services
             {
                 _logger.LogWarning("Failed to delete consumer {Username}: {StatusCode}", username, response.StatusCode);
             }
+        }
+
+        public virtual async Task<List<Route>> GetRoutesTypedAsync()
+        {
+            var json = await GetRoutesAsync();
+            return ParseApisixList<Route>(json);
+        }
+
+        public virtual async Task<List<Service>> GetServicesTypedAsync()
+        {
+            var json = await GetServicesAsync();
+            return ParseApisixList<Service>(json);
+        }
+
+        public virtual async Task<List<Consumer>> GetConsumersTypedAsync()
+        {
+            var json = await GetConsumersAsync();
+            return ParseApisixList<Consumer>(json);
+        }
+
+        public virtual async Task<List<ConsumerGroup>> GetConsumerGroupsTypedAsync()
+        {
+            var json = await GetConsumerGroupsAsync();
+            return ParseApisixList<ConsumerGroup>(json);
+        }
+
+        private List<T> ParseApisixList<T>(string json)
+        {
+            var doc = JsonDocument.Parse(json);
+            var items = new List<T>();
+
+            // APISIX v3 format: { "list": [ { "value": {...} } ] }
+            if (doc.RootElement.TryGetProperty("list", out var list))
+            {
+                foreach (var item in list.EnumerateArray())
+                {
+                    if (item.TryGetProperty("value", out var val))
+                    {
+                        var parsed = JsonSerializer.Deserialize<T>(val.GetRawText(), _jsonSerializerOptions);
+                        if (parsed != null) items.Add(parsed);
+                    }
+                }
+            }
+            // APISIX v2 format: { "node": { "nodes": [ { "value": {...} } ] } }
+            else if (doc.RootElement.TryGetProperty("node", out var node) && node.TryGetProperty("nodes", out var nodes))
+            {
+                foreach (var item in nodes.EnumerateArray())
+                {
+                    if (item.TryGetProperty("value", out var val))
+                    {
+                        var parsed = JsonSerializer.Deserialize<T>(val.GetRawText(), _jsonSerializerOptions);
+                        if (parsed != null) items.Add(parsed);
+                    }
+                }
+            }
+
+            return items;
         }
 
         public virtual async Task<List<string>> GetBlacklistAsync()

@@ -14,18 +14,14 @@ namespace MilkApiManager.Tests.Controllers;
 public class KeysControllerTests
 {
     private readonly Mock<IVaultService> _mockVaultService;
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly AppDbContext _dbContext;
     private readonly KeysController _controller;
 
     public KeysControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
         _mockVaultService = new Mock<IVaultService>();
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(databaseName: $"KeysControllerTests_{Guid.NewGuid()}")

@@ -6,19 +6,21 @@ using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
 using System.Text.Json;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
 public class PiiMaskingController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly ApisixClient _apisixClient;
+    private readonly IApisixClient _apisixClient;
     private readonly ILogger<PiiMaskingController> _logger;
 
-    public PiiMaskingController(AppDbContext context, ApisixClient apisixClient, ILogger<PiiMaskingController> logger)
+    public PiiMaskingController(AppDbContext context, IApisixClient apisixClient, ILogger<PiiMaskingController> logger)
     {
         _context = context;
         _apisixClient = apisixClient;

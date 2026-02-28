@@ -6,19 +6,21 @@ using MilkApiManager.Models;
 using MilkApiManager.Models.Apisix;
 using ApisixRoute = MilkApiManager.Models.Apisix.Route;
 using System.Text.Json;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     public class RouteController : ControllerBase
     {
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly ILogger<RouteController> _logger;
-        private readonly AuditLogService _auditLogService;
+        private readonly IAuditLogService _auditLogService;
 
-        public RouteController(ApisixClient apisixClient, ILogger<RouteController> logger, AuditLogService auditLogService)
+        public RouteController(IApisixClient apisixClient, ILogger<RouteController> logger, IAuditLogService auditLogService)
         {
             _apisixClient = apisixClient;
             _logger = logger;

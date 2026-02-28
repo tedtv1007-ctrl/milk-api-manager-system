@@ -40,11 +40,11 @@ public class ApisixSyncOutboxService
 public class ApisixSyncOutboxProcessor
 {
     private readonly AppDbContext _dbContext;
-    private readonly ApisixClient _apisixClient;
+    private readonly IApisixClient _apisixClient;
     private readonly ILogger<ApisixSyncOutboxProcessor> _logger;
     private readonly int _maxAttempts;
 
-    public ApisixSyncOutboxProcessor(AppDbContext dbContext, ApisixClient apisixClient, ILogger<ApisixSyncOutboxProcessor> logger, int maxAttempts = 8)
+    public ApisixSyncOutboxProcessor(AppDbContext dbContext, IApisixClient apisixClient, ILogger<ApisixSyncOutboxProcessor> logger, int maxAttempts = 8)
     {
         _dbContext = dbContext;
         _apisixClient = apisixClient;

@@ -7,7 +7,7 @@ using MilkApiManager.Data;
 
 namespace MilkApiManager.Services;
 
-public class AuditLogService
+public class AuditLogService : IAuditLogService
 {
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;

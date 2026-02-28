@@ -11,17 +11,13 @@ namespace MilkApiManager.Tests.Controllers;
 
 public class ConsumerControllerTests
 {
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly Mock<ILogger<ConsumerController>> _mockLogger;
     private readonly ConsumerController _controller;
 
     public ConsumerControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
         _mockLogger = new Mock<ILogger<ConsumerController>>();
         _controller = new ConsumerController(_mockApisixClient.Object, _mockLogger.Object);
     }

@@ -3,18 +3,20 @@ using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Auth;
 using MilkApiManager.Services;
 using System.Text.Json;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     public class ConsumerController : ControllerBase
     {
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly ILogger<ConsumerController> _logger;
 
-        public ConsumerController(ApisixClient apisixClient, ILogger<ConsumerController> logger)
+        public ConsumerController(IApisixClient apisixClient, ILogger<ConsumerController> logger)
         {
             _apisixClient = apisixClient;
             _logger = logger;

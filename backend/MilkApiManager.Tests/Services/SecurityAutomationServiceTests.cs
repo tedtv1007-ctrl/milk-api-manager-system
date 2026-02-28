@@ -7,18 +7,14 @@ namespace MilkApiManager.Tests.Services;
 
 public class SecurityAutomationServiceTests
 {
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly Mock<IVaultService> _mockVaultService;
     private readonly Mock<ILogger<SecurityAutomationService>> _mockLogger;
     private readonly SecurityAutomationService _service;
 
     public SecurityAutomationServiceTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
         _mockVaultService = new Mock<IVaultService>();
         _mockLogger = new Mock<ILogger<SecurityAutomationService>>();
 

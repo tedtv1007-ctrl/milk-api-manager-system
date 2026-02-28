@@ -3,13 +3,13 @@ using MilkApiManager.Models;
 
 namespace MilkApiManager.Services;
 
-public class SecurityAutomationService
+public class SecurityAutomationService : ISecurityAutomationService
 {
-    private readonly ApisixClient _apisixClient;
+    private readonly IApisixClient _apisixClient;
     private readonly IVaultService _vaultService;
     private readonly ILogger<SecurityAutomationService> _logger;
 
-    public SecurityAutomationService(ApisixClient apisixClient, IVaultService vaultService, ILogger<SecurityAutomationService> logger)
+    public SecurityAutomationService(IApisixClient apisixClient, IVaultService vaultService, ILogger<SecurityAutomationService> logger)
     {
         _apisixClient = apisixClient;
         _vaultService = vaultService;

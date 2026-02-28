@@ -15,12 +15,18 @@ public interface IApisixClient
     Task<ApisixRoute?> GetRouteAsync(string id);
     Task UpdateRouteAsync(string id, ApisixRoute routeConfig);
 
+    // Routes (Typed)
+    Task<List<ApisixRoute>> GetRoutesTypedAsync();
+
     // Services
     Task CreateServiceAsync(string id, Service serviceConfig);
     Task<Service?> GetServiceAsync(string id);
     Task<string> GetServicesAsync();
     Task UpdateServiceAsync(string id, Service serviceConfig);
     Task DeleteServiceAsync(string id);
+
+    // Services (Typed)
+    Task<List<Service>> GetServicesTypedAsync();
 
     // Consumers
     Task CreateConsumerAsync(string username, Consumer consumerConfig);
@@ -29,10 +35,16 @@ public interface IApisixClient
     Task UpdateConsumerAsync(string username, object consumerConfig);
     Task DeleteConsumerAsync(string username);
 
+    // Consumers (Typed)
+    Task<List<Consumer>> GetConsumersTypedAsync();
+
     // Consumer Groups
     Task CreateConsumerGroupAsync(string id, ConsumerGroup groupConfig);
     Task<string> GetConsumerGroupsAsync();
     Task DeleteConsumerGroupAsync(string id);
+
+    // Consumer Groups (Typed)
+    Task<List<ConsumerGroup>> GetConsumerGroupsTypedAsync();
 
     // Security
     Task<List<string>> GetBlacklistAsync();

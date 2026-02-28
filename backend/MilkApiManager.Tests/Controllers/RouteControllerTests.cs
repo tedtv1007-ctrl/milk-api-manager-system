@@ -13,25 +13,16 @@ namespace MilkApiManager.Tests.Controllers;
 
 public class RouteControllerTests
 {
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly Mock<ILogger<RouteController>> _mockLogger;
-    private readonly Mock<AuditLogService> _mockAuditLogService;
+    private readonly Mock<IAuditLogService> _mockAuditLogService;
     private readonly RouteController _controller;
 
     public RouteControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
         _mockLogger = new Mock<ILogger<RouteController>>();
-        _mockAuditLogService = new Mock<AuditLogService>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<Microsoft.Extensions.Configuration.IConfiguration>(),
-            Mock.Of<Microsoft.Extensions.DependencyInjection.IServiceScopeFactory>(),
-            Mock.Of<ILogger<AuditLogService>>()
-        );
+        _mockAuditLogService = new Mock<IAuditLogService>();
 
         _controller = new RouteController(
             _mockApisixClient.Object,

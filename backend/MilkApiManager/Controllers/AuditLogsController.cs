@@ -3,17 +3,19 @@ using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Auth;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
 public class AuditLogsController : ControllerBase
 {
-    private readonly AuditLogService _auditLogService;
+    private readonly IAuditLogService _auditLogService;
 
-    public AuditLogsController(AuditLogService auditLogService)
+    public AuditLogsController(IAuditLogService auditLogService)
     {
         _auditLogService = auditLogService;
     }

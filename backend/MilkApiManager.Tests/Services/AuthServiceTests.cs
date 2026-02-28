@@ -27,7 +27,19 @@ public class AuthServiceTests
             .AddInMemoryCollection(configData)
             .Build();
 
-        _authService = new AuthService(config, _mockLogger.Object);
+        _authService = new AuthService(config, _mockLogger.Object,
+            Microsoft.Extensions.Options.Options.Create(new MilkApiManager.Options.JwtOptions
+            {
+                Secret = "milk-api-default-jwt-secret-change-in-production-32chars!",
+                Issuer = "MilkApiManager",
+                Audience = "MilkApiClients",
+                ExpirationMinutes = 60
+            }),
+            Microsoft.Extensions.Options.Options.Create(new MilkApiManager.Options.AuthOptions
+            {
+                UseTestMode = true,
+                UseDemoAuth = true
+            }));
     }
 
     [Fact]

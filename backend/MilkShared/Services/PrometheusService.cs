@@ -1,19 +1,22 @@
 using MilkApiManager.Models;
 using System.Text.Json;
 
+using Microsoft.Extensions.Options;
+using MilkApiManager.Options;
+
 namespace MilkApiManager.Services
 {
-    public class PrometheusService
+    public class PrometheusService : IPrometheusService
     {
         private readonly HttpClient _httpClient;
         private readonly ILogger<PrometheusService> _logger;
         private readonly string _prometheusUrl;
 
-        public PrometheusService(HttpClient httpClient, ILogger<PrometheusService> logger)
+        public PrometheusService(HttpClient httpClient, ILogger<PrometheusService> logger, IOptions<PrometheusOptions> options)
         {
             _httpClient = httpClient;
             _logger = logger;
-            _prometheusUrl = Environment.GetEnvironmentVariable("PROMETHEUS_URL") ?? "http://prometheus:9090";
+            _prometheusUrl = options.Value.Url;
         }
 
         public virtual async Task<List<AnalyticsResult>> GetMetricAsync(string query, DateTime start, DateTime end, string step)

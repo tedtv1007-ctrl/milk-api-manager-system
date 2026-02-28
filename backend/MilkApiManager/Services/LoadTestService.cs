@@ -3,7 +3,7 @@ using System.Text;
 
 namespace MilkApiManager.Services;
 
-public class LoadTestService
+public class LoadTestService : ILoadTestService
 {
     private readonly ILogger<LoadTestService> _logger;
     private readonly string _scriptsPath = "load-tests";

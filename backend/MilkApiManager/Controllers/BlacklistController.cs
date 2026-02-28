@@ -5,22 +5,24 @@ using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using Microsoft.EntityFrameworkCore;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
     public class BlacklistController : ControllerBase
     {
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly ILogger<BlacklistController> _logger;
         private readonly AppDbContext _db;
         private readonly IConfiguration _config;
-        private readonly AuditLogService _auditLog;
+        private readonly IAuditLogService _auditLog;
         private readonly ApisixSyncOutboxService _outboxService;
 
-        public BlacklistController(ApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config, AuditLogService auditLog, ApisixSyncOutboxService outboxService)
+        public BlacklistController(IApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config, IAuditLogService auditLog, ApisixSyncOutboxService outboxService)
         {
             _apisixClient = apisixClient;
             _logger = logger;
@@ -193,14 +195,5 @@ namespace MilkApiManager.Controllers
 
             return System.Net.IPAddress.TryParse(value, out _);
         }
-    }
-
-    public class BlacklistUpdateRequest
-    {
-        public required string Ip { get; set; }
-        public string Action { get; set; } = "add"; // add | remove
-        public string? Reason { get; set; }
-        public string? AddedBy { get; set; }
-        public DateTime? ExpiresAt { get; set; }
     }
 }

@@ -16,13 +16,11 @@ public class SyncStatusControllerTests
 
     public SyncStatusControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-
         var db = new AppDbContext(new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options);
 
-        var apisixClient = new Mock<ApisixClient>(Mock.Of<HttpClient>(), Mock.Of<Microsoft.Extensions.Logging.ILogger<ApisixClient>>());
+        var apisixClient = new Mock<IApisixClient>();
 
         _mockConsistencyService = new Mock<BlacklistConsistencyService>(
             db,

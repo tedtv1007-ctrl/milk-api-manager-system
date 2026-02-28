@@ -6,19 +6,21 @@ using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
 using System.Text.Json;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class MockController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly ApisixClient _apisixClient;
+    private readonly IApisixClient _apisixClient;
     private readonly ILogger<MockController> _logger;
 
-    public MockController(AppDbContext context, ApisixClient apisixClient, ILogger<MockController> logger)
+    public MockController(AppDbContext context, IApisixClient apisixClient, ILogger<MockController> logger)
     {
         _context = context;
         _apisixClient = apisixClient;

@@ -10,15 +10,12 @@ namespace MilkApiManager.Tests.Controllers;
 
 public class AnalyticsControllerTests
 {
-    private readonly Mock<PrometheusService> _mockPrometheusService;
+    private readonly Mock<IPrometheusService> _mockPrometheusService;
     private readonly AnalyticsController _controller;
 
     public AnalyticsControllerTests()
     {
-        _mockPrometheusService = new Mock<PrometheusService>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<PrometheusService>>()
-        );
+        _mockPrometheusService = new Mock<IPrometheusService>();
 
         _controller = new AnalyticsController(_mockPrometheusService.Object);
     }

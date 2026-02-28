@@ -7,10 +7,10 @@ namespace MilkApiManager.Services;
 public class BlacklistConsistencyService
 {
     private readonly AppDbContext _dbContext;
-    private readonly ApisixClient _apisixClient;
+    private readonly IApisixClient _apisixClient;
     private readonly ILogger<BlacklistConsistencyService> _logger;
 
-    public BlacklistConsistencyService(AppDbContext dbContext, ApisixClient apisixClient, ILogger<BlacklistConsistencyService> logger)
+    public BlacklistConsistencyService(AppDbContext dbContext, IApisixClient apisixClient, ILogger<BlacklistConsistencyService> logger)
     {
         _dbContext = dbContext;
         _apisixClient = apisixClient;

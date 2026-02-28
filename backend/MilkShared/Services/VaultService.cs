@@ -13,10 +13,10 @@ namespace MilkApiManager.Services
     public class VaultService : IVaultService
     {
         private readonly ILogger<VaultService> _logger;
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly string _storagePath = "vault_storage";
 
-        public VaultService(ILogger<VaultService> logger, ApisixClient apisixClient)
+        public VaultService(ILogger<VaultService> logger, IApisixClient apisixClient)
         {
             _logger = logger;
             _apisixClient = apisixClient;

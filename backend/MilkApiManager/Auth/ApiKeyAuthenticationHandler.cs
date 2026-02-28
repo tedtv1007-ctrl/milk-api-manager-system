@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.Extensions.Options;
+using MilkApiManager.Options;
 using System.Security.Claims;
 using System.Security.Cryptography;
 using System.Text;
@@ -22,20 +23,22 @@ public class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthentic
     public ApiKeyAuthenticationHandler(
         IOptionsMonitor<ApiKeyAuthenticationOptions> options,
         ILoggerFactory logger,
-        UrlEncoder encoder)
+        UrlEncoder encoder,
+        IOptions<AuthOptions> authOptions)
         : base(options, logger, encoder)
     {
-        var configuredApiKey = Environment.GetEnvironmentVariable("API_AUTH_KEY");
-        var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
-        var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
+        var auth = authOptions.Value;
+        var configuredApiKey = auth.ApiAuthKey;
+        var isTestMode = auth.UseTestMode;
+        var useDemoAuth = auth.UseDemoAuth;
 
         if (string.IsNullOrWhiteSpace(configuredApiKey) && !(isTestMode || useDemoAuth))
         {
-            throw new InvalidOperationException("API_AUTH_KEY must be configured in non-test environments.");
+            throw new InvalidOperationException("Auth:ApiAuthKey must be configured in non-test environments.");
         }
 
         _apiKey = string.IsNullOrWhiteSpace(configuredApiKey)
-            ? "milk-admin-secret-key-change-me"
+            ? AuthOptions.DefaultApiAuthKey
             : configuredApiKey;
     }
 

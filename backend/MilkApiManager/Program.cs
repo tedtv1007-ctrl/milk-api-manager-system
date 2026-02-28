@@ -1,6 +1,8 @@
 using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
+using MilkApiManager.Options;
+using MilkApiManager.Filters;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
@@ -12,12 +14,67 @@ using System.Text;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
+using Asp.Versioning;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ===== Strongly-typed Options (P1-3: replace Environment.GetEnvironmentVariable) =====
+builder.Services.Configure<ApisixOptions>(builder.Configuration.GetSection(ApisixOptions.SectionName));
+builder.Services.PostConfigure<ApisixOptions>(options =>
+{
+    var envUrl = Environment.GetEnvironmentVariable("APISIX_ADMIN_URL");
+    if (!string.IsNullOrEmpty(envUrl)) options.AdminUrl = envUrl;
+    var envKey = Environment.GetEnvironmentVariable("APISIX_ADMIN_KEY");
+    if (!string.IsNullOrEmpty(envKey)) options.AdminKey = envKey;
+    var envPublic = Environment.GetEnvironmentVariable("APISIX_PUBLIC_URL");
+    if (!string.IsNullOrEmpty(envPublic)) options.PublicUrl = envPublic;
+});
+builder.Services.Configure<JwtOptions>(builder.Configuration.GetSection(JwtOptions.SectionName));
+builder.Services.PostConfigure<JwtOptions>(options =>
+{
+    var envSecret = Environment.GetEnvironmentVariable("JWT_SECRET");
+    if (!string.IsNullOrEmpty(envSecret)) options.Secret = envSecret;
+});
+builder.Services.Configure<AuthOptions>(options =>
+{
+    builder.Configuration.GetSection(AuthOptions.SectionName).Bind(options);
+    var envKey = Environment.GetEnvironmentVariable("API_AUTH_KEY");
+    if (!string.IsNullOrEmpty(envKey)) options.ApiAuthKey = envKey;
+    var envTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE");
+    if (envTestMode == "true") options.UseTestMode = true;
+    var envDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH");
+    if (envDemoAuth == "true") options.UseDemoAuth = true;
+});
+builder.Services.Configure<PrometheusOptions>(builder.Configuration.GetSection(PrometheusOptions.SectionName));
+builder.Services.PostConfigure<PrometheusOptions>(options =>
+{
+    var envUrl = Environment.GetEnvironmentVariable("PROMETHEUS_URL");
+    if (!string.IsNullOrEmpty(envUrl)) options.Url = envUrl;
+});
+
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    // P2-4: Global exception filter — unified ProblemDetails responses
+    options.Filters.Add<GlobalExceptionFilter>();
+});
+
+// P2-1: API Versioning
+builder.Services.AddApiVersioning(options =>
+{
+    options.DefaultApiVersion = new ApiVersion(1, 0);
+    options.AssumeDefaultVersionWhenUnspecified = true;
+    options.ReportApiVersions = true;
+    options.ApiVersionReader = ApiVersionReader.Combine(
+        new HeaderApiVersionReader("api-version"),
+        new QueryStringApiVersionReader("api-version")
+    );
+}).AddApiExplorer(options =>
+{
+    options.GroupNameFormat = "'v'VVV";
+});
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
@@ -72,14 +129,19 @@ var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
 
 ProductionStartupGuardrails.ValidateForApi(builder.Configuration, builder.Environment);
 
-// JWT Bearer Authentication
-var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") 
-    ?? builder.Configuration["Jwt:Secret"] 
-    ?? (isTestMode || useDemoAuth
+// JWT Bearer Authentication (reads from IOptions<JwtOptions> at startup)
+var jwtOpts = new JwtOptions();
+builder.Configuration.GetSection(JwtOptions.SectionName).Bind(jwtOpts);
+var envJwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET");
+if (!string.IsNullOrEmpty(envJwtSecret)) jwtOpts.Secret = envJwtSecret;
+
+var jwtSecret = !string.IsNullOrEmpty(jwtOpts.Secret)
+    ? jwtOpts.Secret
+    : (isTestMode || useDemoAuth
         ? "milk-api-default-jwt-secret-change-in-production-32chars!"
         : throw new InvalidOperationException("JWT secret must be configured via JWT_SECRET or Jwt:Secret in non-test environments."));
-var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "MilkApiManager";
-var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "MilkApiClients";
+var jwtIssuer = jwtOpts.Issuer;
+var jwtAudience = jwtOpts.Audience;
 
 builder.Services.AddAuthentication(options =>
 {
@@ -127,13 +189,11 @@ builder.Services.AddAuthorization(options =>
         policy.RequireRole("Admin"));
 });
 
-// Register DbContext
+// Register DbContext (P1-4: Unified — AuditContext removed, AppDbContext handles all entities)
 if (isTestMode)
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseInMemoryDatabase("MilkApiManagerTestDb"));
-    builder.Services.AddDbContext<AuditContext>(options =>
-        options.UseInMemoryDatabase("AuditLogTestDb"));
 }
 else
 {
@@ -141,36 +201,38 @@ else
         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseNpgsql(connectionString, npgsql => npgsql.MigrationsAssembly("MilkApiManager")));
-    builder.Services.AddDbContext<AuditContext>(options =>
-        options.UseNpgsql(connectionString, npgsql => npgsql.MigrationsAssembly("MilkApiManager")));
     
     // Add PostgreSQL health check for deep /health/ready validation
     healthChecksBuilder.AddNpgSql(connectionString, name: "postgresql", tags: new[] { "ready" });
 }
 
-// Register Services
+// Register Services (P1-1: Interface-based DI)
 if (isTestMode)
 {
-    builder.Services.AddHttpClient<ApisixClient, MockApisixClient>().AddStandardResilienceHandler();
+    builder.Services.AddHttpClient<IApisixClient, MockApisixClient>().AddStandardResilienceHandler();
 }
 else
 {
-    builder.Services.AddHttpClient<ApisixClient>().AddStandardResilienceHandler();
+    builder.Services.AddHttpClient<IApisixClient, ApisixClient>().AddStandardResilienceHandler();
 }
-builder.Services.AddHttpClient<AuditLogService>().AddStandardResilienceHandler();
-builder.Services.AddHttpClient<PrometheusService>().AddStandardResilienceHandler();
-builder.Services.AddSingleton<LoadTestService>();
+builder.Services.AddHttpClient<IAuditLogService, AuditLogService>().AddStandardResilienceHandler();
+builder.Services.AddHttpClient<IPrometheusService, PrometheusService>().AddStandardResilienceHandler();
+builder.Services.AddSingleton<ILoadTestService, LoadTestService>();
 builder.Services.AddScoped<ApisixSyncOutboxService>();
 builder.Services.AddScoped<ApisixSyncOutboxProcessor>();
 builder.Services.AddScoped<BlacklistConsistencyService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
-builder.Services.AddScoped<SecurityAutomationService>();
+builder.Services.AddScoped<ISecurityAutomationService, SecurityAutomationService>();
+builder.Services.AddScoped<INotificationService, NotificationService>();
+builder.Services.AddScoped<IBlacklistService, BlacklistService>();
+builder.Services.AddScoped<IWhitelistService, WhitelistService>();
+builder.Services.AddScoped<IDistributedLock, PostgresAdvisoryLock>();
 
 // Register Background Services
 // Moved to MilkWorker: AlertMonitoringService, AutoBlockWorker, ApisixRouteSyncService, KeyRotationBackgroundService
 
 // Register AuthService
-builder.Services.AddScoped<AuthService>();
+builder.Services.AddScoped<IAuthService, AuthService>();
 
 var app = builder.Build();
 
@@ -281,7 +343,7 @@ async Task InitializeSystemState(IServiceProvider services, ILogger logger)
 {
     var db = services.GetRequiredService<AppDbContext>();
     var config = services.GetRequiredService<IConfiguration>();
-    var apisix = services.GetRequiredService<ApisixClient>();
+    var apisix = services.GetRequiredService<IApisixClient>();
     
     // 1. Sync Blacklist
     var persistBlacklist = config.GetValue<bool>("Blacklist:PersistToDatabase");

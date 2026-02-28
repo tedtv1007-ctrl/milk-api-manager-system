@@ -11,19 +11,17 @@ namespace MilkApiManager.Tests.Services;
 public class BlacklistConsistencyServiceTests : IDisposable
 {
     private readonly AppDbContext _dbContext;
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly BlacklistConsistencyService _service;
 
     public BlacklistConsistencyServiceTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
         _dbContext = new AppDbContext(options);
 
-        _mockApisixClient = new Mock<ApisixClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApisixClient>>());
+        _mockApisixClient = new Mock<IApisixClient>();
         _service = new BlacklistConsistencyService(_dbContext, _mockApisixClient.Object, Mock.Of<ILogger<BlacklistConsistencyService>>());
     }
 

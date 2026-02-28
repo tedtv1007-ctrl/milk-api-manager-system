@@ -5,20 +5,22 @@ using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
 public class AccessRequestController : ControllerBase
 {
     private readonly AppDbContext _context;
-    private readonly ApisixClient _apisixClient;
-    private readonly NotificationService _notificationService;
+    private readonly IApisixClient _apisixClient;
+    private readonly INotificationService _notificationService;
     private readonly ILogger<AccessRequestController> _logger;
 
-    public AccessRequestController(AppDbContext context, ApisixClient apisixClient, NotificationService notificationService, ILogger<AccessRequestController> logger)
+    public AccessRequestController(AppDbContext context, IApisixClient apisixClient, INotificationService notificationService, ILogger<AccessRequestController> logger)
     {
         _context = context;
         _apisixClient = apisixClient;

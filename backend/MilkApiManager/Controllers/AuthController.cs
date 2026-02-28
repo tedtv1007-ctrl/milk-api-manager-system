@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Auth;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
@@ -10,13 +11,14 @@ namespace MilkApiManager.Controllers;
 /// Authentication controller for LDAP/AD SSO login.
 /// </summary>
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 public class AuthController : ControllerBase
 {
-    private readonly AuthService _authService;
+    private readonly IAuthService _authService;
     private readonly ILogger<AuthController> _logger;
 
-    public AuthController(AuthService authService, ILogger<AuthController> logger)
+    public AuthController(IAuthService authService, ILogger<AuthController> logger)
     {
         _authService = authService;
         _logger = logger;

@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore;
 using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
+[ApiVersion("1.0")]
 [Route("api/[controller]")]
 [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class ApiCatalogController : ControllerBase

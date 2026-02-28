@@ -42,10 +42,10 @@ namespace MilkApiManager.Tests.Controllers
             db.WhitelistEntries.Add(new WhitelistEntry { RouteId = "route1", IpCidr = "2.2.2.0/24", AddedAt = DateTime.UtcNow.AddMinutes(-5), ExpiresAt = DateTime.UtcNow.AddMinutes(10) });
             await db.SaveChangesAsync();
 
-            var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<ILogger<ApisixClient>>() });
+            var apisixMock = new Mock<IApisixClient>(MockBehavior.Strict);
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
+            var auditMock = new Mock<IAuditLogService>(MockBehavior.Strict);
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -61,12 +61,12 @@ namespace MilkApiManager.Tests.Controllers
         {
             var db = CreateInMemoryDb("GetWhitelistFallbackDb");
 
-            var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<ILogger<ApisixClient>>() });
+            var apisixMock = new Mock<IApisixClient>(MockBehavior.Strict);
             apisixMock.Setup(a => a.GetWhitelistForRouteAsync("routeX")).ReturnsAsync(new List<string>{"9.9.9.9/32", "10.0.0.0/8"});
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(false);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
+            var auditMock = new Mock<IAuditLogService>(MockBehavior.Strict);
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask);
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -82,13 +82,13 @@ namespace MilkApiManager.Tests.Controllers
         public async Task AddEntryAsync_PersistsToDb_And_CallsSync()
         {
             var db = CreateInMemoryDb("AddEntryDb");
-            var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<ILogger<ApisixClient>>() });
+            var apisixMock = new Mock<IApisixClient>(MockBehavior.Strict);
             // Expect UpdateWhitelistForRouteAsync when Sync called
             apisixMock.Setup(a => a.UpdateWhitelistForRouteAsync("r1", It.IsAny<List<string>>())).Returns(Task.CompletedTask).Verifiable();
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
+            var auditMock = new Mock<IAuditLogService>(MockBehavior.Strict);
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);
@@ -115,12 +115,12 @@ namespace MilkApiManager.Tests.Controllers
             db.WhitelistEntries.Add(new WhitelistEntry { RouteId = "r2", IpCidr = "3.3.3.0/24", AddedAt = DateTime.UtcNow });
             await db.SaveChangesAsync();
 
-            var apisixMock = new Mock<ApisixClient>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<ILogger<ApisixClient>>() });
+            var apisixMock = new Mock<IApisixClient>(MockBehavior.Strict);
             apisixMock.Setup(a => a.UpdateWhitelistForRouteAsync("r2", It.IsAny<List<string>>())).Returns(Task.CompletedTask).Verifiable();
 
             var logger = Mock.Of<ILogger<WhitelistController>>();
             var config = CreateConfig(true);
-            var auditMock = new Mock<AuditLogService>(MockBehavior.Strict, new object[] { Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>() });
+            var auditMock = new Mock<IAuditLogService>(MockBehavior.Strict);
             auditMock.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>())).Returns(Task.CompletedTask).Verifiable();
 
             var controller = new WhitelistController(apisixMock.Object, logger, db, config, auditMock.Object);

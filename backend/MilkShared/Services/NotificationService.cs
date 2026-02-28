@@ -5,7 +5,7 @@ using System.Text.Json;
 
 namespace MilkApiManager.Services
 {
-    public class NotificationService
+    public class NotificationService : INotificationService
     {
         private readonly ILogger<NotificationService> _logger;
         private readonly HttpClient _httpClient;

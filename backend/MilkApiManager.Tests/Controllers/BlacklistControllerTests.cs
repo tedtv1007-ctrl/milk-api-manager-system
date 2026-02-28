@@ -14,22 +14,17 @@ namespace MilkApiManager.Tests.Controllers;
 
 public class BlacklistControllerTests : IDisposable
 {
-    private readonly Mock<ApisixClient> _mockApisixClient;
+    private readonly Mock<IApisixClient> _mockApisixClient;
     private readonly Mock<ILogger<BlacklistController>> _mockLogger;
     private readonly AppDbContext _dbContext;
-    private readonly Mock<AuditLogService> _mockAuditLog;
+    private readonly Mock<IAuditLogService> _mockAuditLog;
     private readonly Mock<ApisixSyncOutboxService> _mockOutboxService;
 
     public BlacklistControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_URL", "http://localhost:9180/apisix/admin/");
-        _mockApisixClient = new Mock<ApisixClient>(
-            Mock.Of<HttpClient>(),
-            Mock.Of<ILogger<ApisixClient>>()
-        );
+        _mockApisixClient = new Mock<IApisixClient>();
         _mockLogger = new Mock<ILogger<BlacklistController>>();
-        _mockAuditLog = new Mock<AuditLogService>(MockBehavior.Strict, Mock.Of<System.Net.Http.HttpClient>(), Mock.Of<IConfiguration>(), Mock.Of<IServiceScopeFactory>(), Mock.Of<ILogger<AuditLogService>>());
+        _mockAuditLog = new Mock<IAuditLogService>(MockBehavior.Strict);
 
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())

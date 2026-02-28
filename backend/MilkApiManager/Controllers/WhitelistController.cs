@@ -5,21 +5,23 @@ using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using Microsoft.EntityFrameworkCore;
+using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
     [ApiController]
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public class WhitelistController : ControllerBase
     {
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly ILogger<WhitelistController> _logger;
         private readonly AppDbContext _db;
         private readonly IConfiguration _config;
-        private readonly AuditLogService _auditLog;
+        private readonly IAuditLogService _auditLog;
 
-        public WhitelistController(ApisixClient apisixClient, ILogger<WhitelistController> logger, AppDbContext db, IConfiguration config, AuditLogService auditLog)
+        public WhitelistController(IApisixClient apisixClient, ILogger<WhitelistController> logger, AppDbContext db, IConfiguration config, IAuditLogService auditLog)
         {
             _apisixClient = apisixClient;
             _logger = logger;
@@ -198,14 +200,5 @@ namespace MilkApiManager.Controllers
 
             _logger.LogInformation("Synced {Count} whitelist entries to APISIX for route {RouteId}", ipList.Count, routeId);
         }
-    }
-
-    public class WhitelistUpdateRequest
-    {
-        public required string IpCidr { get; set; }
-        public string Action { get; set; } = "add"; // add | remove
-        public string? Reason { get; set; }
-        public string? AddedBy { get; set; }
-        public DateTime? ExpiresAt { get; set; }
     }
 }

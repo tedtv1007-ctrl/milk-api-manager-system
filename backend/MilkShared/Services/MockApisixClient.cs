@@ -1,7 +1,9 @@
 using MilkApiManager.Models.Apisix;
+using MilkApiManager.Options;
 using ApisixRoute = MilkApiManager.Models.Apisix.Route;
 using System.Collections.Concurrent;
 using System.Text.Json;
+using Microsoft.Extensions.Options;
 
 namespace MilkApiManager.Services
 {
@@ -14,7 +16,7 @@ namespace MilkApiManager.Services
         private static readonly ConcurrentDictionary<string, List<string>> _whitelists = new();
         private static List<string> _blacklist = new();
 
-        public MockApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger) : base(httpClient, logger)
+        public MockApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger, IOptions<ApisixOptions> options) : base(httpClient, logger, options)
         {
         }
 

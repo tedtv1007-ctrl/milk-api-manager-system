@@ -62,6 +62,7 @@ services:
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
       - ./monitoring/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
+      - prometheus_data:/prometheus
     ports:
       - "9090:9090"
     networks:
@@ -93,6 +94,8 @@ services:
     ports:
       - "9200:9200"
     mem_limit: 1g
+    volumes:
+      - elasticsearch_data:/usr/share/elasticsearch/data
     networks:
       - apisix
 
@@ -244,3 +247,5 @@ networks:
 
 volumes:
   postgres_data:
+  prometheus_data:
+  elasticsearch_data:

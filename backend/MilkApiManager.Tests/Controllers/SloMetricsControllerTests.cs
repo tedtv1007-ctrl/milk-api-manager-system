@@ -17,14 +17,12 @@ public class SloMetricsControllerTests : IDisposable
 
     public SloMetricsControllerTests()
     {
-        Environment.SetEnvironmentVariable("APISIX_ADMIN_KEY", "test-key");
-
         var options = new DbContextOptionsBuilder<AppDbContext>()
             .UseInMemoryDatabase(Guid.NewGuid().ToString())
             .Options;
         _dbContext = new AppDbContext(options);
 
-        var apisixClient = new Mock<ApisixClient>(Mock.Of<HttpClient>(), Mock.Of<ILogger<ApisixClient>>());
+        var apisixClient = new Mock<IApisixClient>();
         _mockConsistencyService = new Mock<BlacklistConsistencyService>(
             _dbContext,
             apisixClient.Object,
