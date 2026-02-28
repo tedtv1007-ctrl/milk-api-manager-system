@@ -56,8 +56,12 @@ services:
   prometheus:
     image: prom/prometheus:v3.2.1
     restart: always
+    command:
+      - "--config.file=/etc/prometheus/prometheus.yml"
+      - "--web.enable-lifecycle"
     volumes:
       - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+      - ./monitoring/alert_rules.yml:/etc/prometheus/alert_rules.yml:ro
     ports:
       - "9090:9090"
     networks:
@@ -70,10 +74,13 @@ services:
       - GF_AUTH_ANONYMOUS_ENABLED=true
       - GF_AUTH_ANONYMOUS_ORG_ROLE=Viewer
       - GF_SECURITY_ADMIN_PASSWORD=${GF_SECURITY_ADMIN_PASSWORD:-admin}
+      - GRAFANA_SLO_WEBHOOK_URL=${GRAFANA_SLO_WEBHOOK_URL:-https://example.invalid/replace-with-real-webhook}
     ports:
       - "3000:3000"
     volumes:
       - ./monitoring/grafana-dashboard.json:/var/lib/grafana/dashboards/audit.json:ro
+      - ./monitoring/grafana-provisioning/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./monitoring/grafana-provisioning/alerting:/etc/grafana/provisioning/alerting:ro
     networks:
       - apisix
 
@@ -168,6 +175,10 @@ services:
       - API_AUTH_KEY=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
       - JWT_SECRET=${JWT_SECRET:-milk-api-default-jwt-secret-change-in-production-32chars!}
       - USE_DEMO_AUTH=true
+      - Sync__Blacklist__UseOutbox=true
+      - Sync__Blacklist__EnableReconcile=true
+      - AuditLog__UseDurableShipping=true
+      - AuditLog__EnableLogstashShipping=true
     ports:
       - "5001:8080"
     healthcheck:
@@ -195,6 +206,13 @@ services:
       - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
       - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin/
       - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
+      - Sync__Blacklist__UseOutbox=true
+      - Sync__Blacklist__EnableReconcile=true
+      - Sync__Blacklist__ReconcileIntervalSeconds=60
+      - Sync__Outbox__PollIntervalSeconds=5
+      - AuditLog__UseDurableShipping=true
+      - AuditLog__Outbox__PollIntervalSeconds=5
+      - AuditLog__Outbox__MaxAttempts=8
     networks:
       - apisix
     depends_on:

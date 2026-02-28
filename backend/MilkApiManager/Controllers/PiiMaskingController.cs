@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
@@ -10,7 +11,7 @@ namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-[Authorize(Roles = "Admin,Operator")]
+[Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
 public class PiiMaskingController : ControllerBase
 {
     private readonly AppDbContext _context;

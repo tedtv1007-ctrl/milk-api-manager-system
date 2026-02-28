@@ -1,7 +1,9 @@
 using System;
 using System.Security.Cryptography;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using Microsoft.EntityFrameworkCore;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
@@ -14,6 +16,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public class KeysController : ControllerBase
     {
         private readonly IVaultService _vaultService;
@@ -84,6 +87,7 @@ namespace MilkApiManager.Controllers
         /// 建立新 API 金鑰，並同步至 APISIX Consumer
         /// </summary>
         [HttpPost]
+        [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
         public async Task<IActionResult> CreateKey([FromBody] CreateKeyRequest request)
         {
             if (request == null || string.IsNullOrEmpty(request.Owner))
@@ -147,6 +151,7 @@ namespace MilkApiManager.Controllers
         /// 輪替指定 Consumer 的 API 金鑰
         /// </summary>
         [HttpPost("{consumerName}/rotate")]
+        [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
         public async Task<IActionResult> RotateKey(string consumerName)
         {
             try
@@ -181,6 +186,7 @@ namespace MilkApiManager.Controllers
         /// 停用/刪除 API 金鑰
         /// </summary>
         [HttpDelete("{id}")]
+        [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
         public async Task<IActionResult> DeleteKey(Guid id)
         {
             var key = await _dbContext.ApiKeys.FindAsync(id);

@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Diagnostics.HealthChecks;
 using MilkApiManager.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using OpenTelemetry.Resources;
@@ -66,10 +67,17 @@ otel.WithTracing(tracing => tracing
     .AddEntityFrameworkCoreInstrumentation()
     .AddOtlpExporter());
 
+var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
+
+ProductionStartupGuardrails.ValidateForApi(builder.Configuration, builder.Environment);
+
 // JWT Bearer Authentication
 var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") 
     ?? builder.Configuration["Jwt:Secret"] 
-    ?? "milk-api-default-jwt-secret-change-in-production-32chars!";
+    ?? (isTestMode || useDemoAuth
+        ? "milk-api-default-jwt-secret-change-in-production-32chars!"
+        : throw new InvalidOperationException("JWT secret must be configured via JWT_SECRET or Jwt:Secret in non-test environments."));
 var jwtIssuer = builder.Configuration["Jwt:Issuer"] ?? "MilkApiManager";
 var jwtAudience = builder.Configuration["Jwt:Audience"] ?? "MilkApiClients";
 
@@ -103,11 +111,23 @@ builder.Services.AddAuthentication(options =>
     };
 });
 
-builder.Services.AddAuthorization();
+builder.Services.AddAuthorization(options =>
+{
+    options.FallbackPolicy = new AuthorizationPolicyBuilder()
+        .RequireAuthenticatedUser()
+        .Build();
+
+    options.AddPolicy(AuthorizationPolicies.ViewerOrAbove, policy =>
+        policy.RequireRole("Viewer", "Operator", "Admin"));
+
+    options.AddPolicy(AuthorizationPolicies.OperatorOrAbove, policy =>
+        policy.RequireRole("Operator", "Admin"));
+
+    options.AddPolicy(AuthorizationPolicies.AdminOnly, policy =>
+        policy.RequireRole("Admin"));
+});
 
 // Register DbContext
-var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
-
 if (isTestMode)
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
@@ -120,9 +140,9 @@ else
     var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") 
         ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseNpgsql(connectionString));
+        options.UseNpgsql(connectionString, npgsql => npgsql.MigrationsAssembly("MilkApiManager")));
     builder.Services.AddDbContext<AuditContext>(options =>
-        options.UseNpgsql(connectionString));
+        options.UseNpgsql(connectionString, npgsql => npgsql.MigrationsAssembly("MilkApiManager")));
     
     // Add PostgreSQL health check for deep /health/ready validation
     healthChecksBuilder.AddNpgSql(connectionString, name: "postgresql", tags: new[] { "ready" });
@@ -140,6 +160,9 @@ else
 builder.Services.AddHttpClient<AuditLogService>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<PrometheusService>().AddStandardResilienceHandler();
 builder.Services.AddSingleton<LoadTestService>();
+builder.Services.AddScoped<ApisixSyncOutboxService>();
+builder.Services.AddScoped<ApisixSyncOutboxProcessor>();
+builder.Services.AddScoped<BlacklistConsistencyService>();
 builder.Services.AddScoped<IVaultService, VaultService>();
 builder.Services.AddScoped<SecurityAutomationService>();
 
@@ -197,12 +220,12 @@ if (app.Environment.IsDevelopment())
 app.MapHealthChecks("/health/live", new HealthCheckOptions
 {
     Predicate = r => r.Tags.Contains("live")
-});
+}).AllowAnonymous();
 
 app.MapHealthChecks("/health/ready", new HealthCheckOptions
 {
     Predicate = r => r.Tags.Contains("ready")
-});
+}).AllowAnonymous();
 
 // 5. Authentication (JWT Bearer)
 app.UseAuthentication();
@@ -321,3 +344,5 @@ if (!isMigrateOnly)
 {
     app.Run();
 }
+
+public partial class Program { }

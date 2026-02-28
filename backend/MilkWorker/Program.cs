@@ -1,11 +1,14 @@
 using MilkApiManager.Data;
 using MilkApiManager.Services;
+using MilkApiManager.Workers;
 using Microsoft.EntityFrameworkCore;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
 
 var builder = Host.CreateApplicationBuilder(args);
+
+ProductionStartupGuardrails.ValidateForWorker(builder.Configuration, builder.Environment);
 
 // OpenTelemetry Observability
 var otel = builder.Services.AddOpenTelemetry();
@@ -49,6 +52,10 @@ else
 }
 
 builder.Services.AddScoped<IVaultService, VaultService>();
+builder.Services.AddScoped<ApisixSyncOutboxService>();
+builder.Services.AddScoped<ApisixSyncOutboxProcessor>();
+builder.Services.AddScoped<BlacklistConsistencyService>();
+builder.Services.AddHttpClient<AuditLogShippingOutboxProcessor>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<NotificationService>().AddStandardResilienceHandler();
 builder.Services.AddHttpClient<PrometheusService>().AddStandardResilienceHandler();
 
@@ -60,6 +67,21 @@ builder.Services.AddHostedService<AlertMonitoringService>();
 builder.Services.AddHostedService<AutoBlockWorker>();
 builder.Services.AddHostedService<ApisixRouteSyncService>();
 builder.Services.AddHostedService<KeyRotationBackgroundService>();
+
+if (builder.Configuration.GetValue<bool>("Sync:Blacklist:UseOutbox"))
+{
+    builder.Services.AddHostedService<ApisixSyncOutboxWorker>();
+}
+
+if (builder.Configuration.GetValue<bool>("Sync:Blacklist:EnableReconcile"))
+{
+    builder.Services.AddHostedService<BlacklistReconcileWorker>();
+}
+
+if (builder.Configuration.GetValue<bool?>("AuditLog:UseDurableShipping") ?? true)
+{
+    builder.Services.AddHostedService<AuditLogShippingOutboxWorker>();
+}
 
 var host = builder.Build();
 host.Run();

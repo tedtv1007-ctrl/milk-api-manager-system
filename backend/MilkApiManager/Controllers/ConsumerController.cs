@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Services;
 using System.Text.Json;
 
@@ -6,6 +8,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     public class ConsumerController : ControllerBase
     {
         private readonly ApisixClient _apisixClient;
@@ -111,6 +114,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
         public async Task<IActionResult> UpdateConsumer([FromBody] JsonElement consumerData)
         {
             try
@@ -169,6 +173,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpDelete("{username}")]
+        [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
         public async Task<IActionResult> DeleteConsumer(string username)
         {
             try

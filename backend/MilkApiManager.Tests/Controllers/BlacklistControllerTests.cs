@@ -18,6 +18,7 @@ public class BlacklistControllerTests : IDisposable
     private readonly Mock<ILogger<BlacklistController>> _mockLogger;
     private readonly AppDbContext _dbContext;
     private readonly Mock<AuditLogService> _mockAuditLog;
+    private readonly Mock<ApisixSyncOutboxService> _mockOutboxService;
 
     public BlacklistControllerTests()
     {
@@ -34,19 +35,24 @@ public class BlacklistControllerTests : IDisposable
             .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
         _dbContext = new AppDbContext(options);
+
+        _mockOutboxService = new Mock<ApisixSyncOutboxService>(
+            _dbContext,
+            Mock.Of<ILogger<ApisixSyncOutboxService>>());
     }
 
-    private BlacklistController CreateController(bool persistToDb = true)
+    private BlacklistController CreateController(bool persistToDb = true, bool useOutbox = false)
     {
         var configData = new Dictionary<string, string?>
         {
-            { "Blacklist:PersistToDatabase", persistToDb.ToString() }
+            { "Blacklist:PersistToDatabase", persistToDb.ToString() },
+            { "Sync:Blacklist:UseOutbox", useOutbox.ToString() }
         };
         var config = new ConfigurationBuilder()
             .AddInMemoryCollection(configData)
             .Build();
 
-        return new BlacklistController(_mockApisixClient.Object, _mockLogger.Object, _dbContext, config, _mockAuditLog.Object);
+        return new BlacklistController(_mockApisixClient.Object, _mockLogger.Object, _dbContext, config, _mockAuditLog.Object, _mockOutboxService.Object);
     }
 
     [Fact]
@@ -122,6 +128,7 @@ public class BlacklistControllerTests : IDisposable
         _mockApisixClient.Verify(c => c.UpdateBlacklistAsync(
             It.Is<List<string>>(l => l.Contains("192.168.1.200"))), Times.Once);
         _mockAuditLog.Verify(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Add")), Times.Once);
+        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(It.IsAny<List<string>>(), It.IsAny<CancellationToken>()), Times.Never);
 
         // Verify DB persistence
         var entry = await _dbContext.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == "192.168.1.200");
@@ -158,8 +165,41 @@ public class BlacklistControllerTests : IDisposable
         // Assert
         Assert.IsType<OkObjectResult>(result);
         _mockAuditLog.Verify(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Remove")), Times.Once);
+        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(It.IsAny<List<string>>(), It.IsAny<CancellationToken>()), Times.Never);
         var entry = await _dbContext.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == "10.0.0.5");
         Assert.Null(entry);
+    }
+
+    [Fact]
+    public async Task UpdateBlacklist_WhenOutboxEnabled_EnqueuesInsteadOfDirectSync()
+    {
+        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
+            .ReturnsAsync(new List<string>());
+
+        _mockOutboxService.Setup(o => o.EnqueueBlacklistSyncAsync(
+                It.Is<List<string>>(l => l.Contains("172.16.1.10")),
+                It.IsAny<CancellationToken>()))
+            .Returns(Task.CompletedTask);
+
+        _mockAuditLog.Setup(a => a.LogAsync(It.IsAny<Models.AuditLogEntry>()))
+            .Returns(Task.CompletedTask);
+
+        var controller = CreateController(persistToDb: true, useOutbox: true);
+        var request = new BlacklistUpdateRequest
+        {
+            Ip = "172.16.1.10",
+            Action = "add",
+            Reason = "outbox test",
+            AddedBy = "tester"
+        };
+
+        var result = await controller.UpdateBlacklist(request);
+
+        Assert.IsType<OkObjectResult>(result);
+        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(
+            It.Is<List<string>>(l => l.Contains("172.16.1.10")),
+            It.IsAny<CancellationToken>()), Times.Once);
+        _mockApisixClient.Verify(c => c.UpdateBlacklistAsync(It.IsAny<List<string>>()), Times.Never);
     }
 
     [Fact]

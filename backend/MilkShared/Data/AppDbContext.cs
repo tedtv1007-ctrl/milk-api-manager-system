@@ -16,6 +16,7 @@ public class AppDbContext : DbContext
     public DbSet<AccessRequest> AccessRequests { get; set; }
     public DbSet<ApiServiceMetadata> ApiServices { get; set; }
     public DbSet<ApiTestScenario> ApiTestScenarios { get; set; }
+    public DbSet<SyncOutboxEntry> SyncOutboxEntries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -75,6 +76,25 @@ public class AppDbContext : DbContext
             entity.Property(e => e.AddedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        modelBuilder.Entity<SyncOutboxEntry>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.Property(e => e.EventType).IsRequired();
+            entity.Property(e => e.PayloadJson).IsRequired();
+            entity.Property(e => e.Status).IsRequired();
+            entity.HasIndex(e => new { e.Status, e.NextAttemptAt });
+            entity.HasIndex(e => e.CreatedAt);
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.NextAttemptAt).HasConversion(
+                v => v.HasValue ? v.Value.ToUniversalTime() : v,
+                v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : v);
+            entity.Property(e => e.ProcessedAt).HasConversion(
+                v => v.HasValue ? v.Value.ToUniversalTime() : v,
+                v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : v);
         });
     }
 }

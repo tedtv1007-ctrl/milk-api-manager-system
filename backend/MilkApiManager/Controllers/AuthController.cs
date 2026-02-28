@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
 
@@ -56,7 +57,7 @@ public class AuthController : ControllerBase
     /// Get current authenticated user information from JWT claims.
     /// </summary>
     [HttpGet("me")]
-    [Authorize]
+    [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     public IActionResult GetCurrentUser()

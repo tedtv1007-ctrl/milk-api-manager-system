@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
@@ -9,6 +11,7 @@ namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class MockController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -29,6 +32,7 @@ public class MockController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<ActionResult<MockRule>> CreateRule(MockRule rule)
     {
         _context.MockRules.Add(rule);
@@ -38,6 +42,7 @@ public class MockController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> UpdateRule(int id, MockRule rule)
     {
         if (id != rule.Id) return BadRequest();
@@ -48,6 +53,7 @@ public class MockController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> DeleteRule(int id)
     {
         var rule = await _context.MockRules.FindAsync(id);

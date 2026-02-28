@@ -18,3 +18,32 @@ groups:
         annotations:
           summary: "High frequency IP access detected"
           description: "IP {{ $labels.remote_addr }} is making excessive requests (current value: {{ $value }})"
+
+  - name: milk_slo_alerts
+    rules:
+      - alert: MilkControlPlaneSuccessRateLow
+        expr: milk_control_plane_success_rate_percent < 99
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Control-plane success rate below SLO"
+          description: "milk_control_plane_success_rate_percent < 99 for 10m"
+
+      - alert: MilkSyncLatencyP95High
+        expr: milk_sync_latency_p95_seconds > 30
+        for: 10m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Sync latency P95 exceeds threshold"
+          description: "milk_sync_latency_p95_seconds > 30 for 10m"
+
+      - alert: MilkBlacklistDriftDetected
+        expr: milk_blacklist_drift_count > 0
+        for: 5m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Blacklist drift detected between DB and APISIX"
+          description: "milk_blacklist_drift_count > 0 for 5m"

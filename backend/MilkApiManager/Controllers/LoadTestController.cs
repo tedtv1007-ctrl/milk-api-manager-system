@@ -1,10 +1,13 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Services;
 
 namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
 public class LoadTestController : ControllerBase
 {
     private readonly LoadTestService _loadTestService;

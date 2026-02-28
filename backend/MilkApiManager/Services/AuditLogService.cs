@@ -39,8 +39,60 @@ public class AuditLogService
         var json = JsonSerializer.Serialize(entry, options);
         Console.WriteLine(json);
 
-        // Ship to Logstash (fire-and-forget with proper error handling)
-        _ = Task.Run(async () =>
+        bool enableShipping = _configuration.GetValue<bool?>("AuditLog:EnableLogstashShipping") ?? true;
+        bool useDurableShipping = _configuration.GetValue<bool?>("AuditLog:UseDurableShipping") ?? true;
+
+        // 2. Database Logging (Configurable)
+        bool enableDb = _configuration.GetValue<bool>("AuditLog:EnableDatabaseWrite");
+
+        if (entry.Details != null && string.IsNullOrEmpty(entry.DetailsJson))
+        {
+            entry.DetailsJson = JsonSerializer.Serialize(entry.Details);
+        }
+
+        var shouldPersistOutbox = enableShipping && useDurableShipping;
+        var requiresDbScope = enableDb || shouldPersistOutbox;
+
+        if (requiresDbScope)
+        {
+            using var scope = _scopeFactory.CreateScope();
+            var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+
+            if (shouldPersistOutbox)
+            {
+                var payload = new AuditLogShipPayload
+                {
+                    Timestamp = entry.Timestamp,
+                    User = entry.User,
+                    Action = entry.Action,
+                    Resource = entry.Resource,
+                    StatusCode = entry.StatusCode,
+                    DetailsJson = entry.DetailsJson,
+                    CorrelationId = entry.CorrelationId,
+                    OperatorIp = entry.OperatorIp,
+                    RequestId = entry.RequestId
+                };
+
+                dbContext.SyncOutboxEntries.Add(new SyncOutboxEntry
+                {
+                    EventType = SyncOutboxEventType.AuditLogShip,
+                    Status = SyncOutboxStatus.Pending,
+                    CreatedAt = DateTime.UtcNow,
+                    NextAttemptAt = DateTime.UtcNow,
+                    PayloadJson = JsonSerializer.Serialize(payload)
+                });
+            }
+
+            if (enableDb)
+            {
+                entry.Id = 0;
+                dbContext.AuditLogs.Add(entry);
+            }
+
+            await dbContext.SaveChangesAsync();
+        }
+
+        if (enableShipping && !useDurableShipping)
         {
             try
             {
@@ -50,28 +102,6 @@ public class AuditLogService
             catch (Exception ex)
             {
                 _logger.LogWarning(ex, "Failed to ship audit log to Logstash");
-            }
-        });
-
-        // 2. Database Logging (Configurable)
-        bool enableDb = _configuration.GetValue<bool>("AuditLog:EnableDatabaseWrite");
-        if (enableDb)
-        {
-            // Serialize Details object to string for DB storage
-            if (entry.Details != null && string.IsNullOrEmpty(entry.DetailsJson))
-            {
-                entry.DetailsJson = JsonSerializer.Serialize(entry.Details);
-            }
-
-            using (var scope = _scopeFactory.CreateScope())
-            {
-                var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                
-                // Ensure EF Core doesn't track the ID if it's 0 (insert)
-                entry.Id = 0; 
-                
-                dbContext.AuditLogs.Add(entry);
-                await dbContext.SaveChangesAsync();
             }
         }
     }

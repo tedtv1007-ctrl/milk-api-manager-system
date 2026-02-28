@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
 
@@ -6,6 +8,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     public class AnalyticsController : ControllerBase
     {
         private readonly PrometheusService _prometheus;

@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Services;
 using MilkApiManager.Models.Apisix;
 
@@ -6,6 +8,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
     public class ApiController : ControllerBase
     {
         private readonly ApisixClient _apisixClient;
@@ -52,6 +55,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpPost]
+        [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
         public async Task<IActionResult> CreateApi([FromBody] Service serviceConfig)
         {
             if (serviceConfig == null || string.IsNullOrEmpty(serviceConfig.Id))
@@ -72,6 +76,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpPut("{id}")]
+        [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
         public async Task<IActionResult> UpdateApi(string id, [FromBody] Service serviceConfig)
         {
             if (serviceConfig == null)
@@ -92,6 +97,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpDelete("{id}")]
+        [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
         public async Task<IActionResult> DeleteApi(string id)
         {
             try

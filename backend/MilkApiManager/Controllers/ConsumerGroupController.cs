@@ -1,4 +1,6 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Models.Apisix;
 using MilkApiManager.Services;
 using System.Text.Json;
@@ -7,6 +9,7 @@ namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class ConsumerGroupController : ControllerBase
 {
     private readonly ApisixClient _apisixClient;
@@ -48,6 +51,7 @@ public class ConsumerGroupController : ControllerBase
     }
 
     [HttpPut("{id}")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> UpdateGroup(string id, [FromBody] ConsumerGroup groupData)
     {
         try
@@ -69,6 +73,7 @@ public class ConsumerGroupController : ControllerBase
     }
 
     [HttpDelete("{id}")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> DeleteGroup(string id)
     {
         try

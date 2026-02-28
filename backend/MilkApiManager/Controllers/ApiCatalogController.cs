@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 
@@ -7,6 +9,7 @@ namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class ApiCatalogController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -23,6 +26,7 @@ public class ApiCatalogController : ControllerBase
     }
 
     [HttpPost("register")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> RegisterService(ApiServiceMetadata metadata)
     {
         var existing = await _context.ApiServices.FirstOrDefaultAsync(s => s.Name == metadata.Name);

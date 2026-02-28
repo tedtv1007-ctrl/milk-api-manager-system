@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MilkApiManager.Auth;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using System.Diagnostics;
@@ -8,6 +10,7 @@ namespace MilkApiManager.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
 public class TestExecutionController : ControllerBase
 {
     private readonly AppDbContext _context;
@@ -30,6 +33,7 @@ public class TestExecutionController : ControllerBase
     }
 
     [HttpPost("scenarios")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<ActionResult<ApiTestScenario>> CreateScenario(ApiTestScenario scenario)
     {
         _context.ApiTestScenarios.Add(scenario);
@@ -38,6 +42,7 @@ public class TestExecutionController : ControllerBase
     }
 
     [HttpPost("run/{id}")]
+    [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> RunTest(int id)
     {
         var scenario = await _context.ApiTestScenarios.FindAsync(id);

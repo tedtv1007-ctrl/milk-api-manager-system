@@ -25,8 +25,18 @@ public class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthentic
         UrlEncoder encoder)
         : base(options, logger, encoder)
     {
-        _apiKey = Environment.GetEnvironmentVariable("API_AUTH_KEY") 
-            ?? "milk-admin-secret-key-change-me";
+        var configuredApiKey = Environment.GetEnvironmentVariable("API_AUTH_KEY");
+        var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+        var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
+
+        if (string.IsNullOrWhiteSpace(configuredApiKey) && !(isTestMode || useDemoAuth))
+        {
+            throw new InvalidOperationException("API_AUTH_KEY must be configured in non-test environments.");
+        }
+
+        _apiKey = string.IsNullOrWhiteSpace(configuredApiKey)
+            ? "milk-admin-secret-key-change-me"
+            : configuredApiKey;
     }
 
     protected override Task<AuthenticateResult> HandleAuthenticateAsync()

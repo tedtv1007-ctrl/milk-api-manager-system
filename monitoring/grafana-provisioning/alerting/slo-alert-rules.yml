@@ -1,0 +1,172 @@
+apiVersion: 1
+
+groups:
+  - orgId: 1
+    name: milk-slo-alerts
+    folder: SLO
+    interval: 1m
+    rules:
+      - uid: milk_slo_success_rate_low
+        title: MilkControlPlaneSuccessRateLow
+        condition: C
+        for: 10m
+        noDataState: NoData
+        execErrState: Error
+        annotations:
+          summary: Control-plane success rate below SLO
+          description: milk_control_plane_success_rate_percent < 99 for 10m
+        labels:
+          severity: critical
+          source: grafana
+          alert_scope: slo
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              editorMode: code
+              expr: milk_control_plane_success_rate_percent
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 99
+                    type: lt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - A
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: classic_conditions
+
+      - uid: milk_slo_sync_latency_p95_high
+        title: MilkSyncLatencyP95High
+        condition: C
+        for: 10m
+        noDataState: NoData
+        execErrState: Error
+        annotations:
+          summary: Sync latency P95 exceeds threshold
+          description: milk_sync_latency_p95_seconds > 30 for 10m
+        labels:
+          severity: critical
+          source: grafana
+          alert_scope: slo
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: prometheus
+            model:
+              editorMode: code
+              expr: milk_sync_latency_p95_seconds
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+          - refId: C
+            relativeTimeRange:
+              from: 600
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 30
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - A
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: classic_conditions
+
+      - uid: milk_slo_blacklist_drift_detected
+        title: MilkBlacklistDriftDetected
+        condition: C
+        for: 5m
+        noDataState: NoData
+        execErrState: Error
+        annotations:
+          summary: Blacklist drift detected between DB and APISIX
+          description: milk_blacklist_drift_count > 0 for 5m
+        labels:
+          severity: critical
+          source: grafana
+          alert_scope: slo
+        data:
+          - refId: A
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: prometheus
+            model:
+              editorMode: code
+              expr: milk_blacklist_drift_count
+              instant: true
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: A
+          - refId: C
+            relativeTimeRange:
+              from: 300
+              to: 0
+            datasourceUid: __expr__
+            model:
+              conditions:
+                - evaluator:
+                    params:
+                      - 0
+                    type: gt
+                  operator:
+                    type: and
+                  query:
+                    params:
+                      - A
+                  reducer:
+                    params: []
+                    type: last
+                  type: query
+              datasource:
+                type: __expr__
+                uid: __expr__
+              expression: A
+              intervalMs: 1000
+              maxDataPoints: 43200
+              refId: C
+              type: classic_conditions

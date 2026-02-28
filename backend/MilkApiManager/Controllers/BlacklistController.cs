@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using MilkApiManager.Auth;
 using MilkApiManager.Services;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
@@ -9,7 +10,7 @@ namespace MilkApiManager.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize(Roles = "Admin")]
+    [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
     public class BlacklistController : ControllerBase
     {
         private readonly ApisixClient _apisixClient;
@@ -17,14 +18,16 @@ namespace MilkApiManager.Controllers
         private readonly AppDbContext _db;
         private readonly IConfiguration _config;
         private readonly AuditLogService _auditLog;
+        private readonly ApisixSyncOutboxService _outboxService;
 
-        public BlacklistController(ApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config, AuditLogService auditLog)
+        public BlacklistController(ApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config, AuditLogService auditLog, ApisixSyncOutboxService outboxService)
         {
             _apisixClient = apisixClient;
             _logger = logger;
             _db = db;
             _config = config;
             _auditLog = auditLog;
+            _outboxService = outboxService;
         }
 
         /// <summary>
@@ -157,7 +160,15 @@ namespace MilkApiManager.Controllers
                     return BadRequest("Invalid action. Use 'add' or 'remove'.");
                 }
 
-                await _apisixClient.UpdateBlacklistAsync(blacklistSet.ToList());
+                if (_config.GetValue<bool>("Sync:Blacklist:UseOutbox"))
+                {
+                    await _outboxService.EnqueueBlacklistSyncAsync(blacklistSet.ToList());
+                }
+                else
+                {
+                    await _apisixClient.UpdateBlacklistAsync(blacklistSet.ToList());
+                }
+
                 return Ok(new { message = $"IP {request.Ip} {request.Action}ed successfully" });
             }
             catch (Exception ex)
