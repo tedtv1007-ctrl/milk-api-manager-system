@@ -1,0 +1,52 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkApiManager", "MilkApiManager\MilkApiManager.csproj", "{DECF25EF-1723-4145-BC6A-3863E335A031}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkShared", "MilkShared\MilkShared.csproj", "{0011333A-41E7-4EE0-88FE-40A19664AD7E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkWorker", "MilkWorker\MilkWorker.csproj", "{3726C8AA-D657-4214-A439-31518CC3AB53}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkAdminBlazor", "MilkAdminBlazor\MilkAdminBlazor.csproj", "{1CF0F5BF-0B51-404B-BCF0-5705772F25B7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkApiManager.Tests", "MilkApiManager.Tests\MilkApiManager.Tests.csproj", "{7A01E750-F305-4297-8DEF-C786A2C1ED82}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MilkWorker.Tests", "MilkWorker.Tests\MilkWorker.Tests.csproj", "{BA05CD76-5E79-4743-A85C-590E7F50B206}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DECF25EF-1723-4145-BC6A-3863E335A031}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DECF25EF-1723-4145-BC6A-3863E335A031}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DECF25EF-1723-4145-BC6A-3863E335A031}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DECF25EF-1723-4145-BC6A-3863E335A031}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0011333A-41E7-4EE0-88FE-40A19664AD7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0011333A-41E7-4EE0-88FE-40A19664AD7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0011333A-41E7-4EE0-88FE-40A19664AD7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0011333A-41E7-4EE0-88FE-40A19664AD7E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3726C8AA-D657-4214-A439-31518CC3AB53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3726C8AA-D657-4214-A439-31518CC3AB53}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3726C8AA-D657-4214-A439-31518CC3AB53}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3726C8AA-D657-4214-A439-31518CC3AB53}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1CF0F5BF-0B51-404B-BCF0-5705772F25B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1CF0F5BF-0B51-404B-BCF0-5705772F25B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1CF0F5BF-0B51-404B-BCF0-5705772F25B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1CF0F5BF-0B51-404B-BCF0-5705772F25B7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A01E750-F305-4297-8DEF-C786A2C1ED82}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A01E750-F305-4297-8DEF-C786A2C1ED82}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A01E750-F305-4297-8DEF-C786A2C1ED82}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A01E750-F305-4297-8DEF-C786A2C1ED82}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BA05CD76-5E79-4743-A85C-590E7F50B206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA05CD76-5E79-4743-A85C-590E7F50B206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA05CD76-5E79-4743-A85C-590E7F50B206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA05CD76-5E79-4743-A85C-590E7F50B206}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
