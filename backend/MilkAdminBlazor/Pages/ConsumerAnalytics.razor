@@ -5,8 +5,11 @@
 @implements IDisposable
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <div class="d-flex justify-space-between align-center mb-4">
-        <MudText Typo="Typo.h4"><MudIcon Icon="@Icons.Material.Filled.Insights" Size="Size.Large" Class="mr-2"/> Traffic Intelligence Center</MudText>
+    <div class="milk-page-header mb-4">
+        <MudText Typo="Typo.h4">📊 Traffic Intelligence Center</MudText>
+        <MudText Typo="Typo.body2">Real-time traffic analytics, latency monitoring, and SLA tracking.</MudText>
+    </div>
+    <div class="d-flex justify-end align-center mb-4">
         <div class="d-flex align-center">
             @if (_sla != null)
             {
@@ -49,7 +52,7 @@
         <MudGrid>
             <!-- Row 1: Key Performance Indicators -->
             <MudItem xs="12" md="8">
-                <MudCard Elevation="3" Class="rounded-lg h-100">
+                <MudCard Elevation="0" Class="rounded-lg h-100">
                     <MudCardHeader><CardHeaderContent><MudText Typo="Typo.h6">P95 Latency Curve (ms)</MudText></CardHeaderContent></MudCardHeader>
                     <MudCardContent>
                         <MudChart ChartType="ChartType.Line" ChartSeries="@_latencySeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="350px" />
@@ -57,7 +60,7 @@
                 </MudCard>
             </MudItem>
             <MudItem xs="12" md="4">
-                <MudCard Elevation="3" Class="rounded-lg h-100 bg-dark text-white">
+                <MudCard Elevation="0" Class="rounded-lg h-100 bg-dark text-white">
                     <MudCardHeader><CardHeaderContent><MudText Typo="Typo.h6" Class="text-white">Performance Bottlenecks (Top 5)</MudText></CardHeaderContent></MudCardHeader>
                     <MudCardContent>
                         <MudSimpleTable Style="background: transparent; color: white;">
@@ -66,7 +69,7 @@
                                 @foreach (var slow in _slowRoutes)
                                 {
                                     <tr>
-                                        <td><code class="text-info">@slow.Label</code></td>
+                                        <td><span class="mono-value" style="color: #58a6ff;">@slow.Label</span></td>
                                         <td><MudText Color="Color.Error">@Math.Round(slow.Data.LastOrDefault()?.Value ?? 0, 1)</MudText></td>
                                     </tr>
                                 }
@@ -78,7 +81,7 @@
 
             <!-- Row 2: Throughput and Errors -->
             <MudItem xs="12" md="6">
-                <MudCard Elevation="3" Class="rounded-lg">
+                <MudCard Elevation="0" Class="rounded-lg">
                     <MudCardHeader><CardHeaderContent><MudText Typo="Typo.h6">Throughput (Requests / Second)</MudText></CardHeaderContent></MudCardHeader>
                     <MudCardContent>
                         <MudChart ChartType="ChartType.Bar" ChartSeries="@_requestSeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="300px" />
@@ -86,7 +89,7 @@
                 </MudCard>
             </MudItem>
             <MudItem xs="12" md="6">
-                <MudCard Elevation="3" Class="rounded-lg border-l-4 border-error">
+                <MudCard Elevation="0" Class="rounded-lg border-l-4 border-error">
                     <MudCardHeader><CardHeaderContent><MudText Typo="Typo.h6" Color="Color.Error">System Reliability (Error %)</MudText></CardHeaderContent></MudCardHeader>
                     <MudCardContent>
                         <MudChart ChartType="ChartType.Line" ChartSeries="@_errorSeries" XAxisLabels="@_xAxisLabels" Width="100%" Height="300px" />

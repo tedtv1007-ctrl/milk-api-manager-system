@@ -4,18 +4,18 @@
 @inject ISnackbar Snackbar
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
-    <div class="d-flex align-center mb-6">
-        <MudIcon Icon="@Icons.Material.Filled.Block" Size="Size.Large" Color="Color.Error" Class="mr-3" />
+    <div class="milk-page-header d-flex align-center">
+        <MudIcon Icon="@Icons.Material.Filled.Block" Size="Size.Large" Style="color: #f85149;" Class="mr-3" />
         <div>
-            <MudText Typo="Typo.h4" Class="font-weight-bold">IP Blacklist</MudText>
-            <MudText Typo="Typo.body1" Class="text-muted">Enforce network-level restrictions by blocking malicious or unauthorized IP addresses.</MudText>
+            <MudText Typo="Typo.h4">🚫 IP Blacklist</MudText>
+            <MudText Typo="Typo.body2">Enforce network-level restrictions by blocking malicious or unauthorized IP addresses.</MudText>
         </div>
     </div>
 
     <MudGrid>
         <!-- Add IP Card -->
         <MudItem xs="12" lg="4">
-            <MudCard Elevation="4" Class="rounded-lg border-t-4 border-primary">
+            <MudCard Elevation="0" Class="rounded-lg" Style="border-left: 3px solid #f85149;">
                 <MudCardHeader>
                     <CardHeaderContent>
                         <MudText Typo="Typo.h6">Ban New Entity</MudText>
@@ -36,7 +36,7 @@
 
         <!-- List Table -->
         <MudItem xs="12" lg="8">
-            <MudTable Items="@blacklistedIps" Hover="true" Bordered="false" Striped="true" Elevation="4" Loading="@loading" Class="rounded-lg">
+            <MudTable Items="@blacklistedIps" Hover="true" Bordered="false" Striped="true" Elevation="0" Loading="@loading" Class="rounded-lg">
                 <ToolBarContent>
                     <MudText Typo="Typo.h6">Active Restrictions</MudText>
                     <MudSpacer />

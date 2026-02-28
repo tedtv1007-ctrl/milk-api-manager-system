@@ -1,0 +1,198 @@
+@page "/upstreams-management"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">☁ Upstreams Management</MudText>
+            <MudText Typo="Typo.body2">Manage standalone upstream targets with load-balancing configuration.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNew">Create Upstream</MudButton>
+    </div>
+
+    <MudTable Items="@_upstreams" Hover="true" Striped="true" Elevation="0" Loading="@_loading" Class="rounded-lg">
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Type</MudTh>
+            <MudTh>Scheme</MudTh>
+            <MudTh>Nodes</MudTh>
+            <MudTh>Retries</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID"><code>@context.Id</code></MudTd>
+            <MudTd DataLabel="Name"><MudText Class="font-weight-bold">@(context.Name ?? "-")</MudText></MudTd>
+            <MudTd DataLabel="Type">
+                <MudChip T="string" Size="Size.Small" Color="@GetTypeColor(context.Type)" Label="true">@context.Type</MudChip>
+            </MudTd>
+            <MudTd DataLabel="Scheme">@(context.Scheme ?? "http")</MudTd>
+            <MudTd DataLabel="Nodes">
+                @if (context.Nodes != null)
+                {
+                    @foreach (var n in context.Nodes.Take(3))
+                    {
+                        <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Class="mr-1">@n.Key (w:@n.Value)</MudChip>
+                    }
+                    @if (context.Nodes.Count > 3)
+                    {
+                        <MudText Typo="Typo.caption">+@(context.Nodes.Count - 3) more</MudText>
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Retries">@(context.Retries ?? 1)</MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => Edit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => Delete(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <MudDialog @bind-Visible="_dialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.CloudQueue" Class="mr-2" />@(_isNew ? "Create Upstream" : "Edit Upstream")</MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Id" Label="Upstream ID" Variant="Variant.Outlined" ReadOnly="@(!_isNew)" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Name" Label="Name" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_current.Desc" Label="Description" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="4">
+                    <MudSelect T="string" @bind-Value="_current.Type" Label="Load Balancing Type" Variant="Variant.Outlined">
+                        <MudSelectItem Value="@("roundrobin")">Round Robin</MudSelectItem>
+                        <MudSelectItem Value="@("chash")">Consistent Hash</MudSelectItem>
+                        <MudSelectItem Value="@("ewma")">EWMA</MudSelectItem>
+                        <MudSelectItem Value="@("least_conn")">Least Connection</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudSelect T="string" @bind-Value="_schemeValue" Label="Scheme" Variant="Variant.Outlined">
+                        <MudSelectItem Value="@("http")">HTTP</MudSelectItem>
+                        <MudSelectItem Value="@("https")">HTTPS</MudSelectItem>
+                        <MudSelectItem Value="@("grpc")">gRPC</MudSelectItem>
+                        <MudSelectItem Value="@("grpcs")">gRPCs</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="4">
+                    <MudNumericField @bind-Value="_retriesValue" Label="Retries" Variant="Variant.Outlined" Min="0" Max="10" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudSelect T="string" @bind-Value="_passHostValue" Label="Pass Host" Variant="Variant.Outlined">
+                        <MudSelectItem Value="@("pass")">Pass</MudSelectItem>
+                        <MudSelectItem Value="@("node")">Node</MudSelectItem>
+                        <MudSelectItem Value="@("rewrite")">Rewrite</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.subtitle2" Class="mb-2">Backend Nodes</MudText>
+                    <MudTextField @bind-Value="_nodesText" Label="Nodes (host:port=weight, comma-separated)" Variant="Variant.Outlined" Lines="3"
+                                  HelperText="e.g. backend1:8080=1, backend2:8080=2" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _dialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private List<ApisixService.ApisixStandaloneUpstreamDto> _upstreams = new();
+    private bool _loading = true;
+    private bool _dialogOpen;
+    private bool _isNew;
+    private ApisixService.ApisixStandaloneUpstreamDto _current = new();
+    private string _nodesText = "";
+    private string _schemeValue = "http";
+    private int _retriesValue = 1;
+    private string _passHostValue = "pass";
+    private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    private async Task Load()
+    {
+        _loading = true;
+        _upstreams = await ApisixService.GetUpstreamsAsync();
+        _loading = false;
+    }
+
+    private void AddNew()
+    {
+        _isNew = true;
+        _current = new ApisixService.ApisixStandaloneUpstreamDto { Id = Guid.NewGuid().ToString("N")[..12], Type = "roundrobin" };
+        _nodesText = "";
+        _schemeValue = "http";
+        _retriesValue = 1;
+        _passHostValue = "pass";
+        _dialogOpen = true;
+    }
+
+    private void Edit(ApisixService.ApisixStandaloneUpstreamDto u)
+    {
+        _isNew = false;
+        _current = new ApisixService.ApisixStandaloneUpstreamDto
+        {
+            Id = u.Id, Name = u.Name, Desc = u.Desc, Type = u.Type,
+            Nodes = u.Nodes != null ? new Dictionary<string, int>(u.Nodes) : new()
+        };
+        _nodesText = u.Nodes != null ? string.Join(", ", u.Nodes.Select(n => $"{n.Key}={n.Value}")) : "";
+        _schemeValue = u.Scheme ?? "http";
+        _retriesValue = u.Retries ?? 1;
+        _passHostValue = u.PassHost ?? "pass";
+        _dialogOpen = true;
+    }
+
+    private async Task Save()
+    {
+        // Parse nodes
+        var nodes = new Dictionary<string, int>();
+        foreach (var part in _nodesText.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+        {
+            var kv = part.Split('=');
+            if (kv.Length == 2 && int.TryParse(kv[1], out var w)) nodes[kv[0]] = w;
+            else if (kv.Length == 1) nodes[kv[0]] = 1;
+        }
+
+        if (!nodes.Any())
+        {
+            Snackbar.Add("At least one node is required", Severity.Error);
+            return;
+        }
+
+        _current.Nodes = nodes;
+        _current.Scheme = _schemeValue;
+        _current.Retries = _retriesValue;
+        _current.PassHost = _passHostValue;
+
+        await ApisixService.SaveUpstreamAsync(_current);
+        _dialogOpen = false;
+        await Load();
+        Snackbar.Add("Upstream saved", Severity.Success);
+    }
+
+    private async Task Delete(ApisixService.ApisixStandaloneUpstreamDto u)
+    {
+        await ApisixService.DeleteUpstreamAsync(u.Id!);
+        await Load();
+        Snackbar.Add($"Upstream '{u.Name ?? u.Id}' deleted", Severity.Warning);
+    }
+
+    private Color GetTypeColor(string type) => type switch
+    {
+        "roundrobin" => Color.Primary,
+        "chash" => Color.Secondary,
+        "ewma" => Color.Tertiary,
+        "least_conn" => Color.Info,
+        _ => Color.Default
+    };
+}

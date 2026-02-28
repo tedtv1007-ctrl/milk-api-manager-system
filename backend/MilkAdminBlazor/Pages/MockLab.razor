@@ -3,10 +3,12 @@
 @inject ApisixService ApisixService
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true"><MudIcon Icon="@Icons.Material.Filled.Science" Size="Size.Large" Class="mr-2"/> API Mock Lab</MudText>
-    <MudText Typo="Typo.body1" Class="text-muted mb-4">Simulate backend responses for your routes without writing a single line of backend code.</MudText>
+    <div class="milk-page-header mb-4">
+        <MudText Typo="Typo.h4">🧪 API Mock Lab</MudText>
+        <MudText Typo="Typo.body2">Simulate backend responses for your routes without writing a single line of backend code.</MudText>
+    </div>
 
-    <MudTable Items="@rules" Hover="true" Elevation="2">
+    <MudTable Items="@rules" Hover="true" Elevation="0">
         <HeaderContent>
             <MudTh>Route ID</MudTh>
             <MudTh>Status Code</MudTh>
@@ -15,7 +17,7 @@
             <MudTh Style="text-align:right">Actions</MudTh>
         </HeaderContent>
         <RowTemplate>
-            <MudTd><code>@context.RouteId</code></MudTd>
+            <MudTd><span class="mono-value" style="color: #58a6ff;">@context.RouteId</span></MudTd>
             <MudTd><MudChip T="string" Color="@(context.ResponseStatusCode < 400 ? Color.Success : Color.Error)">@context.ResponseStatusCode</MudChip></MudTd>
             <MudTd>@context.ContentType</MudTd>
             <MudTd><MudSwitch @bind-Value="@context.IsEnabled" Color="Color.Primary" UncheckedColor="Color.Default" @onclick="() => ToggleRule(context)"/></MudTd>

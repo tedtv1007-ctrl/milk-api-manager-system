@@ -1,0 +1,404 @@
+/* ===================================================
+   MilkAPI Control Plane — Trading Terminal Dark Theme
+   =================================================== */
+
+/* --- Base & Scrollbar --- */
+:root {
+    --milk-bg-deep: #0d1117;
+    --milk-bg-surface: #161b22;
+    --milk-bg-elevated: #1c2128;
+    --milk-border: #21262d;
+    --milk-border-light: #30363d;
+    --milk-text-primary: #e6edf3;
+    --milk-text-secondary: #7d8590;
+    --milk-accent-blue: #58a6ff;
+    --milk-accent-green: #3fb950;
+    --milk-accent-yellow: #d29922;
+    --milk-accent-red: #f85149;
+    --milk-accent-purple: #a371f7;
+    --milk-accent-cyan: #39d2c0;
+    --milk-accent-orange: #db6d28;
+    --milk-accent-teal: #2dd4bf;
+    --milk-glow-blue: rgba(88, 166, 255, 0.15);
+    --milk-glow-green: rgba(63, 185, 80, 0.15);
+    --milk-glow-yellow: rgba(210, 153, 34, 0.15);
+    --milk-glow-red: rgba(248, 81, 73, 0.15);
+    --milk-glow-purple: rgba(163, 113, 247, 0.15);
+}
+
+html, body {
+    background: var(--milk-bg-deep) !important;
+    color: var(--milk-text-primary) !important;
+    font-family: 'Inter', 'Segoe UI', 'Roboto', sans-serif;
+    scrollbar-width: thin;
+    scrollbar-color: #30363d #0d1117;
+}
+
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: #0d1117; }
+::-webkit-scrollbar-thumb { background: #30363d; border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #484f58; }
+
+/* --- Navigation Sidebar --- */
+.milk-nav .mud-nav-link {
+    color: #c9d1d9 !important;
+    border-radius: 6px !important;
+    margin: 2px 0;
+    transition: all 0.2s ease;
+    font-size: 0.85rem;
+}
+.milk-nav .mud-nav-link:hover {
+    background: rgba(48, 54, 61, 0.6) !important;
+    color: #e6edf3 !important;
+}
+.milk-nav .mud-nav-link.active {
+    background: rgba(88, 166, 255, 0.1) !important;
+    color: #58a6ff !important;
+    border-left: 3px solid #58a6ff;
+}
+
+/* --- Stat Cards (QuantTrading style) --- */
+.milk-stat-card {
+    background: var(--milk-bg-surface);
+    border: 1px solid var(--milk-border);
+    border-radius: 8px;
+    padding: 20px 24px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+.milk-stat-card:hover {
+    border-color: var(--milk-border-light);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+}
+.milk-stat-card::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+}
+.milk-stat-card.accent-blue::before { background: var(--milk-accent-blue); }
+.milk-stat-card.accent-green::before { background: var(--milk-accent-green); }
+.milk-stat-card.accent-yellow::before { background: var(--milk-accent-yellow); }
+.milk-stat-card.accent-red::before { background: var(--milk-accent-red); }
+.milk-stat-card.accent-purple::before { background: var(--milk-accent-purple); }
+.milk-stat-card.accent-cyan::before { background: var(--milk-accent-cyan); }
+.milk-stat-card.accent-orange::before { background: var(--milk-accent-orange); }
+.milk-stat-card.accent-teal::before { background: var(--milk-accent-teal); }
+.milk-stat-card.accent-white::before { background: #e6edf3; }
+
+.milk-stat-card .stat-icon {
+    font-size: 1.4rem;
+    margin-bottom: 12px;
+    opacity: 0.8;
+}
+.milk-stat-card .stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    color: var(--milk-text-primary);
+    line-height: 1;
+    margin-bottom: 6px;
+}
+.milk-stat-card .stat-label {
+    font-size: 0.75rem;
+    color: var(--milk-text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- Content Panels --- */
+.milk-panel {
+    background: var(--milk-bg-surface);
+    border: 1px solid var(--milk-border);
+    border-radius: 8px;
+    overflow: hidden;
+}
+.milk-panel-header {
+    padding: 14px 20px;
+    border-bottom: 1px solid var(--milk-border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: var(--milk-text-primary);
+}
+.milk-panel-header .panel-icon {
+    font-size: 1rem;
+}
+.milk-panel-header.accent-blue .panel-icon { color: var(--milk-accent-blue); }
+.milk-panel-header.accent-green .panel-icon { color: var(--milk-accent-green); }
+.milk-panel-header.accent-yellow .panel-icon { color: var(--milk-accent-yellow); }
+.milk-panel-header.accent-red .panel-icon { color: var(--milk-accent-red); }
+.milk-panel-header.accent-purple .panel-icon { color: var(--milk-accent-purple); }
+.milk-panel-header.accent-cyan .panel-icon { color: var(--milk-accent-cyan); }
+.milk-panel-body {
+    padding: 16px 20px;
+}
+
+/* --- Page Header --- */
+.milk-page-header {
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--milk-border);
+}
+.milk-page-header h4,
+.milk-page-header .mud-typography-h4 {
+    color: var(--milk-text-primary) !important;
+    font-weight: 700;
+}
+.milk-page-header .mud-typography-body2 {
+    color: var(--milk-text-secondary) !important;
+}
+
+/* --- MudPaper / MudCard overrides --- */
+.mud-paper, .mud-card {
+    background: var(--milk-bg-surface) !important;
+    border: 1px solid var(--milk-border) !important;
+    box-shadow: none !important;
+}
+.mud-card-header {
+    border-bottom: 1px solid var(--milk-border);
+}
+
+/* --- MudTable overrides --- */
+.mud-table {
+    background: var(--milk-bg-surface) !important;
+    border: 1px solid var(--milk-border) !important;
+    border-radius: 8px !important;
+    overflow: hidden;
+}
+.mud-table .mud-table-head .mud-table-cell {
+    background: var(--milk-bg-elevated) !important;
+    color: var(--milk-text-secondary) !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+    border-bottom: 1px solid var(--milk-border) !important;
+}
+.mud-table .mud-table-body .mud-table-row {
+    transition: background 0.15s ease;
+}
+.mud-table .mud-table-body .mud-table-row:hover {
+    background: rgba(48, 54, 61, 0.4) !important;
+}
+.mud-table .mud-table-body .mud-table-cell {
+    border-bottom: 1px solid var(--milk-border) !important;
+    color: var(--milk-text-primary);
+    font-size: 0.85rem;
+}
+.mud-table-toolbar {
+    background: var(--milk-bg-surface) !important;
+    border-bottom: 1px solid var(--milk-border) !important;
+}
+.mud-table-pagination {
+    background: var(--milk-bg-surface) !important;
+    border-top: 1px solid var(--milk-border) !important;
+    color: var(--milk-text-secondary) !important;
+}
+
+/* --- MudDialog overrides --- */
+.mud-dialog {
+    background: var(--milk-bg-elevated) !important;
+    border: 1px solid var(--milk-border-light) !important;
+}
+.mud-dialog .mud-dialog-title {
+    background: var(--milk-bg-surface);
+    border-bottom: 1px solid var(--milk-border);
+    color: var(--milk-text-primary);
+}
+.mud-dialog .mud-dialog-content {
+    background: var(--milk-bg-elevated) !important;
+    color: var(--milk-text-primary);
+}
+.mud-dialog .mud-dialog-actions {
+    background: var(--milk-bg-surface);
+    border-top: 1px solid var(--milk-border);
+}
+
+/* --- MudChip overrides --- */
+.mud-chip {
+    font-size: 0.75rem;
+    font-weight: 500;
+}
+
+/* --- MudTextField / Inputs --- */
+.mud-input-control .mud-input-outlined-border {
+    border-color: var(--milk-border-light) !important;
+}
+.mud-input-control:hover .mud-input-outlined-border {
+    border-color: var(--milk-accent-blue) !important;
+}
+.mud-input-control.mud-input-control-focused .mud-input-outlined-border {
+    border-color: var(--milk-accent-blue) !important;
+}
+.mud-input {
+    color: var(--milk-text-primary) !important;
+}
+.mud-input-label {
+    color: var(--milk-text-secondary) !important;
+}
+
+/* --- MudSelect / MudAutocomplete --- */
+.mud-popover {
+    background: var(--milk-bg-elevated) !important;
+    border: 1px solid var(--milk-border-light) !important;
+}
+.mud-list-item:hover {
+    background: rgba(48, 54, 61, 0.6) !important;
+}
+
+/* --- Buttons --- */
+.mud-button-filled.mud-button-filled-primary {
+    background: var(--milk-accent-blue) !important;
+    color: #0d1117 !important;
+    font-weight: 600;
+    text-transform: none;
+}
+.mud-button-filled.mud-button-filled-primary:hover {
+    background: #79c0ff !important;
+}
+.mud-button-outlined {
+    border-color: var(--milk-border-light) !important;
+    color: var(--milk-text-primary) !important;
+}
+.mud-button-outlined:hover {
+    background: rgba(48, 54, 61, 0.4) !important;
+}
+
+/* --- Code / JSON blocks --- */
+.milk-code-block {
+    background: #0d1117;
+    border: 1px solid var(--milk-border);
+    border-radius: 6px;
+    padding: 16px;
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.8rem;
+    color: #e6edf3;
+    overflow-x: auto;
+    line-height: 1.6;
+}
+
+/* --- Status badges --- */
+.milk-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+.milk-badge.badge-success {
+    background: rgba(63, 185, 80, 0.15);
+    color: #3fb950;
+    border: 1px solid rgba(63, 185, 80, 0.3);
+}
+.milk-badge.badge-warning {
+    background: rgba(210, 153, 34, 0.15);
+    color: #d29922;
+    border: 1px solid rgba(210, 153, 34, 0.3);
+}
+.milk-badge.badge-error {
+    background: rgba(248, 81, 73, 0.15);
+    color: #f85149;
+    border: 1px solid rgba(248, 81, 73, 0.3);
+}
+.milk-badge.badge-info {
+    background: rgba(88, 166, 255, 0.15);
+    color: #58a6ff;
+    border: 1px solid rgba(88, 166, 255, 0.3);
+}
+
+/* --- Quick-nav list --- */
+.milk-quick-nav .mud-list-item {
+    border-radius: 6px;
+    margin: 2px 0;
+    color: var(--milk-text-primary);
+}
+.milk-quick-nav .mud-list-item:hover {
+    background: rgba(48, 54, 61, 0.5) !important;
+}
+
+/* --- Tab overrides --- */
+.mud-tabs-toolbar {
+    background: transparent !important;
+    border-bottom: 1px solid var(--milk-border) !important;
+}
+
+/* --- Tooltip --- */
+.mud-tooltip {
+    background: var(--milk-bg-elevated) !important;
+    border: 1px solid var(--milk-border-light) !important;
+    color: var(--milk-text-primary) !important;
+}
+
+/* --- Alert overrides --- */
+.mud-alert {
+    border-radius: 8px !important;
+}
+
+/* --- Simple table --- */
+.mud-simple-table table {
+    border-collapse: collapse;
+}
+.mud-simple-table th {
+    background: var(--milk-bg-elevated) !important;
+    color: var(--milk-text-secondary) !important;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid var(--milk-border) !important;
+}
+.mud-simple-table td {
+    border-bottom: 1px solid var(--milk-border) !important;
+    color: var(--milk-text-primary) !important;
+}
+
+/* --- Monospace data values --- */
+.mono-value {
+    font-family: 'JetBrains Mono', 'Fira Code', 'Consolas', monospace;
+    font-size: 0.85rem;
+}
+
+/* --- Glow accents for special elements --- */
+.glow-blue { box-shadow: 0 0 12px var(--milk-glow-blue); }
+.glow-green { box-shadow: 0 0 12px var(--milk-glow-green); }
+.glow-yellow { box-shadow: 0 0 12px var(--milk-glow-yellow); }
+.glow-red { box-shadow: 0 0 12px var(--milk-glow-red); }
+.glow-purple { box-shadow: 0 0 12px var(--milk-glow-purple); }
+
+/* --- Divider --- */
+.mud-divider {
+    border-color: var(--milk-border) !important;
+}
+
+/* --- MudSlider --- */
+.mud-slider .mud-slider-filled {
+    background: var(--milk-accent-blue) !important;
+}
+
+/* --- Loading / Skeleton --- */
+.mud-skeleton {
+    background: var(--milk-bg-elevated) !important;
+}
+
+/* --- Method chips (routes table) --- */
+.method-chip-GET { background: rgba(63, 185, 80, 0.15) !important; color: #3fb950 !important; }
+.method-chip-POST { background: rgba(88, 166, 255, 0.15) !important; color: #58a6ff !important; }
+.method-chip-PUT { background: rgba(210, 153, 34, 0.15) !important; color: #d29922 !important; }
+.method-chip-DELETE { background: rgba(248, 81, 73, 0.15) !important; color: #f85149 !important; }
+.method-chip-PATCH { background: rgba(163, 113, 247, 0.15) !important; color: #a371f7 !important; }
+
+/* --- MudAppBar link styling --- */
+.mud-appbar a, .mud-appbar .mud-icon-button {
+    color: var(--milk-text-secondary) !important;
+}
+.mud-appbar a:hover, .mud-appbar .mud-icon-button:hover {
+    color: var(--milk-text-primary) !important;
+}

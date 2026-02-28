@@ -1,0 +1,285 @@
+@page "/routes-management"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">⚡ Routes Management</MudText>
+            <MudText Typo="Typo.body2">Create, edit, and delete APISIX routes with plugin configuration.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNew">Create Route</MudButton>
+    </div>
+
+    <MudTable Items="@_routes" Hover="true" Striped="true" Elevation="0" Loading="@_loading" Class="rounded-lg">
+        <ToolBarContent>
+            <MudText Typo="Typo.h6">Registered Routes</MudText>
+            <MudSpacer />
+            <MudTextField T="string" @bind-Value="_searchTerm" Placeholder="Filter..." Adornment="Adornment.Start" AdornmentIcon="@Icons.Material.Filled.Search" IconSize="Size.Medium" Class="mt-0" Immediate="true" />
+        </ToolBarContent>
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>URI</MudTh>
+            <MudTh>Methods</MudTh>
+            <MudTh>Upstream / Service</MudTh>
+            <MudTh>Plugins</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID"><span class="mono-value" style="color: #7d8590;">@context.Id</span></MudTd>
+            <MudTd DataLabel="Name"><MudText Style="font-weight: 600;">@context.Name</MudText></MudTd>
+            <MudTd DataLabel="URI"><span class="mono-value" style="color: #58a6ff;">@context.Uri</span></MudTd>
+            <MudTd DataLabel="Methods">
+                @if (context.Methods != null && context.Methods.Any())
+                {
+                    @foreach (var m in context.Methods)
+                    {
+                        <MudChip T="string" Size="Size.Small" Color="@GetMethodColor(m)" Label="true" Class="mr-1">@m</MudChip>
+                    }
+                }
+                else
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Default" Label="true">ALL</MudChip>
+                }
+            </MudTd>
+            <MudTd DataLabel="Target">
+                @if (!string.IsNullOrEmpty(context.ServiceId))
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Info" Label="true">svc:@context.ServiceId</MudChip>
+                }
+                else if (!string.IsNullOrEmpty(context.UpstreamId))
+                {
+                    <MudChip T="string" Size="Size.Small" Color="Color.Tertiary" Label="true">ups:@context.UpstreamId</MudChip>
+                }
+                else if (context.Upstream?.Nodes != null)
+                {
+                    <MudText Typo="Typo.caption">@string.Join(", ", context.Upstream.Nodes.Keys.Take(2))@(context.Upstream.Nodes.Count > 2 ? "..." : "")</MudText>
+                }
+                else
+                {
+                    <MudText Typo="Typo.caption" Color="Color.Warning">No target</MudText>
+                }
+            </MudTd>
+            <MudTd DataLabel="Plugins">
+                @if (context.Plugins != null)
+                {
+                    <MudText Typo="Typo.caption">@context.Plugins.Count plugin(s)</MudText>
+                }
+            </MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => EditRoute(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.ContentCopy" Color="Color.Default" Size="Size.Small" OnClick="@(() => ViewJson(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteRoute(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    @* --- Create/Edit Dialog --- *@
+    <MudDialog @bind-Visible="_dialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.AltRoute" Class="mr-2" />@(_isNew ? "Create Route" : "Edit Route")</MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Id" Label="Route ID" Variant="Variant.Outlined" ReadOnly="@(!_isNew)" HelperText="Unique identifier" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Name" Label="Name" Variant="Variant.Outlined" Required="true" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_current.Uri" Label="URI Pattern" Variant="Variant.Outlined" Required="true" HelperText="e.g. /api/users/*" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.subtitle2" Class="mb-2">HTTP Methods</MudText>
+                    <div class="d-flex flex-wrap gap-2">
+                        @foreach (var m in _allMethods)
+                        {
+                            <MudChip T="string" Color="@GetMethodColor(m)" 
+                                     Variant="@(_selectedMethods.Contains(m) ? Variant.Filled : Variant.Outlined)"
+                                     OnClick="@(() => ToggleMethod(m))">@m</MudChip>
+                        }
+                    </div>
+                    <MudText Typo="Typo.caption" Color="Color.Default">Leave empty = all methods</MudText>
+                </MudItem>
+
+                <MudItem xs="12">
+                    <MudDivider Class="my-2" />
+                    <MudText Typo="Typo.subtitle1" Class="font-weight-bold">Target Configuration</MudText>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.ServiceId" Label="Service ID (optional)" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.UpstreamId" Label="Upstream ID (optional)" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.caption">Or define inline upstream nodes:</MudText>
+                    <MudTextField @bind-Value="_nodesText" Label="Nodes (host:port=weight, comma-separated)" Variant="Variant.Outlined" 
+                                  HelperText="e.g. 127.0.0.1:8080=1, 127.0.0.1:8081=1" />
+                </MudItem>
+
+                <MudItem xs="12">
+                    <MudDivider Class="my-2" />
+                    <MudText Typo="Typo.subtitle1" Class="font-weight-bold">Plugins (JSON)</MudText>
+                    <MudTextField @bind-Value="_pluginsJson" Label="Plugin Configuration" Variant="Variant.Outlined" Lines="6" 
+                                  HelperText="JSON object, e.g. {&quot;key-auth&quot;: {}, &quot;limit-count&quot;: {&quot;count&quot;: 100, &quot;time_window&quot;: 60}}" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _dialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveRoute">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+
+    @* --- JSON View Dialog --- *@
+    <MudDialog @bind-Visible="_jsonDialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6">Route JSON</MudText>
+        </TitleContent>
+        <DialogContent>
+            <pre class="milk-code-block" style="max-height:400px;">@_viewJson</pre>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _jsonDialogOpen = false)">Close</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private List<ApisixService.ApisixRouteDto> _routes = new();
+    private bool _loading = true;
+    private string _searchTerm = "";
+
+    private bool _dialogOpen;
+    private bool _isNew;
+    private ApisixService.ApisixRouteDto _current = new();
+    private HashSet<string> _selectedMethods = new();
+    private string _nodesText = "";
+    private string _pluginsJson = "{}";
+    private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
+
+    private bool _jsonDialogOpen;
+    private string _viewJson = "";
+
+    private readonly string[] _allMethods = { "GET", "POST", "PUT", "DELETE", "PATCH", "HEAD", "OPTIONS" };
+
+    protected override async Task OnInitializedAsync() => await LoadRoutes();
+
+    private async Task LoadRoutes()
+    {
+        _loading = true;
+        _routes = await ApisixService.GetApisixRoutesAsync();
+        _loading = false;
+    }
+
+    private void AddNew()
+    {
+        _isNew = true;
+        _current = new ApisixService.ApisixRouteDto { Id = Guid.NewGuid().ToString("N")[..12] };
+        _selectedMethods.Clear();
+        _nodesText = "";
+        _pluginsJson = "{}";
+        _dialogOpen = true;
+    }
+
+    private void EditRoute(ApisixService.ApisixRouteDto route)
+    {
+        _isNew = false;
+        _current = new ApisixService.ApisixRouteDto
+        {
+            Id = route.Id,
+            Name = route.Name,
+            Uri = route.Uri,
+            ServiceId = route.ServiceId,
+            UpstreamId = route.UpstreamId,
+            Upstream = route.Upstream,
+            Plugins = route.Plugins
+        };
+        _selectedMethods = route.Methods != null ? new HashSet<string>(route.Methods) : new();
+        _nodesText = route.Upstream?.Nodes != null
+            ? string.Join(", ", route.Upstream.Nodes.Select(n => $"{n.Key}={n.Value}"))
+            : "";
+        _pluginsJson = route.Plugins != null
+            ? System.Text.Json.JsonSerializer.Serialize(route.Plugins, new System.Text.Json.JsonSerializerOptions { WriteIndented = true })
+            : "{}";
+        _dialogOpen = true;
+    }
+
+    private void ToggleMethod(string m)
+    {
+        if (!_selectedMethods.Remove(m)) _selectedMethods.Add(m);
+    }
+
+    private async Task SaveRoute()
+    {
+        if (string.IsNullOrWhiteSpace(_current.Name))
+        {
+            Snackbar.Add("Name is required", Severity.Error);
+            return;
+        }
+
+        _current.Methods = _selectedMethods.Any() ? _selectedMethods.ToList() : null;
+
+        // Parse inline nodes
+        if (!string.IsNullOrWhiteSpace(_nodesText))
+        {
+            var nodes = new Dictionary<string, int>();
+            foreach (var part in _nodesText.Split(',', StringSplitOptions.TrimEntries))
+            {
+                var kv = part.Split('=');
+                if (kv.Length == 2 && int.TryParse(kv[1], out var w))
+                    nodes[kv[0]] = w;
+                else if (kv.Length == 1)
+                    nodes[kv[0]] = 1;
+            }
+            if (nodes.Any())
+                _current.Upstream = new ApisixService.ApisixUpstreamDto { Nodes = nodes };
+        }
+
+        // Parse plugins JSON
+        if (!string.IsNullOrWhiteSpace(_pluginsJson) && _pluginsJson != "{}")
+        {
+            try
+            {
+                _current.Plugins = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(_pluginsJson);
+            }
+            catch
+            {
+                Snackbar.Add("Invalid plugins JSON", Severity.Error);
+                return;
+            }
+        }
+
+        await ApisixService.SaveApisixRouteAsync(_current);
+        _dialogOpen = false;
+        await LoadRoutes();
+        Snackbar.Add("Route saved successfully", Severity.Success);
+    }
+
+    private async Task DeleteRoute(ApisixService.ApisixRouteDto route)
+    {
+        await ApisixService.DeleteApisixRouteAsync(route.Id!);
+        await LoadRoutes();
+        Snackbar.Add($"Route '{route.Name}' deleted", Severity.Warning);
+    }
+
+    private void ViewJson(ApisixService.ApisixRouteDto route)
+    {
+        _viewJson = System.Text.Json.JsonSerializer.Serialize(route, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+        _jsonDialogOpen = true;
+    }
+
+    private Color GetMethodColor(string method) => method switch
+    {
+        "GET" => Color.Success,
+        "POST" => Color.Warning,
+        "PUT" => Color.Info,
+        "DELETE" => Color.Error,
+        "PATCH" => Color.Secondary,
+        _ => Color.Default
+    };
+}

@@ -1,125 +1,92 @@
 @page "/pii-management"
 @using MilkAdminBlazor.Data
 @inject ApisixService ApisixService
+@inject ISnackbar Snackbar
 
-<div class="container-fluid">
-    <div class="row mb-4">
-        <div class="col">
-            <h2 class="display-6"><i class="bi bi-shield-lock-fill text-primary"></i> PII Privacy Shield Center</h2>
-            <p class="text-muted">Manage dynamic data masking rules for sensitive PII fields (Email, Phone, SSN, etc.).</p>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">🛡 PII Privacy Shield</MudText>
+            <MudText Typo="Typo.body2">Manage dynamic data masking rules for sensitive PII fields (Email, Phone, SSN, etc.).</MudText>
         </div>
-        <div class="col-auto">
-            <button class="btn btn-primary" @onclick="AddNewRule">
-                <i class="bi bi-plus-circle"></i> Add New Rule
-            </button>
-        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNewRule">Add Protection Rule</MudButton>
     </div>
 
     @if (rules == null)
     {
-        <div class="d-flex justify-content-center my-5">
-            <div class="spinner-border text-primary" role="status">
-                <span class="visually-hidden">Loading...</span>
-            </div>
-        </div>
+        <MudProgressCircular Indeterminate="true" Color="Color.Info" Class="my-6" />
     }
     else
     {
-        <div class="card shadow-sm border-0 mb-4">
-            <div class="card-body p-0">
-                <table class="table table-hover mb-0">
-                    <thead class="bg-light">
-                        <tr>
-                            <th class="px-4">Status</th>
-                            <th>Route ID</th>
-                            <th>Field Path</th>
-                            <th>Regex Pattern</th>
-                            <th>Replacement</th>
-                            <th>Last Updated</th>
-                            <th class="text-end px-4">Actions</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach (var rule in rules)
-                        {
-                            <tr>
-                                <td class="px-4">
-                                    <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" checked="@rule.IsActive" @onchange="@(e => ToggleRule(rule))">
-                                        <span class="badge @(rule.IsActive ? "bg-success-soft text-success" : "bg-secondary-soft text-secondary")">
-                                            @(rule.IsActive ? "Active" : "Disabled")
-                                        </span>
-                                    </div>
-                                </td>
-                                <td><code class="text-primary fw-bold">@rule.RouteId</code></td>
-                                <td><code>@rule.FieldPath</code></td>
-                                <td><small class="text-muted font-monospace">@rule.RegexPattern</small></td>
-                                <td><span class="badge bg-light text-dark border">@rule.ReplacePattern</span></td>
-                                <td>@rule.UpdatedAt.ToLocalTime().ToString("g")</td>
-                                <td class="text-end px-4">
-                                    <button class="btn btn-sm btn-outline-secondary me-1" @onclick="() => EditRule(rule)">
-                                        <i class="bi bi-pencil"></i>
-                                    </button>
-                                    <button class="btn btn-sm btn-outline-danger" @onclick="() => DeleteRule(rule.Id)">
-                                        <i class="bi bi-trash"></i>
-                                    </button>
-                                </td>
-                            </tr>
-                        }
-                    </tbody>
-                </table>
-            </div>
-        </div>
+        <MudTable Items="@rules" Hover="true" Striped="true" Elevation="0" Class="rounded-lg">
+            <HeaderContent>
+                <MudTh>Status</MudTh>
+                <MudTh>Route ID</MudTh>
+                <MudTh>Field Path</MudTh>
+                <MudTh>Regex Pattern</MudTh>
+                <MudTh>Replacement</MudTh>
+                <MudTh>Last Updated</MudTh>
+                <MudTh Style="text-align:right">Actions</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Status">
+                    <MudSwitch T="bool" Value="@context.IsActive" ValueChanged="@(v => ToggleRule(context))" Color="Color.Success" />
+                    @if (context.IsActive)
+                    {
+                        <span class="milk-badge badge-success">Active</span>
+                    }
+                    else
+                    {
+                        <span class="milk-badge badge-warning">Disabled</span>
+                    }
+                </MudTd>
+                <MudTd DataLabel="Route"><span class="mono-value" style="color: #58a6ff; font-weight: 600;">@context.RouteId</span></MudTd>
+                <MudTd DataLabel="Field"><span class="mono-value">@context.FieldPath</span></MudTd>
+                <MudTd DataLabel="Regex"><span class="mono-value" style="color: #7d8590; font-size: 0.8rem;">@context.RegexPattern</span></MudTd>
+                <MudTd DataLabel="Replace">
+                    <MudChip T="string" Size="Size.Small" Label="true" Style="background: rgba(48,54,61,0.6); color: #e6edf3; border: 1px solid #30363d;">@context.ReplacePattern</MudChip>
+                </MudTd>
+                <MudTd DataLabel="Updated"><span class="mono-value" style="color: #7d8590;">@context.UpdatedAt.ToLocalTime().ToString("g")</span></MudTd>
+                <MudTd DataLabel="Actions" Style="text-align:right">
+                    <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => EditRule(context))" />
+                    <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => DeleteRule(context.Id))" />
+                </MudTd>
+            </RowTemplate>
+        </MudTable>
     }
-</div>
 
-@if (showModal)
-{
-    <div class="modal fade show d-block" style="background: rgba(0,0,0,0.5)">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content border-0 shadow-lg">
-                <div class="modal-header bg-primary text-white">
-                    <h5 class="modal-title">@(editingRule.Id == 0 ? "Add Protection Rule" : "Edit Protection Rule")</h5>
-                    <button type="button" class="btn-close btn-close-white" @onclick="() => showModal = false"></button>
-                </div>
-                <div class="modal-body p-4">
-                    <div class="row g-3">
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Target Route ID</label>
-                            <input type="text" class="form-control" @bind="editingRule.RouteId" placeholder="e.g., 1, 2, my-route-id">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Field Path (JSON Path)</label>
-                            <input type="text" class="form-control" @bind="editingRule.FieldPath" placeholder="e.g., user.email, credit_card.number">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Regex Pattern</label>
-                            <input type="text" class="form-control font-monospace" @bind="editingRule.RegexPattern" placeholder="e.g., (.+@@)(.+) or (\d{4})">
-                        </div>
-                        <div class="col-md-6">
-                            <label class="form-label fw-bold">Replacement Value</label>
-                            <input type="text" class="form-control font-monospace" @bind="editingRule.ReplacePattern" placeholder="e.g., ***@@$2 or $1****">
-                        </div>
-                        <div class="col-12">
-                            <label class="form-label fw-bold">Description</label>
-                            <textarea class="form-control" @bind="editingRule.Description" rows="2" placeholder="Describe why this field needs protection..."></textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer bg-light">
-                    <button type="button" class="btn btn-secondary" @onclick="() => showModal = false">Cancel</button>
-                    <button type="button" class="btn btn-primary px-4" @onclick="SaveRule">Save Protection Rule</button>
-                </div>
-            </div>
-        </div>
-    </div>
-}
-
-<style>
-    .bg-success-soft { background-color: rgba(25, 135, 84, 0.1); }
-    .bg-secondary-soft { background-color: rgba(108, 117, 125, 0.1); }
-    code { font-size: 0.9em; }
-</style>
+    <MudDialog @bind-Visible="showModal" Options="@(new DialogOptions { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true })">
+        <TitleContent>
+            <MudText Typo="Typo.h6">
+                <MudIcon Icon="@Icons.Material.Filled.Shield" Class="mr-2" />
+                @(editingRule.Id == 0 ? "Add Protection Rule" : "Edit Protection Rule")
+            </MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="editingRule.RouteId" Label="Target Route ID" Variant="Variant.Outlined" HelperText="e.g., 1, 2, my-route-id" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="editingRule.FieldPath" Label="Field Path (JSON Path)" Variant="Variant.Outlined" HelperText="e.g., user.email" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="editingRule.RegexPattern" Label="Regex Pattern" Variant="Variant.Outlined" Style="font-family: 'JetBrains Mono', monospace;" HelperText="Regex to match sensitive data" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="editingRule.ReplacePattern" Label="Replacement Value" Variant="Variant.Outlined" Style="font-family: 'JetBrains Mono', monospace;" HelperText="Replacement pattern" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="editingRule.Description" Label="Description" Variant="Variant.Outlined" Lines="2" HelperText="Describe why this field needs protection" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => showModal = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="SaveRule">Save Rule</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
 
 @code {
     private List<ApisixService.PiiMaskingRuleDto> rules;

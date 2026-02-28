@@ -3,11 +3,11 @@
 @inject ApisixService ApisixService
 
 <MudContainer MaxWidth="MaxWidth.Large" Class="mt-4">
-    <div class="d-flex justify-space-between align-center mb-4">
-        <div>
-            <MudText Typo="Typo.h4"><MudIcon Icon="@Icons.Material.Filled.Layers" Size="Size.Large" Class="mr-2"/> Traffic Tiers</MudText>
-            <MudText Typo="Typo.body1" Class="text-muted">Manage consumer groups and rate limiting policies (Gold, Silver, Free).</MudText>
-        </div>
+    <div class="milk-page-header mb-4">
+        <MudText Typo="Typo.h4">🔄 Traffic Tiers</MudText>
+        <MudText Typo="Typo.body2">Manage consumer groups and rate limiting policies (Gold, Silver, Free).</MudText>
+    </div>
+    <div class="d-flex justify-end mb-4">
         <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="OpenDialog">Create Tier</MudButton>
     </div>
 
@@ -21,7 +21,7 @@
             @foreach (var group in groups)
             {
                 <MudItem xs="12" sm="6" md="4">
-                    <MudCard Elevation="3" Class="h-100">
+                    <MudCard Elevation="0" Class="h-100">
                         <MudCardHeader>
                             <CardHeaderAvatar>
                                 <MudAvatar Color="@GetColor(group.Id)" Variant="Variant.Filled">@group.Id[0].ToString().ToUpper()</MudAvatar>

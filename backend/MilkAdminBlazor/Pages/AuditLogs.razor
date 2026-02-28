@@ -4,29 +4,32 @@
 @inject IJSRuntime JSRuntime
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true"><MudIcon Icon="@Icons.Material.Filled.History" Size="Size.Large" Class="mr-2"/> Audit & Compliance Dashboard</MudText>
-    
+    <div class="milk-page-header mb-4">
+        <MudText Typo="Typo.h4">📋 Audit & Compliance Dashboard</MudText>
+        <MudText Typo="Typo.body2">Monitor user activity, policy violations, and compliance events.</MudText>
+    </div>
+
     <MudGrid Class="mb-4">
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="2">
+            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="0">
                 <MudText Typo="Typo.subtitle2" Color="Color.Primary">Total Events (24h)</MudText>
                 <MudText Typo="Typo.h3">@_totalEvents</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="2">
+            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="0">
                 <MudText Typo="Typo.subtitle2" Color="Color.Error">Policy Violations</MudText>
                 <MudText Typo="Typo.h3">@_violations</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="2">
+            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="0">
                 <MudText Typo="Typo.subtitle2" Color="Color.Info">Most Active User</MudText>
                 <MudText Typo="Typo.h5">@_topUser</MudText>
             </MudPaper>
         </MudItem>
         <MudItem xs="12" sm="6" md="3">
-            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="2">
+            <MudPaper Class="pa-4 d-flex flex-column align-center justify-center mud-width-full py-8" Elevation="0">
                 <MudButton Variant="Variant.Filled" StartIcon="@Icons.Material.Filled.Download" Color="Color.Success" OnClick="ExportToCsv" Class="mt-2">
                     Export CSV Report
                 </MudButton>
@@ -34,7 +37,7 @@
         </MudItem>
     </MudGrid>
 
-    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="2" Filter="new Func<ApisixService.AuditLogEntryDto,bool>(FilterFunc)">
+    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="0" Filter="new Func<ApisixService.AuditLogEntryDto,bool>(FilterFunc)">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Recent Activity Logs</MudText>
             <MudSpacer />
@@ -63,7 +66,7 @@
             <MudTd DataLabel="Action">
                 <MudChip T="string" Color="@GetActionColor(context.Action)" Size="Size.Small" Variant="Variant.Text">@context.Action</MudChip>
             </MudTd>
-            <MudTd DataLabel="Resource"><code>@context.Resource</code></MudTd>
+            <MudTd DataLabel="Resource"><span class="mono-value" style="color: #58a6ff;">@context.Resource</span></MudTd>
             <MudTd DataLabel="Status">
                 <MudBadge Content="@context.StatusCode" Color="@(context.StatusCode < 400 ? Color.Success : Color.Error)" Overlap="false" Bordered="true">
                     <MudIcon Icon="@(context.StatusCode < 400 ? Icons.Material.Filled.CheckCircle : Icons.Material.Filled.Error)" Size="Size.Small" />

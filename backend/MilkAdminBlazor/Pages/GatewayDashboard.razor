@@ -1,0 +1,171 @@
+@page "/gateway"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">⚡ Gateway Dashboard</MudText>
+            <MudText Typo="Typo.body2">APISIX control plane overview — real-time metrics &amp; system status</MudText>
+        </div>
+        <MudButton Variant="Variant.Outlined" StartIcon="@Icons.Material.Filled.Refresh" OnClick="LoadStats" Style="border-color: #30363d; color: #7d8590;">Refresh</MudButton>
+    </div>
+
+    <MudGrid Spacing="3">
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-blue">
+                <div class="stat-icon" style="color: #58a6ff;">⬡</div>
+                <div class="stat-value">@_stats.RouteCount</div>
+                <div class="stat-label">Routes</div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-green">
+                <div class="stat-icon" style="color: #3fb950;">◈</div>
+                <div class="stat-value">@_stats.ServiceCount</div>
+                <div class="stat-label">Services</div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-purple">
+                <div class="stat-icon" style="color: #a371f7;">☁</div>
+                <div class="stat-value">@_stats.UpstreamCount</div>
+                <div class="stat-label">Upstreams</div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-cyan">
+                <div class="stat-icon" style="color: #39d2c0;">◉</div>
+                <div class="stat-value">@_stats.ConsumerCount</div>
+                <div class="stat-label">Consumers</div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-teal">
+                <div class="stat-icon" style="color: #2dd4bf;">⊕</div>
+                <div class="stat-value">@_stats.SslCount</div>
+                <div class="stat-label">SSL Certs</div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4" lg="2">
+            <div class="milk-stat-card accent-yellow">
+                <div class="stat-icon" style="color: #d29922;">⊗</div>
+                <div class="stat-value">@_stats.GlobalRuleCount</div>
+                <div class="stat-label">Global Rules</div>
+            </div>
+        </MudItem>
+    </MudGrid>
+
+    <MudGrid Class="mt-6" Spacing="3">
+        <MudItem xs="12" md="6">
+            <div class="milk-panel">
+                <div class="milk-panel-header accent-blue">
+                    <span class="panel-icon">⚡</span> APISIX SERVER INFO
+                </div>
+                <div class="milk-panel-body">
+                    @if (_serverInfoLoading)
+                    {
+                        <MudProgressCircular Indeterminate="true" Size="Size.Small" Color="Color.Info" />
+                    }
+                    else
+                    {
+                        <MudSimpleTable Dense="true" Hover="true" Style="background: transparent;">
+                            <tbody>
+                                @foreach (var kv in _serverInfo)
+                                {
+                                    <tr>
+                                        <td style="width: 40%;"><MudText Typo="Typo.body2" Style="color: #7d8590;">@kv.Key</MudText></td>
+                                        <td><span class="mono-value" style="color: #58a6ff;">@kv.Value</span></td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </MudSimpleTable>
+                    }
+                </div>
+            </div>
+        </MudItem>
+        <MudItem xs="12" md="6">
+            <div class="milk-panel">
+                <div class="milk-panel-header accent-green">
+                    <span class="panel-icon">⚡</span> QUICK NAVIGATION
+                </div>
+                <div class="milk-panel-body milk-quick-nav">
+                    <MudList T="string" Dense="true">
+                        <MudListItem Href="/routes-management" Icon="@Icons.Material.Filled.AltRoute" IconColor="Color.Success">
+                            <MudText Style="color: #e6edf3;">Routes Management</MudText>
+                        </MudListItem>
+                        <MudListItem Href="/services-management" Icon="@Icons.Material.Filled.MiscellaneousServices" IconColor="Color.Warning">
+                            <MudText Style="color: #e6edf3;">Services Management</MudText>
+                        </MudListItem>
+                        <MudListItem Href="/upstreams-management" Icon="@Icons.Material.Filled.CloudQueue" IconColor="Color.Tertiary">
+                            <MudText Style="color: #e6edf3;">Upstreams Management</MudText>
+                        </MudListItem>
+                        <MudListItem Href="/ssl-management" Icon="@Icons.Material.Filled.Lock" IconColor="Color.Success">
+                            <MudText Style="color: #e6edf3;">SSL Certificates</MudText>
+                        </MudListItem>
+                        <MudListItem Href="/global-plugins" Icon="@Icons.Material.Filled.Public" IconColor="Color.Info">
+                            <MudText Style="color: #e6edf3;">Global Plugin Rules</MudText>
+                        </MudListItem>
+                        <MudListItem Href="/consumers" Icon="@Icons.Material.Filled.People" IconColor="Color.Info">
+                            <MudText Style="color: #e6edf3;">Consumer Management</MudText>
+                        </MudListItem>
+                    </MudList>
+                </div>
+            </div>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
+
+@code {
+    private ApisixService.DashboardStatsDto _stats = new();
+    private Dictionary<string, string> _serverInfo = new();
+    private bool _serverInfoLoading = true;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadStats();
+    }
+
+    private async Task LoadStats()
+    {
+        _serverInfoLoading = true;
+        StateHasChanged();
+
+        _stats = await ApisixService.GetDashboardStatsAsync();
+
+        try
+        {
+            var raw = await ApisixService.GetServerInfoRawAsync();
+            var doc = System.Text.Json.JsonDocument.Parse(raw);
+            _serverInfo = new Dictionary<string, string>();
+
+            void FlattenJson(System.Text.Json.JsonElement element, string prefix = "")
+            {
+                switch (element.ValueKind)
+                {
+                    case System.Text.Json.JsonValueKind.Object:
+                        foreach (var prop in element.EnumerateObject())
+                        {
+                            FlattenJson(prop.Value, string.IsNullOrEmpty(prefix) ? prop.Name : $"{prefix}.{prop.Name}");
+                        }
+                        break;
+                    case System.Text.Json.JsonValueKind.Array:
+                        var items = element.EnumerateArray().Select(e => e.ToString());
+                        _serverInfo[prefix] = string.Join(", ", items);
+                        break;
+                    default:
+                        _serverInfo[prefix] = element.ToString();
+                        break;
+                }
+            }
+
+            FlattenJson(doc.RootElement);
+        }
+        catch
+        {
+            _serverInfo = new Dictionary<string, string> { ["status"] = "Unable to connect to APISIX" };
+        }
+
+        _serverInfoLoading = false;
+    }
+}

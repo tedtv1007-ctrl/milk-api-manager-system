@@ -1,54 +1,70 @@
 @inherits LayoutComponentBase
 
-<MudThemeProvider @bind-IsDarkMode="@_isDarkMode" Theme="_currentTheme" />
+<MudThemeProvider IsDarkMode="true" Theme="_currentTheme" />
 <MudPopoverProvider />
 <MudDialogProvider />
 <MudSnackbarProvider />
 
 <MudLayout>
-    <MudAppBar Elevation="4" Color="Color.Primary">
+    <MudAppBar Elevation="0" Dense="true" Style="background: #0d1117; border-bottom: 1px solid #21262d;">
         <MudIconButton Icon="@Icons.Material.Filled.Menu" Color="Color.Inherit" Edge="Edge.Start" OnClick="@((e) => DrawerToggle())" />
-        <MudText Typo="Typo.h5" Class="ml-3 font-weight-bold">MILK <span style="font-weight: 300;">API MANAGER</span></MudText>
+        <div class="d-flex align-center gap-2 ml-2">
+            <MudIcon Icon="@Icons.Material.Filled.Bolt" Style="color: #f0b429;" Size="Size.Small" />
+            <MudText Typo="Typo.subtitle1" Style="color: #e6edf3; font-weight: 700; letter-spacing: 0.5px;">MilkAPI</MudText>
+            <MudText Typo="Typo.caption" Style="color: #7d8590; font-weight: 300;">CONTROL PLANE</MudText>
+        </div>
         <MudSpacer />
-        <MudToggleIconButton @bind-Toggled="@_isDarkMode"
-                             Icon="@Icons.Material.Filled.DarkMode" Color="Color.Inherit"
-                             ToggledIcon="@Icons.Material.Filled.LightMode" ToggledColor="Color.Inherit" />
-        <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Color="Color.Inherit" Href="https://github.com/tedtv1007-ctrl/milk-api-manager-system" Target="_blank" />
+        <div class="d-flex align-center gap-3" style="color: #7d8590; font-size: 0.8rem;">
+            <span>◷ @DateTime.Now.ToString("yyyy-MM-dd HH:mm")</span>
+            <MudChip T="string" Size="Size.Small" Style="background: #161b22; color: #58a6ff; border: 1px solid #30363d; font-size: 0.7rem;" Label="true">⚙ .NET 8</MudChip>
+            <MudIconButton Icon="@Icons.Custom.Brands.GitHub" Style="color: #7d8590;" Size="Size.Small" Href="https://github.com/tedtv1007-ctrl/milk-api-manager-system" Target="_blank" />
+        </div>
     </MudAppBar>
-    <MudDrawer @bind-Open="_drawerOpen" Elevation="25" ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Responsive">
-        <MudDrawerHeader Class="pa-4 d-flex align-center">
-            <MudAvatar Color="Color.Primary" Variant="Variant.Filled" Size="Size.Large" Class="mr-3">M</MudAvatar>
-            <MudText Typo="Typo.h6" Class="font-weight-bold">Control Plane</MudText>
+    <MudDrawer @bind-Open="_drawerOpen" Elevation="0" ClipMode="DrawerClipMode.Always" Variant="@DrawerVariant.Responsive"
+               Style="background: #0d1117; border-right: 1px solid #21262d;">
+        <MudDrawerHeader Class="pa-4 d-flex align-center" Style="border-bottom: 1px solid #21262d;">
+            <MudIcon Icon="@Icons.Material.Filled.Bolt" Style="color: #f0b429; margin-right: 10px;" />
+            <div>
+                <MudText Typo="Typo.subtitle1" Style="color: #e6edf3; font-weight: 700;">MilkAPI</MudText>
+                <MudText Typo="Typo.caption" Style="color: #7d8590;">CONTROL PLANE</MudText>
+            </div>
         </MudDrawerHeader>
-        <MudNavMenu Margin="Margin.Dense" Rounded="true" Class="pa-2">
-            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-2" Color="Color.Primary">MAIN MANAGEMENT</MudText>
-            <MudNavLink Href="/apis" Icon="@Icons.Material.Filled.List">API Inventory</MudNavLink>
-            <MudNavLink Href="/blacklist" Icon="@Icons.Material.Filled.Block">IP Blacklist</MudNavLink>
-            <MudNavLink Href="/consumers" Icon="@Icons.Material.Filled.Group">Consumers</MudNavLink>
-            <MudNavLink Href="/consumer-groups" Icon="@Icons.Material.Filled.Layers">Traffic Tiers</MudNavLink>
+        <MudNavMenu Margin="Margin.Dense" Rounded="true" Class="pa-2 milk-nav">
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-2" Style="color: #7d8590; font-size: 0.65rem; letter-spacing: 1.5px;">GATEWAY</MudText>
+            <MudNavLink Href="/gateway" Icon="@Icons.Material.Filled.Dashboard" IconColor="Color.Info">Dashboard</MudNavLink>
+            <MudNavLink Href="/routes-management" Icon="@Icons.Material.Filled.AltRoute" IconColor="Color.Success">Routes</MudNavLink>
+            <MudNavLink Href="/services-management" Icon="@Icons.Material.Filled.MiscellaneousServices" IconColor="Color.Warning">Services</MudNavLink>
+            <MudNavLink Href="/upstreams-management" Icon="@Icons.Material.Filled.CloudQueue" IconColor="Color.Tertiary">Upstreams</MudNavLink>
+            <MudNavLink Href="/ssl-management" Icon="@Icons.Material.Filled.Lock" IconColor="Color.Success">SSL Certificates</MudNavLink>
+            <MudNavLink Href="/global-plugins" Icon="@Icons.Material.Filled.Public" IconColor="Color.Secondary">Global Plugins</MudNavLink>
+
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Style="color: #7d8590; font-size: 0.65rem; letter-spacing: 1.5px;">API MANAGEMENT</MudText>
+            <MudNavLink Href="/apis" Icon="@Icons.Material.Filled.List" IconColor="Color.Info">API Inventory</MudNavLink>
+            <MudNavLink Href="/blacklist" Icon="@Icons.Material.Filled.Block" IconColor="Color.Error">IP Blacklist</MudNavLink>
+            <MudNavLink Href="/consumers" Icon="@Icons.Material.Filled.Group" IconColor="Color.Info">Consumers</MudNavLink>
+            <MudNavLink Href="/consumer-groups" Icon="@Icons.Material.Filled.Layers" IconColor="Color.Warning">Traffic Tiers</MudNavLink>
             
-            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Color="Color.Primary">DEVELOPER HUB</MudText>
-            <MudNavLink Href="/dev-portal" Icon="@Icons.Material.Filled.Terminal">Self-Service Portal</MudNavLink>
-            <MudNavLink Href="/mock-lab" Icon="@Icons.Material.Filled.Science">Mocking Lab</MudNavLink>
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Style="color: #7d8590; font-size: 0.65rem; letter-spacing: 1.5px;">DEVELOPER</MudText>
+            <MudNavLink Href="/dev-portal" Icon="@Icons.Material.Filled.Terminal" IconColor="Color.Success">Self-Service Portal</MudNavLink>
+            <MudNavLink Href="/mock-lab" Icon="@Icons.Material.Filled.Science" IconColor="Color.Tertiary">Mocking Lab</MudNavLink>
             
-            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Color="Color.Primary">OPERATIONS & ANALYTICS</MudText>
-            <MudNavLink Href="/consumer-analytics" Icon="@Icons.Material.Filled.Insights">Traffic Intelligence</MudNavLink>
-            <MudNavLink Href="/pii-management" Icon="@Icons.Material.Filled.Shield">PII Protection</MudNavLink>
-            <MudNavLink Href="/load-testing" Icon="@Icons.Material.Filled.Speed">Stress Test</MudNavLink>
-            <MudNavLink Href="/audit-logs" Icon="@Icons.Material.Filled.History">Audit Logs</MudNavLink>
+            <MudText Typo="Typo.overline" Class="px-4 py-2 mt-4" Style="color: #7d8590; font-size: 0.65rem; letter-spacing: 1.5px;">OPERATIONS</MudText>
+            <MudNavLink Href="/consumer-analytics" Icon="@Icons.Material.Filled.Insights" IconColor="Color.Warning">Traffic Intelligence</MudNavLink>
+            <MudNavLink Href="/pii-management" Icon="@Icons.Material.Filled.Shield" IconColor="Color.Error">PII Protection</MudNavLink>
+            <MudNavLink Href="/load-testing" Icon="@Icons.Material.Filled.Speed" IconColor="Color.Success">Stress Test</MudNavLink>
+            <MudNavLink Href="/audit-logs" Icon="@Icons.Material.Filled.History" IconColor="Color.Info">Audit Logs</MudNavLink>
             
-            <MudDivider Class="my-4" />
-            <MudNavLink Href="/sync-status" Icon="@Icons.Material.Filled.Sync">System Sync</MudNavLink>
+            <MudDivider Class="my-3" Style="border-color: #21262d;" />
+            <MudNavLink Href="/sync-status" Icon="@Icons.Material.Filled.Sync" IconColor="Color.Tertiary">System Sync</MudNavLink>
         </MudNavMenu>
     </MudDrawer>
-    <MudMainContent Class="pa-6">
+    <MudMainContent Style="background: #0d1117; min-height: 100vh;" Class="pa-6">
         @Body
     </MudMainContent>
 </MudLayout>
 
 @code {
     bool _drawerOpen = true;
-    bool _isDarkMode = false;
 
     void DrawerToggle()
     {
@@ -57,30 +73,55 @@
 
     private MudTheme _currentTheme = new MudTheme()
     {
-        PaletteLight = new PaletteLight()
-        {
-            Primary = "#0D47A1",
-            Secondary = "#00B8D4",
-            AppbarBackground = "#0D47A1",
-            DrawerBackground = "#F5F7FA",
-            Background = "#FFFFFF",
-            Surface = "#FFFFFF",
-            ActionDefault = "#546E7A",
-            TextPrimary = "#263238",
-            AppbarText = "#FFFFFF",
-        },
         PaletteDark = new PaletteDark()
         {
-            Primary = "#2196F3",
-            Secondary = "#00BCD4",
-            Background = "#121212",
-            Surface = "#1E1E1E",
-            DrawerBackground = "#1A1A1A",
-            AppbarBackground = "#1A1A1A",
+            Primary = "#58a6ff",
+            Secondary = "#3fb950",
+            Tertiary = "#a371f7",
+            Info = "#58a6ff",
+            Success = "#3fb950",
+            Warning = "#d29922",
+            Error = "#f85149",
+            Dark = "#0d1117",
+            Background = "#0d1117",
+            Surface = "#161b22",
+            DrawerBackground = "#0d1117",
+            DrawerText = "#c9d1d9",
+            AppbarBackground = "#0d1117",
+            AppbarText = "#c9d1d9",
+            TextPrimary = "#e6edf3",
+            TextSecondary = "#7d8590",
+            ActionDefault = "#7d8590",
+            ActionDisabled = "#484f58",
+            Divider = "#21262d",
+            LinesDefault = "#21262d",
+            TableLines = "#21262d",
+            TableStriped = "rgba(22, 27, 34, 0.5)",
+            TableHover = "rgba(48, 54, 61, 0.4)",
+            HoverOpacity = 0.08,
+        },
+        PaletteLight = new PaletteLight()
+        {
+            Primary = "#58a6ff",
+            Secondary = "#3fb950",
+            Tertiary = "#a371f7",
+            Info = "#58a6ff",
+            Success = "#3fb950",
+            Warning = "#d29922",
+            Error = "#f85149",
+            Background = "#0d1117",
+            Surface = "#161b22",
+            DrawerBackground = "#0d1117",
+            DrawerText = "#c9d1d9",
+            AppbarBackground = "#0d1117",
+            AppbarText = "#c9d1d9",
+            TextPrimary = "#e6edf3",
+            TextSecondary = "#7d8590",
+            ActionDefault = "#7d8590",
         },
         LayoutProperties = new LayoutProperties()
         {
-            DefaultBorderRadius = "12px",
+            DefaultBorderRadius = "8px",
         }
     };
 }

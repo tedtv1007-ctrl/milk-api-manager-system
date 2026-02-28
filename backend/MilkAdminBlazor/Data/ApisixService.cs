@@ -627,5 +627,271 @@ namespace MilkAdminBlazor.Data
             try { return await _httpClient.GetFromJsonAsync<Dictionary<string, int>>("api/AuditLogs/stats") ?? new(); }
             catch { return new(); }
         }
+
+        // ================================================================
+        // APISIX Gateway Management — Full Dashboard Replacement
+        // ================================================================
+
+        // --- Routes (Real CRUD via APISIX Admin API) ---
+        public class ApisixRouteDto
+        {
+            [JsonPropertyName("id")]
+            public string? Id { get; set; }
+
+            [JsonPropertyName("name")]
+            public string Name { get; set; } = "";
+
+            [JsonPropertyName("uri")]
+            public string Uri { get; set; } = "/*";
+
+            [JsonPropertyName("uris")]
+            public List<string>? Uris { get; set; }
+
+            [JsonPropertyName("methods")]
+            public List<string>? Methods { get; set; }
+
+            [JsonPropertyName("service_id")]
+            public string? ServiceId { get; set; }
+
+            [JsonPropertyName("upstream_id")]
+            public string? UpstreamId { get; set; }
+
+            [JsonPropertyName("upstream")]
+            public ApisixUpstreamDto? Upstream { get; set; }
+
+            [JsonPropertyName("plugins")]
+            public Dictionary<string, object>? Plugins { get; set; }
+        }
+
+        public class ApisixUpstreamDto
+        {
+            [JsonPropertyName("type")]
+            public string Type { get; set; } = "roundrobin";
+
+            [JsonPropertyName("nodes")]
+            public Dictionary<string, int>? Nodes { get; set; }
+        }
+
+        public async Task<List<ApisixRouteDto>> GetApisixRoutesAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<ApisixRouteDto>>("api/Route") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task<ApisixRouteDto?> GetApisixRouteAsync(string id)
+        {
+            try { return await _httpClient.GetFromJsonAsync<ApisixRouteDto>($"api/Route/{id}"); }
+            catch { return null; }
+        }
+
+        public async Task SaveApisixRouteAsync(ApisixRouteDto route)
+        {
+            if (string.IsNullOrEmpty(route.Id))
+            {
+                route.Id = Guid.NewGuid().ToString("N")[..12];
+                await _httpClient.PostAsJsonAsync("api/Route", route);
+            }
+            else
+            {
+                await _httpClient.PutAsJsonAsync($"api/Route/{route.Id}", route);
+            }
+        }
+
+        public async Task DeleteApisixRouteAsync(string id)
+        {
+            await _httpClient.DeleteAsync($"api/Route/{id}");
+        }
+
+        // --- Upstreams ---
+        public class ApisixStandaloneUpstreamDto
+        {
+            [JsonPropertyName("id")]
+            public string? Id { get; set; }
+
+            [JsonPropertyName("name")]
+            public string? Name { get; set; }
+
+            [JsonPropertyName("desc")]
+            public string? Desc { get; set; }
+
+            [JsonPropertyName("type")]
+            public string Type { get; set; } = "roundrobin";
+
+            [JsonPropertyName("nodes")]
+            public Dictionary<string, int>? Nodes { get; set; }
+
+            [JsonPropertyName("retries")]
+            public int? Retries { get; set; }
+
+            [JsonPropertyName("scheme")]
+            public string? Scheme { get; set; }
+
+            [JsonPropertyName("pass_host")]
+            public string? PassHost { get; set; }
+        }
+
+        public async Task<List<ApisixStandaloneUpstreamDto>> GetUpstreamsAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<ApisixStandaloneUpstreamDto>>("api/Upstream") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task SaveUpstreamAsync(ApisixStandaloneUpstreamDto upstream)
+        {
+            if (string.IsNullOrEmpty(upstream.Id))
+                upstream.Id = Guid.NewGuid().ToString("N")[..12];
+            await _httpClient.PutAsJsonAsync($"api/Upstream/{upstream.Id}", upstream);
+        }
+
+        public async Task DeleteUpstreamAsync(string id)
+        {
+            await _httpClient.DeleteAsync($"api/Upstream/{id}");
+        }
+
+        // --- Services ---
+        public class ApisixServiceDto
+        {
+            [JsonPropertyName("id")]
+            public string? Id { get; set; }
+
+            [JsonPropertyName("name")]
+            public string Name { get; set; } = "";
+
+            [JsonPropertyName("description")]
+            public string? Description { get; set; }
+
+            [JsonPropertyName("upstream")]
+            public ApisixUpstreamDto? Upstream { get; set; }
+        }
+
+        public async Task<List<ApisixServiceDto>> GetApisixServicesAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<ApisixServiceDto>>("api/Service") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task SaveApisixServiceAsync(ApisixServiceDto service)
+        {
+            if (string.IsNullOrEmpty(service.Id))
+                service.Id = Guid.NewGuid().ToString("N")[..12];
+            await _httpClient.PutAsJsonAsync($"api/Service/{service.Id}", service);
+        }
+
+        public async Task DeleteApisixServiceAsync(string id)
+        {
+            await _httpClient.DeleteAsync($"api/Service/{id}");
+        }
+
+        // --- SSL Certificates ---
+        public class SslCertificateDto
+        {
+            [JsonPropertyName("id")]
+            public string? Id { get; set; }
+
+            [JsonPropertyName("snis")]
+            public List<string> Snis { get; set; } = new();
+
+            [JsonPropertyName("cert")]
+            public string Cert { get; set; } = "";
+
+            [JsonPropertyName("key")]
+            public string Key { get; set; } = "";
+
+            [JsonPropertyName("status")]
+            public int Status { get; set; } = 1;
+
+            // From list endpoint (safe view)
+            [JsonPropertyName("hasCert")]
+            public bool? HasCert { get; set; }
+
+            [JsonPropertyName("hasKey")]
+            public bool? HasKey { get; set; }
+
+            [JsonPropertyName("validity_start")]
+            public long? ValidityStart { get; set; }
+
+            [JsonPropertyName("validity_end")]
+            public long? ValidityEnd { get; set; }
+        }
+
+        public async Task<List<SslCertificateDto>> GetSslCertificatesAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<SslCertificateDto>>("api/SSL") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task SaveSslCertificateAsync(SslCertificateDto ssl)
+        {
+            if (string.IsNullOrEmpty(ssl.Id))
+                ssl.Id = Guid.NewGuid().ToString("N")[..12];
+            await _httpClient.PutAsJsonAsync($"api/SSL/{ssl.Id}", ssl);
+        }
+
+        public async Task DeleteSslCertificateAsync(string id)
+        {
+            await _httpClient.DeleteAsync($"api/SSL/{id}");
+        }
+
+        // --- Global Rules ---
+        public class GlobalRuleDto
+        {
+            [JsonPropertyName("id")]
+            public string? Id { get; set; }
+
+            [JsonPropertyName("plugins")]
+            public Dictionary<string, object>? Plugins { get; set; }
+        }
+
+        public async Task<List<GlobalRuleDto>> GetGlobalRulesAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<List<GlobalRuleDto>>("api/GlobalRule") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task SaveGlobalRuleAsync(GlobalRuleDto rule)
+        {
+            if (string.IsNullOrEmpty(rule.Id))
+                rule.Id = Guid.NewGuid().ToString("N")[..2];
+            await _httpClient.PutAsJsonAsync($"api/GlobalRule/{rule.Id}", rule);
+        }
+
+        public async Task DeleteGlobalRuleAsync(string id)
+        {
+            await _httpClient.DeleteAsync($"api/GlobalRule/{id}");
+        }
+
+        // --- Server Info / Dashboard Stats ---
+        public class DashboardStatsDto
+        {
+            [JsonPropertyName("routeCount")]
+            public int RouteCount { get; set; }
+
+            [JsonPropertyName("serviceCount")]
+            public int ServiceCount { get; set; }
+
+            [JsonPropertyName("upstreamCount")]
+            public int UpstreamCount { get; set; }
+
+            [JsonPropertyName("consumerCount")]
+            public int ConsumerCount { get; set; }
+
+            [JsonPropertyName("sslCount")]
+            public int SslCount { get; set; }
+
+            [JsonPropertyName("globalRuleCount")]
+            public int GlobalRuleCount { get; set; }
+        }
+
+        public async Task<DashboardStatsDto> GetDashboardStatsAsync()
+        {
+            try { return await _httpClient.GetFromJsonAsync<DashboardStatsDto>("api/ServerInfo/dashboard") ?? new(); }
+            catch { return new(); }
+        }
+
+        public async Task<string> GetServerInfoRawAsync()
+        {
+            try { return await _httpClient.GetStringAsync("api/ServerInfo"); }
+            catch { return "{}"; }
+        }
     }
 }

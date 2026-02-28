@@ -3,15 +3,15 @@
 @inject ApisixService ApisixService
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <div class="d-flex justify-space-between align-center mb-6">
+    <div class="milk-page-header d-flex justify-space-between align-center">
         <div>
-            <MudText Typo="Typo.h4" Class="font-weight-bold">Service Inventory</MudText>
-            <MudText Typo="Typo.body1" Class="text-muted">Global catalog of internal APIs managed and secured by the Milk platform.</MudText>
+            <MudText Typo="Typo.h4">⚡ Service Inventory</MudText>
+            <MudText Typo="Typo.body2">Global catalog of internal APIs managed and secured by the Milk platform.</MudText>
         </div>
         <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add">Publish API</MudButton>
     </div>
     
-    <MudTable Items="@apis" Hover="true" Bordered="false" Striped="true" Elevation="4" Loading="@loading" Class="rounded-lg">
+    <MudTable Items="@apis" Hover="true" Bordered="false" Striped="true" Elevation="0" Loading="@loading" Class="rounded-lg">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Active Endpoints</MudText>
             <MudSpacer />

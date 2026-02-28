@@ -28,6 +28,37 @@ public interface IApisixClient
     // Services (Typed)
     Task<List<Service>> GetServicesTypedAsync();
 
+    // Upstreams (Standalone)
+    Task CreateUpstreamAsync(string id, StandaloneUpstream upstreamConfig);
+    Task<StandaloneUpstream?> GetUpstreamAsync(string id);
+    Task<string> GetUpstreamsAsync();
+    Task<List<StandaloneUpstream>> GetUpstreamsTypedAsync();
+    Task UpdateUpstreamAsync(string id, StandaloneUpstream upstreamConfig);
+    Task DeleteUpstreamAsync(string id);
+
+    // SSL Certificates
+    Task CreateSslAsync(string id, SslCertificate sslConfig);
+    Task<SslCertificate?> GetSslAsync(string id);
+    Task<string> GetSslsAsync();
+    Task<List<SslCertificate>> GetSslsTypedAsync();
+    Task UpdateSslAsync(string id, SslCertificate sslConfig);
+    Task DeleteSslAsync(string id);
+
+    // Global Rules
+    Task CreateGlobalRuleAsync(string id, GlobalRule ruleConfig);
+    Task<string> GetGlobalRulesAsync();
+    Task<List<GlobalRule>> GetGlobalRulesTypedAsync();
+    Task DeleteGlobalRuleAsync(string id);
+
+    // Plugin Configs
+    Task CreatePluginConfigAsync(string id, PluginConfig configData);
+    Task<string> GetPluginConfigsAsync();
+    Task<List<PluginConfig>> GetPluginConfigsTypedAsync();
+    Task DeletePluginConfigAsync(string id);
+
+    // Server Info
+    Task<string> GetServerInfoAsync();
+
     // Consumers
     Task CreateConsumerAsync(string username, Consumer consumerConfig);
     Task<Consumer?> GetConsumerAsync(string username);

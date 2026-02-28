@@ -1,0 +1,178 @@
+@page "/ssl-management"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">🔒 SSL Certificate Management</MudText>
+            <MudText Typo="Typo.body2">Upload and manage TLS/SSL certificates for HTTPS routing via SNI.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNew">Upload Certificate</MudButton>
+    </div>
+
+    <MudTable Items="@_ssls" Hover="true" Striped="true" Elevation="0" Loading="@_loading" Class="rounded-lg">
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>SNIs (Domains)</MudTh>
+            <MudTh>Status</MudTh>
+            <MudTh>Certificate</MudTh>
+            <MudTh>Private Key</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID"><code>@context.Id</code></MudTd>
+            <MudTd DataLabel="SNIs">
+                @if (context.Snis != null)
+                {
+                    @foreach (var sni in context.Snis)
+                    {
+                        <MudChip T="string" Size="Size.Small" Color="Color.Info" Label="true" Class="mr-1">@sni</MudChip>
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Status">
+                <MudChip T="string" Size="Size.Small" Color="@(context.Status == 1 ? Color.Success : Color.Error)" Label="true">
+                    @(context.Status == 1 ? "Enabled" : "Disabled")
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Cert">
+                @if (context.HasCert == true || !string.IsNullOrEmpty(context.Cert))
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" />
+                }
+                else
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Size="Size.Small" />
+                }
+            </MudTd>
+            <MudTd DataLabel="Key">
+                @if (context.HasKey == true || !string.IsNullOrEmpty(context.Key))
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.CheckCircle" Color="Color.Success" Size="Size.Small" />
+                }
+                else
+                {
+                    <MudIcon Icon="@Icons.Material.Filled.Cancel" Color="Color.Error" Size="Size.Small" />
+                }
+            </MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => Edit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => Delete(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    @if (!_loading && !_ssls.Any())
+    {
+        <MudAlert Severity="Severity.Info" Class="mt-4">No SSL certificates configured. Click "Upload Certificate" to add one.</MudAlert>
+    }
+
+    <MudDialog @bind-Visible="_dialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.Lock" Class="mr-2" />@(_isNew ? "Upload SSL Certificate" : "Edit SSL Certificate")</MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Id" Label="Certificate ID" Variant="Variant.Outlined" ReadOnly="@(!_isNew)" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudSelect T="int" @bind-Value="_current.Status" Label="Status" Variant="Variant.Outlined">
+                        <MudSelectItem Value="1">Enabled</MudSelectItem>
+                        <MudSelectItem Value="0">Disabled</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_snisText" Label="SNIs (comma-separated domain names)" Variant="Variant.Outlined"
+                                  HelperText="e.g. *.example.com, api.example.com" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_current.Cert" Label="Certificate (PEM)" Variant="Variant.Outlined" Lines="6"
+                                  Placeholder="-----BEGIN CERTIFICATE-----&#10;...&#10;-----END CERTIFICATE-----" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_current.Key" Label="Private Key (PEM)" Variant="Variant.Outlined" Lines="6"
+                                  Placeholder="-----BEGIN RSA PRIVATE KEY-----&#10;...&#10;-----END RSA PRIVATE KEY-----"
+                                  InputType="InputType.Password" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _dialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private List<ApisixService.SslCertificateDto> _ssls = new();
+    private bool _loading = true;
+    private bool _dialogOpen;
+    private bool _isNew;
+    private ApisixService.SslCertificateDto _current = new();
+    private string _snisText = "";
+    private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    private async Task Load()
+    {
+        _loading = true;
+        _ssls = await ApisixService.GetSslCertificatesAsync();
+        _loading = false;
+    }
+
+    private void AddNew()
+    {
+        _isNew = true;
+        _current = new ApisixService.SslCertificateDto { Id = Guid.NewGuid().ToString("N")[..12], Status = 1 };
+        _snisText = "";
+        _dialogOpen = true;
+    }
+
+    private void Edit(ApisixService.SslCertificateDto ssl)
+    {
+        _isNew = false;
+        _current = new ApisixService.SslCertificateDto
+        {
+            Id = ssl.Id,
+            Status = ssl.Status,
+            Snis = new List<string>(ssl.Snis ?? new()),
+            Cert = "", // Don't pre-fill sensitive data
+            Key = ""
+        };
+        _snisText = ssl.Snis != null ? string.Join(", ", ssl.Snis) : "";
+        _dialogOpen = true;
+    }
+
+    private async Task Save()
+    {
+        _current.Snis = _snisText.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries).ToList();
+
+        if (!_current.Snis.Any())
+        {
+            Snackbar.Add("At least one SNI domain is required", Severity.Error);
+            return;
+        }
+
+        if (string.IsNullOrWhiteSpace(_current.Cert) || string.IsNullOrWhiteSpace(_current.Key))
+        {
+            Snackbar.Add("Certificate and private key are required", Severity.Error);
+            return;
+        }
+
+        await ApisixService.SaveSslCertificateAsync(_current);
+        _dialogOpen = false;
+        await Load();
+        Snackbar.Add("SSL certificate saved", Severity.Success);
+    }
+
+    private async Task Delete(ApisixService.SslCertificateDto ssl)
+    {
+        await ApisixService.DeleteSslCertificateAsync(ssl.Id!);
+        await Load();
+        Snackbar.Add($"SSL certificate '{ssl.Id}' deleted", Severity.Warning);
+    }
+}

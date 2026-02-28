@@ -3,8 +3,10 @@
 @inject ApisixService ApisixService
 @inject ISnackbar Snackbar
 
-<MudText Typo="Typo.h4" GutterBottom="true">👥 API 消費者權限管理 (Consumers)</MudText>
-<MudText Typo="Typo.body1" Class="mb-4">在此管理 API 使用者及其角色 (Roles) 與權限範圍 (Scopes)。</MudText>
+<div class="milk-page-header mb-4">
+    <MudText Typo="Typo.h4">👥 API Consumers</MudText>
+    <MudText Typo="Typo.body2">Manage API consumers, roles, and permission scopes.</MudText>
+</div>
 
 <MudTable Items="@_consumers" Hover="true" Breakpoint="Breakpoint.Sm" Loading="@_loading" LoadingProgressColor="Color.Info">
     <HeaderContent>

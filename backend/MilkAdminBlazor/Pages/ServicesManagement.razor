@@ -1,0 +1,168 @@
+@page "/services-management"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">◈ Services Management</MudText>
+            <MudText Typo="Typo.body2">Group routes under reusable service definitions with shared upstream targets.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNew">Create Service</MudButton>
+    </div>
+
+    <MudTable Items="@_services" Hover="true" Striped="true" Elevation="0" Loading="@_loading" Class="rounded-lg">
+        <HeaderContent>
+            <MudTh>ID</MudTh>
+            <MudTh>Name</MudTh>
+            <MudTh>Description</MudTh>
+            <MudTh>Upstream Nodes</MudTh>
+            <MudTh>LB Type</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID"><span class="mono-value" style="color: #7d8590;">@context.Id</span></MudTd>
+            <MudTd DataLabel="Name"><MudText Style="font-weight: 600;">@context.Name</MudText></MudTd>
+            <MudTd DataLabel="Description">@(context.Description ?? "-")</MudTd>
+            <MudTd DataLabel="Nodes">
+                @if (context.Upstream?.Nodes != null)
+                {
+                    @foreach (var n in context.Upstream.Nodes.Take(3))
+                    {
+                        <MudChip T="string" Size="Size.Small" Variant="Variant.Outlined" Class="mr-1">@n.Key (w:@n.Value)</MudChip>
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Type">
+                <MudChip T="string" Size="Size.Small" Label="true" Color="Color.Primary">@(context.Upstream?.Type ?? "roundrobin")</MudChip>
+            </MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => Edit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => Delete(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    <MudDialog @bind-Visible="_dialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.MiscellaneousServices" Class="mr-2" />@(_isNew ? "Create Service" : "Edit Service")</MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Id" Label="Service ID" Variant="Variant.Outlined" ReadOnly="@(!_isNew)" />
+                </MudItem>
+                <MudItem xs="6">
+                    <MudTextField @bind-Value="_current.Name" Label="Name" Variant="Variant.Outlined" Required="true" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_current.Description" Label="Description" Variant="Variant.Outlined" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudDivider Class="my-2" />
+                    <MudText Typo="Typo.subtitle1" Class="font-weight-bold">Upstream Configuration</MudText>
+                </MudItem>
+                <MudItem xs="6">
+                    <MudSelect T="string" @bind-Value="_upstreamType" Label="Load Balancing Type" Variant="Variant.Outlined">
+                        <MudSelectItem Value="@("roundrobin")">Round Robin</MudSelectItem>
+                        <MudSelectItem Value="@("chash")">Consistent Hash</MudSelectItem>
+                        <MudSelectItem Value="@("ewma")">EWMA</MudSelectItem>
+                        <MudSelectItem Value="@("least_conn")">Least Connection</MudSelectItem>
+                    </MudSelect>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_nodesText" Label="Nodes (host:port=weight, comma-separated)" Variant="Variant.Outlined" Lines="3"
+                                  HelperText="e.g. api-server:8080=1, api-server-2:8080=1" />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _dialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private List<ApisixService.ApisixServiceDto> _services = new();
+    private bool _loading = true;
+    private bool _dialogOpen;
+    private bool _isNew;
+    private ApisixService.ApisixServiceDto _current = new();
+    private string _nodesText = "";
+    private string _upstreamType = "roundrobin";
+    private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    private async Task Load()
+    {
+        _loading = true;
+        _services = await ApisixService.GetApisixServicesAsync();
+        _loading = false;
+    }
+
+    private void AddNew()
+    {
+        _isNew = true;
+        _current = new ApisixService.ApisixServiceDto { Id = Guid.NewGuid().ToString("N")[..12] };
+        _nodesText = "";
+        _upstreamType = "roundrobin";
+        _dialogOpen = true;
+    }
+
+    private void Edit(ApisixService.ApisixServiceDto svc)
+    {
+        _isNew = false;
+        _current = new ApisixService.ApisixServiceDto
+        {
+            Id = svc.Id,
+            Name = svc.Name,
+            Description = svc.Description,
+            Upstream = svc.Upstream
+        };
+        _nodesText = svc.Upstream?.Nodes != null
+            ? string.Join(", ", svc.Upstream.Nodes.Select(n => $"{n.Key}={n.Value}"))
+            : "";
+        _upstreamType = svc.Upstream?.Type ?? "roundrobin";
+        _dialogOpen = true;
+    }
+
+    private async Task Save()
+    {
+        if (string.IsNullOrWhiteSpace(_current.Name))
+        {
+            Snackbar.Add("Name is required", Severity.Error);
+            return;
+        }
+
+        var nodes = new Dictionary<string, int>();
+        foreach (var part in _nodesText.Split(',', StringSplitOptions.TrimEntries | StringSplitOptions.RemoveEmptyEntries))
+        {
+            var kv = part.Split('=');
+            if (kv.Length == 2 && int.TryParse(kv[1], out var w)) nodes[kv[0]] = w;
+            else if (kv.Length == 1) nodes[kv[0]] = 1;
+        }
+
+        if (!nodes.Any())
+        {
+            Snackbar.Add("At least one upstream node is required", Severity.Error);
+            return;
+        }
+
+        _current.Upstream = new ApisixService.ApisixUpstreamDto { Type = _upstreamType, Nodes = nodes };
+
+        await ApisixService.SaveApisixServiceAsync(_current);
+        _dialogOpen = false;
+        await Load();
+        Snackbar.Add("Service saved", Severity.Success);
+    }
+
+    private async Task Delete(ApisixService.ApisixServiceDto svc)
+    {
+        await ApisixService.DeleteApisixServiceAsync(svc.Id!);
+        await Load();
+        Snackbar.Add($"Service '{svc.Name}' deleted", Severity.Warning);
+    }
+}

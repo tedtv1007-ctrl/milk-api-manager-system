@@ -2,43 +2,52 @@
 @using Milk.Apim.Admin.Models
 @inject IJSRuntime JSRuntime
 
-<h3>🛡️ API 治理與盤點模組</h3>
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">🛡️ API Governance &amp; Audit</MudText>
+            <MudText Typo="Typo.body2">Regulatory compliance inventory aligned with insurance security standards — periodic audit &amp; risk classification.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Download" OnClick="ExportReport">Export Report</MudButton>
+    </div>
 
-<div class="alert alert-info">
-    本模組對齊《保險業辦理資訊安全防護自律規範》Q1 & Q2 要求，提供定期盤點與風險分級管理。
-</div>
+    <MudAlert Severity="Severity.Info" Variant="Variant.Text" Dense="true" Class="mb-4" Style="background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.2);">
+        This module aligns with Insurance Security Self-Regulation Standards Q1 &amp; Q2 requirements — periodic inventory and risk-tiered management.
+    </MudAlert>
 
-<table class="table table-hover">
-    <thead class="table-dark">
-        <tr>
-            <th>API 名稱</th>
-            <th>路徑</th>
-            <th>風險分級</th>
-            <th>負責部門</th>
-            <th>最後盤點日</th>
-            <th>狀態</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var api in mockApis)
-        {
-            <tr>
-                <td>@api.Name</td>
-                <td><code>@api.RoutePath</code></td>
-                <td>
-                    <span class="badge @(api.Risk == RiskLevel.L1 ? "bg-danger" : api.Risk == RiskLevel.L2 ? "bg-warning" : "bg-success")">
-                        @api.Risk.ToString()
-                    </span>
-                </td>
-                <td>@api.Department</td>
-                <td>@api.LastReviewedAt.ToShortDateString()</td>
-                <td>@(api.IsExposed ? "✅ 已發布" : "🟡 草稿")</td>
-            </tr>
-        }
-    </tbody>
-</table>
-
-<button class="btn btn-primary" @onclick="ExportReport">📥 匯出稽核報表 (PDF/Excel)</button>
+    <MudTable Items="@mockApis" Hover="true" Striped="true" Elevation="0" Class="rounded-lg">
+        <HeaderContent>
+            <MudTh>API Name</MudTh>
+            <MudTh>Route Path</MudTh>
+            <MudTh>Risk Level</MudTh>
+            <MudTh>Department</MudTh>
+            <MudTh>Last Audit</MudTh>
+            <MudTh>Status</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Name"><MudText Style="font-weight: 600;">@context.Name</MudText></MudTd>
+            <MudTd DataLabel="Path"><span class="mono-value" style="color: #58a6ff;">@context.RoutePath</span></MudTd>
+            <MudTd DataLabel="Risk">
+                <MudChip T="string" Size="Size.Small" Label="true"
+                         Style="@(context.Risk == RiskLevel.L1 ? "background: rgba(248,81,73,0.15); color: #f85149; border: 1px solid rgba(248,81,73,0.3);" : context.Risk == RiskLevel.L2 ? "background: rgba(210,153,34,0.15); color: #d29922; border: 1px solid rgba(210,153,34,0.3);" : "background: rgba(63,185,80,0.15); color: #3fb950; border: 1px solid rgba(63,185,80,0.3);")">
+                    @context.Risk.ToString()
+                </MudChip>
+            </MudTd>
+            <MudTd DataLabel="Dept">@context.Department</MudTd>
+            <MudTd DataLabel="Audit"><span class="mono-value">@context.LastReviewedAt.ToShortDateString()</span></MudTd>
+            <MudTd DataLabel="Status">
+                @if (context.IsExposed)
+                {
+                    <span class="milk-badge badge-success">Published</span>
+                }
+                else
+                {
+                    <span class="milk-badge badge-warning">Draft</span>
+                }
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+</MudContainer>
 
 @code {
     private List<ApiEntry> mockApis = new()

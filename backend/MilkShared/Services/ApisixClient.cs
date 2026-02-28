@@ -344,5 +344,205 @@ namespace MilkApiManager.Services
                 _logger.LogWarning("Failed to delete consumer group {GroupId}: {StatusCode}", id, response.StatusCode);
             }
         }
+
+        // ========================
+        // Upstream CRUD
+        // ========================
+
+        public virtual async Task CreateUpstreamAsync(string id, StandaloneUpstream upstreamConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"upstreams/{id}", upstreamConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully created upstream {UpstreamId}", id);
+        }
+
+        public virtual async Task<StandaloneUpstream?> GetUpstreamAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Get, $"upstreams/{id}");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            var valueStr = ExtractValueFromJson(json);
+            return JsonSerializer.Deserialize<StandaloneUpstream>(valueStr, _jsonSerializerOptions);
+        }
+
+        public virtual async Task<string> GetUpstreamsAsync()
+        {
+            var request = CreateRequest(HttpMethod.Get, "upstreams");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public virtual async Task<List<StandaloneUpstream>> GetUpstreamsTypedAsync()
+        {
+            var json = await GetUpstreamsAsync();
+            return ParseApisixList<StandaloneUpstream>(json);
+        }
+
+        public virtual async Task UpdateUpstreamAsync(string id, StandaloneUpstream upstreamConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"upstreams/{id}", upstreamConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully updated upstream {UpstreamId}", id);
+        }
+
+        public virtual async Task DeleteUpstreamAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Delete, $"upstreams/{id}");
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning("Failed to delete upstream {UpstreamId}: {StatusCode}", id, response.StatusCode);
+            }
+        }
+
+        // ========================
+        // SSL Certificate CRUD
+        // ========================
+
+        public virtual async Task CreateSslAsync(string id, SslCertificate sslConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"ssls/{id}", sslConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully created SSL certificate {SslId}", id);
+        }
+
+        public virtual async Task<SslCertificate?> GetSslAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Get, $"ssls/{id}");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            var json = await response.Content.ReadAsStringAsync();
+            var valueStr = ExtractValueFromJson(json);
+            return JsonSerializer.Deserialize<SslCertificate>(valueStr, _jsonSerializerOptions);
+        }
+
+        public virtual async Task<string> GetSslsAsync()
+        {
+            var request = CreateRequest(HttpMethod.Get, "ssls");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public virtual async Task<List<SslCertificate>> GetSslsTypedAsync()
+        {
+            var json = await GetSslsAsync();
+            return ParseApisixList<SslCertificate>(json);
+        }
+
+        public virtual async Task UpdateSslAsync(string id, SslCertificate sslConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"ssls/{id}", sslConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully updated SSL certificate {SslId}", id);
+        }
+
+        public virtual async Task DeleteSslAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Delete, $"ssls/{id}");
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning("Failed to delete SSL certificate {SslId}: {StatusCode}", id, response.StatusCode);
+            }
+        }
+
+        // ========================
+        // Global Rules CRUD
+        // ========================
+
+        public virtual async Task CreateGlobalRuleAsync(string id, GlobalRule ruleConfig)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"global_rules/{id}", ruleConfig);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully created global rule {RuleId}", id);
+        }
+
+        public virtual async Task<string> GetGlobalRulesAsync()
+        {
+            var request = CreateRequest(HttpMethod.Get, "global_rules");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public virtual async Task<List<GlobalRule>> GetGlobalRulesTypedAsync()
+        {
+            var json = await GetGlobalRulesAsync();
+            return ParseApisixList<GlobalRule>(json);
+        }
+
+        public virtual async Task DeleteGlobalRuleAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Delete, $"global_rules/{id}");
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning("Failed to delete global rule {RuleId}: {StatusCode}", id, response.StatusCode);
+            }
+        }
+
+        // ========================
+        // Plugin Configs CRUD
+        // ========================
+
+        public virtual async Task CreatePluginConfigAsync(string id, PluginConfig configData)
+        {
+            var request = CreateRequest(HttpMethod.Put, $"plugin_configs/{id}", configData);
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully created plugin config {ConfigId}", id);
+        }
+
+        public virtual async Task<string> GetPluginConfigsAsync()
+        {
+            var request = CreateRequest(HttpMethod.Get, "plugin_configs");
+            var response = await _httpClient.SendAsync(request);
+            response.EnsureSuccessStatusCode();
+            return await response.Content.ReadAsStringAsync();
+        }
+
+        public virtual async Task<List<PluginConfig>> GetPluginConfigsTypedAsync()
+        {
+            var json = await GetPluginConfigsAsync();
+            return ParseApisixList<PluginConfig>(json);
+        }
+
+        public virtual async Task DeletePluginConfigAsync(string id)
+        {
+            var request = CreateRequest(HttpMethod.Delete, $"plugin_configs/{id}");
+            var response = await _httpClient.SendAsync(request);
+            if (!response.IsSuccessStatusCode)
+            {
+                _logger.LogWarning("Failed to delete plugin config {ConfigId}: {StatusCode}", id, response.StatusCode);
+            }
+        }
+
+        // ========================
+        // Server Info
+        // ========================
+
+        public virtual async Task<string> GetServerInfoAsync()
+        {
+            try
+            {
+                var request = CreateRequest(HttpMethod.Get, "server_info");
+                var response = await _httpClient.SendAsync(request);
+                response.EnsureSuccessStatusCode();
+                return await response.Content.ReadAsStringAsync();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to get APISIX server info");
+                return "{}";
+            }
+        }
     }
 }

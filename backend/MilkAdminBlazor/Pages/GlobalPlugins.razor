@@ -1,0 +1,201 @@
+@page "/global-plugins"
+@using MilkAdminBlazor.Data
+@inject ApisixService ApisixService
+@inject ISnackbar Snackbar
+
+<MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
+    <div class="milk-page-header d-flex justify-space-between align-center">
+        <div>
+            <MudText Typo="Typo.h4">🌐 Global Plugin Rules</MudText>
+            <MudText Typo="Typo.body2">Define global plugin rules that apply to all routes automatically.</MudText>
+        </div>
+        <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" OnClick="AddNew">Create Global Rule</MudButton>
+    </div>
+
+    <MudTable Items="@_rules" Hover="true" Striped="true" Elevation="0" Loading="@_loading" Class="rounded-lg">
+        <HeaderContent>
+            <MudTh>Rule ID</MudTh>
+            <MudTh>Active Plugins</MudTh>
+            <MudTh>Plugin Count</MudTh>
+            <MudTh Style="text-align:right">Actions</MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="ID"><code>@context.Id</code></MudTd>
+            <MudTd DataLabel="Plugins">
+                @if (context.Plugins != null)
+                {
+                    @foreach (var p in context.Plugins.Keys.Take(6))
+                    {
+                        <MudChip T="string" Size="Size.Small" Color="Color.Primary" Label="true" Class="mr-1">@p</MudChip>
+                    }
+                    @if (context.Plugins.Count > 6)
+                    {
+                        <MudText Typo="Typo.caption">+@(context.Plugins.Count - 6) more</MudText>
+                    }
+                }
+            </MudTd>
+            <MudTd DataLabel="Count">@(context.Plugins?.Count ?? 0)</MudTd>
+            <MudTd DataLabel="Actions" Style="text-align:right">
+                <MudIconButton Icon="@Icons.Material.Filled.Edit" Color="Color.Primary" Size="Size.Small" OnClick="@(() => Edit(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.ContentCopy" Color="Color.Default" Size="Size.Small" OnClick="@(() => ViewJson(context))" />
+                <MudIconButton Icon="@Icons.Material.Filled.Delete" Color="Color.Error" Size="Size.Small" OnClick="@(() => Delete(context))" />
+            </MudTd>
+        </RowTemplate>
+    </MudTable>
+
+    @if (!_loading && !_rules.Any())
+    {
+        <MudAlert Severity="Severity.Info" Class="mt-4">
+            No global rules configured. Global rules let you apply plugins (e.g. prometheus, logging) to every request across all routes.
+        </MudAlert>
+    }
+
+    <MudPaper Elevation="0" Class="pa-4 mt-6 rounded-lg">
+        <MudText Typo="Typo.h6" Class="mb-3">Common Plugins Reference</MudText>
+        <MudGrid>
+            @foreach (var plugin in _commonPlugins)
+            {
+                <MudItem xs="12" sm="6" md="4">
+                    <MudPaper Elevation="1" Class="pa-3 rounded-lg">
+                        <div class="d-flex align-center mb-2">
+                            <MudIcon Icon="@Icons.Material.Filled.Extension" Color="Color.Primary" Size="Size.Small" Class="mr-2" />
+                            <MudText Typo="Typo.subtitle2" Class="font-weight-bold">@plugin.Name</MudText>
+                        </div>
+                        <MudText Typo="Typo.caption">@plugin.Description</MudText>
+                    </MudPaper>
+                </MudItem>
+            }
+        </MudGrid>
+    </MudPaper>
+
+    @* Create/Edit Dialog *@
+    <MudDialog @bind-Visible="_dialogOpen" Options="_dialogOpts">
+        <TitleContent>
+            <MudText Typo="Typo.h6"><MudIcon Icon="@Icons.Material.Filled.Public" Class="mr-2" />@(_isNew ? "Create Global Rule" : "Edit Global Rule")</MudText>
+        </TitleContent>
+        <DialogContent>
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudTextField @bind-Value="_currentId" Label="Rule ID" Variant="Variant.Outlined" ReadOnly="@(!_isNew)"
+                                  HelperText="Numeric ID (e.g. 1, 2, 3)" />
+                </MudItem>
+                <MudItem xs="12">
+                    <MudText Typo="Typo.subtitle2" Class="mb-2">Plugin Configuration (JSON)</MudText>
+                    <MudTextField @bind-Value="_pluginsJson" Label="Plugins" Variant="Variant.Outlined" Lines="12"
+                                  HelperText='e.g. {"prometheus": {}, "http-logger": {"uri": "http://logger:8080/log"}}' />
+                </MudItem>
+            </MudGrid>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _dialogOpen = false)">Cancel</MudButton>
+            <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="Save">Save</MudButton>
+        </DialogActions>
+    </MudDialog>
+
+    @* JSON Viewer *@
+    <MudDialog @bind-Visible="_jsonDialogOpen" Options="_dialogOpts">
+        <TitleContent><MudText Typo="Typo.h6">Global Rule JSON</MudText></TitleContent>
+        <DialogContent>
+            <pre style="max-height:400px; overflow:auto; background:#1e1e1e; color:#d4d4d4; padding:16px; border-radius:8px; font-size:13px;">@_viewJson</pre>
+        </DialogContent>
+        <DialogActions>
+            <MudButton OnClick="@(() => _jsonDialogOpen = false)">Close</MudButton>
+        </DialogActions>
+    </MudDialog>
+</MudContainer>
+
+@code {
+    private List<ApisixService.GlobalRuleDto> _rules = new();
+    private bool _loading = true;
+    private bool _dialogOpen;
+    private bool _isNew;
+    private string _currentId = "";
+    private string _pluginsJson = "{}";
+    private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
+
+    private bool _jsonDialogOpen;
+    private string _viewJson = "";
+
+    record PluginInfo(string Name, string Description);
+    private readonly PluginInfo[] _commonPlugins = new[]
+    {
+        new PluginInfo("prometheus", "Expose Prometheus metrics for all routes"),
+        new PluginInfo("limit-count", "Rate limiting based on request count per time window"),
+        new PluginInfo("limit-req", "Request rate limiting using leaky bucket algorithm"),
+        new PluginInfo("key-auth", "API key authentication for consumers"),
+        new PluginInfo("http-logger", "Push access logs to HTTP/HTTPS endpoints"),
+        new PluginInfo("opentelemetry", "Distributed tracing via OpenTelemetry protocol"),
+        new PluginInfo("cors", "Cross-Origin Resource Sharing (CORS) support"),
+        new PluginInfo("ip-restriction", "IP-based access control (whitelist/blacklist)"),
+        new PluginInfo("request-id", "Add unique request ID header"),
+        new PluginInfo("proxy-rewrite", "Rewrite URI, host, and headers before proxying"),
+        new PluginInfo("response-rewrite", "Modify response status, headers, and body"),
+        new PluginInfo("fault-injection", "Inject faults (delays, aborts) for chaos testing"),
+    };
+
+    protected override async Task OnInitializedAsync() => await Load();
+
+    private async Task Load()
+    {
+        _loading = true;
+        _rules = await ApisixService.GetGlobalRulesAsync();
+        _loading = false;
+    }
+
+    private void AddNew()
+    {
+        _isNew = true;
+        _currentId = (_rules.Count + 1).ToString();
+        _pluginsJson = "{\n  \"prometheus\": {}\n}";
+        _dialogOpen = true;
+    }
+
+    private void Edit(ApisixService.GlobalRuleDto rule)
+    {
+        _isNew = false;
+        _currentId = rule.Id ?? "";
+        _pluginsJson = rule.Plugins != null
+            ? System.Text.Json.JsonSerializer.Serialize(rule.Plugins, new System.Text.Json.JsonSerializerOptions { WriteIndented = true })
+            : "{}";
+        _dialogOpen = true;
+    }
+
+    private async Task Save()
+    {
+        if (string.IsNullOrWhiteSpace(_currentId))
+        {
+            Snackbar.Add("Rule ID is required", Severity.Error);
+            return;
+        }
+
+        Dictionary<string, object>? plugins;
+        try
+        {
+            plugins = System.Text.Json.JsonSerializer.Deserialize<Dictionary<string, object>>(_pluginsJson);
+        }
+        catch
+        {
+            Snackbar.Add("Invalid JSON format for plugins", Severity.Error);
+            return;
+        }
+
+        var rule = new ApisixService.GlobalRuleDto { Id = _currentId, Plugins = plugins };
+        await ApisixService.SaveGlobalRuleAsync(rule);
+        _dialogOpen = false;
+        await Load();
+        Snackbar.Add("Global rule saved", Severity.Success);
+    }
+
+    private async Task Delete(ApisixService.GlobalRuleDto rule)
+    {
+        await ApisixService.DeleteGlobalRuleAsync(rule.Id!);
+        await Load();
+        Snackbar.Add($"Global rule '{rule.Id}' deleted", Severity.Warning);
+    }
+
+    private void ViewJson(ApisixService.GlobalRuleDto rule)
+    {
+        _viewJson = System.Text.Json.JsonSerializer.Serialize(rule, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+        _jsonDialogOpen = true;
+    }
+}

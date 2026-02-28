@@ -4,9 +4,12 @@
 @inject ISnackbar Snackbar
 
 <MudContainer MaxWidth="MaxWidth.ExtraLarge" Class="mt-4">
-    <MudText Typo="Typo.h4" GutterBottom="true"><MudIcon Icon="@Icons.Material.Filled.Terminal" Size="Size.Large" Class="mr-2"/> Developer Hub</MudText>
-    
-    <MudTabs Elevation="4" Rounded="true" Color="Color.Primary" ApplyEffectsToContainer="true" PanelClass="pa-0">
+    <div class="milk-page-header mb-4">
+        <MudText Typo="Typo.h4">🛠 Developer Hub</MudText>
+        <MudText Typo="Typo.body2">Explore APIs, run tests, and request access to services.</MudText>
+    </div>
+
+    <MudTabs Elevation="0" Rounded="true" Color="Color.Primary" ApplyEffectsToContainer="true" PanelClass="pa-0">
         
         <!-- Tab 1: API Explorer -->
         <MudTabPanel Text="API Explorer" Icon="@Icons.Material.Filled.TravelExplore">
@@ -29,7 +32,7 @@
                         <div class="pa-4 bg-white border-bottom shadow-sm d-flex justify-space-between align-center">
                             <div>
                                 <MudText Typo="Typo.h5">@selectedService.Name</MudText>
-                                <MudText Typo="Typo.body2" Class="text-muted">Base Path: <code>@selectedService.BasePath</code></MudText>
+                                <MudText Typo="Typo.body2">Base Path: <span class="mono-value" style="color: #58a6ff;">@selectedService.BasePath</span></MudText>
                             </div>
                             <MudButtonGroup Color="Color.Primary" Variant="Variant.Outlined" Size="Size.Small">
                                 <MudButton OnClick="@(() => viewMode = "docs")" StartIcon="@Icons.Material.Filled.Description">Documentation</MudButton>
@@ -59,7 +62,7 @@
                                         </HeaderContent>
                                         <RowTemplate>
                                             <MudTd>@context.Name</MudTd>
-                                            <MudTd><code>@context.Endpoint</code></MudTd>
+                                            <MudTd><span class="mono-value" style="color: #58a6ff;">@context.Endpoint</span></MudTd>
                                             <MudTd><MudChip T="string" Size="Size.Small" Color="Color.Info" Variant="Variant.Text">@context.HttpMethod</MudChip></MudTd>
                                             <MudTd>@context.ExpectedStatusCode</MudTd>
                                             <MudTd>
