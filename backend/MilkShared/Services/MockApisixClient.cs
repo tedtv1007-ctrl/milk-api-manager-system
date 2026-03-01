@@ -43,8 +43,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetRoutesAsync()
         {
-            var list = _routes.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { node = new { nodes = list } };
+            var list = _routes.Select(kv => new { value = kv.Value, key = $"/apisix/routes/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -80,8 +80,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetServicesAsync()
         {
-            var list = _services.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { node = new { nodes = list } };
+            var list = _services.Select(kv => new { value = kv.Value, key = $"/apisix/services/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -114,8 +114,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetConsumersAsync()
         {
-            var list = _consumers.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { list = list };
+            var list = _consumers.Select(kv => new { value = kv.Value, key = $"/apisix/consumers/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -123,6 +123,7 @@ namespace MilkApiManager.Services
         {
             if (!_consumers.ContainsKey(username))
             {
+                // This is a bit simplified, but enough for mock
                 _consumers[username] = new Consumer { Username = username };
             }
             return Task.CompletedTask;
@@ -175,8 +176,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetConsumerGroupsAsync()
         {
-            var list = _consumerGroups.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { node = new { nodes = list } };
+            var list = _consumerGroups.Select(kv => new { value = kv.Value, key = $"/apisix/consumer_groups/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -202,8 +203,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetUpstreamsAsync()
         {
-            var list = _upstreams.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { list = list };
+            var list = _upstreams.Select(kv => new { value = kv.Value, key = $"/apisix/upstreams/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -235,8 +236,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetSslsAsync()
         {
-            var list = _ssls.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { list = list };
+            var list = _ssls.Select(kv => new { value = kv.Value, key = $"/apisix/ssls/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
@@ -261,8 +262,8 @@ namespace MilkApiManager.Services
 
         public override Task<string> GetGlobalRulesAsync()
         {
-            var list = _globalRules.Select(kv => new { value = kv.Value }).ToList();
-            var response = new { list = list };
+            var list = _globalRules.Select(kv => new { value = kv.Value, key = $"/apisix/global_rules/{kv.Key}" }).ToList();
+            var response = new { list = list, total = list.Count };
             return Task.FromResult(JsonSerializer.Serialize(response));
         }
 
