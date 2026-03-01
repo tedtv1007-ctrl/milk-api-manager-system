@@ -50,7 +50,7 @@
     }
 </MudContainer>
 
-<MudDialog @bind-IsVisible="isDialogVisible" Options="dialogOptions">
+<MudDialog @bind-Visible="isDialogVisible" Options="dialogOptions">
     <TitleContent>
         <MudText Typo="Typo.h6">
             <MudIcon Icon="@Icons.Material.Filled.Edit" Class="mr-3"/> @(isEditing ? "Edit Tier" : "Create New Tier")

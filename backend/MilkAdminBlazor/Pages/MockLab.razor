@@ -31,7 +31,7 @@
     <MudButton Variant="Variant.Filled" Color="Color.Primary" StartIcon="@Icons.Material.Filled.Add" Class="mt-4" OnClick="AddNew">Create Mock Response</MudButton>
 </MudContainer>
 
-<MudDialog @bind-IsVisible="showModal" Options="dialogOptions">
+<MudDialog @bind-Visible="showModal" Options="dialogOptions">
     <TitleContent><MudText Typo="Typo.h6">Configure Mock Response</MudText></TitleContent>
     <DialogContent>
         <MudTextField @bind-Value="editingRule.RouteId" Label="Route ID" />

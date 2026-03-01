@@ -40,19 +40,22 @@ public class RouteControllerTests
     [Fact]
     public async Task GetRoutes_ReturnsOk()
     {
-        _mockApisixClient.Setup(c => c.GetRoutesAsync())
-            .ReturnsAsync("{\"list\":[]}");
+        var routes = new List<ApisixRoute> { new ApisixRoute { Id = "r1", Name = "Route 1" } };
+        _mockApisixClient.Setup(c => c.GetRoutesTypedAsync())
+            .ReturnsAsync(routes);
 
         var result = await _controller.GetRoutes();
 
         var okResult = Assert.IsType<OkObjectResult>(result);
-        Assert.Equal("{\"list\":[]}", okResult.Value);
+        var returnedRoutes = Assert.IsType<List<ApisixRoute>>(okResult.Value);
+        Assert.Single(returnedRoutes);
+        Assert.Equal("r1", returnedRoutes[0].Id);
     }
 
     [Fact]
     public async Task GetRoutes_OnException_Returns500()
     {
-        _mockApisixClient.Setup(c => c.GetRoutesAsync())
+        _mockApisixClient.Setup(c => c.GetRoutesTypedAsync())
             .ThrowsAsync(new Exception("APISIX down"));
 
         var result = await _controller.GetRoutes();
