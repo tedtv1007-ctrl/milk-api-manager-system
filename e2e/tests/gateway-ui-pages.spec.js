@@ -121,11 +121,11 @@ test.describe('Gateway Control UI 頁面截圖驗證', () => {
         const navText = await page.textContent('nav') || await page.textContent('.mud-drawer') || await page.textContent('body');
 
         const navLinks = [
-            'Gateway Dashboard',
+            'Dashboard',
             'Routes',
             'Services',
             'Upstreams',
-            'SSL',
+            'SSL Certificates',
             'Global Plugins'
         ];
 
