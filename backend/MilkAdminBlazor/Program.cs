@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices(); // UI Component Library
+builder.Services.AddHealthChecks(); // Add HealthChecks service
 
 // Register HttpClient for ApisixService to talk to MilkApiManager (E-5: with resilience handler)
 builder.Services.AddHttpClient<ApisixService>(client =>
@@ -33,6 +34,7 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 app.UseRouting();
 
+app.MapHealthChecks("/health");
 app.MapBlazorHub();
 app.MapFallbackToPage("/_Host");
 

@@ -58,6 +58,22 @@ services:
       milk-db:
         condition: service_healthy
 
+  milk-admin-ui:
+    build:
+      context: ./backend
+      dockerfile: MilkAdminBlazor/Dockerfile
+    restart: always
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - BackendApiUrl=http://milk-backend:8080
+    ports:
+      - "5000:8080"
+    networks:
+      - test
+    depends_on:
+      milk-backend:
+        condition: service_healthy
+
 networks:
   test:
     driver: bridge
