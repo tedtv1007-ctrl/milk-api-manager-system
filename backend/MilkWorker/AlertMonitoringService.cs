@@ -41,8 +41,8 @@ namespace MilkApiManager.Services
                 
                 using (var scope = _serviceProvider.CreateScope())
                 {
-                    var prometheusService = scope.ServiceProvider.GetRequiredService<PrometheusService>();
-                    var notificationService = scope.ServiceProvider.GetRequiredService<NotificationService>();
+                    var prometheusService = scope.ServiceProvider.GetRequiredService<IPrometheusService>();
+                    var notificationService = scope.ServiceProvider.GetRequiredService<INotificationService>();
 
                     foreach (var rule in _rules.Where(r => r.IsEnabled))
                     {
@@ -61,7 +61,7 @@ namespace MilkApiManager.Services
             }
         }
 
-        private async Task CheckRuleAsync(AlertRule rule, PrometheusService prometheus, NotificationService notifier)
+        private async Task CheckRuleAsync(AlertRule rule, IPrometheusService prometheus, INotificationService notifier)
         {
             string query = "";
             if (rule.MetricName == "apisix_http_status")

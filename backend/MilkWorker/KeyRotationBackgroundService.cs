@@ -64,7 +64,7 @@ public class KeyRotationBackgroundService : IHostedService, IDisposable
     {
         using var scope = _scopeFactory.CreateScope();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-        var notificationService = scope.ServiceProvider.GetService<NotificationService>();
+        var notificationService = scope.ServiceProvider.GetService<INotificationService>();
 
         var now = DateTime.UtcNow;
         var warningThreshold = now.AddDays(WarningDaysBeforeExpiry);

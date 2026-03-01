@@ -10,17 +10,15 @@ namespace MilkApiManager.Services
     public class AdGroupSyncService : IHostedService, IDisposable
     {
         private readonly ILogger<AdGroupSyncService> _logger;
-        private readonly IApisixClient _apisixClient;
         private readonly IServiceProvider _serviceProvider;
         private readonly IConfiguration _configuration;
         private Timer? _timer;
         private string _syncStatus = "Idle";
         private DateTime? _lastSyncTime;
 
-        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, IApisixClient apisixClient, IServiceProvider serviceProvider, IConfiguration configuration)
+        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _logger = logger;
-            _apisixClient = apisixClient;
             _serviceProvider = serviceProvider;
             _configuration = configuration;
         }
@@ -52,7 +50,7 @@ namespace MilkApiManager.Services
             {
                 using (var scope = _serviceProvider.CreateScope())
                 {
-                    var securityService = scope.ServiceProvider.GetRequiredService<SecurityAutomationService>();
+                    var securityService = scope.ServiceProvider.GetRequiredService<ISecurityAutomationService>();
                     await securityService.CheckAndRotateKeys();
                 }
             }
@@ -67,18 +65,22 @@ namespace MilkApiManager.Services
             _syncStatus = "Syncing";
             try
             {
-                _logger.LogInformation("Starting AD Group Sync...");
-                
-                // Fetch groups from real LDAP
-                var adGroups = FetchAdGroupsFromLdap();
-                
-                foreach (var group in adGroups)
+                using (var scope = _serviceProvider.CreateScope())
                 {
-                    await SyncGroupToApisix(group);
-                    
-                    foreach (var member in group.Members)
+                    var apisixClient = scope.ServiceProvider.GetRequiredService<IApisixClient>();
+                    _logger.LogInformation("Starting AD Group Sync...");
+
+                    // Fetch groups from real LDAP
+                    var adGroups = FetchAdGroupsFromLdap();
+
+                    foreach (var group in adGroups)
                     {
-                        await SyncUserToApisix(member, group.Name.ToLower());
+                        await SyncGroupToApisix(group, apisixClient);
+
+                        foreach (var member in group.Members)
+                        {
+                            await SyncUserToApisix(member, group.Name.ToLower(), apisixClient);
+                        }
                     }
                 }
 
@@ -194,7 +196,7 @@ namespace MilkApiManager.Services
             return dn; 
         }
 
-        private async Task SyncGroupToApisix(AdGroup group)
+        private async Task SyncGroupToApisix(AdGroup group, IApisixClient apisixClient)
         {
             var groupId = group.Name.ToLower();
             _logger.LogInformation($"Syncing group {group.Name} to APISIX...");
@@ -205,10 +207,10 @@ namespace MilkApiManager.Services
                 Plugins = new Dictionary<string, object>()
             };
 
-            await _apisixClient.CreateConsumerGroupAsync(groupId, groupConfig);
+            await apisixClient.CreateConsumerGroupAsync(groupId, groupConfig);
         }
 
-        private async Task SyncUserToApisix(string username, string groupId)
+        private async Task SyncUserToApisix(string username, string groupId, IApisixClient apisixClient)
         {
             _logger.LogInformation($"Syncing user {username} to group {groupId} in APISIX...");
             
@@ -219,7 +221,7 @@ namespace MilkApiManager.Services
                 Plugins = new Dictionary<string, object>()
             };
 
-            await _apisixClient.UpdateConsumerAsync(username, consumer);
+            await apisixClient.UpdateConsumerAsync(username, consumer);
         }
 
         public Task StopAsync(CancellationToken cancellationToken)

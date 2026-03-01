@@ -31,7 +31,8 @@ public class Program
         })
         .AddStandardResilienceHandler(options => {
             options.TotalRequestTimeout.Timeout = TimeSpan.FromMinutes(2);
-            options.AttemptTimeout.Timeout = TimeSpan.FromMinutes(1);
+            options.AttemptTimeout.Timeout = TimeSpan.FromSeconds(30);
+            options.CircuitBreaker.SamplingDuration = TimeSpan.FromMinutes(2);
         });
 
         var app = builder.Build();
