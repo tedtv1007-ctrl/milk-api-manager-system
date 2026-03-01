@@ -54,7 +54,7 @@ namespace MilkApiManager.Services
             {
                 return Task.FromResult<ApisixRoute?>(route);
             }
-            throw new HttpRequestException("404 Not Found", null, System.Net.HttpStatusCode.NotFound);
+            return Task.FromResult<ApisixRoute?>(null);
         }
 
         public override Task UpdateRouteAsync(string id, ApisixRoute routeConfig)
@@ -75,7 +75,7 @@ namespace MilkApiManager.Services
             {
                 return Task.FromResult<Service?>(service);
             }
-            throw new HttpRequestException("404 Not Found", null, System.Net.HttpStatusCode.NotFound);
+            return Task.FromResult<Service?>(null);
         }
 
         public override Task<string> GetServicesAsync()
@@ -198,7 +198,7 @@ namespace MilkApiManager.Services
         {
             if (_upstreams.TryGetValue(id, out var upstream))
                 return Task.FromResult<StandaloneUpstream?>(upstream);
-            throw new HttpRequestException("404 Not Found", null, System.Net.HttpStatusCode.NotFound);
+            return Task.FromResult<StandaloneUpstream?>(null);
         }
 
         public override Task<string> GetUpstreamsAsync()
@@ -231,7 +231,7 @@ namespace MilkApiManager.Services
         {
             if (_ssls.TryGetValue(id, out var ssl))
                 return Task.FromResult<SslCertificate?>(ssl);
-            throw new HttpRequestException("404 Not Found", null, System.Net.HttpStatusCode.NotFound);
+            return Task.FromResult<SslCertificate?>(null);
         }
 
         public override Task<string> GetSslsAsync()
