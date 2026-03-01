@@ -32,8 +32,8 @@ namespace MilkApiManager.Controllers
         {
             try
             {
-                var routesJson = await _apisixClient.GetRoutesAsync();
-                return Ok(routesJson);
+                var routes = await _apisixClient.GetRoutesTypedAsync();
+                return Ok(routes);
             }
             catch (Exception ex)
             {

@@ -49,8 +49,10 @@ public class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthentic
             return Task.FromResult(AuthenticateResult.NoResult());
         }
 
+        var providedKey = extractedKey.ToString();
+
         if (CryptographicOperations.FixedTimeEquals(
-                Encoding.UTF8.GetBytes(extractedKey.ToString()),
+                Encoding.UTF8.GetBytes(providedKey),
                 Encoding.UTF8.GetBytes(_apiKey)))
         {
             var claims = new[] { 
@@ -65,7 +67,7 @@ public class ApiKeyAuthenticationHandler : AuthenticationHandler<ApiKeyAuthentic
             return Task.FromResult(AuthenticateResult.Success(ticket));
         }
 
-        Logger.LogWarning("Invalid API Key provided.");
+        Logger.LogWarning("Invalid API Key provided. Provided: {Provided}, Expected (masked): {Expected}", providedKey, _apiKey.Substring(0, Math.Min(5, _apiKey.Length)) + "...");
         return Task.FromResult(AuthenticateResult.Fail("Invalid API Key provided."));
     }
 }
