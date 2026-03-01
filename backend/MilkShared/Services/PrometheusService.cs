@@ -11,16 +11,19 @@ namespace MilkApiManager.Services
         private readonly HttpClient _httpClient;
         private readonly ILogger<PrometheusService> _logger;
         private readonly string _prometheusUrl;
+        private readonly bool _isTestMode;
 
-        public PrometheusService(HttpClient httpClient, ILogger<PrometheusService> logger, IOptions<PrometheusOptions> options)
+        public PrometheusService(HttpClient httpClient, ILogger<PrometheusService> logger, IOptions<PrometheusOptions> options, IConfiguration configuration)
         {
             _httpClient = httpClient;
             _logger = logger;
             _prometheusUrl = options.Value.Url;
+            _isTestMode = configuration["USE_TEST_MODE"] == "true" || Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
         }
 
         public virtual async Task<List<AnalyticsResult>> GetMetricAsync(string query, DateTime start, DateTime end, string step)
         {
+            if (_isTestMode) return new List<AnalyticsResult>();
             try
             {
                 var startUnix = ((DateTimeOffset)start).ToUnixTimeSeconds();
@@ -81,6 +84,7 @@ namespace MilkApiManager.Services
 
         public virtual async Task<Dictionary<string, double>> QueryVectorAsync(string query)
         {
+            if (_isTestMode) return new Dictionary<string, double>();
             try
             {
                 var url = $"{_prometheusUrl}/api/v1/query?query={Uri.EscapeDataString(query)}";
