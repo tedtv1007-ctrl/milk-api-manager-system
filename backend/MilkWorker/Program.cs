@@ -9,7 +9,12 @@ using OpenTelemetry.Metrics;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-ProductionStartupGuardrails.ValidateForWorker(builder.Configuration, builder.Environment);
+var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+
+if (!isTestMode)
+{
+    ProductionStartupGuardrails.ValidateForWorker(builder.Configuration, builder.Environment);
+}
 
 // ===== Strongly-typed Options =====
 builder.Services.Configure<ApisixOptions>(builder.Configuration.GetSection(ApisixOptions.SectionName));
@@ -41,7 +46,6 @@ otel.WithTracing(tracing => tracing
     .AddOtlpExporter());
 
 // Register DbContext (P1-4: AuditContext removed — AppDbContext handles all entities)
-var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
 if (isTestMode)
 {
     builder.Services.AddDbContext<AppDbContext>(options =>

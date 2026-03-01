@@ -209,6 +209,8 @@ else
 // Register Services (P1-1: Interface-based DI)
 if (isTestMode)
 {
+    // Use Singleton for Mock client to preserve in-memory state across requests in the same container
+    builder.Services.AddSingleton<IApisixClient, MockApisixClient>();
     builder.Services.AddHttpClient<IApisixClient, MockApisixClient>().AddStandardResilienceHandler();
 }
 else
