@@ -20,12 +20,17 @@ namespace MilkApiManager.Services
         private static readonly ConcurrentDictionary<string, List<string>> _whitelists = new();
         private static List<string> _blacklist = new();
 
+        private readonly ILogger<ApisixClient> _logger;
+
         public MockApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger, IOptions<ApisixOptions> options) : base(httpClient, logger, options)
         {
+            _logger = logger;
+            _logger.LogInformation("MockApisixClient initialized (Static Hash: {Hash})", GetHashCode());
         }
 
         public override Task CreateRouteAsync(string id, ApisixRoute routeConfig)
         {
+            _logger.LogInformation("MockApisixClient: Creating route {Id}", id);
             _routes[id] = routeConfig;
             return Task.CompletedTask;
         }
