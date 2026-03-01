@@ -210,8 +210,12 @@ else
 if (isTestMode)
 {
     // Use Singleton for Mock client to preserve in-memory state across requests in the same container
-    builder.Services.AddSingleton<IApisixClient, MockApisixClient>();
-    builder.Services.AddHttpClient<IApisixClient, MockApisixClient>().AddStandardResilienceHandler();
+    builder.Services.AddSingleton<MockApisixClient>();
+    builder.Services.AddHttpClient<IApisixClient, MockApisixClient>()
+        .AddStandardResilienceHandler();
+    
+    // Ensure the interface points to the same singleton instance
+    builder.Services.AddSingleton<IApisixClient>(sp => sp.GetRequiredService<MockApisixClient>());
 }
 else
 {
