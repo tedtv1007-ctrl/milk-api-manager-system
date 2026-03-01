@@ -23,6 +23,7 @@ public class BlacklistService : IBlacklistService
     private readonly IAuditLogService _auditLog;
     private readonly ApisixSyncOutboxService _outboxService;
     private readonly ILogger<BlacklistService> _logger;
+    private static readonly SemaphoreSlim _lock = new(1, 1); // E-6: prevent race condition
 
     public BlacklistService(
         IApisixClient apisixClient,
@@ -54,54 +55,70 @@ public class BlacklistService : IBlacklistService
 
     public async Task<string> AddAsync(BlacklistUpdateRequest request)
     {
-        var blacklist = await _apisixClient.GetBlacklistAsync();
-        var blacklistSet = new HashSet<string>(blacklist);
-        blacklistSet.Add(request.Ip);
-
-        if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
+        await _lock.WaitAsync();
+        try
         {
-            var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
-            if (exists == null)
+            var blacklist = await _apisixClient.GetBlacklistAsync();
+            var blacklistSet = new HashSet<string>(blacklist);
+            blacklistSet.Add(request.Ip);
+
+            if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
             {
-                var entry = new BlacklistEntry
+                var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
+                if (exists == null)
                 {
-                    IpOrCidr = request.Ip,
-                    Reason = request.Reason,
-                    AddedBy = request.AddedBy,
-                    ExpiresAt = request.ExpiresAt,
-                    AddedAt = DateTime.UtcNow
-                };
-                _db.BlacklistEntries.Add(entry);
-                await _db.SaveChangesAsync();
+                    var entry = new BlacklistEntry
+                    {
+                        IpOrCidr = request.Ip,
+                        Reason = request.Reason,
+                        AddedBy = request.AddedBy,
+                        ExpiresAt = request.ExpiresAt,
+                        AddedAt = DateTime.UtcNow
+                    };
+                    _db.BlacklistEntries.Add(entry);
+                    await _db.SaveChangesAsync();
 
-                await SafeAuditLog("Blacklist.Add", request.AddedBy, new { Ip = request.Ip, Reason = request.Reason, ExpiresAt = request.ExpiresAt });
+                    await SafeAuditLog("Blacklist.Add", request.AddedBy, new { Ip = request.Ip, Reason = request.Reason, ExpiresAt = request.ExpiresAt });
+                }
             }
-        }
 
-        await SyncToGateway(blacklistSet);
-        return $"IP {request.Ip} added successfully";
+            await SyncToGateway(blacklistSet);
+            return $"IP {request.Ip} added successfully";
+        }
+        finally
+        {
+            _lock.Release();
+        }
     }
 
     public async Task<string> RemoveAsync(BlacklistUpdateRequest request)
     {
-        var blacklist = await _apisixClient.GetBlacklistAsync();
-        var blacklistSet = new HashSet<string>(blacklist);
-        blacklistSet.Remove(request.Ip);
-
-        if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
+        await _lock.WaitAsync();
+        try
         {
-            var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
-            if (exists != null)
+            var blacklist = await _apisixClient.GetBlacklistAsync();
+            var blacklistSet = new HashSet<string>(blacklist);
+            blacklistSet.Remove(request.Ip);
+
+            if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
             {
-                _db.BlacklistEntries.Remove(exists);
-                await _db.SaveChangesAsync();
+                var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
+                if (exists != null)
+                {
+                    _db.BlacklistEntries.Remove(exists);
+                    await _db.SaveChangesAsync();
 
-                await SafeAuditLog("Blacklist.Remove", request.AddedBy, new { Ip = exists.IpOrCidr, Reason = exists.Reason, ExpiresAt = exists.ExpiresAt });
+                    await SafeAuditLog("Blacklist.Remove", request.AddedBy, new { Ip = exists.IpOrCidr, Reason = exists.Reason, ExpiresAt = exists.ExpiresAt });
+                }
             }
-        }
 
-        await SyncToGateway(blacklistSet);
-        return $"IP {request.Ip} removed successfully";
+            await SyncToGateway(blacklistSet);
+            return $"IP {request.Ip} removed successfully";
+        }
+        finally
+        {
+            _lock.Release();
+        }
     }
 
     private async Task SyncToGateway(HashSet<string> blacklistSet)

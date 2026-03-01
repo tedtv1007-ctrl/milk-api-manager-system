@@ -106,11 +106,11 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.ApisixStandaloneUpstreamDto> _upstreams = new();
+    private List<ApisixStandaloneUpstreamDto> _upstreams = new();
     private bool _loading = true;
     private bool _dialogOpen;
     private bool _isNew;
-    private ApisixService.ApisixStandaloneUpstreamDto _current = new();
+    private ApisixStandaloneUpstreamDto _current = new();
     private string _nodesText = "";
     private string _schemeValue = "http";
     private int _retriesValue = 1;
@@ -129,7 +129,7 @@
     private void AddNew()
     {
         _isNew = true;
-        _current = new ApisixService.ApisixStandaloneUpstreamDto { Id = Guid.NewGuid().ToString("N")[..12], Type = "roundrobin" };
+        _current = new ApisixStandaloneUpstreamDto { Id = Guid.NewGuid().ToString("N")[..12], Type = "roundrobin" };
         _nodesText = "";
         _schemeValue = "http";
         _retriesValue = 1;
@@ -137,10 +137,10 @@
         _dialogOpen = true;
     }
 
-    private void Edit(ApisixService.ApisixStandaloneUpstreamDto u)
+    private void Edit(ApisixStandaloneUpstreamDto u)
     {
         _isNew = false;
-        _current = new ApisixService.ApisixStandaloneUpstreamDto
+        _current = new ApisixStandaloneUpstreamDto
         {
             Id = u.Id, Name = u.Name, Desc = u.Desc, Type = u.Type,
             Nodes = u.Nodes != null ? new Dictionary<string, int>(u.Nodes) : new()
@@ -180,7 +180,7 @@
         Snackbar.Add("Upstream saved", Severity.Success);
     }
 
-    private async Task Delete(ApisixService.ApisixStandaloneUpstreamDto u)
+    private async Task Delete(ApisixStandaloneUpstreamDto u)
     {
         await ApisixService.DeleteUpstreamAsync(u.Id!);
         await Load();

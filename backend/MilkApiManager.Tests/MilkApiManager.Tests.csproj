@@ -25,6 +25,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\MilkApiManager\MilkApiManager.csproj" />
+    <ProjectReference Include="..\MilkAdminBlazor\MilkAdminBlazor.csproj" />
   </ItemGroup>
 
 </Project>

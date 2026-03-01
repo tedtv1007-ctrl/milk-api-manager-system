@@ -142,12 +142,12 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.ApiServiceDto> catalog = new();
-    private List<ApisixService.AccessRequestDto> requests = new();
-    private List<ApisixService.TestScenarioDto> scenarios = new();
-    private ApisixService.AccessRequestDto newRequest = new();
+    private List<ApiServiceDto> catalog = new();
+    private List<AccessRequestDto> requests = new();
+    private List<TestScenarioDto> scenarios = new();
+    private AccessRequestDto newRequest = new();
     private string? selectedServiceName;
-    private ApisixService.ApiServiceDto? selectedService;
+    private ApiServiceDto? selectedService;
     private string viewMode = "docs";
     private bool isTesting = false;
 
@@ -159,7 +159,7 @@
         requests = await ApisixService.GetAccessRequestsAsync();
     }
 
-    private async Task SelectService(ApisixService.ApiServiceDto service)
+    private async Task SelectService(ApiServiceDto service)
     {
         selectedService = service;
         scenarios = await ApisixService.GetTestScenariosAsync(service.Id);
@@ -167,7 +167,7 @@
 
     private string GetSwaggerEmbedUrl(string rawUrl) => rawUrl.Contains("swagger.json") ? rawUrl.Replace("swagger.json", "index.html") : rawUrl;
 
-    private async Task RunSingleTest(ApisixService.TestScenarioDto scenario)
+    private async Task RunSingleTest(TestScenarioDto scenario)
     {
         isTesting = true;
         try {

@@ -9,50 +9,35 @@ using Asp.Versioning;
 
 namespace MilkApiManager.Controllers
 {
+    /// <summary>
+    /// Blacklist management controller — delegates to IBlacklistService (A-1 fix).
+    /// </summary>
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
     public class BlacklistController : ControllerBase
     {
-        private readonly IApisixClient _apisixClient;
+        private readonly IBlacklistService _blacklistService;
         private readonly ILogger<BlacklistController> _logger;
-        private readonly AppDbContext _db;
-        private readonly IConfiguration _config;
-        private readonly IAuditLogService _auditLog;
-        private readonly ApisixSyncOutboxService _outboxService;
 
-        public BlacklistController(IApisixClient apisixClient, ILogger<BlacklistController> logger, AppDbContext db, IConfiguration config, IAuditLogService auditLog, ApisixSyncOutboxService outboxService)
+        public BlacklistController(IBlacklistService blacklistService, ILogger<BlacklistController> logger)
         {
-            _apisixClient = apisixClient;
+            _blacklistService = blacklistService;
             _logger = logger;
-            _db = db;
-            _config = config;
-            _auditLog = auditLog;
-            _outboxService = outboxService;
         }
 
         /// <summary>
         /// Retrieves the current IP blacklist.
         /// </summary>
-        /// <returns>A list of blacklisted IPs or CIDR blocks.</returns>
         [HttpGet]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<BlacklistEntry>))]
         public async Task<IActionResult> GetBlacklist()
         {
             try
             {
-                var persist = _config.GetValue<bool>("Blacklist:PersistToDatabase");
-                if (persist)
-                {
-                    var entries = await _db.BlacklistEntries.OrderByDescending(e => e.AddedAt).ToListAsync();
-                    return Ok(entries);
-                }
-                else
-                {
-                    var blacklist = await _apisixClient.GetBlacklistAsync();
-                    return Ok(blacklist.Select(ip => new BlacklistEntry { IpOrCidr = ip }).ToList());
-                }
+                var entries = await _blacklistService.GetBlacklistAsync();
+                return Ok(entries);
             }
             catch (Exception ex)
             {
@@ -64,8 +49,6 @@ namespace MilkApiManager.Controllers
         /// <summary>
         /// Adds or removes an IP/CIDR to/from the blacklist.
         /// </summary>
-        /// <param name="request">The blacklist update instruction.</param>
-        /// <returns>A status message indicating success.</returns>
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
@@ -84,94 +67,21 @@ namespace MilkApiManager.Controllers
 
             try
             {
-                var blacklist = await _apisixClient.GetBlacklistAsync();
-                var blacklistSet = new HashSet<string>(blacklist);
-
+                string message;
                 if (request.Action == "add")
                 {
-                    blacklistSet.Add(request.Ip);
-                    // persist to DB if enabled
-                    if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
-                    {
-                        var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
-                        if (exists == null)
-                        {
-                            var entry = new BlacklistEntry
-                            {
-                                IpOrCidr = request.Ip,
-                                Reason = request.Reason,
-                                AddedBy = request.AddedBy,
-                                ExpiresAt = request.ExpiresAt,
-                                AddedAt = DateTime.UtcNow
-                            };
-                            _db.BlacklistEntries.Add(entry);
-                            await _db.SaveChangesAsync();
-
-                            // Audit log for blacklist add
-                            try
-                            {
-                                await _auditLog.LogAsync(new Models.AuditLogEntry
-                                {
-                                    Action = "Blacklist.Add",
-                                    Resource = "Blacklist",
-                                    User = request.AddedBy ?? "Unknown",
-                                    Details = new { Ip = request.Ip, Reason = request.Reason, ExpiresAt = request.ExpiresAt }
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.LogWarning(ex, "Failed to write audit log for blacklist add {Ip}", request.Ip);
-                            }
-                        }
-                    }
+                    message = await _blacklistService.AddAsync(request);
                 }
                 else if (request.Action == "remove")
                 {
-                    blacklistSet.Remove(request.Ip);
-                    if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
-                    {
-                        var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == request.Ip);
-                        if (exists != null)
-                        {
-                            // capture details before removal
-                            var details = new { Ip = exists.IpOrCidr, Reason = exists.Reason, ExpiresAt = exists.ExpiresAt };
-
-                            _db.BlacklistEntries.Remove(exists);
-                            await _db.SaveChangesAsync();
-
-                            // Audit log for blacklist remove
-                            try
-                            {
-                                await _auditLog.LogAsync(new Models.AuditLogEntry
-                                {
-                                    Action = "Blacklist.Remove",
-                                    Resource = "Blacklist",
-                                    User = request.AddedBy ?? "Unknown",
-                                    Details = details
-                                });
-                            }
-                            catch (Exception ex)
-                            {
-                                _logger.LogWarning(ex, "Failed to write audit log for blacklist remove {Ip}", request.Ip);
-                            }
-                        }
-                    }
+                    message = await _blacklistService.RemoveAsync(request);
                 }
                 else
                 {
                     return BadRequest("Invalid action. Use 'add' or 'remove'.");
                 }
 
-                if (_config.GetValue<bool>("Sync:Blacklist:UseOutbox"))
-                {
-                    await _outboxService.EnqueueBlacklistSyncAsync(blacklistSet.ToList());
-                }
-                else
-                {
-                    await _apisixClient.UpdateBlacklistAsync(blacklistSet.ToList());
-                }
-
-                return Ok(new { message = $"IP {request.Ip} {request.Action}ed successfully" });
+                return Ok(new { message });
             }
             catch (Exception ex)
             {

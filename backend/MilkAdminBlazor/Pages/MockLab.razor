@@ -46,9 +46,9 @@
 </MudDialog>
 
 @code {
-    private List<ApisixService.MockRuleDto> rules = new();
+    private List<MockRuleDto> rules = new();
     private bool showModal;
-    private ApisixService.MockRuleDto editingRule = new();
+    private MockRuleDto editingRule = new();
     private DialogOptions dialogOptions = new() { FullWidth = true, MaxWidth = MaxWidth.Medium };
 
     protected override async Task OnInitializedAsync()
@@ -60,11 +60,11 @@
 
     private void AddNew() { editingRule = new(); showModal = true; }
 
-    private void EditRule(ApisixService.MockRuleDto rule) { editingRule = rule; showModal = true; }
+    private void EditRule(MockRuleDto rule) { editingRule = rule; showModal = true; }
 
     private async Task Save() { await ApisixService.SaveMockRuleAsync(editingRule); showModal = false; await Load(); }
 
     private async Task DeleteRule(int id) { await ApisixService.DeleteMockRuleAsync(id); await Load(); }
 
-    private async Task ToggleRule(ApisixService.MockRuleDto rule) { rule.IsEnabled = !rule.IsEnabled; await ApisixService.SaveMockRuleAsync(rule); }
+    private async Task ToggleRule(MockRuleDto rule) { rule.IsEnabled = !rule.IsEnabled; await ApisixService.SaveMockRuleAsync(rule); }
 }

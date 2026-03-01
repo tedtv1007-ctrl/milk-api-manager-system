@@ -105,7 +105,7 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.GlobalRuleDto> _rules = new();
+    private List<GlobalRuleDto> _rules = new();
     private bool _loading = true;
     private bool _dialogOpen;
     private bool _isNew;
@@ -150,7 +150,7 @@
         _dialogOpen = true;
     }
 
-    private void Edit(ApisixService.GlobalRuleDto rule)
+    private void Edit(GlobalRuleDto rule)
     {
         _isNew = false;
         _currentId = rule.Id ?? "";
@@ -179,21 +179,21 @@
             return;
         }
 
-        var rule = new ApisixService.GlobalRuleDto { Id = _currentId, Plugins = plugins };
+        var rule = new GlobalRuleDto { Id = _currentId, Plugins = plugins };
         await ApisixService.SaveGlobalRuleAsync(rule);
         _dialogOpen = false;
         await Load();
         Snackbar.Add("Global rule saved", Severity.Success);
     }
 
-    private async Task Delete(ApisixService.GlobalRuleDto rule)
+    private async Task Delete(GlobalRuleDto rule)
     {
         await ApisixService.DeleteGlobalRuleAsync(rule.Id!);
         await Load();
         Snackbar.Add($"Global rule '{rule.Id}' deleted", Severity.Warning);
     }
 
-    private void ViewJson(ApisixService.GlobalRuleDto rule)
+    private void ViewJson(GlobalRuleDto rule)
     {
         _viewJson = System.Text.Json.JsonSerializer.Serialize(rule, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
         _jsonDialogOpen = true;

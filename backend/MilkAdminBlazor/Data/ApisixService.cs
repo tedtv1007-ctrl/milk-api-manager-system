@@ -5,108 +5,30 @@ using System.Net.Http.Json;
 using System.Threading.Tasks;
 using System.Text.Json;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.Logging;
 
 namespace MilkAdminBlazor.Data
 {
-    public class ApiRoute
-    {
-        public required string Id { get; set; }
-        public required string Name { get; set; }
-        public required string Uri { get; set; }
-        public required string RiskLevel { get; set; } // L1, L2, L3
-        public required string Owner { get; set; }
-        public List<string> WhitelistIps { get; set; } = new();
-    }
-
-    public class BlacklistRequest
-    {
-        [JsonPropertyName("ip")]
-        public required string Ip { get; set; }
-
-        [JsonPropertyName("action")]
-        public required string Action { get; set; }
-
-        [JsonPropertyName("reason")]
-        public string? Reason { get; set; }
-
-        [JsonPropertyName("addedBy")]
-        public string? AddedBy { get; set; }
-
-        [JsonPropertyName("expiresAt")]
-        public DateTime? ExpiresAt { get; set; }
-    }
-
-    public class ApiConsumer
-    {
-        [JsonPropertyName("username")]
-        public required string Username { get; set; }
-
-        [JsonPropertyName("desc")]
-        public required string Desc { get; set; }
-
-        [JsonPropertyName("labels")]
-        public List<string> Labels { get; set; } = new List<string>();
-
-        [JsonPropertyName("quota")]
-        public ApiQuota Quota { get; set; } = new ApiQuota();
-    }
-
-    public class ApiQuota
-    {
-        [JsonPropertyName("count")]
-        public int Count { get; set; } = 1000;
-
-        [JsonPropertyName("time_window")]
-        public int TimeWindow { get; set; } = 3600;
-
-        [JsonPropertyName("rejected_code")]
-        public int RejectedCode { get; set; } = 429;
-
-        [JsonPropertyName("rejected_msg")]
-        public string RejectedMsg { get; set; } = "API quota exceeded. Please contact support.";
-    }
-
-    public class SyncStatusResponse
-    {
-        [JsonPropertyName("status")]
-        public required string Status { get; set; }
-
-        [JsonPropertyName("lastSyncTime")]
-        public DateTime? LastSyncTime { get; set; }
-    }
-
-    public class ConsumerStats
-    {
-        public required string Username { get; set; }
-        public long RequestCount { get; set; }
-        public double ErrorRate { get; set; } // Percentage
-        public DateTime Timestamp { get; set; }
-    }
-
-    public class MetricPoint
-    {
-        [JsonPropertyName("timestamp")]
-        public DateTime Timestamp { get; set; }
-        [JsonPropertyName("value")]
-        public double Value { get; set; }
-    }
-
-    public class AnalyticsResult
-    {
-        [JsonPropertyName("label")]
-        public required string Label { get; set; }
-        [JsonPropertyName("data")]
-        public List<MetricPoint> Data { get; set; } = new();
-    }
-
+    /// <summary>
+    /// Blazor frontend service that proxies requests to the MilkApiManager backend.
+    /// Refactored: DTOs extracted to ApisixServiceModels.cs (A-2),
+    /// ILogger injected (E-1), response checking added (E-2),
+    /// hardcoded mock data removed (A-3, A-4).
+    /// </summary>
     public class ApisixService
     {
         private readonly HttpClient _httpClient;
+        private readonly ILogger<ApisixService> _logger;
 
-        public ApisixService(HttpClient httpClient)
+        public ApisixService(HttpClient httpClient, ILogger<ApisixService> logger)
         {
             _httpClient = httpClient;
+            _logger = logger;
         }
+
+        // ================================================================
+        // Sync Status
+        // ================================================================
 
         public async Task<SyncStatusResponse?> GetSyncStatusAsync()
         {
@@ -114,41 +36,34 @@ namespace MilkAdminBlazor.Data
             {
                 return await _httpClient.GetFromJsonAsync<SyncStatusResponse>("api/SyncStatus");
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.LogWarning(ex, "Failed to fetch sync status");
                 return new SyncStatusResponse { Status = "Offline" };
             }
         }
 
+        // ================================================================
+        // Routes (frontend risk-classification view) — A-3: real backend call
+        // ================================================================
+
         public async Task<List<ApiRoute>> GetRoutesAsync()
         {
-            // For now, still mock or fetch from backend if ready
-            return new List<ApiRoute>
+            try
             {
-                new ApiRoute { Id = "1", Name = "User Profile", Uri = "/api/user/*", RiskLevel = "L3", Owner = "Customer Team" },
-                new ApiRoute { Id = "2", Name = "Product List", Uri = "/api/products", RiskLevel = "L1", Owner = "Sales Team" },
-                new ApiRoute { Id = "3", Name = "Payment Gateway", Uri = "/api/payment", RiskLevel = "L3", Owner = "Finance Team" },
-                new ApiRoute { Id = "4", Name = "Branch Locations", Uri = "/api/locations", RiskLevel = "L1", Owner = "Ops Team" }
-            };
+                var response = await _httpClient.GetFromJsonAsync<List<ApiRoute>>("api/Route/classified");
+                return response ?? new List<ApiRoute>();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch classified routes, returning empty list");
+                return new List<ApiRoute>();
+            }
         }
 
-        public class BlacklistEntryDto
-        {
-            [JsonPropertyName("ipOrCidr")]
-            public required string IpOrCidr { get; set; }
-
-            [JsonPropertyName("reason")]
-            public string? Reason { get; set; }
-
-            [JsonPropertyName("addedBy")]
-            public string? AddedBy { get; set; }
-
-            [JsonPropertyName("addedAt")]
-            public DateTime? AddedAt { get; set; }
-
-            [JsonPropertyName("expiresAt")]
-            public DateTime? ExpiresAt { get; set; }
-        }
+        // ================================================================
+        // Blacklist
+        // ================================================================
 
         public async Task<List<BlacklistEntryDto>> GetBlacklistedIpsAsync()
         {
@@ -157,8 +72,9 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<BlacklistEntryDto>>("api/Blacklist");
                 return response ?? new List<BlacklistEntryDto>();
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.LogWarning(ex, "Failed to fetch blacklisted IPs");
                 return new List<BlacklistEntryDto>();
             }
         }
@@ -166,14 +82,30 @@ namespace MilkAdminBlazor.Data
         public async Task AddIpToBlacklistAsync(string ip, string? reason = null, string? addedBy = null, DateTime? expiresAt = null)
         {
             var request = new BlacklistRequest { Ip = ip, Action = "add", Reason = reason, AddedBy = addedBy, ExpiresAt = expiresAt };
-            await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+            var response = await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to add IP {Ip} to blacklist: {StatusCode} {Body}", ip, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task RemoveIpFromBlacklistAsync(string ip)
         {
             var request = new BlacklistRequest { Ip = ip, Action = "remove" };
-            await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+            var response = await _httpClient.PostAsJsonAsync("api/Blacklist", request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to remove IP {Ip} from blacklist: {StatusCode} {Body}", ip, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
+
+        // ================================================================
+        // Consumers
+        // ================================================================
 
         public async Task<List<ApiConsumer>> GetConsumersAsync()
         {
@@ -182,49 +114,60 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<ApiConsumer>>("api/Consumer");
                 return response ?? new List<ApiConsumer>();
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.LogWarning(ex, "Failed to fetch consumers");
                 return new List<ApiConsumer>();
             }
         }
 
         public async Task UpdateConsumerAsync(ApiConsumer consumer)
         {
-            await _httpClient.PostAsJsonAsync("api/Consumer", consumer);
+            var response = await _httpClient.PostAsJsonAsync("api/Consumer", consumer);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to update consumer {Username}: {StatusCode} {Body}", consumer.Username, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteConsumerAsync(string username)
         {
-            await _httpClient.DeleteAsync($"api/Consumer/{username}");
-        }
-
-        public async Task<List<ConsumerStats>> GetConsumerStatsAsync(string username = null)
-        {
-            // In a real scenario, this would call Prometheus API or a backend proxy.
-            // For now, returning mock data as per typical Prometheus metrics.
-            
-            var stats = new List<ConsumerStats>();
-            var consumers = username == null ? (await GetConsumersAsync()).Select(c => c.Username).ToList() : new List<string> { username };
-            
-            if (!consumers.Any()) consumers = new List<string> { "global_user", "mobile_app", "partner_a" };
-
-            var rng = new Random();
-            foreach (var user in consumers)
+            var response = await _httpClient.DeleteAsync($"api/Consumer/{username}");
+            if (!response.IsSuccessStatusCode)
             {
-                stats.Add(new ConsumerStats
-                {
-                    Username = user,
-                    RequestCount = rng.Next(1000, 50000),
-                    ErrorRate = rng.NextDouble() * 5, // 0-5%
-                    Timestamp = DateTime.Now
-                });
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete consumer {Username}: {StatusCode} {Body}", username, response.StatusCode, body);
             }
-            return stats;
+            response.EnsureSuccessStatusCode();
         }
+
+        // ================================================================
+        // Consumer Stats — A-4: real backend call instead of Random()
+        // ================================================================
+
+        public async Task<List<ConsumerStats>> GetConsumerStatsAsync(string? username = null)
+        {
+            try
+            {
+                var query = string.IsNullOrEmpty(username) ? "" : $"?username={Uri.EscapeDataString(username)}";
+                var response = await _httpClient.GetFromJsonAsync<List<ConsumerStats>>($"api/Analytics/consumer-stats{query}");
+                return response ?? new List<ConsumerStats>();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch consumer stats for {Username}, returning empty", username ?? "all");
+                return new List<ConsumerStats>();
+            }
+        }
+
+        // ================================================================
+        // Route Management
+        // ================================================================
 
         public async Task UpdateRouteAsync(ApiRoute route)
         {
-            // Map frontend ApiRoute to the backend's expected APISIX route DTO
             var plugins = new Dictionary<string, object>();
             if (route.WhitelistIps != null && route.WhitelistIps.Any())
             {
@@ -240,8 +183,18 @@ namespace MilkAdminBlazor.Data
                 plugins = plugins
             };
 
-            await _httpClient.PutAsJsonAsync($"api/Route/{route.Id}", body);
+            var response = await _httpClient.PutAsJsonAsync($"api/Route/{route.Id}", body);
+            if (!response.IsSuccessStatusCode)
+            {
+                var responseBody = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to update route {RouteId}: {StatusCode} {Body}", route.Id, response.StatusCode, responseBody);
+            }
+            response.EnsureSuccessStatusCode();
         }
+
+        // ================================================================
+        // Analytics
+        // ================================================================
 
         public async Task<List<AnalyticsResult>> GetAnalyticsRequestsAsync(string consumer, string route, DateTime? start, DateTime? end)
         {
@@ -251,7 +204,11 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/requests{query}");
                 return response ?? new List<AnalyticsResult>();
             }
-            catch { return new List<AnalyticsResult>(); }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch analytics requests for consumer={Consumer}, route={Route}", consumer, route);
+                return new List<AnalyticsResult>();
+            }
         }
 
         public async Task<List<AnalyticsResult>> GetAnalyticsLatencyAsync(string consumer, string route, DateTime? start, DateTime? end)
@@ -262,7 +219,11 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/latency{query}");
                 return response ?? new List<AnalyticsResult>();
             }
-            catch { return new List<AnalyticsResult>(); }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch analytics latency for consumer={Consumer}, route={Route}", consumer, route);
+                return new List<AnalyticsResult>();
+            }
         }
 
         public async Task<List<AnalyticsResult>> GetAnalyticsErrorsAsync(string consumer, string route, DateTime? start, DateTime? end)
@@ -273,27 +234,42 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>($"api/Analytics/errors{query}");
                 return response ?? new List<AnalyticsResult>();
             }
-            catch { return new List<AnalyticsResult>(); }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch analytics errors for consumer={Consumer}, route={Route}", consumer, route);
+                return new List<AnalyticsResult>();
+            }
         }
 
-        // --- Whitelist management for specific routes ---
-        public class WhitelistEntryDto
+        public async Task<List<AnalyticsResult>> GetTopSlowRoutesAsync()
         {
-            [JsonPropertyName("ip")]
-            public required string Ip { get; set; }
-
-            [JsonPropertyName("reason")]
-            public string? Reason { get; set; }
-
-            [JsonPropertyName("addedBy")]
-            public string? AddedBy { get; set; }
-
-            [JsonPropertyName("addedAt")]
-            public DateTime? AddedAt { get; set; }
-
-            [JsonPropertyName("expiresAt")]
-            public DateTime? ExpiresAt { get; set; }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>("api/Analytics/top-slow-routes") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch top slow routes");
+                return new();
+            }
         }
+
+        public async Task<SlaDto?> GetSlaStatsAsync()
+        {
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<SlaDto>("api/Analytics/sla");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch SLA stats");
+                return new SlaDto { AvailabilityPercentage = 100, Status = "Offline" };
+            }
+        }
+
+        // ================================================================
+        // Whitelist
+        // ================================================================
 
         public async Task<List<WhitelistEntryDto>> GetRouteWhitelistAsync(string routeId)
         {
@@ -302,56 +278,39 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<WhitelistEntryDto>>($"api/whitelist/route/{routeId}");
                 return response ?? new List<WhitelistEntryDto>();
             }
-            catch
+            catch (Exception ex)
             {
+                _logger.LogWarning(ex, "Failed to fetch whitelist for route {RouteId}", routeId);
                 return new List<WhitelistEntryDto>();
             }
         }
 
         public async Task AddRouteWhitelistEntryAsync(string routeId, string ip, string? reason = null, string? addedBy = null, DateTime? expiresAt = null)
         {
-            var payload = new {
-                ip = ip,
-                reason = reason,
-                addedBy = addedBy,
-                expiresAt = expiresAt
-            };
-
-            await _httpClient.PostAsJsonAsync($"api/whitelist/route/{routeId}", payload);
+            var payload = new { ip, reason, addedBy, expiresAt };
+            var response = await _httpClient.PostAsJsonAsync($"api/whitelist/route/{routeId}", payload);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to add whitelist entry for route {RouteId}, IP {Ip}: {StatusCode} {Body}", routeId, ip, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task RemoveRouteWhitelistEntryAsync(string routeId, string ip)
         {
-            await _httpClient.DeleteAsync($"api/whitelist/route/{routeId}/{Uri.EscapeDataString(ip)}");
+            var response = await _httpClient.DeleteAsync($"api/whitelist/route/{routeId}/{Uri.EscapeDataString(ip)}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to remove whitelist entry for route {RouteId}, IP {Ip}: {StatusCode} {Body}", routeId, ip, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        // --- PII Masking Management ---
-        public class PiiMaskingRuleDto
-        {
-            [JsonPropertyName("id")]
-            public int Id { get; set; }
-
-            [JsonPropertyName("routeId")]
-            public string RouteId { get; set; } = string.Empty;
-
-            [JsonPropertyName("fieldPath")]
-            public string FieldPath { get; set; } = string.Empty;
-
-            [JsonPropertyName("regexPattern")]
-            public string RegexPattern { get; set; } = ".*";
-
-            [JsonPropertyName("replacePattern")]
-            public string ReplacePattern { get; set; } = "***";
-
-            [JsonPropertyName("isActive")]
-            public bool IsActive { get; set; } = true;
-
-            [JsonPropertyName("updatedAt")]
-            public DateTime UpdatedAt { get; set; }
-
-            [JsonPropertyName("description")]
-            public string Description { get; set; } = string.Empty;
-        }
+        // ================================================================
+        // PII Masking
+        // ================================================================
 
         public async Task<List<PiiMaskingRuleDto>> GetPiiRulesAsync()
         {
@@ -360,53 +319,60 @@ namespace MilkAdminBlazor.Data
                 var response = await _httpClient.GetFromJsonAsync<List<PiiMaskingRuleDto>>("api/PiiMasking");
                 return response ?? new List<PiiMaskingRuleDto>();
             }
-            catch { return new List<PiiMaskingRuleDto>(); }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch PII masking rules");
+                return new List<PiiMaskingRuleDto>();
+            }
         }
 
         public async Task SavePiiRuleAsync(PiiMaskingRuleDto rule)
         {
+            HttpResponseMessage response;
             if (rule.Id == 0)
             {
-                await _httpClient.PostAsJsonAsync("api/PiiMasking", rule);
+                response = await _httpClient.PostAsJsonAsync("api/PiiMasking", rule);
             }
             else
             {
-                await _httpClient.PutAsJsonAsync($"api/PiiMasking/{rule.Id}", rule);
+                response = await _httpClient.PutAsJsonAsync($"api/PiiMasking/{rule.Id}", rule);
             }
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save PII rule {RuleId}: {StatusCode} {Body}", rule.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeletePiiRuleAsync(int id)
         {
-            await _httpClient.DeleteAsync($"api/PiiMasking/{id}");
+            var response = await _httpClient.DeleteAsync($"api/PiiMasking/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete PII rule {RuleId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        // --- Consumer Groups (Traffic Tiers) ---
-        public class ConsumerGroupDto
-        {
-            [JsonPropertyName("id")]
-            public required string Id { get; set; }
-
-            [JsonPropertyName("desc")]
-            public string? Desc { get; set; }
-
-            // Simplified quota view for UI
-            public int RateLimit { get; set; } = 1000;
-        }
+        // ================================================================
+        // Consumer Groups (Traffic Tiers)
+        // ================================================================
 
         public async Task<List<ConsumerGroupDto>> GetConsumerGroupsAsync()
         {
             try
             {
-                // In a real implementation, we would map the complex APISIX plugin config to a simple DTO
                 var groups = await _httpClient.GetFromJsonAsync<List<JsonElement>>("api/ConsumerGroup");
                 var result = new List<ConsumerGroupDto>();
-                
+
                 foreach (var g in groups ?? new List<JsonElement>())
                 {
                     var id = g.GetProperty("id").GetString() ?? "";
                     var rate = 0;
-                    
-                    if (g.TryGetProperty("plugins", out var plugins) && 
+
+                    if (g.TryGetProperty("plugins", out var plugins) &&
                         plugins.TryGetProperty("limit-count", out var limit))
                     {
                         rate = limit.GetProperty("count").GetInt32();
@@ -416,12 +382,15 @@ namespace MilkAdminBlazor.Data
                 }
                 return result;
             }
-            catch { return new List<ConsumerGroupDto>(); }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch consumer groups");
+                return new List<ConsumerGroupDto>();
+            }
         }
 
         public async Task SaveConsumerGroupAsync(ConsumerGroupDto group)
         {
-            // Construct APISIX payload
             var payload = new
             {
                 id = group.Id,
@@ -430,57 +399,84 @@ namespace MilkAdminBlazor.Data
                     ["limit-count"] = new
                     {
                         count = group.RateLimit,
-                        time_window = 60, // 1 minute default
+                        time_window = 60,
                         rejected_code = 429,
                         key = "remote_addr"
                     }
                 }
             };
-            await _httpClient.PutAsJsonAsync($"api/ConsumerGroup/{group.Id}", payload);
+            var response = await _httpClient.PutAsJsonAsync($"api/ConsumerGroup/{group.Id}", payload);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save consumer group {GroupId}: {StatusCode} {Body}", group.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteConsumerGroupAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/ConsumerGroup/{id}");
+            var response = await _httpClient.DeleteAsync($"api/ConsumerGroup/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete consumer group {GroupId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        // --- Mocking & Load Testing ---
-        public class MockRuleDto
-        {
-            public int Id { get; set; }
-            public string RouteId { get; set; } = "";
-            public int ResponseStatusCode { get; set; } = 200;
-            public string ResponseBody { get; set; } = "{}";
-            public string ContentType { get; set; } = "application/json";
-            public bool IsEnabled { get; set; } = true;
-        }
+        // ================================================================
+        // Mocking & Load Testing
+        // ================================================================
 
         public async Task<List<MockRuleDto>> GetMockRulesAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<MockRuleDto>>("api/Mock") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<MockRuleDto>>("api/Mock") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch mock rules");
+                return new();
+            }
         }
 
         public async Task SaveMockRuleAsync(MockRuleDto rule)
         {
-            if (rule.Id == 0) await _httpClient.PostAsJsonAsync("api/Mock", rule);
-            else await _httpClient.PutAsJsonAsync($"api/Mock/{rule.Id}", rule);
+            HttpResponseMessage response;
+            if (rule.Id == 0)
+                response = await _httpClient.PostAsJsonAsync("api/Mock", rule);
+            else
+                response = await _httpClient.PutAsJsonAsync($"api/Mock/{rule.Id}", rule);
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save mock rule {RuleId}: {StatusCode} {Body}", rule.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteMockRuleAsync(int id)
         {
-            await _httpClient.DeleteAsync($"api/Mock/{id}");
+            var response = await _httpClient.DeleteAsync($"api/Mock/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete mock rule {RuleId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task<string> RunLoadTestAsync(string url, int vus, int duration)
         {
             var request = new HttpRequestMessage(HttpMethod.Post, $"api/LoadTest/run?url={Uri.EscapeDataString(url)}&vus={vus}&duration={duration}");
-            // X-API-KEY is now automatically injected by the HttpClient configured in Program.cs
-            
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
                 var errorSummary = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Load test failed: {StatusCode} {Body}", response.StatusCode, errorSummary);
                 return $"Error: Server returned {(int)response.StatusCode} {response.ReasonPhrase}\n{errorSummary}";
             }
 
@@ -491,407 +487,382 @@ namespace MilkAdminBlazor.Data
             }
             catch (Exception ex)
             {
+                _logger.LogError(ex, "Failed to parse load test response");
                 return $"Failed to parse response: {ex.Message}";
             }
         }
 
-        // --- Developer Portal / Access Requests ---
-        public class AccessRequestDto
-        {
-            public int Id { get; set; }
-            public string ProjectName { get; set; } = "";
-            public string ApplicantEmail { get; set; } = "";
-            public string RequestedTier { get; set; } = "Free";
-            public string Purpose { get; set; } = "";
-            public string Status { get; set; } = "Pending";
-            public string? AdminComment { get; set; }
-            public DateTime CreatedAt { get; set; }
-        }
+        // ================================================================
+        // Developer Portal / Access Requests
+        // ================================================================
 
         public async Task<List<AccessRequestDto>> GetAccessRequestsAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<AccessRequestDto>>("api/AccessRequest") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<AccessRequestDto>>("api/AccessRequest") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch access requests");
+                return new();
+            }
         }
 
         public async Task SubmitAccessRequestAsync(AccessRequestDto request)
         {
-            await _httpClient.PostAsJsonAsync("api/AccessRequest/submit", request);
+            var response = await _httpClient.PostAsJsonAsync("api/AccessRequest/submit", request);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to submit access request: {StatusCode} {Body}", response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task ApproveRequestAsync(int id, string comment)
         {
-            await _httpClient.PostAsync($"api/AccessRequest/{id}/approve?comment={Uri.EscapeDataString(comment)}", null);
+            var response = await _httpClient.PostAsync($"api/AccessRequest/{id}/approve?comment={Uri.EscapeDataString(comment)}", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to approve access request {Id}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task RejectRequestAsync(int id, string reason)
         {
-            await _httpClient.PostAsync($"api/AccessRequest/{id}/reject?reason={Uri.EscapeDataString(reason)}", null);
+            var response = await _httpClient.PostAsync($"api/AccessRequest/{id}/reject?reason={Uri.EscapeDataString(reason)}", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to reject access request {Id}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        // --- API Catalog ---
-        public class ApiServiceDto
-        {
-            public int Id { get; set; }
-            public string Name { get; set; } = "";
-            public string Description { get; set; } = "";
-            public string BasePath { get; set; } = "";
-            public string OpenApiUrl { get; set; } = "";
-            public string OwnerTeam { get; set; } = "";
-        }
+        // ================================================================
+        // API Catalog
+        // ================================================================
 
         public async Task<List<ApiServiceDto>> GetApiCatalogAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<ApiServiceDto>>("api/ApiCatalog") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<ApiServiceDto>>("api/ApiCatalog") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch API catalog");
+                return new();
+            }
         }
 
-        // --- API Testing ---
-        public class TestScenarioDto
-        {
-            public int Id { get; set; }
-            public int ServiceId { get; set; }
-            public string Name { get; set; } = "";
-            public string Endpoint { get; set; } = "/";
-            public string HttpMethod { get; set; } = "GET";
-            public int ExpectedStatusCode { get; set; } = 200;
-            public string? LastResult { get; set; }
-            public DateTime? LastRunAt { get; set; }
-        }
+        // ================================================================
+        // API Testing
+        // ================================================================
 
         public async Task<List<TestScenarioDto>> GetTestScenariosAsync(int serviceId)
         {
-            try { return await _httpClient.GetFromJsonAsync<List<TestScenarioDto>>($"api/TestExecution/scenarios/{serviceId}") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<TestScenarioDto>>($"api/TestExecution/scenarios/{serviceId}") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch test scenarios for service {ServiceId}", serviceId);
+                return new();
+            }
         }
 
         public async Task RunApiTestAsync(int scenarioId)
         {
-            await _httpClient.PostAsync($"api/TestExecution/run/{scenarioId}", null);
+            var response = await _httpClient.PostAsync($"api/TestExecution/run/{scenarioId}", null);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to run API test scenario {ScenarioId}: {StatusCode} {Body}", scenarioId, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        public async Task<List<AnalyticsResult>> GetTopSlowRoutesAsync()
-        {
-            try { return await _httpClient.GetFromJsonAsync<List<AnalyticsResult>>("api/Analytics/top-slow-routes") ?? new(); }
-            catch { return new(); }
-        }
-
-        public class SlaDto
-        {
-            public double AvailabilityPercentage { get; set; }
-            public string Status { get; set; } = "Unknown";
-        }
-
-        public async Task<SlaDto?> GetSlaStatsAsync()
-        {
-            try { return await _httpClient.GetFromJsonAsync<SlaDto>("api/Analytics/sla"); }
-            catch { return new SlaDto { AvailabilityPercentage = 100, Status = "Offline" }; }
-        }
-
-        // --- Audit Logs ---
-        public class AuditLogEntryDto
-        {
-            [JsonPropertyName("id")]
-            public int Id { get; set; }
-
-            [JsonPropertyName("timestamp")]
-            public DateTime Timestamp { get; set; }
-
-            [JsonPropertyName("user")]
-            public string User { get; set; } = string.Empty;
-
-            [JsonPropertyName("action")]
-            public string Action { get; set; } = string.Empty;
-
-            [JsonPropertyName("resource")]
-            public string Resource { get; set; } = string.Empty;
-
-            [JsonPropertyName("statusCode")]
-            public int StatusCode { get; set; }
-
-            [JsonPropertyName("clientIp")]
-            public string? ClientIp { get; set; }
-
-            [JsonPropertyName("detailsJson")]
-            public string? DetailsJson { get; set; }
-        }
+        // ================================================================
+        // Audit Logs
+        // ================================================================
 
         public async Task<List<AuditLogEntryDto>> GetAuditLogsAsync(int limit = 100)
         {
-            try { return await _httpClient.GetFromJsonAsync<List<AuditLogEntryDto>>($"api/AuditLogs?limit={limit}") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<AuditLogEntryDto>>($"api/AuditLogs?limit={limit}") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch audit logs");
+                return new();
+            }
         }
 
         public async Task<Dictionary<string, int>> GetAuditStatsAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<Dictionary<string, int>>("api/AuditLogs/stats") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<Dictionary<string, int>>("api/AuditLogs/stats") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch audit stats");
+                return new();
+            }
         }
 
         // ================================================================
         // APISIX Gateway Management — Full Dashboard Replacement
         // ================================================================
 
-        // --- Routes (Real CRUD via APISIX Admin API) ---
-        public class ApisixRouteDto
-        {
-            [JsonPropertyName("id")]
-            public string? Id { get; set; }
-
-            [JsonPropertyName("name")]
-            public string Name { get; set; } = "";
-
-            [JsonPropertyName("uri")]
-            public string Uri { get; set; } = "/*";
-
-            [JsonPropertyName("uris")]
-            public List<string>? Uris { get; set; }
-
-            [JsonPropertyName("methods")]
-            public List<string>? Methods { get; set; }
-
-            [JsonPropertyName("service_id")]
-            public string? ServiceId { get; set; }
-
-            [JsonPropertyName("upstream_id")]
-            public string? UpstreamId { get; set; }
-
-            [JsonPropertyName("upstream")]
-            public ApisixUpstreamDto? Upstream { get; set; }
-
-            [JsonPropertyName("plugins")]
-            public Dictionary<string, object>? Plugins { get; set; }
-        }
-
-        public class ApisixUpstreamDto
-        {
-            [JsonPropertyName("type")]
-            public string Type { get; set; } = "roundrobin";
-
-            [JsonPropertyName("nodes")]
-            public Dictionary<string, int>? Nodes { get; set; }
-        }
+        // --- Routes ---
 
         public async Task<List<ApisixRouteDto>> GetApisixRoutesAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<ApisixRouteDto>>("api/Route") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<ApisixRouteDto>>("api/Route") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch APISIX routes");
+                return new();
+            }
         }
 
         public async Task<ApisixRouteDto?> GetApisixRouteAsync(string id)
         {
-            try { return await _httpClient.GetFromJsonAsync<ApisixRouteDto>($"api/Route/{id}"); }
-            catch { return null; }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<ApisixRouteDto>($"api/Route/{id}");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch APISIX route {RouteId}", id);
+                return null;
+            }
         }
 
         public async Task SaveApisixRouteAsync(ApisixRouteDto route)
         {
+            HttpResponseMessage response;
             if (string.IsNullOrEmpty(route.Id))
             {
                 route.Id = Guid.NewGuid().ToString("N")[..12];
-                await _httpClient.PostAsJsonAsync("api/Route", route);
+                response = await _httpClient.PostAsJsonAsync("api/Route", route);
             }
             else
             {
-                await _httpClient.PutAsJsonAsync($"api/Route/{route.Id}", route);
+                response = await _httpClient.PutAsJsonAsync($"api/Route/{route.Id}", route);
             }
+
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save APISIX route {RouteId}: {StatusCode} {Body}", route.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteApisixRouteAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/Route/{id}");
+            var response = await _httpClient.DeleteAsync($"api/Route/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete APISIX route {RouteId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         // --- Upstreams ---
-        public class ApisixStandaloneUpstreamDto
-        {
-            [JsonPropertyName("id")]
-            public string? Id { get; set; }
-
-            [JsonPropertyName("name")]
-            public string? Name { get; set; }
-
-            [JsonPropertyName("desc")]
-            public string? Desc { get; set; }
-
-            [JsonPropertyName("type")]
-            public string Type { get; set; } = "roundrobin";
-
-            [JsonPropertyName("nodes")]
-            public Dictionary<string, int>? Nodes { get; set; }
-
-            [JsonPropertyName("retries")]
-            public int? Retries { get; set; }
-
-            [JsonPropertyName("scheme")]
-            public string? Scheme { get; set; }
-
-            [JsonPropertyName("pass_host")]
-            public string? PassHost { get; set; }
-        }
 
         public async Task<List<ApisixStandaloneUpstreamDto>> GetUpstreamsAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<ApisixStandaloneUpstreamDto>>("api/Upstream") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<ApisixStandaloneUpstreamDto>>("api/Upstream") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch upstreams");
+                return new();
+            }
         }
 
         public async Task SaveUpstreamAsync(ApisixStandaloneUpstreamDto upstream)
         {
             if (string.IsNullOrEmpty(upstream.Id))
                 upstream.Id = Guid.NewGuid().ToString("N")[..12];
-            await _httpClient.PutAsJsonAsync($"api/Upstream/{upstream.Id}", upstream);
+            var response = await _httpClient.PutAsJsonAsync($"api/Upstream/{upstream.Id}", upstream);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save upstream {UpstreamId}: {StatusCode} {Body}", upstream.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteUpstreamAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/Upstream/{id}");
+            var response = await _httpClient.DeleteAsync($"api/Upstream/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete upstream {UpstreamId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         // --- Services ---
-        public class ApisixServiceDto
-        {
-            [JsonPropertyName("id")]
-            public string? Id { get; set; }
-
-            [JsonPropertyName("name")]
-            public string Name { get; set; } = "";
-
-            [JsonPropertyName("description")]
-            public string? Description { get; set; }
-
-            [JsonPropertyName("upstream")]
-            public ApisixUpstreamDto? Upstream { get; set; }
-        }
 
         public async Task<List<ApisixServiceDto>> GetApisixServicesAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<ApisixServiceDto>>("api/Service") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<ApisixServiceDto>>("api/Service") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch APISIX services");
+                return new();
+            }
         }
 
         public async Task SaveApisixServiceAsync(ApisixServiceDto service)
         {
             if (string.IsNullOrEmpty(service.Id))
                 service.Id = Guid.NewGuid().ToString("N")[..12];
-            await _httpClient.PutAsJsonAsync($"api/Service/{service.Id}", service);
+            var response = await _httpClient.PutAsJsonAsync($"api/Service/{service.Id}", service);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save APISIX service {ServiceId}: {StatusCode} {Body}", service.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteApisixServiceAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/Service/{id}");
+            var response = await _httpClient.DeleteAsync($"api/Service/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete APISIX service {ServiceId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         // --- SSL Certificates ---
-        public class SslCertificateDto
-        {
-            [JsonPropertyName("id")]
-            public string? Id { get; set; }
-
-            [JsonPropertyName("snis")]
-            public List<string> Snis { get; set; } = new();
-
-            [JsonPropertyName("cert")]
-            public string Cert { get; set; } = "";
-
-            [JsonPropertyName("key")]
-            public string Key { get; set; } = "";
-
-            [JsonPropertyName("status")]
-            public int Status { get; set; } = 1;
-
-            // From list endpoint (safe view)
-            [JsonPropertyName("hasCert")]
-            public bool? HasCert { get; set; }
-
-            [JsonPropertyName("hasKey")]
-            public bool? HasKey { get; set; }
-
-            [JsonPropertyName("validity_start")]
-            public long? ValidityStart { get; set; }
-
-            [JsonPropertyName("validity_end")]
-            public long? ValidityEnd { get; set; }
-        }
 
         public async Task<List<SslCertificateDto>> GetSslCertificatesAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<SslCertificateDto>>("api/SSL") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<SslCertificateDto>>("api/SSL") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch SSL certificates");
+                return new();
+            }
         }
 
         public async Task SaveSslCertificateAsync(SslCertificateDto ssl)
         {
             if (string.IsNullOrEmpty(ssl.Id))
                 ssl.Id = Guid.NewGuid().ToString("N")[..12];
-            await _httpClient.PutAsJsonAsync($"api/SSL/{ssl.Id}", ssl);
+            var response = await _httpClient.PutAsJsonAsync($"api/SSL/{ssl.Id}", ssl);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save SSL certificate {SslId}: {StatusCode} {Body}", ssl.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteSslCertificateAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/SSL/{id}");
+            var response = await _httpClient.DeleteAsync($"api/SSL/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete SSL certificate {SslId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         // --- Global Rules ---
-        public class GlobalRuleDto
-        {
-            [JsonPropertyName("id")]
-            public string? Id { get; set; }
-
-            [JsonPropertyName("plugins")]
-            public Dictionary<string, object>? Plugins { get; set; }
-        }
 
         public async Task<List<GlobalRuleDto>> GetGlobalRulesAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<List<GlobalRuleDto>>("api/GlobalRule") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<List<GlobalRuleDto>>("api/GlobalRule") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch global rules");
+                return new();
+            }
         }
 
         public async Task SaveGlobalRuleAsync(GlobalRuleDto rule)
         {
             if (string.IsNullOrEmpty(rule.Id))
                 rule.Id = Guid.NewGuid().ToString("N")[..2];
-            await _httpClient.PutAsJsonAsync($"api/GlobalRule/{rule.Id}", rule);
+            var response = await _httpClient.PutAsJsonAsync($"api/GlobalRule/{rule.Id}", rule);
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to save global rule {RuleId}: {StatusCode} {Body}", rule.Id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
         public async Task DeleteGlobalRuleAsync(string id)
         {
-            await _httpClient.DeleteAsync($"api/GlobalRule/{id}");
+            var response = await _httpClient.DeleteAsync($"api/GlobalRule/{id}");
+            if (!response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete global rule {RuleId}: {StatusCode} {Body}", id, response.StatusCode, body);
+            }
+            response.EnsureSuccessStatusCode();
         }
 
-        // --- Server Info / Dashboard Stats ---
-        public class DashboardStatsDto
-        {
-            [JsonPropertyName("routeCount")]
-            public int RouteCount { get; set; }
-
-            [JsonPropertyName("serviceCount")]
-            public int ServiceCount { get; set; }
-
-            [JsonPropertyName("upstreamCount")]
-            public int UpstreamCount { get; set; }
-
-            [JsonPropertyName("consumerCount")]
-            public int ConsumerCount { get; set; }
-
-            [JsonPropertyName("sslCount")]
-            public int SslCount { get; set; }
-
-            [JsonPropertyName("globalRuleCount")]
-            public int GlobalRuleCount { get; set; }
-        }
+        // --- Dashboard Stats ---
 
         public async Task<DashboardStatsDto> GetDashboardStatsAsync()
         {
-            try { return await _httpClient.GetFromJsonAsync<DashboardStatsDto>("api/ServerInfo/dashboard") ?? new(); }
-            catch { return new(); }
+            try
+            {
+                return await _httpClient.GetFromJsonAsync<DashboardStatsDto>("api/ServerInfo/dashboard") ?? new();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch dashboard stats");
+                return new();
+            }
         }
 
         public async Task<string> GetServerInfoRawAsync()
         {
-            try { return await _httpClient.GetStringAsync("api/ServerInfo"); }
-            catch { return "{}"; }
+            try
+            {
+                return await _httpClient.GetStringAsync("api/ServerInfo");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogWarning(ex, "Failed to fetch server info");
+                return "{}";
+            }
         }
     }
 }

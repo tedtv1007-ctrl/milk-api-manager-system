@@ -67,10 +67,10 @@
 </MudDialog>
 
 @code {
-    private List<ApisixService.ConsumerGroupDto>? groups;
+    private List<ConsumerGroupDto>? groups;
     private bool isDialogVisible;
     private bool isEditing;
-    private ApisixService.ConsumerGroupDto editingGroup = new() { Id = "" };
+    private ConsumerGroupDto editingGroup = new() { Id = "" };
     private DialogOptions dialogOptions = new() { MaxWidth = MaxWidth.Small, FullWidth = true };
 
     protected override async Task OnInitializedAsync()
@@ -92,7 +92,7 @@
 
     private void OpenDialog()
     {
-        editingGroup = new ApisixService.ConsumerGroupDto { Id = "", RateLimit = 100 };
+        editingGroup = new ConsumerGroupDto { Id = "", RateLimit = 100 };
         isEditing = false;
         isDialogVisible = true;
     }
@@ -102,9 +102,9 @@
         isDialogVisible = false;
     }
 
-    private void EditGroup(ApisixService.ConsumerGroupDto group)
+    private void EditGroup(ConsumerGroupDto group)
     {
-        editingGroup = new ApisixService.ConsumerGroupDto { Id = group.Id, RateLimit = group.RateLimit };
+        editingGroup = new ConsumerGroupDto { Id = group.Id, RateLimit = group.RateLimit };
         isEditing = true;
         isDialogVisible = true;
     }

@@ -37,7 +37,7 @@
         </MudItem>
     </MudGrid>
 
-    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="0" Filter="new Func<ApisixService.AuditLogEntryDto,bool>(FilterFunc)">
+    <MudTable Items="@_logs" Hover="true" Bordered="false" Striped="true" Elevation="0" Filter="new Func<AuditLogEntryDto,bool>(FilterFunc)">
         <ToolBarContent>
             <MudText Typo="Typo.h6">Recent Activity Logs</MudText>
             <MudSpacer />
@@ -88,7 +88,7 @@
 
 @code {
     private string _searchString = "";
-    private List<ApisixService.AuditLogEntryDto> _logs = new();
+    private List<AuditLogEntryDto> _logs = new();
     private int _totalEvents = 0;
     private int _violations = 0;
     private string _topUser = "N/A";
@@ -132,7 +132,7 @@
         await JSRuntime.InvokeVoidAsync("downloadFile", fileName, "text/csv", base64);
     }
 
-    private bool FilterFunc(ApisixService.AuditLogEntryDto element)
+    private bool FilterFunc(AuditLogEntryDto element)
     {
         if (string.IsNullOrWhiteSpace(_searchString)) return true;
         return (element.User?.Contains(_searchString, StringComparison.OrdinalIgnoreCase) ?? false) ||

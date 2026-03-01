@@ -107,11 +107,11 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.SslCertificateDto> _ssls = new();
+    private List<SslCertificateDto> _ssls = new();
     private bool _loading = true;
     private bool _dialogOpen;
     private bool _isNew;
-    private ApisixService.SslCertificateDto _current = new();
+    private SslCertificateDto _current = new();
     private string _snisText = "";
     private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
 
@@ -127,15 +127,15 @@
     private void AddNew()
     {
         _isNew = true;
-        _current = new ApisixService.SslCertificateDto { Id = Guid.NewGuid().ToString("N")[..12], Status = 1 };
+        _current = new SslCertificateDto { Id = Guid.NewGuid().ToString("N")[..12], Status = 1 };
         _snisText = "";
         _dialogOpen = true;
     }
 
-    private void Edit(ApisixService.SslCertificateDto ssl)
+    private void Edit(SslCertificateDto ssl)
     {
         _isNew = false;
-        _current = new ApisixService.SslCertificateDto
+        _current = new SslCertificateDto
         {
             Id = ssl.Id,
             Status = ssl.Status,
@@ -169,7 +169,7 @@
         Snackbar.Add("SSL certificate saved", Severity.Success);
     }
 
-    private async Task Delete(ApisixService.SslCertificateDto ssl)
+    private async Task Delete(SslCertificateDto ssl)
     {
         await ApisixService.DeleteSslCertificateAsync(ssl.Id!);
         await Load();

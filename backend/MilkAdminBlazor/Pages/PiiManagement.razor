@@ -89,9 +89,9 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.PiiMaskingRuleDto> rules;
+    private List<PiiMaskingRuleDto> rules;
     private bool showModal = false;
-    private ApisixService.PiiMaskingRuleDto editingRule = new();
+    private PiiMaskingRuleDto editingRule = new();
 
     protected override async Task OnInitializedAsync()
     {
@@ -105,13 +105,13 @@
 
     private void AddNewRule()
     {
-        editingRule = new ApisixService.PiiMaskingRuleDto { IsActive = true, RegexPattern = ".*", ReplacePattern = "***" };
+        editingRule = new PiiMaskingRuleDto { IsActive = true, RegexPattern = ".*", ReplacePattern = "***" };
         showModal = true;
     }
 
-    private void EditRule(ApisixService.PiiMaskingRuleDto rule)
+    private void EditRule(PiiMaskingRuleDto rule)
     {
-        editingRule = new ApisixService.PiiMaskingRuleDto
+        editingRule = new PiiMaskingRuleDto
         {
             Id = rule.Id,
             RouteId = rule.RouteId,
@@ -137,7 +137,7 @@
         await LoadRules();
     }
 
-    private async Task ToggleRule(ApisixService.PiiMaskingRuleDto rule)
+    private async Task ToggleRule(PiiMaskingRuleDto rule)
     {
         rule.IsActive = !rule.IsActive;
         await ApisixService.SavePiiRuleAsync(rule);

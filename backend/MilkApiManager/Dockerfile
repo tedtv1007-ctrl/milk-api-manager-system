@@ -15,4 +15,6 @@ RUN wget https://github.com/grafana/k6/releases/download/v0.50.0/k6-v0.50.0-linu
     rm -rf k6-v0.50.0-linux-amd64*
 WORKDIR /app
 COPY --from=build /app/publish .
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
+  CMD curl -f http://localhost:8080/health/ready || exit 1
 ENTRYPOINT ["dotnet", "MilkApiManager.dll"]

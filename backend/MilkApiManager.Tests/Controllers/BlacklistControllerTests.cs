@@ -1,108 +1,70 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Moq;
 using MilkApiManager.Controllers;
-using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
 using Xunit;
 
 namespace MilkApiManager.Tests.Controllers;
 
-public class BlacklistControllerTests : IDisposable
+/// <summary>
+/// Updated tests for BlacklistController after A-1 refactor (delegates to IBlacklistService).
+/// </summary>
+public class BlacklistControllerTests
 {
-    private readonly Mock<IApisixClient> _mockApisixClient;
+    private readonly Mock<IBlacklistService> _mockBlacklistService;
     private readonly Mock<ILogger<BlacklistController>> _mockLogger;
-    private readonly AppDbContext _dbContext;
-    private readonly Mock<IAuditLogService> _mockAuditLog;
-    private readonly Mock<ApisixSyncOutboxService> _mockOutboxService;
 
     public BlacklistControllerTests()
     {
-        _mockApisixClient = new Mock<IApisixClient>();
+        _mockBlacklistService = new Mock<IBlacklistService>();
         _mockLogger = new Mock<ILogger<BlacklistController>>();
-        _mockAuditLog = new Mock<IAuditLogService>(MockBehavior.Strict);
-
-        var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
-            .Options;
-        _dbContext = new AppDbContext(options);
-
-        _mockOutboxService = new Mock<ApisixSyncOutboxService>(
-            _dbContext,
-            Mock.Of<ILogger<ApisixSyncOutboxService>>());
     }
 
-    private BlacklistController CreateController(bool persistToDb = true, bool useOutbox = false)
+    private BlacklistController CreateController()
     {
-        var configData = new Dictionary<string, string?>
+        return new BlacklistController(_mockBlacklistService.Object, _mockLogger.Object);
+    }
+
+    [Fact]
+    public async Task GetBlacklist_ReturnsServiceEntries()
+    {
+        var entries = new List<BlacklistEntry>
         {
-            { "Blacklist:PersistToDatabase", persistToDb.ToString() },
-            { "Sync:Blacklist:UseOutbox", useOutbox.ToString() }
+            new BlacklistEntry { IpOrCidr = "192.168.1.100", Reason = "Test", AddedBy = "UnitTest", AddedAt = DateTime.UtcNow }
         };
-        var config = new ConfigurationBuilder()
-            .AddInMemoryCollection(configData)
-            .Build();
+        _mockBlacklistService.Setup(s => s.GetBlacklistAsync()).ReturnsAsync(entries);
 
-        return new BlacklistController(_mockApisixClient.Object, _mockLogger.Object, _dbContext, config, _mockAuditLog.Object, _mockOutboxService.Object);
+        var controller = CreateController();
+        var result = await controller.GetBlacklist();
+
+        var okResult = Assert.IsType<OkObjectResult>(result);
+        var returnedEntries = Assert.IsAssignableFrom<List<BlacklistEntry>>(okResult.Value);
+        Assert.Single(returnedEntries);
+        Assert.Equal("192.168.1.100", returnedEntries[0].IpOrCidr);
     }
 
     [Fact]
-    public async Task GetBlacklist_WithDbPersistence_ReturnsDbEntries()
+    public async Task GetBlacklist_WhenServiceThrows_Returns500()
     {
-        // Arrange
-        _dbContext.BlacklistEntries.Add(new BlacklistEntry
-        {
-            IpOrCidr = "192.168.1.100",
-            Reason = "Test",
-            AddedBy = "UnitTest",
-            AddedAt = DateTime.UtcNow
-        });
-        await _dbContext.SaveChangesAsync();
+        _mockBlacklistService.Setup(s => s.GetBlacklistAsync()).ThrowsAsync(new Exception("DB failure"));
 
-        var controller = CreateController(persistToDb: true);
-
-        // Act
+        var controller = CreateController();
         var result = await controller.GetBlacklist();
 
-        // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var entries = Assert.IsAssignableFrom<List<BlacklistEntry>>(okResult.Value);
-        Assert.Single(entries);
-        Assert.Equal("192.168.1.100", entries[0].IpOrCidr);
-    }
-
-    [Fact]
-    public async Task GetBlacklist_WithoutDbPersistence_ReturnsApisixData()
-    {
-        // Arrange
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string> { "10.0.0.1", "10.0.0.2" });
-
-        var controller = CreateController(persistToDb: false);
-
-        // Act
-        var result = await controller.GetBlacklist();
-
-        // Assert
-        var okResult = Assert.IsType<OkObjectResult>(result);
-        var entries = Assert.IsAssignableFrom<List<BlacklistEntry>>(okResult.Value);
-        Assert.Equal(2, entries.Count);
+        var statusResult = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(500, statusResult.StatusCode);
     }
 
     [Fact]
     public async Task UpdateBlacklist_AddIp_Success()
     {
-        // Arrange
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string>());
-        _mockApisixClient.Setup(c => c.UpdateBlacklistAsync(It.IsAny<List<string>>()))
-            .Returns(Task.CompletedTask);
+        _mockBlacklistService
+            .Setup(s => s.AddAsync(It.Is<BlacklistUpdateRequest>(r => r.Ip == "192.168.1.200")))
+            .ReturnsAsync("IP 192.168.1.200 added successfully");
 
-        var controller = CreateController(persistToDb: true);
+        var controller = CreateController();
         var request = new BlacklistUpdateRequest
         {
             Ip = "192.168.1.200",
@@ -111,97 +73,32 @@ public class BlacklistControllerTests : IDisposable
             AddedBy = "admin"
         };
 
-        // Expect audit log to be called with Action = "Blacklist.Add"
-        _mockAuditLog.Setup(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Add")))
-            .Returns(Task.CompletedTask);
-
-        // Act
         var result = await controller.UpdateBlacklist(request);
 
-        // Assert
         var okResult = Assert.IsType<OkObjectResult>(result);
-        _mockApisixClient.Verify(c => c.UpdateBlacklistAsync(
-            It.Is<List<string>>(l => l.Contains("192.168.1.200"))), Times.Once);
-        _mockAuditLog.Verify(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Add")), Times.Once);
-        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(It.IsAny<List<string>>(), It.IsAny<CancellationToken>()), Times.Never);
-
-        // Verify DB persistence
-        var entry = await _dbContext.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == "192.168.1.200");
-        Assert.NotNull(entry);
-        Assert.Equal("Suspicious activity", entry.Reason);
+        _mockBlacklistService.Verify(s => s.AddAsync(It.Is<BlacklistUpdateRequest>(r => r.Ip == "192.168.1.200")), Times.Once);
     }
 
     [Fact]
     public async Task UpdateBlacklist_RemoveIp_Success()
     {
-        // Arrange
-        _dbContext.BlacklistEntries.Add(new BlacklistEntry
-        {
-            IpOrCidr = "10.0.0.5",
-            AddedAt = DateTime.UtcNow
-        });
-        await _dbContext.SaveChangesAsync();
+        _mockBlacklistService
+            .Setup(s => s.RemoveAsync(It.Is<BlacklistUpdateRequest>(r => r.Ip == "10.0.0.5")))
+            .ReturnsAsync("IP 10.0.0.5 removed successfully");
 
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string> { "10.0.0.5" });
-        _mockApisixClient.Setup(c => c.UpdateBlacklistAsync(It.IsAny<List<string>>()))
-            .Returns(Task.CompletedTask);
-
-        var controller = CreateController(persistToDb: true);
+        var controller = CreateController();
         var request = new BlacklistUpdateRequest { Ip = "10.0.0.5", Action = "remove" };
 
-        // Expect audit log to be called with Action = "Blacklist.Remove"
-        _mockAuditLog.Setup(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Remove")))
-            .Returns(Task.CompletedTask);
-
-        // Act
-        var result = await controller.UpdateBlacklist(request);
-
-        // Assert
-        Assert.IsType<OkObjectResult>(result);
-        _mockAuditLog.Verify(a => a.LogAsync(It.Is<Models.AuditLogEntry>(e => e.Action == "Blacklist.Remove")), Times.Once);
-        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(It.IsAny<List<string>>(), It.IsAny<CancellationToken>()), Times.Never);
-        var entry = await _dbContext.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == "10.0.0.5");
-        Assert.Null(entry);
-    }
-
-    [Fact]
-    public async Task UpdateBlacklist_WhenOutboxEnabled_EnqueuesInsteadOfDirectSync()
-    {
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string>());
-
-        _mockOutboxService.Setup(o => o.EnqueueBlacklistSyncAsync(
-                It.Is<List<string>>(l => l.Contains("172.16.1.10")),
-                It.IsAny<CancellationToken>()))
-            .Returns(Task.CompletedTask);
-
-        _mockAuditLog.Setup(a => a.LogAsync(It.IsAny<Models.AuditLogEntry>()))
-            .Returns(Task.CompletedTask);
-
-        var controller = CreateController(persistToDb: true, useOutbox: true);
-        var request = new BlacklistUpdateRequest
-        {
-            Ip = "172.16.1.10",
-            Action = "add",
-            Reason = "outbox test",
-            AddedBy = "tester"
-        };
-
         var result = await controller.UpdateBlacklist(request);
 
         Assert.IsType<OkObjectResult>(result);
-        _mockOutboxService.Verify(o => o.EnqueueBlacklistSyncAsync(
-            It.Is<List<string>>(l => l.Contains("172.16.1.10")),
-            It.IsAny<CancellationToken>()), Times.Once);
-        _mockApisixClient.Verify(c => c.UpdateBlacklistAsync(It.IsAny<List<string>>()), Times.Never);
+        _mockBlacklistService.Verify(s => s.RemoveAsync(It.Is<BlacklistUpdateRequest>(r => r.Ip == "10.0.0.5")), Times.Once);
     }
 
     [Fact]
     public async Task UpdateBlacklist_NullRequest_ReturnsBadRequest()
     {
         var controller = CreateController();
-
         var result = await controller.UpdateBlacklist(null!);
 
         Assert.IsType<BadRequestObjectResult>(result);
@@ -221,22 +118,53 @@ public class BlacklistControllerTests : IDisposable
     [Fact]
     public async Task UpdateBlacklist_InvalidAction_ReturnsBadRequest()
     {
-        // Arrange
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string>());
-
         var controller = CreateController();
         var request = new BlacklistUpdateRequest { Ip = "1.2.3.4", Action = "invalid" };
 
-        // Act
         var result = await controller.UpdateBlacklist(request);
 
-        // Assert
         Assert.IsType<BadRequestObjectResult>(result);
     }
 
-    public void Dispose()
+    [Fact]
+    public async Task UpdateBlacklist_InvalidIpFormat_ReturnsBadRequest()
     {
-        _dbContext.Dispose();
+        var controller = CreateController();
+        var request = new BlacklistUpdateRequest { Ip = "not-an-ip", Action = "add" };
+
+        var result = await controller.UpdateBlacklist(request);
+
+        Assert.IsType<BadRequestObjectResult>(result);
+    }
+
+    [Fact]
+    public async Task UpdateBlacklist_ValidCidr_Succeeds()
+    {
+        _mockBlacklistService
+            .Setup(s => s.AddAsync(It.IsAny<BlacklistUpdateRequest>()))
+            .ReturnsAsync("IP 10.0.0.0/24 added successfully");
+
+        var controller = CreateController();
+        var request = new BlacklistUpdateRequest { Ip = "10.0.0.0/24", Action = "add" };
+
+        var result = await controller.UpdateBlacklist(request);
+
+        Assert.IsType<OkObjectResult>(result);
+    }
+
+    [Fact]
+    public async Task UpdateBlacklist_ServiceThrows_Returns500()
+    {
+        _mockBlacklistService
+            .Setup(s => s.AddAsync(It.IsAny<BlacklistUpdateRequest>()))
+            .ThrowsAsync(new Exception("Gateway unreachable"));
+
+        var controller = CreateController();
+        var request = new BlacklistUpdateRequest { Ip = "1.2.3.4", Action = "add" };
+
+        var result = await controller.UpdateBlacklist(request);
+
+        var statusResult = Assert.IsType<ObjectResult>(result);
+        Assert.Equal(500, statusResult.StatusCode);
     }
 }

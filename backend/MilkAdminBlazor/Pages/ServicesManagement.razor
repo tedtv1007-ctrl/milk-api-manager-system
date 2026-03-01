@@ -85,11 +85,11 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.ApisixServiceDto> _services = new();
+    private List<ApisixServiceDto> _services = new();
     private bool _loading = true;
     private bool _dialogOpen;
     private bool _isNew;
-    private ApisixService.ApisixServiceDto _current = new();
+    private ApisixServiceDto _current = new();
     private string _nodesText = "";
     private string _upstreamType = "roundrobin";
     private DialogOptions _dialogOpts = new() { MaxWidth = MaxWidth.Medium, FullWidth = true, CloseButton = true };
@@ -106,16 +106,16 @@
     private void AddNew()
     {
         _isNew = true;
-        _current = new ApisixService.ApisixServiceDto { Id = Guid.NewGuid().ToString("N")[..12] };
+        _current = new ApisixServiceDto { Id = Guid.NewGuid().ToString("N")[..12] };
         _nodesText = "";
         _upstreamType = "roundrobin";
         _dialogOpen = true;
     }
 
-    private void Edit(ApisixService.ApisixServiceDto svc)
+    private void Edit(ApisixServiceDto svc)
     {
         _isNew = false;
-        _current = new ApisixService.ApisixServiceDto
+        _current = new ApisixServiceDto
         {
             Id = svc.Id,
             Name = svc.Name,
@@ -151,7 +151,7 @@
             return;
         }
 
-        _current.Upstream = new ApisixService.ApisixUpstreamDto { Type = _upstreamType, Nodes = nodes };
+        _current.Upstream = new ApisixUpstreamDto { Type = _upstreamType, Nodes = nodes };
 
         await ApisixService.SaveApisixServiceAsync(_current);
         _dialogOpen = false;
@@ -159,7 +159,7 @@
         Snackbar.Add("Service saved", Severity.Success);
     }
 
-    private async Task Delete(ApisixService.ApisixServiceDto svc)
+    private async Task Delete(ApisixServiceDto svc)
     {
         await ApisixService.DeleteApisixServiceAsync(svc.Id!);
         await Load();

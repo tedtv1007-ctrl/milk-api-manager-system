@@ -6,7 +6,7 @@
     [Parameter, EditorRequired]
     public required string RouteId { get; set; }
 
-    private List<ApisixService.WhitelistEntryDto> entries = new();
+    private List<WhitelistEntryDto> entries = new();
 
     private string newIp = string.Empty;
     private string newReason = string.Empty;

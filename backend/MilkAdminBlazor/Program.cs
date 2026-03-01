@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Web;
 using MudBlazor.Services;
 using MilkAdminBlazor.Data;
+using Microsoft.Extensions.Http.Resilience;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +11,7 @@ builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
 builder.Services.AddMudServices(); // UI Component Library
 
-// Register HttpClient for ApisixService to talk to MilkApiManager
+// Register HttpClient for ApisixService to talk to MilkApiManager (E-5: with resilience handler)
 builder.Services.AddHttpClient<ApisixService>(client =>
 {
     var backendUrl = builder.Configuration["BackendApiUrl"] ?? "http://localhost:5001/";
@@ -18,7 +19,8 @@ builder.Services.AddHttpClient<ApisixService>(client =>
 
     var apiKey = builder.Configuration["BackendApiKey"] ?? "milk-admin-secret-key-change-me";
     client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
-});
+})
+.AddStandardResilienceHandler();
 
 var app = builder.Build();
 

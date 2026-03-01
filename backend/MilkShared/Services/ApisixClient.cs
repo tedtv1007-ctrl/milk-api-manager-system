@@ -59,8 +59,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete route {RouteId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete route {RouteId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted route {RouteId}", id);
         }
         
         public virtual async Task<string> GetRoutesAsync()
@@ -136,8 +139,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete service {ServiceId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete service {ServiceId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted service {ServiceId}", id);
         }
 
         public virtual async Task CreateConsumerAsync(string username, Consumer consumerConfig)
@@ -185,8 +191,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete consumer {Username}: {StatusCode}", username, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete consumer {Username}. APISIX returned {StatusCode}: {ErrorResponse}", username, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted consumer {Username}", username);
         }
 
         public virtual async Task<List<Route>> GetRoutesTypedAsync()
@@ -341,8 +350,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete consumer group {GroupId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete consumer group {GroupId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted consumer group {GroupId}", id);
         }
 
         // ========================
@@ -395,8 +407,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete upstream {UpstreamId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete upstream {UpstreamId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted upstream {UpstreamId}", id);
         }
 
         // ========================
@@ -449,8 +464,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete SSL certificate {SslId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete SSL certificate {SslId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted SSL certificate {SslId}", id);
         }
 
         // ========================
@@ -485,8 +503,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete global rule {RuleId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete global rule {RuleId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted global rule {RuleId}", id);
         }
 
         // ========================
@@ -521,8 +542,11 @@ namespace MilkApiManager.Services
             var response = await _httpClient.SendAsync(request);
             if (!response.IsSuccessStatusCode)
             {
-                _logger.LogWarning("Failed to delete plugin config {ConfigId}: {StatusCode}", id, response.StatusCode);
+                var errorContent = await response.Content.ReadAsStringAsync();
+                _logger.LogError("Failed to delete plugin config {ConfigId}. APISIX returned {StatusCode}: {ErrorResponse}", id, response.StatusCode, errorContent);
             }
+            response.EnsureSuccessStatusCode();
+            _logger.LogInformation("Successfully deleted plugin config {ConfigId}", id);
         }
 
         // ========================

@@ -9,16 +9,16 @@ namespace MilkApiManager.Services
 {
     public class MockApisixClient : ApisixClient
     {
-        private static readonly ConcurrentDictionary<string, ApisixRoute> _routes = new();
-        private static readonly ConcurrentDictionary<string, Consumer> _consumers = new();
-        private static readonly ConcurrentDictionary<string, Service> _services = new();
-        private static readonly ConcurrentDictionary<string, ConsumerGroup> _consumerGroups = new();
-        private static readonly ConcurrentDictionary<string, StandaloneUpstream> _upstreams = new();
-        private static readonly ConcurrentDictionary<string, SslCertificate> _ssls = new();
-        private static readonly ConcurrentDictionary<string, GlobalRule> _globalRules = new();
-        private static readonly ConcurrentDictionary<string, PluginConfig> _pluginConfigs = new();
-        private static readonly ConcurrentDictionary<string, List<string>> _whitelists = new();
-        private static List<string> _blacklist = new();
+        private readonly ConcurrentDictionary<string, ApisixRoute> _routes = new();
+        private readonly ConcurrentDictionary<string, Consumer> _consumers = new();
+        private readonly ConcurrentDictionary<string, Service> _services = new();
+        private readonly ConcurrentDictionary<string, ConsumerGroup> _consumerGroups = new();
+        private readonly ConcurrentDictionary<string, StandaloneUpstream> _upstreams = new();
+        private readonly ConcurrentDictionary<string, SslCertificate> _ssls = new();
+        private readonly ConcurrentDictionary<string, GlobalRule> _globalRules = new();
+        private readonly ConcurrentDictionary<string, PluginConfig> _pluginConfigs = new();
+        private readonly ConcurrentDictionary<string, List<string>> _whitelists = new();
+        private List<string> _blacklist = new();
 
         public MockApisixClient(HttpClient httpClient, ILogger<ApisixClient> logger, IOptions<ApisixOptions> options) : base(httpClient, logger, options)
         {

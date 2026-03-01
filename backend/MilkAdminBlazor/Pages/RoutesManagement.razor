@@ -150,13 +150,13 @@
 </MudContainer>
 
 @code {
-    private List<ApisixService.ApisixRouteDto> _routes = new();
+    private List<ApisixRouteDto> _routes = new();
     private bool _loading = true;
     private string _searchTerm = "";
 
     private bool _dialogOpen;
     private bool _isNew;
-    private ApisixService.ApisixRouteDto _current = new();
+    private ApisixRouteDto _current = new();
     private HashSet<string> _selectedMethods = new();
     private string _nodesText = "";
     private string _pluginsJson = "{}";
@@ -179,17 +179,17 @@
     private void AddNew()
     {
         _isNew = true;
-        _current = new ApisixService.ApisixRouteDto { Id = Guid.NewGuid().ToString("N")[..12] };
+        _current = new ApisixRouteDto { Id = Guid.NewGuid().ToString("N")[..12] };
         _selectedMethods.Clear();
         _nodesText = "";
         _pluginsJson = "{}";
         _dialogOpen = true;
     }
 
-    private void EditRoute(ApisixService.ApisixRouteDto route)
+    private void EditRoute(ApisixRouteDto route)
     {
         _isNew = false;
-        _current = new ApisixService.ApisixRouteDto
+        _current = new ApisixRouteDto
         {
             Id = route.Id,
             Name = route.Name,
@@ -237,7 +237,7 @@
                     nodes[kv[0]] = 1;
             }
             if (nodes.Any())
-                _current.Upstream = new ApisixService.ApisixUpstreamDto { Nodes = nodes };
+                _current.Upstream = new ApisixUpstreamDto { Nodes = nodes };
         }
 
         // Parse plugins JSON
@@ -260,14 +260,14 @@
         Snackbar.Add("Route saved successfully", Severity.Success);
     }
 
-    private async Task DeleteRoute(ApisixService.ApisixRouteDto route)
+    private async Task DeleteRoute(ApisixRouteDto route)
     {
         await ApisixService.DeleteApisixRouteAsync(route.Id!);
         await LoadRoutes();
         Snackbar.Add($"Route '{route.Name}' deleted", Severity.Warning);
     }
 
-    private void ViewJson(ApisixService.ApisixRouteDto route)
+    private void ViewJson(ApisixRouteDto route)
     {
         _viewJson = System.Text.Json.JsonSerializer.Serialize(route, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
         _jsonDialogOpen = true;
