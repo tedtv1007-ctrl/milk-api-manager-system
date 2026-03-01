@@ -40,7 +40,7 @@ public class RouteControllerTests
     [Fact]
     public async Task GetRoutes_ReturnsOk()
     {
-        var routes = new List<ApisixRoute> { new ApisixRoute { Id = "r1", Name = "Route 1" } };
+        var routes = new List<ApisixRoute> { new ApisixRoute { Id = "r1", Name = "Route 1", Uri = "/r1" } };
         _mockApisixClient.Setup(c => c.GetRoutesTypedAsync())
             .ReturnsAsync(routes);
 
