@@ -10,14 +10,14 @@ namespace MilkApiManager.Services
     public class AdGroupSyncService : IHostedService, IDisposable
     {
         private readonly ILogger<AdGroupSyncService> _logger;
-        private readonly ApisixClient _apisixClient;
+        private readonly IApisixClient _apisixClient;
         private readonly IServiceProvider _serviceProvider;
         private readonly IConfiguration _configuration;
         private Timer? _timer;
         private string _syncStatus = "Idle";
         private DateTime? _lastSyncTime;
 
-        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, ApisixClient apisixClient, IServiceProvider serviceProvider, IConfiguration configuration)
+        public AdGroupSyncService(ILogger<AdGroupSyncService> logger, IApisixClient apisixClient, IServiceProvider serviceProvider, IConfiguration configuration)
         {
             _logger = logger;
             _apisixClient = apisixClient;

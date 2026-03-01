@@ -26,8 +26,13 @@ public class Program
 
             var apiKey = builder.Configuration["BackendApiKey"] ?? "milk-admin-secret-key-change-me";
             client.DefaultRequestHeaders.Add("X-API-KEY", apiKey);
+            
+            client.Timeout = TimeSpan.FromMinutes(2); // Increase base timeout
         })
-        .AddStandardResilienceHandler();
+        .AddStandardResilienceHandler(options => {
+            options.TotalRequestTimeout.Timeout = TimeSpan.FromMinutes(2);
+            options.AttemptTimeout.Timeout = TimeSpan.FromMinutes(1);
+        });
 
         var app = builder.Build();
 
