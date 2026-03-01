@@ -92,12 +92,14 @@ fi
 # 3. Playwright E2E Tests
 echo -e "\n[Step 3/3] Running Playwright E2E Tests..."
 cd e2e
-# Ensure dependencies are present
+# Ensure dependencies and browsers are present
 if [ ! -d "node_modules" ]; then
     echo "   [Info] Installing E2E dependencies..."
     npm install --silent
-    npx playwright install --with-deps chromium > /dev/null 2>&1
 fi
+
+echo "   [Info] Installing Playwright browsers..."
+npx playwright install chromium
 
 export BASE_URL="http://localhost:5000"
 if npm test; then
