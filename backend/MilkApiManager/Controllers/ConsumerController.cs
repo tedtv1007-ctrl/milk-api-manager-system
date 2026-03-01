@@ -198,28 +198,34 @@ namespace MilkApiManager.Controllers
             var quota = new { count = 1000, time_window = 3600, rejected_code = 429, rejected_msg = "API quota exceeded. Please contact support." };
             var rateLimit = new { rate = 0, burst = 0, rejected_code = 503, key = "remote_addr" };
 
-            if (value.TryGetProperty("plugins", out var plugins))
+            if (value.ValueKind == JsonValueKind.Object && value.TryGetProperty("plugins", out var plugins))
             {
-                if (plugins.TryGetProperty("limit-count", out var limitCount))
+                if (plugins.ValueKind == JsonValueKind.Object && plugins.TryGetProperty("limit-count", out var limitCount))
                 {
-                    quota = new
+                    if (limitCount.ValueKind == JsonValueKind.Object)
                     {
-                        count = limitCount.TryGetProperty("count", out var c) ? c.GetInt32() : 1000,
-                        time_window = limitCount.TryGetProperty("time_window", out var tw) ? tw.GetInt32() : 3600,
-                        rejected_code = limitCount.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 429,
-                        rejected_msg = limitCount.TryGetProperty("rejected_msg", out var rm) ? rm.GetString() ?? "API quota exceeded." : "API quota exceeded. Please contact support."
-                    };
+                        quota = new
+                        {
+                            count = limitCount.TryGetProperty("count", out var c) && c.ValueKind != JsonValueKind.Null ? c.GetInt32() : 1000,
+                            time_window = limitCount.TryGetProperty("time_window", out var tw) && tw.ValueKind != JsonValueKind.Null ? tw.GetInt32() : 3600,
+                            rejected_code = limitCount.TryGetProperty("rejected_code", out var rc) && rc.ValueKind != JsonValueKind.Null ? rc.GetInt32() : 429,
+                            rejected_msg = limitCount.TryGetProperty("rejected_msg", out var rm) && rm.ValueKind != JsonValueKind.Null ? rm.GetString() ?? "API quota exceeded." : "API quota exceeded. Please contact support."
+                        };
+                    }
                 }
 
-                if (plugins.TryGetProperty("limit-req", out var limitReq))
+                if (plugins.ValueKind == JsonValueKind.Object && plugins.TryGetProperty("limit-req", out var limitReq))
                 {
-                    rateLimit = new
+                    if (limitReq.ValueKind == JsonValueKind.Object)
                     {
-                        rate = limitReq.TryGetProperty("rate", out var r) ? r.GetInt32() : 0,
-                        burst = limitReq.TryGetProperty("burst", out var b) ? b.GetInt32() : 0,
-                        rejected_code = limitReq.TryGetProperty("rejected_code", out var rc) ? rc.GetInt32() : 503,
-                        key = limitReq.TryGetProperty("key", out var k) ? k.GetString() ?? "remote_addr" : "remote_addr"
-                    };
+                        rateLimit = new
+                        {
+                            rate = limitReq.TryGetProperty("rate", out var r) && r.ValueKind != JsonValueKind.Null ? r.GetInt32() : 0,
+                            burst = limitReq.TryGetProperty("burst", out var b) && b.ValueKind != JsonValueKind.Null ? b.GetInt32() : 0,
+                            rejected_code = limitReq.TryGetProperty("rejected_code", out var rc) && rc.ValueKind != JsonValueKind.Null ? rc.GetInt32() : 503,
+                            key = limitReq.TryGetProperty("key", out var k) && k.ValueKind != JsonValueKind.Null ? k.GetString() ?? "remote_addr" : "remote_addr"
+                        };
+                    }
                 }
             }
 

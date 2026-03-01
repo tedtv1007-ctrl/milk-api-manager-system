@@ -57,7 +57,7 @@ public static class ProductionStartupGuardrails
 
         if (isTestMode || useDemoAuth)
         {
-            throw new InvalidOperationException("Production guardrail: USE_TEST_MODE and USE_DEMO_AUTH must both be disabled.");
+            throw new InvalidOperationException($"Production guardrail: USE_TEST_MODE and USE_DEMO_AUTH must both be disabled. (Current Env: {environment.EnvironmentName})");
         }
 
         var connectionString = configuration.GetConnectionString("DefaultConnection")
