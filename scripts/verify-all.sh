@@ -24,7 +24,7 @@ echo -e "\n[Step 1/3] Checking Infrastructure (Docker)..."
 
 if [ "$IS_TEST_MODE" = "true" ]; then
     # Test Mode: only check essential containers
-    REQUIRED_CONTAINERS=("milk-db" "milk-backend" "milk-worker")
+    REQUIRED_CONTAINERS=("milk-db" "milk-backend" "milk-worker" "milk-admin-ui")
 else
     # Full Mode: check all core containers
     REQUIRED_CONTAINERS=("apisix" "etcd" "prometheus" "grafana")

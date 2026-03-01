@@ -35,11 +35,15 @@ namespace MilkApiManager.Controllers
                 {
                     foreach (var item in list.EnumerateArray())
                     {
-                        var value = item.GetProperty("value");
-                        var username = value.GetProperty("username").GetString();
-                        
-                        var consumerObj = ParseConsumerFromApisix(value, username!);
-                        consumers.Add(consumerObj);
+                        if (item.TryGetProperty("value", out var value) && value.ValueKind != JsonValueKind.Null)
+                        {
+                            if (value.TryGetProperty("username", out var usernameEl) && usernameEl.ValueKind != JsonValueKind.Null)
+                            {
+                                var username = usernameEl.GetString();
+                                var consumerObj = ParseConsumerFromApisix(value, username!);
+                                consumers.Add(consumerObj);
+                            }
+                        }
                     }
                 }
 
