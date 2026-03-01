@@ -214,7 +214,7 @@ if (isTestMode)
     builder.Services.AddHttpClient<IApisixClient, MockApisixClient>()
         .AddStandardResilienceHandler();
     
-    // Ensure the interface points to the same singleton instance
+    // Explicitly override the interface to use the same singleton instance
     builder.Services.AddSingleton<IApisixClient>(sp => sp.GetRequiredService<MockApisixClient>());
 }
 else
