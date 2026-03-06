@@ -122,7 +122,8 @@ namespace MilkApiManager.Services
             await Task.Yield();
             var list = _consumers.Select(kv => new { value = kv.Value, key = $"/apisix/consumers/{kv.Key}" }).ToList();
             var response = new { list = list, total = list.Count };
-            return JsonSerializer.Serialize(response);
+            var options = new JsonSerializerOptions { PropertyNamingPolicy = JsonNamingPolicy.CamelCase };
+            return JsonSerializer.Serialize(response, options);
         }
 
         public override async Task UpdateConsumerAsync(string username, object consumerConfig)
