@@ -156,6 +156,8 @@ services:
       - APISIX_ADMIN_URL=http://apisix:9180/apisix/admin/
       - APISIX_ADMIN_KEY=${APISIX_ADMIN_KEY:-edd1c9f034335f136f87ad84b625c88b}
     command: [ "dotnet", "MilkApiManager.dll", "--migrate-only" ]
+    security_opt:
+      - no-new-privileges:true
     networks:
       - apisix
     depends_on:
@@ -182,6 +184,8 @@ services:
       - Sync__Blacklist__EnableReconcile=true
       - AuditLog__UseDurableShipping=true
       - AuditLog__EnableLogstashShipping=true
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "5001:8080"
     healthcheck:
@@ -216,6 +220,8 @@ services:
       - AuditLog__UseDurableShipping=true
       - AuditLog__Outbox__PollIntervalSeconds=5
       - AuditLog__Outbox__MaxAttempts=8
+    security_opt:
+      - no-new-privileges:true
     networks:
       - apisix
     depends_on:
@@ -233,6 +239,8 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - BackendApiUrl=http://milk-backend:8080
+    security_opt:
+      - no-new-privileges:true
     ports:
       - "5000:8080"
     healthcheck:

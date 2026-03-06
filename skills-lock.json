@@ -1,0 +1,25 @@
+{
+  "version": 1,
+  "skills": {
+    ".NET Conventions": {
+      "source": "exceptionless/exceptionless",
+      "sourceType": "github",
+      "computedHash": "576580a128871e3c94d3e9e2009abfdeb68a2f81ae2738101b1e55ae4cd68ad9"
+    },
+    "api-gateway": {
+      "source": "maton-ai/api-gateway-skill",
+      "sourceType": "github",
+      "computedHash": "9968eef34ce0b04374b811d26744a115c72714027be43df01e74c8203f60c79d"
+    },
+    "monitoring-observability": {
+      "source": "supercent-io/skills-template",
+      "sourceType": "github",
+      "computedHash": "3ef1ac3fc38698642694c6de5e648c45908b1451e48f77de67c841679746b28d"
+    },
+    "postgresql-optimization": {
+      "source": "github/awesome-copilot",
+      "sourceType": "github",
+      "computedHash": "8022448de70ba9a485e3b5bce34c5bbc644f93eb39b68431c9f7dabcf03aeb09"
+    }
+  }
+}

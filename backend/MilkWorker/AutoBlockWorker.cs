@@ -28,7 +28,7 @@ public class AutoBlockWorker : BackgroundService
         {
             try
             {
-                await MonitorAndBlockAsync();
+                await MonitorAndBlockAsync(stoppingToken);
             }
             catch (Exception ex)
             {
@@ -39,7 +39,7 @@ public class AutoBlockWorker : BackgroundService
         }
     }
 
-    private async Task MonitorAndBlockAsync()
+    private async Task MonitorAndBlockAsync(CancellationToken cancellationToken)
     {
         using var scope = _serviceProvider.CreateScope();
         var promService = scope.ServiceProvider.GetRequiredService<PrometheusService>();
@@ -57,6 +57,8 @@ public class AutoBlockWorker : BackgroundService
 
         foreach (var kvp in suspiciousIps)
         {
+            cancellationToken.ThrowIfCancellationRequested();
+
             var ip = kvp.Key;
             var errorCount = kvp.Value;
 
@@ -81,13 +83,13 @@ public class AutoBlockWorker : BackgroundService
                     AddedAt = DateTime.UtcNow
                 };
 
-                if (!dbContext.BlacklistEntries.Any(b => b.IpOrCidr == ip))
+                if (!await dbContext.BlacklistEntries.AnyAsync(b => b.IpOrCidr == ip, cancellationToken))
                 {
                     dbContext.BlacklistEntries.Add(entry);
-                    await dbContext.SaveChangesAsync();
+                    await dbContext.SaveChangesAsync(cancellationToken);
                     
                     // Sync to APISIX
-                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync();
+                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync(cancellationToken);
                     await apisixClient.UpdateBlacklistAsync(currentList);
                     
                     _recentlyBlockedIps[ip] = DateTime.UtcNow;
