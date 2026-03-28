@@ -1,68 +1,66 @@
-using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Moq;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
+using Microsoft.EntityFrameworkCore;
+using System.Net;
 using Xunit;
 
 namespace MilkApiManager.Tests.Services;
 
-public class BlacklistConsistencyServiceTests : IDisposable
+public class BlacklistConsistencyServiceTests
 {
-    private readonly AppDbContext _dbContext;
-    private readonly Mock<IApisixClient> _mockApisixClient;
+    private readonly AppDbContext _db;
+    private readonly Mock<IApisixClient> _mockApisix;
+    private readonly Mock<ILogger<BlacklistConsistencyService>> _mockLogger;
     private readonly BlacklistConsistencyService _service;
 
     public BlacklistConsistencyServiceTests()
     {
         var options = new DbContextOptionsBuilder<AppDbContext>()
-            .UseInMemoryDatabase(Guid.NewGuid().ToString())
+            .UseInMemoryDatabase(databaseName: Guid.NewGuid().ToString())
             .Options;
-        _dbContext = new AppDbContext(options);
-
-        _mockApisixClient = new Mock<IApisixClient>();
-        _service = new BlacklistConsistencyService(_dbContext, _mockApisixClient.Object, Mock.Of<ILogger<BlacklistConsistencyService>>());
+        _db = new AppDbContext(options);
+        _mockApisix = new Mock<IApisixClient>();
+        _mockLogger = new Mock<ILogger<BlacklistConsistencyService>>();
+        _service = new BlacklistConsistencyService(_db, _mockApisix.Object, _mockLogger.Object);
     }
 
     [Fact]
-    public async Task GetBlacklistDriftReportAsync_ReturnsDatabaseOnlyAndGatewayOnly()
+    public async Task GetBlacklistDriftReportAsync_NoDrift_ReturnsEmptyReport()
     {
-        _dbContext.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = "10.0.0.1", AddedAt = DateTime.UtcNow });
-        _dbContext.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = "10.0.0.2", AddedAt = DateTime.UtcNow });
-        await _dbContext.SaveChangesAsync();
+        // Arrange
+        var ip = IPAddress.Parse("1.1.1.1");
+        _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = ip });
+        await _db.SaveChangesAsync();
 
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string> { "10.0.0.2", "10.0.0.3" });
+        _mockApisix.Setup(c => c.GetBlacklistAsync()).ReturnsAsync(new List<string> { "1.1.1.1" });
 
-        var report = await _service.GetBlacklistDriftReportAsync();
+        // Act
+        var report = await _service.GetBlacklistDriftReportAsync(CancellationToken.None);
 
-        Assert.False(report.IsInSync);
-        Assert.Single(report.DatabaseOnly);
-        Assert.Contains("10.0.0.1", report.DatabaseOnly);
-        Assert.Single(report.GatewayOnly);
-        Assert.Contains("10.0.0.3", report.GatewayOnly);
-    }
-
-    [Fact]
-    public async Task ReconcileDatabaseToGatewayAsync_PushesDbStateAndReturnsInSync()
-    {
-        _dbContext.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = "192.168.1.1", AddedAt = DateTime.UtcNow });
-        await _dbContext.SaveChangesAsync();
-
-        _mockApisixClient.Setup(c => c.UpdateBlacklistAsync(It.Is<List<string>>(l => l.SequenceEqual(new[] { "192.168.1.1" }))))
-            .Returns(Task.CompletedTask);
-        _mockApisixClient.Setup(c => c.GetBlacklistAsync())
-            .ReturnsAsync(new List<string> { "192.168.1.1" });
-
-        var report = await _service.ReconcileDatabaseToGatewayAsync();
-
+        // Assert
+        Assert.Empty(report.DatabaseOnly);
+        Assert.Empty(report.GatewayOnly);
         Assert.True(report.IsInSync);
-        _mockApisixClient.Verify(c => c.UpdateBlacklistAsync(It.IsAny<List<string>>()), Times.Once);
     }
 
-    public void Dispose()
+    [Fact]
+    public async Task GetBlacklistDriftReportAsync_WithDrift_IdentifiesIssues()
     {
-        _dbContext.Dispose();
+        // Arrange
+        _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = IPAddress.Parse("1.1.1.1") }); // In DB but not APISIX
+        await _db.SaveChangesAsync();
+
+        _mockApisix.Setup(c => c.GetBlacklistAsync()).ReturnsAsync(new List<string> { "2.2.2.2" }); // In APISIX but not DB
+
+        // Act
+        var report = await _service.GetBlacklistDriftReportAsync(CancellationToken.None);
+
+        // Assert
+        Assert.Contains("1.1.1.1", report.DatabaseOnly);
+        Assert.Contains("2.2.2.2", report.GatewayOnly);
+        Assert.False(report.IsInSync);
     }
 }

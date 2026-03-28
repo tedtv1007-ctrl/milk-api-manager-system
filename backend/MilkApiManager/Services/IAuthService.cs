@@ -7,5 +7,5 @@ namespace MilkApiManager.Services;
 /// </summary>
 public interface IAuthService
 {
-    Task<LoginResponse?> AuthenticateAsync(string username, string password);
+    Task<LoginResponse?> AuthenticateAsync(string username, string password, CancellationToken cancellationToken = default);
 }

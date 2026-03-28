@@ -44,7 +44,7 @@ public class RouteControllerTests
         _mockApisixClient.Setup(c => c.GetRoutesTypedAsync())
             .ReturnsAsync(routes);
 
-        var result = await _controller.GetRoutes();
+        var result = await _controller.GetRoutes(CancellationToken.None);
 
         var okResult = Assert.IsType<OkObjectResult>(result);
         var returnedRoutes = Assert.IsType<List<ApisixRoute>>(okResult.Value);
@@ -58,7 +58,7 @@ public class RouteControllerTests
         _mockApisixClient.Setup(c => c.GetRoutesTypedAsync())
             .ThrowsAsync(new Exception("APISIX down"));
 
-        var result = await _controller.GetRoutes();
+        var result = await _controller.GetRoutes(CancellationToken.None);
 
         var statusResult = Assert.IsType<ObjectResult>(result);
         Assert.Equal(500, statusResult.StatusCode);
@@ -71,7 +71,7 @@ public class RouteControllerTests
         _mockApisixClient.Setup(c => c.GetRouteAsync("test-1"))
             .ReturnsAsync(route);
 
-        var result = await _controller.GetRoute("test-1");
+        var result = await _controller.GetRoute("test-1", CancellationToken.None);
 
         var okResult = Assert.IsType<OkObjectResult>(result);
         var returnedRoute = Assert.IsType<ApisixRoute>(okResult.Value);
@@ -84,9 +84,9 @@ public class RouteControllerTests
         _mockApisixClient.Setup(c => c.GetRouteAsync("nonexistent"))
             .ReturnsAsync((ApisixRoute?)null);
 
-        var result = await _controller.GetRoute("nonexistent");
+        var result = await _controller.GetRoute("nonexistent", CancellationToken.None);
 
-        Assert.IsType<NotFoundResult>(result);
+        Assert.IsType<NotFoundObjectResult>(result);
     }
 
     [Fact]
@@ -98,7 +98,7 @@ public class RouteControllerTests
         _mockAuditLogService.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>()))
             .Returns(Task.CompletedTask);
 
-        var result = await _controller.CreateRoute(routeConfig);
+        var result = await _controller.CreateRoute(routeConfig, CancellationToken.None);
 
         // CreatedAtAction returns CreatedAtActionResult (201)
         Assert.NotNull(result);
@@ -113,7 +113,7 @@ public class RouteControllerTests
     [Fact]
     public async Task CreateRoute_NullConfig_ReturnsBadRequest()
     {
-        var result = await _controller.CreateRoute(null!);
+        var result = await _controller.CreateRoute(null!, CancellationToken.None);
 
         Assert.IsType<BadRequestObjectResult>(result);
     }
@@ -123,7 +123,7 @@ public class RouteControllerTests
     {
         var routeConfig = new ApisixRoute { Id = "", Name = "Test", Uri = "/test" };
 
-        var result = await _controller.CreateRoute(routeConfig);
+        var result = await _controller.CreateRoute(routeConfig, CancellationToken.None);
 
         Assert.IsType<BadRequestObjectResult>(result);
     }
@@ -137,7 +137,7 @@ public class RouteControllerTests
         _mockAuditLogService.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>()))
             .Returns(Task.CompletedTask);
 
-        var result = await _controller.UpdateRoute("update-1", routeConfig);
+        var result = await _controller.UpdateRoute("update-1", routeConfig, CancellationToken.None);
 
         Assert.IsType<NoContentResult>(result);
         _mockAuditLogService.Verify(a => a.LogAsync(
@@ -148,7 +148,7 @@ public class RouteControllerTests
     [Fact]
     public async Task UpdateRoute_NullConfig_ReturnsBadRequest()
     {
-        var result = await _controller.UpdateRoute("id", null!);
+        var result = await _controller.UpdateRoute("id", null!, CancellationToken.None);
 
         Assert.IsType<BadRequestObjectResult>(result);
     }
@@ -161,7 +161,7 @@ public class RouteControllerTests
         _mockAuditLogService.Setup(a => a.LogAsync(It.IsAny<AuditLogEntry>()))
             .Returns(Task.CompletedTask);
 
-        var result = await _controller.DeleteRoute("del-1");
+        var result = await _controller.DeleteRoute("del-1", CancellationToken.None);
 
         Assert.IsType<NoContentResult>(result);
         _mockAuditLogService.Verify(a => a.LogAsync(
@@ -175,7 +175,7 @@ public class RouteControllerTests
         _mockApisixClient.Setup(c => c.DeleteRouteAsync("err"))
             .ThrowsAsync(new Exception("fail"));
 
-        var result = await _controller.DeleteRoute("err");
+        var result = await _controller.DeleteRoute("err", CancellationToken.None);
 
         var statusResult = Assert.IsType<ObjectResult>(result);
         Assert.Equal(500, statusResult.StatusCode);

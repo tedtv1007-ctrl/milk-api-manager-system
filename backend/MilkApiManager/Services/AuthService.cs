@@ -44,7 +44,7 @@ public class AuthService : IAuthService
     /// <summary>
     /// Authenticate a user against LDAP (or demo mode) and return a JWT.
     /// </summary>
-    public async Task<LoginResponse?> AuthenticateAsync(string username, string password)
+    public async Task<LoginResponse?> AuthenticateAsync(string username, string password, CancellationToken cancellationToken = default)
     {
         List<string> roles;
 
@@ -56,7 +56,7 @@ public class AuthService : IAuthService
         }
         else
         {
-            var ldapRoles = await Task.Run(() => AuthenticateLdap(username, password));
+            var ldapRoles = await Task.Run(() => AuthenticateLdap(username, password), cancellationToken);
             if (ldapRoles == null) return null;
             roles = ldapRoles;
         }
@@ -116,7 +116,8 @@ public class AuthService : IAuthService
             connection.Connect(ldapHost, ldapPort);
 
             // Try binding with user's credentials (simple bind)
-            var userDn = $"cn={username},{searchBase}";
+            var escapedUsername = EscapeLdapFilter(username);
+            var userDn = $"cn={escapedUsername},{searchBase}";
             connection.Bind(userDn, password);
 
             if (!connection.Bound)
@@ -140,7 +141,7 @@ public class AuthService : IAuthService
         }
         catch (LdapException ex)
         {
-            _logger.LogWarning("LDAP authentication failed for user {Username}: {Error}", username, ex.LdapErrorMessage);
+            _logger.LogWarning("LDAP authentication failed for user {Username}: {LdapError}", username, ex.LdapErrorMessage);
             return null;
         }
         catch (Exception ex)
@@ -159,7 +160,10 @@ public class AuthService : IAuthService
 
         try
         {
-            var filter = $"(&(objectClass=groupOfUniqueNames)(uniqueMember=cn={username},{searchBase}))";
+            // Security: Escape username to prevent LDAP injection
+            var escapedUsername = EscapeLdapFilter(username);
+            var filter = $"(&(objectClass=groupOfUniqueNames)(uniqueMember=cn={escapedUsername},{searchBase}))";
+            
             var results = connection.Search(
                 searchBase,
                 LdapConnection.ScopeSub,
@@ -194,10 +198,32 @@ public class AuthService : IAuthService
         }
         catch (LdapException ex)
         {
-            _logger.LogWarning("Failed to query LDAP groups for user {Username}: {Error}", username, ex.LdapErrorMessage);
+            _logger.LogWarning("Failed to query LDAP groups for user {Username}: {LdapError}", username, ex.LdapErrorMessage);
         }
 
         return roles.ToList();
+    }
+
+    /// <summary>
+    /// Prevents LDAP injection by escaping special characters in a search filter.
+    /// </summary>
+    private static string EscapeLdapFilter(string value)
+    {
+        var sb = new StringBuilder(value.Length);
+        foreach (var c in value)
+        {
+            switch (c)
+            {
+                case '*': sb.Append(@"\2a"); break;
+                case '(': sb.Append(@"\28"); break;
+                case ')': sb.Append(@"\29"); break;
+                case '\\': sb.Append(@"\5c"); break;
+                case '\0': sb.Append(@"\00"); break;
+                case '/': sb.Append(@"\2f"); break;
+                default: sb.Append(c); break;
+            }
+        }
+        return sb.ToString();
     }
 
     /// <summary>

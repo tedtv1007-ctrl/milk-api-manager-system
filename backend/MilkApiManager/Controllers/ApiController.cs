@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Auth;
 using MilkApiManager.Services;
+using MilkApiManager.Models;
 using MilkApiManager.Models.Apisix;
 using Asp.Versioning;
 
@@ -23,7 +24,7 @@ namespace MilkApiManager.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetApis()
+        public async Task<IActionResult> GetApis(CancellationToken cancellationToken)
         {
             try
             {
@@ -33,36 +34,36 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving APIs");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred while retrieving APIs."));
             }
         }
 
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetApi(string id)
+        public async Task<IActionResult> GetApi(string id, CancellationToken cancellationToken)
         {
             try
             {
                 var service = await _apisixClient.GetServiceAsync(id);
                 if (service == null)
                 {
-                    return NotFound();
+                    return NotFound(new ApiError("NotFound", $"API with ID '{id}' was not found."));
                 }
                 return Ok(service);
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error retrieving API {Id}", id);
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, "Error retrieving API {ApiId}", id);
+                return StatusCode(500, new ApiError("InternalError", $"An unexpected error occurred while retrieving API '{id}'."));
             }
         }
 
         [HttpPost]
         [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
-        public async Task<IActionResult> CreateApi([FromBody] Service serviceConfig)
+        public async Task<IActionResult> CreateApi([FromBody] Service serviceConfig, CancellationToken cancellationToken)
         {
             if (serviceConfig == null || string.IsNullOrEmpty(serviceConfig.Id))
             {
-                return BadRequest("Invalid service configuration");
+                return BadRequest(new ApiError("ValidationError", "Invalid service configuration: ID is required."));
             }
 
             try
@@ -72,18 +73,18 @@ namespace MilkApiManager.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error creating API {Id}", serviceConfig.Id);
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, "Error creating API {ApiId}", serviceConfig.Id);
+                return StatusCode(500, new ApiError("InternalError", $"An unexpected error occurred while creating API '{serviceConfig.Id}'."));
             }
         }
 
         [HttpPut("{id}")]
         [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
-        public async Task<IActionResult> UpdateApi(string id, [FromBody] Service serviceConfig)
+        public async Task<IActionResult> UpdateApi(string id, [FromBody] Service serviceConfig, CancellationToken cancellationToken)
         {
             if (serviceConfig == null)
             {
-                return BadRequest("Invalid service configuration");
+                return BadRequest(new ApiError("ValidationError", "Invalid service configuration."));
             }
 
             try
@@ -93,14 +94,14 @@ namespace MilkApiManager.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error updating API {Id}", id);
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, "Error updating API {ApiId}", id);
+                return StatusCode(500, new ApiError("InternalError", $"An unexpected error occurred while updating API '{id}'."));
             }
         }
 
         [HttpDelete("{id}")]
         [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
-        public async Task<IActionResult> DeleteApi(string id)
+        public async Task<IActionResult> DeleteApi(string id, CancellationToken cancellationToken)
         {
             try
             {
@@ -109,8 +110,8 @@ namespace MilkApiManager.Controllers
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error deleting API {Id}", id);
-                return StatusCode(500, "Internal server error");
+                _logger.LogError(ex, "Error deleting API {ApiId}", id);
+                return StatusCode(500, new ApiError("InternalError", $"An unexpected error occurred while deleting API '{id}'."));
             }
         }
     }

@@ -46,7 +46,7 @@ public class AuthServiceTests
     public async Task AuthenticateAsync_AdminUser_ReturnsTokenWithAllRoles()
     {
         // Act
-        var result = await _authService.AuthenticateAsync("admin", "admin");
+        var result = await _authService.AuthenticateAsync("admin", "admin", CancellationToken.None);
 
         // Assert
         Assert.NotNull(result);
@@ -61,7 +61,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_OperatorUser_ReturnsOperatorAndViewerRoles()
     {
-        var result = await _authService.AuthenticateAsync("operator", "operator");
+        var result = await _authService.AuthenticateAsync("operator", "operator", CancellationToken.None);
 
         Assert.NotNull(result);
         Assert.Contains("Operator", result.Roles);
@@ -72,7 +72,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_ViewerUser_ReturnsViewerRoleOnly()
     {
-        var result = await _authService.AuthenticateAsync("viewer", "viewer");
+        var result = await _authService.AuthenticateAsync("viewer", "viewer", CancellationToken.None);
 
         Assert.NotNull(result);
         Assert.Single(result.Roles);
@@ -82,7 +82,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_WrongPassword_ReturnsNull()
     {
-        var result = await _authService.AuthenticateAsync("admin", "wrong-password");
+        var result = await _authService.AuthenticateAsync("admin", "wrong-password", CancellationToken.None);
 
         Assert.Null(result);
     }
@@ -90,7 +90,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_NonExistentUser_ReturnsNull()
     {
-        var result = await _authService.AuthenticateAsync("nobody", "nobody");
+        var result = await _authService.AuthenticateAsync("nobody", "nobody", CancellationToken.None);
 
         Assert.Null(result);
     }
@@ -98,7 +98,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_EmptyCredentials_ReturnsNull()
     {
-        var result = await _authService.AuthenticateAsync("", "");
+        var result = await _authService.AuthenticateAsync("", "", CancellationToken.None);
 
         Assert.Null(result);
     }
@@ -106,7 +106,7 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_JwtTokenIsValidFormat()
     {
-        var result = await _authService.AuthenticateAsync("admin", "admin");
+        var result = await _authService.AuthenticateAsync("admin", "admin", CancellationToken.None);
 
         Assert.NotNull(result);
         // JWT has 3 parts separated by dots
@@ -117,11 +117,29 @@ public class AuthServiceTests
     [Fact]
     public async Task AuthenticateAsync_ExpirationIsInFuture()
     {
-        var result = await _authService.AuthenticateAsync("admin", "admin");
+        var result = await _authService.AuthenticateAsync("admin", "admin", CancellationToken.None);
 
         Assert.NotNull(result);
         Assert.True(result.ExpiresAt > DateTime.UtcNow);
         // Should expire within configured minutes (60 in test)
         Assert.True(result.ExpiresAt < DateTime.UtcNow.AddMinutes(61));
+    }
+
+    [Theory]
+    [InlineData("admin*", @"admin\2a")]
+    [InlineData("user(test)", @"user\28test\29")]
+    [InlineData(@"company\slash", @"company\5cslash")]
+    [InlineData("null\0byte", @"null\00byte")]
+    [InlineData("forward/slash", @"forward\2fslash")]
+    public void EscapeLdapFilter_SpecialChars_EscapedCorrectly(string input, string expected)
+    {
+        // Act: Invoke private static method via reflection
+        var method = typeof(AuthService).GetMethod("EscapeLdapFilter", System.Reflection.BindingFlags.NonPublic | System.Reflection.BindingFlags.Static);
+        Assert.NotNull(method);
+        
+        var result = method.Invoke(null, new object[] { input }) as string;
+
+        // Assert
+        Assert.Equal(expected, result);
     }
 }
