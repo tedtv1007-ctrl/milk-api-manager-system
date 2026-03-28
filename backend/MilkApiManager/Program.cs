@@ -357,7 +357,7 @@ async Task InitializeSystemState(IServiceProvider services, ILogger logger)
     {
         try
         {
-            var entries = await db.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync();
+            var entries = await db.BlacklistEntries.Select(e => e.IpOrCidr.ToString()).ToListAsync();
             if (entries.Any())
             {
                 await apisix.UpdateBlacklistAsync(entries);

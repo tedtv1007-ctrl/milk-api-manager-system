@@ -15,7 +15,7 @@ namespace MilkApiManager.Controllers
     [ApiController]
     [ApiVersion("1.0")]
     [Route("api/[controller]")]
-    [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
+    [Authorize]
     public class BlacklistController : ControllerBase
     {
         private readonly IBlacklistService _blacklistService;
@@ -31,6 +31,7 @@ namespace MilkApiManager.Controllers
         /// Retrieves the current IP blacklist.
         /// </summary>
         [HttpGet]
+        [Authorize(Policy = AuthorizationPolicies.ViewerOrAbove)]
         [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(IEnumerable<BlacklistEntry>))]
         public async Task<IActionResult> GetBlacklist()
         {
@@ -50,6 +51,7 @@ namespace MilkApiManager.Controllers
         /// Adds or removes an IP/CIDR to/from the blacklist.
         /// </summary>
         [HttpPost]
+        [Authorize(Policy = AuthorizationPolicies.AdminOnly)]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
@@ -58,11 +60,6 @@ namespace MilkApiManager.Controllers
             if (request == null || string.IsNullOrEmpty(request.Ip))
             {
                 return BadRequest("IP is required");
-            }
-
-            if (!IsValidIpOrCidr(request.Ip))
-            {
-                return BadRequest("Invalid IP or CIDR format");
             }
 
             try
@@ -83,27 +80,15 @@ namespace MilkApiManager.Controllers
 
                 return Ok(new { message });
             }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating blacklist for IP {Ip}", request.Ip);
                 return StatusCode(500, "Internal server error");
             }
-        }
-
-        private bool IsValidIpOrCidr(string value)
-        {
-            if (string.IsNullOrWhiteSpace(value)) return false;
-
-            if (value.Contains('/'))
-            {
-                var parts = value.Split('/');
-                if (parts.Length != 2) return false;
-                if (!System.Net.IPAddress.TryParse(parts[0], out _)) return false;
-                if (!int.TryParse(parts[1], out int mask) || mask < 0 || mask > 128) return false;
-                return true;
-            }
-
-            return System.Net.IPAddress.TryParse(value, out _);
         }
     }
 }

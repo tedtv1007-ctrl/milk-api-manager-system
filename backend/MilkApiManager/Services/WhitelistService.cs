@@ -1,6 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using MilkApiManager.Data;
 using MilkApiManager.Models;
+using System.Net;
 
 namespace MilkApiManager.Services;
 
@@ -50,20 +51,21 @@ public class WhitelistService : IWhitelistService
         }
 
         var ips = await _apisixClient.GetWhitelistForRouteAsync(routeId);
-        return ips.Select(ip => new WhitelistEntry { IpCidr = ip, RouteId = routeId }).ToList();
+        return ips.Select(ip => new WhitelistEntry { IpCidr = IPAddress.Parse(ip), RouteId = routeId }).ToList();
     }
 
     public async Task<string> AddAsync(string routeId, WhitelistUpdateRequest request)
     {
+        var ipAddress = IPAddress.Parse(request.IpCidr);
         if (_config.GetValue<bool>("Whitelist:PersistToDatabase"))
         {
-            var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == request.IpCidr);
+            var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == ipAddress);
             if (exists == null)
             {
                 var entry = new WhitelistEntry
                 {
                     RouteId = routeId,
-                    IpCidr = request.IpCidr,
+                    IpCidr = ipAddress,
                     Reason = request.Reason,
                     AddedBy = request.AddedBy,
                     ExpiresAt = request.ExpiresAt,
@@ -83,9 +85,10 @@ public class WhitelistService : IWhitelistService
 
     public async Task<string> RemoveAsync(string routeId, WhitelistUpdateRequest request)
     {
+        var ipAddress = IPAddress.Parse(request.IpCidr);
         if (_config.GetValue<bool>("Whitelist:PersistToDatabase"))
         {
-            var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == request.IpCidr);
+            var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == ipAddress);
             if (exists != null)
             {
                 _db.WhitelistEntries.Remove(exists);
@@ -107,7 +110,7 @@ public class WhitelistService : IWhitelistService
             .Where(w => w.ExpiresAt == null || w.ExpiresAt > DateTime.UtcNow)
             .ToListAsync();
 
-        var ipList = entries.Select(e => e.IpCidr).Distinct().ToList();
+        var ipList = entries.Select(e => e.IpCidr.ToString()).Distinct().ToList();
         await _apisixClient.UpdateWhitelistForRouteAsync(routeId, ipList);
         _logger.LogInformation("Synced {Count} whitelist entries to APISIX for route {RouteId}", ipList.Count, routeId);
     }
