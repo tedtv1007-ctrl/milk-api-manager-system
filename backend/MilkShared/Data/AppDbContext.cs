@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using MilkApiManager.Models;
+using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace MilkApiManager.Data;
 
@@ -50,17 +51,32 @@ public class AppDbContext : DbContext
         modelBuilder.Entity<AuditLogEntry>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.HasIndex(e => e.Timestamp);
-            entity.HasIndex(e => e.Action);
             entity.Property(e => e.Timestamp).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            
+            // PostgreSQL Optimization: BRIN index for timestamp (great for sequential time-series data)
+            entity.HasIndex(e => e.Timestamp)
+                  .HasMethod("BRIN");
+            
+            entity.HasIndex(e => e.Action);
+
+            // PostgreSQL Optimization: Store JSON details as native jsonb
+            entity.Property(e => e.DetailsJson)
+                  .HasColumnType("jsonb");
         });
 
         modelBuilder.Entity<BlacklistEntry>(entity =>
         {
             entity.HasKey(e => e.Id);
-            entity.Property(e => e.IpOrCidr).IsRequired();
+            
+            // Note: We use a converter to string to support EF's comparison requirements
+            entity.Property(e => e.IpOrCidr)
+                  .IsRequired()
+                  .HasConversion(
+                    v => v.ToString(),
+                    v => System.Net.IPAddress.Parse(v));
+            
             entity.HasIndex(e => e.IpOrCidr).IsUnique();
             entity.Property(e => e.AddedAt).HasConversion(
                 v => v.ToUniversalTime(),
@@ -71,11 +87,32 @@ public class AppDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
             entity.Property(e => e.RouteId).IsRequired();
-            entity.Property(e => e.IpCidr).IsRequired();
-            entity.HasIndex(e => e.RouteId);
+            
+            entity.Property(e => e.IpCidr)
+                  .IsRequired()
+                  .HasConversion(
+                    v => v.ToString(),
+                    v => System.Net.IPAddress.Parse(v));
+
+            // PostgreSQL Optimization: Composite index for GetWhitelistForRouteAsync query
+            entity.HasIndex(e => new { e.RouteId, e.ExpiresAt });
             entity.Property(e => e.AddedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // PostgreSQL Optimization: Partial index for active API keys
+        modelBuilder.Entity<ApiKey>(entity =>
+        {
+            entity.HasIndex(e => e.KeyHash)
+                  .HasFilter("\"IsActive\" = true")
+                  .HasDatabaseName("IX_ApiKeys_KeyHash_Active");
+        });
+
+        // Index for MockRules route lookups
+        modelBuilder.Entity<MockRule>(entity =>
+        {
+            entity.HasIndex(e => e.RouteId);
         });
 
         modelBuilder.Entity<SyncOutboxEntry>(entity =>
@@ -85,7 +122,11 @@ public class AppDbContext : DbContext
             entity.Property(e => e.PayloadJson).IsRequired();
             entity.Property(e => e.Status).IsRequired();
             entity.HasIndex(e => new { e.Status, e.NextAttemptAt });
-            entity.HasIndex(e => e.CreatedAt);
+            
+            // PostgreSQL Optimization: Partial index for pending items only
+            entity.HasIndex(e => e.CreatedAt)
+                  .HasFilter("Status = 'Pending'");
+
             entity.Property(e => e.CreatedAt).HasConversion(
                 v => v.ToUniversalTime(),
                 v => DateTime.SpecifyKind(v, DateTimeKind.Utc));

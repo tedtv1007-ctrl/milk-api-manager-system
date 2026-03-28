@@ -159,15 +159,22 @@ public class HealthAndMiddlewareIntegrationTests : IClassFixture<WebApplicationF
     }
 
     [Fact]
-    public async Task Viewer_CannotAccessBlacklist()
+    public async Task Viewer_CannotModifyBlacklist()
     {
         var client = _factory.CreateClient();
         var token = await GetTokenAsync(client, "viewer", "viewer");
         client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", token);
 
-        var response = await client.GetAsync("/api/Blacklist");
+        // Viewer can read blacklist (ViewerOrAbove) but cannot modify it (AdminOnly)
+        var getResponse = await client.GetAsync("/api/Blacklist");
+        Assert.Equal(HttpStatusCode.OK, getResponse.StatusCode);
 
-        Assert.Equal(HttpStatusCode.Forbidden, response.StatusCode);
+        var payload = new StringContent(
+            "{\"ip\":\"192.168.1.1\",\"action\":\"add\",\"reason\":\"test\"}",
+            Encoding.UTF8,
+            "application/json");
+        var postResponse = await client.PostAsync("/api/Blacklist", payload);
+        Assert.Equal(HttpStatusCode.Forbidden, postResponse.StatusCode);
     }
 
     [Fact]

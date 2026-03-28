@@ -92,7 +92,12 @@ public class AuthorizationIntegrationTests : IClassFixture<WebApplicationFactory
         var operatorEndpointResponse = await client.GetAsync("/api/AuditLogs?limit=1");
         Assert.Equal(HttpStatusCode.OK, operatorEndpointResponse.StatusCode);
 
-        var adminEndpointResponse = await client.GetAsync("/api/Blacklist");
+        // POST to Blacklist requires AdminOnly policy — Operator should be denied
+        var adminPayload = new StringContent(
+            "{\"ip\":\"10.0.0.1\",\"action\":\"add\",\"reason\":\"test\"}",
+            System.Text.Encoding.UTF8,
+            "application/json");
+        var adminEndpointResponse = await client.PostAsync("/api/Blacklist", adminPayload);
         Assert.Equal(HttpStatusCode.Forbidden, adminEndpointResponse.StatusCode);
     }
 

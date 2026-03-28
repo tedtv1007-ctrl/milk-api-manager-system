@@ -1,6 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using MilkApiManager.Data;
+using MilkApiManager.Models;
 using System.Collections.Concurrent;
+using System.Net;
 
 namespace MilkApiManager.Services;
 
@@ -42,9 +44,9 @@ public class AutoBlockWorker : BackgroundService
     private async Task MonitorAndBlockAsync(CancellationToken cancellationToken)
     {
         using var scope = _serviceProvider.CreateScope();
-        var promService = scope.ServiceProvider.GetRequiredService<PrometheusService>();
-        var apisixClient = scope.ServiceProvider.GetRequiredService<ApisixClient>();
-        var notifyService = scope.ServiceProvider.GetRequiredService<NotificationService>();
+        var promService = scope.ServiceProvider.GetRequiredService<IPrometheusService>();
+        var apisixClient = scope.ServiceProvider.GetRequiredService<IApisixClient>();
+        var notifyService = scope.ServiceProvider.GetRequiredService<INotificationService>();
         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
 
         // Query: Sum of 401/403 errors in the last 1 minute, grouped by client IP
@@ -75,21 +77,22 @@ public class AutoBlockWorker : BackgroundService
 
                 // 1. Add to DB and APISIX via Controller logic (reusing existing logic to ensure consistency)
                 // We construct a BlacklistEntry
-                var entry = new Models.BlacklistEntry
+                var ipAddress = IPAddress.Parse(ip);
+                var entry = new BlacklistEntry
                 {
-                    IpOrCidr = ip,
+                    IpOrCidr = ipAddress,
                     Reason = $"Auto-blocked: {errorCount} auth errors/min",
                     AddedBy = "System:AutoBlockWorker",
                     AddedAt = DateTime.UtcNow
                 };
 
-                if (!await dbContext.BlacklistEntries.AnyAsync(b => b.IpOrCidr == ip, cancellationToken))
+                if (!await dbContext.BlacklistEntries.AnyAsync(b => b.IpOrCidr == ipAddress, cancellationToken))
                 {
                     dbContext.BlacklistEntries.Add(entry);
                     await dbContext.SaveChangesAsync(cancellationToken);
                     
                     // Sync to APISIX
-                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync(cancellationToken);
+                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr.ToString()).ToListAsync(cancellationToken);
                     await apisixClient.UpdateBlacklistAsync(currentList);
                     
                     _recentlyBlockedIps[ip] = DateTime.UtcNow;

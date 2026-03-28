@@ -45,6 +45,12 @@ public class AuthControllerTests
                 UseDemoAuth = true
             }));
         _controller = new AuthController(_authService, Mock.Of<ILogger<AuthController>>());
+        
+        // Set up HttpContext so HttpContext.RequestAborted is available
+        _controller.ControllerContext = new ControllerContext
+        {
+            HttpContext = new DefaultHttpContext()
+        };
     }
 
     [Fact]
