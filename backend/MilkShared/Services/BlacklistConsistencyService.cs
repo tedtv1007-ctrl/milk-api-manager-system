@@ -22,7 +22,7 @@ public class BlacklistConsistencyService
         var utcNow = DateTime.UtcNow;
         var dbEntries = await _dbContext.BlacklistEntries
             .Where(e => e.ExpiresAt == null || e.ExpiresAt > utcNow)
-            .Select(e => e.IpOrCidr)
+            .Select(e => e.IpOrCidr.ToString())
             .ToListAsync(cancellationToken);
 
         var gatewayEntries = await _apisixClient.GetBlacklistAsync();
@@ -43,7 +43,7 @@ public class BlacklistConsistencyService
         var utcNow = DateTime.UtcNow;
         var dbEntries = await _dbContext.BlacklistEntries
             .Where(e => e.ExpiresAt == null || e.ExpiresAt > utcNow)
-            .Select(e => e.IpOrCidr)
+            .Select(e => e.IpOrCidr.ToString())
             .ToListAsync(cancellationToken);
 
         await _apisixClient.UpdateBlacklistAsync(dbEntries);
