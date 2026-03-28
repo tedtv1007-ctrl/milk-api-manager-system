@@ -1,5 +1,5 @@
 using System;
-using System.Net;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace MilkApiManager.Models
@@ -10,7 +10,7 @@ namespace MilkApiManager.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public required IPAddress IpOrCidr { get; set; }
+        public required string IpOrCidr { get; set; }
 
         public string? Reason { get; set; }
 

@@ -70,12 +70,8 @@ public class AppDbContext : DbContext
         {
             entity.HasKey(e => e.Id);
             
-            // Note: We use a converter to string to support EF's comparison requirements
             entity.Property(e => e.IpOrCidr)
-                  .IsRequired()
-                  .HasConversion(
-                    v => v.ToString(),
-                    v => System.Net.IPAddress.Parse(v));
+                  .IsRequired();
             
             entity.HasIndex(e => e.IpOrCidr).IsUnique();
             entity.Property(e => e.AddedAt).HasConversion(
@@ -89,10 +85,7 @@ public class AppDbContext : DbContext
             entity.Property(e => e.RouteId).IsRequired();
             
             entity.Property(e => e.IpCidr)
-                  .IsRequired()
-                  .HasConversion(
-                    v => v.ToString(),
-                    v => System.Net.IPAddress.Parse(v));
+                  .IsRequired();
 
             // PostgreSQL Optimization: Composite index for GetWhitelistForRouteAsync query
             entity.HasIndex(e => new { e.RouteId, e.ExpiresAt });

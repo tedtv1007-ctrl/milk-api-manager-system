@@ -1,22 +1,38 @@
   正在确定要还原的项目…
   所有项目均是最新的，无法还原。
-  MilkShared -> D:\tedtv_github\milk-api-manager-system\backend\MilkShared\bin\Debug\net10.0\MilkShared.dll
-  MilkApiManager -> D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\bin\Debug\net10.0\MilkApiManager.dll
-  MilkAdminBlazor -> D:\tedtv_github\milk-api-manager-system\backend\MilkAdminBlazor\bin\Debug\net10.0\MilkAdminBlazor.dll
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ConsumerGroupControllerTests.cs(65,74): error CS0117: “ConsumerGroup”未包含“Desc”的定义 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ConsumerGroupControllerTests.cs(65,29): error CS9035: 必须在对象初始值设定项或属性构造函数中设置所需的成员'ConsumerGroup.Id'。 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\TestExecutionControllerTests.cs(21,12): warning CS8618: 在退出构造函数时，不可为 null 的 字段 "_mockHttpClient" 必须包含非 null 值。请考虑添加 "required" 修饰符或将该 字段 声明为可为 null。 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\TestExecutionControllerTests.cs(18,39): warning CS0169: 从不使用字段“TestExecutionControllerTests._mockHttpClient” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ApiCatalogControllerTests.cs(101,9): warning xUnit2002: Do not use Assert.NotNull() on value type 'DateTime'. Remove this assert. (https://xunit.net/xunit.analyzers/rules/xUnit2002) [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
+  MilkShared -> D:\tedtv_github\milk-api-manager-system\backend\MilkShared\bin\Debug\net8.0\MilkShared.dll
+D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\AutoBlockWorker.cs(83,32): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\MilkWorker.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\AutoBlockWorker.cs(89,69): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\MilkWorker.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(54,63): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(62,102): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(68,30): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(91,102): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(57,78): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(54,71): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(79,82): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(84,36): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(123,82): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(98,114): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(104,42): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(135,114): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
 
 生成失败。
 
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\TestExecutionControllerTests.cs(21,12): warning CS8618: 在退出构造函数时，不可为 null 的 字段 "_mockHttpClient" 必须包含非 null 值。请考虑添加 "required" 修饰符或将该 字段 声明为可为 null。 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\TestExecutionControllerTests.cs(18,39): warning CS0169: 从不使用字段“TestExecutionControllerTests._mockHttpClient” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ApiCatalogControllerTests.cs(101,9): warning xUnit2002: Do not use Assert.NotNull() on value type 'DateTime'. Remove this assert. (https://xunit.net/xunit.analyzers/rules/xUnit2002) [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ConsumerGroupControllerTests.cs(65,74): error CS0117: “ConsumerGroup”未包含“Desc”的定义 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\Controllers\ConsumerGroupControllerTests.cs(65,29): error CS9035: 必须在对象初始值设定项或属性构造函数中设置所需的成员'ConsumerGroup.Id'。 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager.Tests\MilkApiManager.Tests.csproj]
-    3 个警告
-    2 个错误
+D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\AutoBlockWorker.cs(83,32): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\MilkWorker.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\AutoBlockWorker.cs(89,69): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkWorker\MilkWorker.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(54,63): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(62,102): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(68,30): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\WhitelistService.cs(91,102): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(57,78): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(54,71): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(79,82): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(84,36): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Services\BlacklistService.cs(123,82): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(98,114): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(104,42): error CS0029: 无法将类型“System.Net.IPAddress”隐式转换为“string” [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\Controllers\WhitelistController.cs(135,114): error CS0019: 运算符“==”无法应用于“string”和“IPAddress”类型的操作数 [D:\tedtv_github\milk-api-manager-system\backend\MilkApiManager\MilkApiManager.csproj]
+    0 个警告
+    14 个错误
 
-已用时间 00:00:02.93
+已用时间 00:00:02.41

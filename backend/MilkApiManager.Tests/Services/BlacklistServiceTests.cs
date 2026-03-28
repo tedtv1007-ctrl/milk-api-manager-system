@@ -50,7 +50,7 @@ public class BlacklistServiceTests
 
         await _service.AddAsync(request);
 
-        var entry = await _db.BlacklistEntries.FirstOrDefaultAsync(e => e.IpOrCidr == IPAddress.Parse("1.2.3.4"));
+        var entry = await _db.BlacklistEntries.FirstOrDefaultAsync(e => e.IpOrCidr == "1.2.3.4");
         Assert.NotNull(entry);
         _mockApisix.Verify(c => c.UpdateBlacklistAsync(It.Is<List<string>>(l => l.Contains("1.2.3.4"))), Times.Once);
     }
@@ -58,7 +58,7 @@ public class BlacklistServiceTests
     [Fact]
     public async Task RemoveAsync_ExistingIp_RemovesFromDbAndGateway()
     {
-        var ip = IPAddress.Parse("5.5.5.5");
+        var ip = "5.5.5.5";
         _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = ip });
         await _db.SaveChangesAsync();
 

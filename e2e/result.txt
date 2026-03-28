@@ -1,0 +1,72 @@
+
+Running 3 tests using 1 worker
+
+Consumer API 回應範例: [
+  {
+    "username": "e2etestconsumer",
+    "desc": "",
+    "labels": [],
+    "quota": {
+      "count": 1000,
+      "time_window": 3600,
+      "rejected_code": 429,
+      "rejected_msg": "API quota exceeded. Please contact support."
+    },
+    "rate_limit": {
+      "rate": 0,
+      "burst": 0,
+      "rejected_code": 503,
+      "key": "remote_addr"
+    }
+  },
+  {
+    "username": "e2ekeyowner1774705155815",
+    "desc": "",
+    "labels": [],
+    "quota": {
+      "count": 1000,
+      "time_window": 3600,
+      "rejected_code": 429,
+      "rejected_msg": "API quota exceeded. Please contact support."
+    },
+    "rate_limit": {
+      "rate": 0,
+      "burst": 0,
+      "rejected_code": 503,
+      "key": "remote_addr"
+    }
+  }
+]
+✅ Consumer "e2etestconsumer" 未暴露敏感欄位
+  ✓  1 tests\pii-masking.spec.js:18:3 › API 個資脫敏驗證 (PII Masking Verification) › 消費者 API 回傳資料結構驗證 (29ms)
+檢查 Consumer "e2etestconsumer": 包含明文 Email = false
+檢查 Consumer "e2ekeyowner1774705155815": 包含明文 Email = false
+✅ 所有消費者資料中未發現明文 Email
+  ✓  2 tests\pii-masking.spec.js:50:3 › API 個資脫敏驗證 (PII Masking Verification) › 消費者 API 不應回傳明文 Email 地址 (9ms)
+  ✘  3 tests\pii-masking.spec.js:73:3 › API 個資脫敏驗證 (PII Masking Verification) › Blacklist API 回應驗證 (17ms)
+
+
+  1) tests\pii-masking.spec.js:73:3 › API 個資脫敏驗證 (PII Masking Verification) › Blacklist API 回應驗證 ───
+
+    Error: [2mexpect([22m[31mreceived[39m[2m).[22mtoBe[2m([22m[32mexpected[39m[2m) // Object.is equality[22m
+
+    Expected: [32m200[39m
+    Received: [31m500[39m
+
+      76 |     });
+      77 |
+    > 78 |     expect(response.status()).toBe(200);
+         |                               ^
+      79 |     const contentType = response.headers()['content-type'];
+      80 |     expect(contentType).toContain('application/json');
+      81 |
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\pii-masking.spec.js:78:31
+
+  1 failed
+    tests\pii-masking.spec.js:73:3 › API 個資脫敏驗證 (PII Masking Verification) › Blacklist API 回應驗證 ────
+  2 passed (1.0s)
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report test-report[39m
+[36m[39m

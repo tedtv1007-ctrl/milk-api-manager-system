@@ -35,7 +35,7 @@
                 <MudAutocomplete T="string" Label="Route Filter" @bind-Value="_selectedRoute" SearchFunc="@SearchRoutes" Dense="true" Variant="Variant.Outlined" />
             </MudItem>
             <MudItem xs="12" sm="4">
-                <MudDateRangePicker Label="Time Horizon" @bind-DateRange="_dateRange" Dense="true" Variant="Variant.Outlined" />
+                <MudDateRangePicker Label="Time Horizon" @bind-DateRange="_dateRange" Variant="Variant.Outlined" />
             </MudItem>
             <MudItem xs="12" sm="2" Class="d-flex align-center">
                 <MudButton Variant="Variant.Filled" Color="Color.Primary" OnClick="RefreshData" FullWidth="true">Apply</MudButton>

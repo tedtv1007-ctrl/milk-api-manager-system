@@ -31,7 +31,7 @@ public class BlacklistConsistencyServiceTests
     public async Task GetBlacklistDriftReportAsync_NoDrift_ReturnsEmptyReport()
     {
         // Arrange
-        var ip = IPAddress.Parse("1.1.1.1");
+        var ip = "1.1.1.1";
         _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = ip });
         await _db.SaveChangesAsync();
 
@@ -50,7 +50,7 @@ public class BlacklistConsistencyServiceTests
     public async Task GetBlacklistDriftReportAsync_WithDrift_IdentifiesIssues()
     {
         // Arrange
-        _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = IPAddress.Parse("1.1.1.1") }); // In DB but not APISIX
+        _db.BlacklistEntries.Add(new BlacklistEntry { IpOrCidr = "1.1.1.1" }); // In DB but not APISIX
         await _db.SaveChangesAsync();
 
         _mockApisix.Setup(c => c.GetBlacklistAsync()).ReturnsAsync(new List<string> { "2.2.2.2" }); // In APISIX but not DB

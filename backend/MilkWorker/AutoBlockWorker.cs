@@ -77,7 +77,7 @@ public class AutoBlockWorker : BackgroundService
 
                 // 1. Add to DB and APISIX via Controller logic (reusing existing logic to ensure consistency)
                 // We construct a BlacklistEntry
-                var ipAddress = IPAddress.Parse(ip);
+                var ipAddress = ip;
                 var entry = new BlacklistEntry
                 {
                     IpOrCidr = ipAddress,
@@ -92,7 +92,7 @@ public class AutoBlockWorker : BackgroundService
                     await dbContext.SaveChangesAsync(cancellationToken);
                     
                     // Sync to APISIX
-                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr.ToString()).ToListAsync(cancellationToken);
+                    var currentList = await dbContext.BlacklistEntries.Select(e => e.IpOrCidr).ToListAsync(cancellationToken);
                     await apisixClient.UpdateBlacklistAsync(currentList);
                     
                     _recentlyBlockedIps[ip] = DateTime.UtcNow;

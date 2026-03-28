@@ -27,7 +27,7 @@ public class BlacklistControllerTests
     {
         var entries = new List<BlacklistEntry>
         {
-            new BlacklistEntry { IpOrCidr = IPAddress.Parse("1.2.3.4"), Reason = "Test" }
+            new BlacklistEntry { IpOrCidr = "1.2.3.4", Reason = "Test" }
         };
         _mockService.Setup(s => s.GetBlacklistAsync()).ReturnsAsync(entries);
 
@@ -36,7 +36,7 @@ public class BlacklistControllerTests
         var okResult = Assert.IsType<OkObjectResult>(result);
         var returned = Assert.IsType<List<BlacklistEntry>>(okResult.Value);
         Assert.Single(returned);
-        Assert.Equal(IPAddress.Parse("1.2.3.4"), returned[0].IpOrCidr);
+        Assert.Equal("1.2.3.4", returned[0].IpOrCidr);
     }
 
     [Fact]

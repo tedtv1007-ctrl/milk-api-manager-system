@@ -54,7 +54,7 @@ namespace MilkApiManager.Controllers
                 {
                     // fallback to apisix plugin config
                     var ips = await _apisixClient.GetWhitelistForRouteAsync(routeId);
-                    return Ok(ips.Select(ip => new WhitelistEntry { IpCidr = IPAddress.Parse(ip), RouteId = routeId }).ToList());
+                    return Ok(ips.Select(ip => new WhitelistEntry { IpCidr = ip, RouteId = routeId }).ToList());
                 }
             }
             catch (Exception ex)
@@ -89,7 +89,7 @@ namespace MilkApiManager.Controllers
             try
             {
                 var persist = _config.GetValue<bool>("Whitelist:PersistToDatabase");
-                var ipAddress = IPAddress.Parse(request.IpCidr);
+                var ipAddress = request.IpCidr;
 
                 if (request.Action == "add")
                 {
@@ -195,7 +195,7 @@ namespace MilkApiManager.Controllers
             var entries = await _db.WhitelistEntries.Where(w => w.RouteId == routeId)
                 .Where(w => w.ExpiresAt == null || w.ExpiresAt > DateTime.UtcNow)
                 .ToListAsync();
-            var ipList = entries.Select(e => e.IpCidr.ToString()).Distinct().ToList();
+            var ipList = entries.Select(e => e.IpCidr).Distinct().ToList();
 
             // call apisix client to update plugin config for the route
             await _apisixClient.UpdateWhitelistForRouteAsync(routeId, ipList);

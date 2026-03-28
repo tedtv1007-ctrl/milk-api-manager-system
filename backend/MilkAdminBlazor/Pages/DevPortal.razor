@@ -16,7 +16,7 @@
             <MudGrid Spacing="0" Style="height: calc(100vh - 250px); min-height: 600px;">
                 <!-- Sidebar -->
                 <MudItem xs="12" md="3" Class="border-end bg-light overflow-auto h-100">
-                    <MudList T="string" ClickSelection="true" @bind-SelectedValue="selectedServiceName" Color="Color.Primary">
+                    <MudList T="string" @bind-SelectedValue="selectedServiceName" Color="Color.Primary">
                         <MudListSubheader>Available Services</MudListSubheader>
                         @foreach (var service in catalog)
                         {

@@ -51,19 +51,19 @@ public class WhitelistServiceTests
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
-            IpCidr = IPAddress.Parse("10.0.0.1"),
+            IpCidr = "10.0.0.1",
             AddedAt = DateTime.UtcNow
         });
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
-            IpCidr = IPAddress.Parse("10.0.0.2"),
+            IpCidr = "10.0.0.2",
             AddedAt = DateTime.UtcNow
         });
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = "other-route",
-            IpCidr = IPAddress.Parse("10.0.0.3"),
+            IpCidr = "10.0.0.3",
             AddedAt = DateTime.UtcNow
         });
         await _db.SaveChangesAsync();
@@ -84,21 +84,21 @@ public class WhitelistServiceTests
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
-            IpCidr = IPAddress.Parse("10.0.1.1"),
+            IpCidr = "10.0.1.1",
             AddedAt = DateTime.UtcNow,
             ExpiresAt = DateTime.UtcNow.AddHours(-1) // Expired
         });
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
-            IpCidr = IPAddress.Parse("10.0.1.2"),
+            IpCidr = "10.0.1.2",
             AddedAt = DateTime.UtcNow,
             ExpiresAt = DateTime.UtcNow.AddHours(1) // Active
         });
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
-            IpCidr = IPAddress.Parse("10.0.1.3"),
+            IpCidr = "10.0.1.3",
             AddedAt = DateTime.UtcNow,
             ExpiresAt = null // No expiry = always active
         });
@@ -129,7 +129,7 @@ public class WhitelistServiceTests
         // Assert
         Assert.Contains("added successfully", result);
         var entry = await _db.WhitelistEntries.FirstOrDefaultAsync(w =>
-            w.RouteId == routeId && w.IpCidr == IPAddress.Parse("192.168.1.100"));
+            w.RouteId == routeId && w.IpCidr == "192.168.1.100");
         Assert.NotNull(entry);
         Assert.Equal("Trusted partner", entry.Reason);
         _mockApisix.Verify(a => a.UpdateWhitelistForRouteAsync(routeId, It.IsAny<List<string>>()), Times.Once);
@@ -140,7 +140,7 @@ public class WhitelistServiceTests
     {
         // Arrange
         var routeId = "route-dup";
-        var ip = IPAddress.Parse("172.16.0.1");
+        var ip = "172.16.0.1";
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,
@@ -164,7 +164,7 @@ public class WhitelistServiceTests
     {
         // Arrange
         var routeId = "route-remove";
-        var ip = IPAddress.Parse("10.10.10.10");
+        var ip = "10.10.10.10";
         _db.WhitelistEntries.Add(new WhitelistEntry
         {
             RouteId = routeId,

@@ -118,8 +118,9 @@ test.describe('SSO 認證流程 (Authentication & Authorization)', () => {
         const { token } = await loginResp.json();
 
         // Try to access Admin-only endpoint
-        const resp = await request.get(`${BASE_URL}/api/Blacklist`, {
-            headers: { 'Authorization': `Bearer ${token}` }
+        const resp = await request.post(`${BASE_URL}/api/Blacklist`, {
+            headers: { 'Authorization': `Bearer ${token}` },
+            data: { ip: "10.0.0.1", action: "add", reason: "test" }
         });
 
         // Should be 403 Forbidden (authenticated but not authorized)

@@ -51,12 +51,12 @@ public class WhitelistService : IWhitelistService
         }
 
         var ips = await _apisixClient.GetWhitelistForRouteAsync(routeId);
-        return ips.Select(ip => new WhitelistEntry { IpCidr = IPAddress.Parse(ip), RouteId = routeId }).ToList();
+        return ips.Select(ip => new WhitelistEntry { IpCidr = ip, RouteId = routeId }).ToList();
     }
 
     public async Task<string> AddAsync(string routeId, WhitelistUpdateRequest request)
     {
-        var ipAddress = IPAddress.Parse(request.IpCidr);
+        var ipAddress = request.IpCidr;
         if (_config.GetValue<bool>("Whitelist:PersistToDatabase"))
         {
             var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == ipAddress);
@@ -85,7 +85,7 @@ public class WhitelistService : IWhitelistService
 
     public async Task<string> RemoveAsync(string routeId, WhitelistUpdateRequest request)
     {
-        var ipAddress = IPAddress.Parse(request.IpCidr);
+        var ipAddress = request.IpCidr;
         if (_config.GetValue<bool>("Whitelist:PersistToDatabase"))
         {
             var exists = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == ipAddress);
@@ -110,7 +110,7 @@ public class WhitelistService : IWhitelistService
             .Where(w => w.ExpiresAt == null || w.ExpiresAt > DateTime.UtcNow)
             .ToListAsync();
 
-        var ipList = entries.Select(e => e.IpCidr.ToString()).Distinct().ToList();
+        var ipList = entries.Select(e => e.IpCidr).Distinct().ToList();
         await _apisixClient.UpdateWhitelistForRouteAsync(routeId, ipList);
         _logger.LogInformation("Synced {Count} whitelist entries to APISIX for route {RouteId}", ipList.Count, routeId);
     }

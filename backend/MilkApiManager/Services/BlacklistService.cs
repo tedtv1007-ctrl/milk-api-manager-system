@@ -51,7 +51,7 @@ public class BlacklistService : IBlacklistService
         }
 
         var blacklist = await _apisixClient.GetBlacklistAsync();
-        return blacklist.Select(ip => new BlacklistEntry { IpOrCidr = IPAddress.Parse(ip) }).ToList();
+        return blacklist.Select(ip => new BlacklistEntry { IpOrCidr = ip }).ToList();
     }
 
     public async Task<string> AddAsync(BlacklistUpdateRequest request)
@@ -75,7 +75,7 @@ public class BlacklistService : IBlacklistService
 
             if (_config.GetValue<bool>("Blacklist:PersistToDatabase"))
             {
-                var targetIp = IPAddress.Parse(request.Ip.Split('/')[0]);
+                var targetIp = request.Ip;
                 var exists = await _db.BlacklistEntries.FirstOrDefaultAsync(b => b.IpOrCidr == targetIp);
                 if (exists == null)
                 {
@@ -113,7 +113,7 @@ public class BlacklistService : IBlacklistService
         await _lock.WaitAsync();
         try
         {
-            var targetIp = IPAddress.Parse(request.Ip.Split('/')[0]);
+            var targetIp = request.Ip;
             var blacklist = await _apisixClient.GetBlacklistAsync();
             var blacklistSet = new HashSet<string>(blacklist);
             blacklistSet.Remove(request.Ip);
@@ -126,7 +126,7 @@ public class BlacklistService : IBlacklistService
                     _db.BlacklistEntries.Remove(exists);
                     await _db.SaveChangesAsync();
 
-                    await SafeAuditLog("Blacklist.Remove", request.AddedBy, new { Ip = exists.IpOrCidr.ToString(), Reason = exists.Reason, ExpiresAt = exists.ExpiresAt });
+                    await SafeAuditLog("Blacklist.Remove", request.AddedBy, new { Ip = exists.IpOrCidr, Reason = exists.Reason, ExpiresAt = exists.ExpiresAt });
                 }
             }
 

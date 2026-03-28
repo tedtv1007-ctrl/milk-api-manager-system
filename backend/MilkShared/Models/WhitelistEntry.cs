@@ -1,5 +1,5 @@
 using System;
-using System.Net;
+
 using System.ComponentModel.DataAnnotations;
 
 namespace MilkApiManager.Models
@@ -12,8 +12,7 @@ namespace MilkApiManager.Models
         [Required]
         public required string RouteId { get; set; }
 
-        [Required]
-        public required IPAddress IpCidr { get; set; }
+        public required string IpCidr { get; set; }
 
         public string? Reason { get; set; }
 

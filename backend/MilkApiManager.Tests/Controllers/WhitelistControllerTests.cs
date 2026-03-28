@@ -43,7 +43,7 @@ public class WhitelistControllerTests
     public async Task GetWhitelistForRoute_ReturnsOk()
     {
         var routeId = "r1";
-        _db.WhitelistEntries.Add(new WhitelistEntry { RouteId = routeId, IpCidr = IPAddress.Parse("10.0.0.1") });
+        _db.WhitelistEntries.Add(new WhitelistEntry { RouteId = routeId, IpCidr = "10.0.0.1" });
         await _db.SaveChangesAsync();
 
         var result = await _controller.GetWhitelistForRoute(routeId);
@@ -63,7 +63,7 @@ public class WhitelistControllerTests
         var result = await _controller.AddWhitelistEntry(routeId, request);
 
         var okResult = Assert.IsType<OkObjectResult>(result);
-        var entry = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == IPAddress.Parse("192.168.1.1"));
+        var entry = await _db.WhitelistEntries.FirstOrDefaultAsync(w => w.RouteId == routeId && w.IpCidr == "192.168.1.1");
         Assert.NotNull(entry);
     }
 }
