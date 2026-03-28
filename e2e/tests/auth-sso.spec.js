@@ -7,7 +7,7 @@ const { test, expect } = require('@playwright/test');
  * 在 Test Mode (MockApisixClient) 下運行，所有斷言為確定性。
  */
 
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = 'http://127.0.0.1:5001';
 const API_KEY = 'milk-admin-secret-key-change-me';
 
 test.describe('SSO 認證流程 (Authentication & Authorization)', () => {

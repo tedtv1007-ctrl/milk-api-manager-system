@@ -1,6 +1,6 @@
 const { test, expect } = require('@playwright/test');
 
-const BASE_URL = 'http://localhost:5001';
+const BASE_URL = 'http://127.0.0.1:5001';
 const API_KEY = 'milk-admin-secret-key-change-me';
 const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 

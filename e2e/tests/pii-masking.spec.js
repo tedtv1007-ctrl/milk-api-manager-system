@@ -16,7 +16,7 @@ const AUTH_HEADERS = { 'X-API-KEY': API_KEY };
 test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
 
   test('消費者 API 回傳資料結構驗證', async ({ request }) => {
-    const response = await request.get('http://localhost:5001/api/Consumer', {
+    const response = await request.get('http://127.0.0.1:5001/api/Consumer', {
       headers: AUTH_HEADERS
     });
 
@@ -48,7 +48,7 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
   });
 
   test('消費者 API 不應回傳明文 Email 地址', async ({ request }) => {
-    const response = await request.get('http://localhost:5001/api/Consumer', {
+    const response = await request.get('http://127.0.0.1:5001/api/Consumer', {
       headers: AUTH_HEADERS
     });
 
@@ -71,7 +71,7 @@ test.describe('API 個資脫敏驗證 (PII Masking Verification)', () => {
   });
 
   test('Blacklist API 回應驗證', async ({ request }) => {
-    const response = await request.get('http://localhost:5001/api/Blacklist', {
+    const response = await request.get('http://127.0.0.1:5001/api/Blacklist', {
       headers: AUTH_HEADERS
     });
 

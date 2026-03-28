@@ -50,7 +50,7 @@ if ($smokeExitCode -eq 0) {
 
 # 4. Playwright E2E Tests (UI & Gateway)
 Write-Host "`n[Step 4/4] Running Playwright E2E Tests..." -ForegroundColor Yellow
-$env:BASE_URL = "http://localhost:5000"
+$env:BASE_URL = "http://127.0.0.1:5000"
 Set-Location e2e
 $e2eResult = npm test
 $e2eExitCode = $LASTEXITCODE

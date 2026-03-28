@@ -50,7 +50,7 @@ if [ "$IS_TEST_MODE" = "true" ]; then
     # Test Mode: wait for milk-backend and milk-admin-ui health
     echo "   Waiting for milk-backend (5001)..."
     for i in {1..30}; do
-        if curl -sf http://localhost:5001/health/live > /dev/null 2>&1; then
+        if curl -sf http://127.0.0.1:5001/health/live > /dev/null 2>&1; then
             echo "   [PASS] milk-backend is READY."
             break
         fi
@@ -60,7 +60,7 @@ if [ "$IS_TEST_MODE" = "true" ]; then
 
     echo "   Waiting for milk-admin-ui (5000)..."
     for i in {1..30}; do
-        if curl -sf http://localhost:5000/health > /dev/null 2>&1; then
+        if curl -sf http://127.0.0.1:5000/health > /dev/null 2>&1; then
             echo "   [PASS] milk-admin-ui is READY."
             break
         fi
@@ -101,7 +101,7 @@ fi
 echo "   [Info] Installing Playwright browsers..."
 npx playwright install chromium
 
-export BASE_URL="http://localhost:5000"
+export BASE_URL="http://127.0.0.1:5000"
 if npm test; then
     E2E_STATUS="✅OK"
     E2E_CODE=0

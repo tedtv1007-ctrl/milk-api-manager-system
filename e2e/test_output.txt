@@ -1,0 +1,154 @@
+
+Running 9 tests using 1 worker
+
+  ✘  1 tests\api-endpoints.spec.js:22:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Route API - 取得路由清單 (333ms)
+  ✘  2 tests\api-endpoints.spec.js:35:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Consumer API - 取得消費者清單 (330ms)
+  ✘  3 tests\api-endpoints.spec.js:57:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 取得黑名單 (337ms)
+  ✘  4 tests\api-endpoints.spec.js:70:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 新增 IP 至黑名單 (331ms)
+  ✘  5 tests\api-endpoints.spec.js:96:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 無效請求回傳 400 (351ms)
+  ✘  6 tests\api-endpoints.spec.js:109:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 建立 API 金鑰 (343ms)
+  ✘  7 tests\api-endpoints.spec.js:124:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 空 Owner 回傳 400 (333ms)
+  ✘  8 tests\api-endpoints.spec.js:136:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Analytics API - 請求統計 (331ms)
+  ✘  9 tests\api-endpoints.spec.js:154:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › API 回應安全標頭驗證 (326ms)
+
+
+  1) tests\api-endpoints.spec.js:22:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Route API - 取得路由清單 
+
+    Error: apiRequestContext.get: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → GET http://localhost:5001/api/Route[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+
+        at apiRequestContext.get: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:23:40
+
+  2) tests\api-endpoints.spec.js:35:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Consumer API - 取得消費者清單 
+
+    Error: apiRequestContext.get: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → GET http://localhost:5001/api/Consumer[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+
+        at apiRequestContext.get: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:36:40
+
+  3) tests\api-endpoints.spec.js:57:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 取得黑名單 
+
+    Error: apiRequestContext.get: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → GET http://localhost:5001/api/Blacklist[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+
+        at apiRequestContext.get: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:58:40
+
+  4) tests\api-endpoints.spec.js:70:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 新增 IP 至黑名單 
+
+    Error: apiRequestContext.post: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → POST http://localhost:5001/api/Blacklist[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+    [2m    - content-type: application/json[22m
+    [2m    - content-length: 83[22m
+
+        at apiRequestContext.post: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:72:40
+
+  5) tests\api-endpoints.spec.js:96:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 無效請求回傳 400 
+
+    Error: apiRequestContext.post: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → POST http://localhost:5001/api/Blacklist[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+    [2m    - content-type: application/json[22m
+    [2m    - content-length: 24[22m
+
+        at apiRequestContext.post: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:97:40
+
+  6) tests\api-endpoints.spec.js:109:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 建立 API 金鑰 
+
+    Error: apiRequestContext.post: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → POST http://localhost:5001/api/Keys[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+    [2m    - content-type: application/json[22m
+    [2m    - content-length: 27[22m
+
+        at apiRequestContext.post: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:110:40
+
+  7) tests\api-endpoints.spec.js:124:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 空 Owner 回傳 400 
+
+    Error: apiRequestContext.post: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → POST http://localhost:5001/api/Keys[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+    [2m    - content-type: application/json[22m
+    [2m    - content-length: 12[22m
+
+        at apiRequestContext.post: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:125:40
+
+  8) tests\api-endpoints.spec.js:136:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Analytics API - 請求統計 
+
+    Error: apiRequestContext.get: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → GET http://localhost:5001/api/Analytics/requests[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+
+        at apiRequestContext.get: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:137:40
+
+  9) tests\api-endpoints.spec.js:154:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › API 回應安全標頭驗證 
+
+    Error: apiRequestContext.get: connect ECONNREFUSED ::1:5001
+    Call log:
+    [2m  - → GET http://localhost:5001/api/Route[22m
+    [2m    - user-agent: Playwright/1.58.2 (x64; windows 10.0) node/25.8[22m
+    [2m    - accept: */*[22m
+    [2m    - accept-encoding: gzip,deflate,br[22m
+    [2m    - X-API-KEY: milk-admin-secret-key-change-me[22m
+
+        at apiRequestContext.get: connect ECONNREFUSED ::1:5001
+        at D:\tedtv_github\milk-api-manager-system\e2e\tests\api-endpoints.spec.js:155:40
+
+  9 failed
+    tests\api-endpoints.spec.js:22:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Route API - 取得路由清單 
+    tests\api-endpoints.spec.js:35:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Consumer API - 取得消費者清單 
+    tests\api-endpoints.spec.js:57:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 取得黑名單 
+    tests\api-endpoints.spec.js:70:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 新增 IP 至黑名單 
+    tests\api-endpoints.spec.js:96:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Blacklist API - 無效請求回傳 400 
+    tests\api-endpoints.spec.js:109:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 建立 API 金鑰 
+    tests\api-endpoints.spec.js:124:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Keys API - 空 Owner 回傳 400 
+    tests\api-endpoints.spec.js:136:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › Analytics API - 請求統計 
+    tests\api-endpoints.spec.js:154:5 › 後端 API 端點驗證 (Backend API Endpoint Verification) › API 回應安全標頭驗證 
+
+To open last HTML report run:
+[36m[39m
+[36m  npx playwright show-report test-report[39m
+[36m[39m
