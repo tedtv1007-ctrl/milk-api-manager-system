@@ -20,7 +20,7 @@
                         <MudListSubheader>Available Services</MudListSubheader>
                         @foreach (var service in catalog)
                         {
-                            <MudListItem Text="@service.Name" Value="@service.Name" Icon="@Icons.Material.Filled.Api" OnClick="@(() => SelectService(service))" />
+                            <MudListItem Text="@service.Name" Value="@service.Name" Icon="@Icons.Material.Filled.Api" OnClick="@(async () => await SelectService(service))" />
                         }
                     </MudList>
                 </MudItem>
@@ -76,7 +76,7 @@
                                                 }
                                             </MudTd>
                                             <MudTd Style="text-align:right">
-                                                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick="@(() => RunSingleTest(context))" Disabled="@isTesting">Run</MudButton>
+                                                <MudButton Variant="Variant.Filled" Color="Color.Primary" Size="Size.Small" OnClick="@(async () => await RunSingleTest(context))" Disabled="@isTesting">Run</MudButton>
                                             </MudTd>
                                         </RowTemplate>
                                     </MudTable>
