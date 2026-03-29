@@ -112,6 +112,22 @@ flowchart TB
 
 ---
 
+## 🧠 系統理解與導覽 (Understand Anything)
+
+本專案整合了 **Understand Anything** 知識圖譜工具，幫助開發者快速理清 1000+ 檔案的架構與邏輯。
+
+### ⚡ 快速上手
+*   👉 **[閱讀新手導覽 (Onboarding Guide)](docs/ONBOARDING.md)**：包含架構分層、關鍵檔案地圖與 10 步導覽路線。
+*   **查看知識圖譜**：存取 `.understand-anything/knowledge-graph.json` 獲取完整的節點與依賴關係。
+
+### 🤖 與代碼庫對話 (Chat with Codebase)
+如果你有安裝 Understand Anything 插件，可以使用以下命令：
+*   `/understand-chat "這專案的 PII 脫敏邏輯在哪？"`：從圖譜中定位關鍵實作。
+*   `/understand-explain backend/MilkWorker/KeyRotationBackgroundService.cs`：獲取深度的程式碼解釋與上下文。
+*   `/understand-onboard`：重新生成最新的開發者導覽手冊。
+
+---
+
 ## 🚀 快速啟動 (Quick Start)
 
 ### 1. 啟動基礎設施 (Docker)
