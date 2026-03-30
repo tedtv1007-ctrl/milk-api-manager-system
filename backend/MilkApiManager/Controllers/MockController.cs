@@ -94,7 +94,7 @@ public class MockController : ControllerBase
 
             route.Plugins = plugins;
             await _apisixClient.UpdateRouteAsync(routeId, route);
-            _logger.LogInformation($"Synced Mocking plugin for route {routeId}");
+            _logger.LogInformation("Synced Mocking plugin for route {RouteId}", routeId);
         }
         catch (Exception ex)
         {

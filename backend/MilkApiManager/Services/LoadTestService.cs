@@ -16,7 +16,7 @@ public class LoadTestService : ILoadTestService
 
     public async Task<string> RunTestAsync(string targetUrl, int vus, int durationSeconds)
     {
-        _logger.LogInformation($"Starting load test: {targetUrl}, VUs: {vus}, Duration: {durationSeconds}s");
+        _logger.LogInformation("Starting load test: {TargetUrl}, VUs: {VUs}, Duration: {Duration}s", targetUrl, vus, durationSeconds);
 
         // Simple k6 script generation
         var script = $@"

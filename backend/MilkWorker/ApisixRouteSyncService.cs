@@ -81,7 +81,7 @@ public class ApisixRouteSyncService : IHostedService
                     ServiceId = "insure-tech-backend" // Map to default service
                 };
 
-                _logger.LogInformation($"Syncing Route: {routeId} -> {fullUri}");
+                _logger.LogInformation("Syncing Route: {RouteId} -> {FullUri}", routeId, fullUri);
                 // await apisixClient.UpdateRouteAsync(routeId, routeConfig); 
                 // Commented out until we refine the logic to avoid overwriting manual configs
             }

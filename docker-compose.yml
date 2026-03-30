@@ -23,7 +23,7 @@ services:
     image: quay.io/coreos/etcd:v3.5.15
     restart: always
     environment:
-      - ALLOW_NONE_AUTHENTICATION=yes
+      - ALLOW_NONE_AUTHENTICATION=${ETCD_ALLOW_NONE_AUTH:-yes}  # Set to 'no' in production with ETCD_ROOT_PASSWORD
       - ETCD_ADVERTISE_CLIENT_URLS=http://0.0.0.0:2379
       - ETCD_LISTEN_CLIENT_URLS=http://0.0.0.0:2379
     ports:
@@ -89,7 +89,7 @@ services:
     image: docker.elastic.co/elasticsearch/elasticsearch:9.2.3
     environment:
       - discovery.type=single-node
-      - xpack.security.enabled=false
+      - xpack.security.enabled=${ES_SECURITY_ENABLED:-false}  # Set to 'true' in production with ELASTIC_PASSWORD
       - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"

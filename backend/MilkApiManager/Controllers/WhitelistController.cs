@@ -45,8 +45,8 @@ namespace MilkApiManager.Controllers
                 var persist = _config.GetValue<bool>("Whitelist:PersistToDatabase");
                 if (persist)
                 {
-                    var entries = await _db.WhitelistEntries.Where(w => w.RouteId == routeId)
-                        .Where(w => w.ExpiresAt == null || w.ExpiresAt > DateTime.UtcNow)
+                    var entries = await _db.WhitelistEntries
+                        .Where(w => w.RouteId == routeId && (w.ExpiresAt == null || w.ExpiresAt > DateTime.UtcNow))
                         .OrderByDescending(e => e.AddedAt).ToListAsync();
                     return Ok(entries);
                 }
@@ -60,7 +60,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving whitelist for route {RouteId}", routeId);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 
@@ -78,12 +78,12 @@ namespace MilkApiManager.Controllers
         {
             if (request == null || string.IsNullOrEmpty(request.IpCidr))
             {
-                return BadRequest("IpCidr is required");
+                return BadRequest(new ApiError("ValidationError", "IpCidr is required"));
             }
 
             if (!IsValidIpOrCidr(request.IpCidr))
             {
-                return BadRequest("Invalid IP or CIDR format");
+                return BadRequest(new ApiError("ValidationError", "Invalid IP or CIDR format"));
             }
 
             try
@@ -158,7 +158,7 @@ namespace MilkApiManager.Controllers
                 }
                 else
                 {
-                    return BadRequest("Invalid action. Use 'add' or 'remove'.");
+                    return BadRequest(new ApiError("ValidationError", "Invalid action. Use 'add' or 'remove'."));
                 }
 
                 await SyncWhitelistToApisix(routeId);
@@ -168,7 +168,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating whitelist for route {RouteId} {Ip}", routeId, request.IpCidr);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 

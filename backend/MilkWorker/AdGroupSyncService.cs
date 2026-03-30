@@ -116,7 +116,7 @@ namespace MilkApiManager.Services
             {
                 try
                 {
-                    _logger.LogInformation($"Connecting to LDAP at {ldapHost}:{ldapPort}...");
+                    _logger.LogInformation("Connecting to LDAP at {LdapHost}:{LdapPort}...", ldapHost, ldapPort);
                     connection.Connect(ldapHost, ldapPort);
                     connection.Bind(bindDn, bindPassword);
 
@@ -199,7 +199,7 @@ namespace MilkApiManager.Services
         private async Task SyncGroupToApisix(AdGroup group, IApisixClient apisixClient)
         {
             var groupId = group.Name.ToLower();
-            _logger.LogInformation($"Syncing group {group.Name} to APISIX...");
+            _logger.LogInformation("Syncing group {GroupName} to APISIX...", group.Name);
             
             var groupConfig = new ConsumerGroup
             {
@@ -212,7 +212,7 @@ namespace MilkApiManager.Services
 
         private async Task SyncUserToApisix(string username, string groupId, IApisixClient apisixClient)
         {
-            _logger.LogInformation($"Syncing user {username} to group {groupId} in APISIX...");
+            _logger.LogInformation("Syncing user {Username} to group {GroupId} in APISIX...", username, groupId);
             
             var consumer = new Consumer
             {

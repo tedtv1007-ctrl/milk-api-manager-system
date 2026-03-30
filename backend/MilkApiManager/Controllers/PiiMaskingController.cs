@@ -50,7 +50,7 @@ public class PiiMaskingController : ControllerBase
     {
         if (string.IsNullOrEmpty(rule.RegexPattern))
         {
-            return BadRequest("Regex pattern is required");
+            return BadRequest(new ApiError("ValidationError", "Regex pattern is required"));
         }
 
         try
@@ -60,7 +60,7 @@ public class PiiMaskingController : ControllerBase
         }
         catch (ArgumentException)
         {
-            return BadRequest("Invalid Regex pattern");
+            return BadRequest(new ApiError("ValidationError", "Invalid Regex pattern"));
         }
 
         rule.UpdatedAt = DateTime.UtcNow;
@@ -87,7 +87,7 @@ public class PiiMaskingController : ControllerBase
 
         if (string.IsNullOrEmpty(rule.RegexPattern))
         {
-            return BadRequest("Regex pattern is required");
+            return BadRequest(new ApiError("ValidationError", "Regex pattern is required"));
         }
 
         try
@@ -97,7 +97,7 @@ public class PiiMaskingController : ControllerBase
         }
         catch (ArgumentException)
         {
-            return BadRequest("Invalid Regex pattern");
+            return BadRequest(new ApiError("ValidationError", "Invalid Regex pattern"));
         }
 
         rule.UpdatedAt = DateTime.UtcNow;
@@ -149,7 +149,7 @@ public class PiiMaskingController : ControllerBase
             var route = await _apisixClient.GetRouteAsync(routeId);
             if (route == null)
             {
-                _logger.LogWarning($"Route {routeId} not found in APISIX. Skipping PII sync.");
+                _logger.LogWarning("Route {RouteId} not found in APISIX. Skipping PII sync.", routeId);
                 return;
             }
 
@@ -189,7 +189,7 @@ public class PiiMaskingController : ControllerBase
                 currentPlugins["pii-masker"] = piiConfig;
                 route.Plugins = currentPlugins;
                 await _apisixClient.UpdateRouteAsync(routeId, route);
-                _logger.LogInformation($"Successfully synced {activeRules.Count} PII rules to route {routeId}");
+                _logger.LogInformation("Successfully synced {RuleCount} PII rules to route {RouteId}", activeRules.Count, routeId);
             }
         }
         catch (Exception ex)

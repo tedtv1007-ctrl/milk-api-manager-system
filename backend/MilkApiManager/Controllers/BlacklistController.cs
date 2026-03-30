@@ -43,7 +43,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving blacklist");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 
@@ -59,7 +59,7 @@ namespace MilkApiManager.Controllers
         {
             if (request == null || string.IsNullOrEmpty(request.Ip))
             {
-                return BadRequest("IP is required");
+                return BadRequest(new ApiError("ValidationError", "IP is required."));
             }
 
             try
@@ -75,7 +75,7 @@ namespace MilkApiManager.Controllers
                 }
                 else
                 {
-                    return BadRequest("Invalid action. Use 'add' or 'remove'.");
+                    return BadRequest(new ApiError("ValidationError", "Invalid action. Use 'add' or 'remove'."));
                 }
 
                 return Ok(new { message });
@@ -87,7 +87,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating blacklist for IP {Ip}", request.Ip);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
     }

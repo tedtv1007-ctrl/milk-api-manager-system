@@ -37,7 +37,7 @@ public class ServiceController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving services");
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -53,7 +53,7 @@ public class ServiceController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving service {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -61,7 +61,7 @@ public class ServiceController : ControllerBase
     [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> CreateOrUpdateService(string id, [FromBody] Service serviceConfig)
     {
-        if (serviceConfig == null) return BadRequest("Invalid service configuration");
+        if (serviceConfig == null) return BadRequest(new ApiError("ValidationError", "Invalid service configuration"));
 
         try
         {
@@ -81,7 +81,7 @@ public class ServiceController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating/updating service {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -107,7 +107,7 @@ public class ServiceController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error deleting service {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 }

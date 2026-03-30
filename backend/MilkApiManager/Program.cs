@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
+using System.Threading.RateLimiting;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using OpenTelemetry.Metrics;
@@ -110,6 +111,38 @@ builder.Services.AddCors(options =>
 var healthChecksBuilder = builder.Services.AddHealthChecks()
     .AddCheck("self", () => HealthCheckResult.Healthy(), tags: new[] { "live" });
 // PostgreSQL health check will be added after connection string is resolved below
+
+// Rate Limiting — OWASP A07: Protect against brute-force and abuse
+builder.Services.AddRateLimiter(options =>
+{
+    options.RejectionStatusCode = StatusCodes.Status429TooManyRequests;
+
+    // In test mode, use very high limits to avoid breaking integration tests
+    var isRateLimitRelaxed = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true" 
+        || Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
+
+    // Strict policy for authentication endpoints (5 req/min per IP, relaxed in test)
+    options.AddPolicy("auth", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = isRateLimitRelaxed ? 1000 : 5,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 0
+            }));
+
+    // General API rate limit (100 req/min per IP)
+    options.AddPolicy("api", context =>
+        RateLimitPartition.GetFixedWindowLimiter(
+            partitionKey: context.Connection.RemoteIpAddress?.ToString() ?? "unknown",
+            factory: _ => new FixedWindowRateLimiterOptions
+            {
+                PermitLimit = isRateLimitRelaxed ? 10000 : 100,
+                Window = TimeSpan.FromMinutes(1),
+                QueueLimit = 10
+            }));
+});
 
 // OpenTelemetry Observability
 var otel = builder.Services.AddOpenTelemetry();
@@ -277,10 +310,13 @@ app.Use(async (context, next) =>
 // 2. CORS
 app.UseCors();
 
-// 3. Swagger (always enabled, gated by configuration if needed)
-app.UseSwagger();
-if (app.Environment.IsDevelopment())
+// 2.5 Rate Limiting — OWASP A07
+app.UseRateLimiter();
+
+// 3. Swagger (disabled in production for security — OWASP A05)
+if (!app.Environment.IsProduction())
 {
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
 

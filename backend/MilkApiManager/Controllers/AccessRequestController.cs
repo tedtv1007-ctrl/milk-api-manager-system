@@ -72,7 +72,7 @@ public class AccessRequestController : ControllerBase
             };
 
             await _apisixClient.CreateConsumerAsync(consumerName, apisixConsumer);
-            _logger.LogInformation($"Auto-provisioned consumer {consumerName} for request {id}");
+            _logger.LogInformation("Auto-provisioned consumer {ConsumerName} for request {RequestId}", consumerName, id);
         }
         catch (Exception ex)
         {

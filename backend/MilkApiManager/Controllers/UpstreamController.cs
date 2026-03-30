@@ -36,7 +36,7 @@ public class UpstreamController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving upstreams");
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -52,7 +52,7 @@ public class UpstreamController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving upstream {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -60,7 +60,7 @@ public class UpstreamController : ControllerBase
     [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> CreateOrUpdateUpstream(string id, [FromBody] StandaloneUpstream upstreamConfig)
     {
-        if (upstreamConfig == null) return BadRequest("Invalid upstream configuration");
+        if (upstreamConfig == null) return BadRequest(new ApiError("ValidationError", "Invalid upstream configuration"));
 
         try
         {
@@ -81,7 +81,7 @@ public class UpstreamController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating/updating upstream {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -107,7 +107,7 @@ public class UpstreamController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error deleting upstream {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 }

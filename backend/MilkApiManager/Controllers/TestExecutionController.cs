@@ -51,14 +51,14 @@ public class TestExecutionController : ControllerBase
         if (scenario == null) return NotFound();
 
         var service = await _context.ApiServices.FindAsync(scenario.ServiceId);
-        if (service == null) return BadRequest("Service metadata not found.");
+        if (service == null) return BadRequest(new ApiError("ValidationError", "Service metadata not found."));
 
         // Construct target URL (through APISIX)
         // APISIX is at http://apisix:9080, and BasePath is e.g. /api
         var apisixUrl = Environment.GetEnvironmentVariable("APISIX_PUBLIC_URL") ?? "http://apisix:9080";
         var targetUrl = $"{apisixUrl.TrimEnd('/')}{service.BasePath.TrimEnd('/')}/{scenario.Endpoint.TrimStart('/')}";
 
-        _logger.LogInformation($"Executing API Test: {scenario.Name} -> {targetUrl}");
+        _logger.LogInformation("Executing API Test: {ScenarioName} -> {TargetUrl}", scenario.Name, targetUrl);
 
         var stopwatch = Stopwatch.StartNew();
         try

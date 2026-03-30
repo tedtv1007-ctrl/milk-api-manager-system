@@ -64,6 +64,15 @@ public class AppDbContext : DbContext
             // PostgreSQL Optimization: Store JSON details as native jsonb
             entity.Property(e => e.DetailsJson)
                   .HasColumnType("jsonb");
+
+            // PostgreSQL Optimization: GIN index for JSONB queries on DetailsJson
+            entity.HasIndex(e => e.DetailsJson)
+                  .HasMethod("GIN")
+                  .HasDatabaseName("IX_AuditLogs_DetailsJson_GIN");
+
+            // PostgreSQL Optimization: Index on User for audit log filtering
+            entity.HasIndex(e => e.User)
+                  .HasDatabaseName("IX_AuditLogs_User");
         });
 
         modelBuilder.Entity<BlacklistEntry>(entity =>

@@ -47,7 +47,7 @@ public class SSLController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving SSL certificates");
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -63,7 +63,7 @@ public class SSLController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving SSL certificate {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -72,7 +72,7 @@ public class SSLController : ControllerBase
     public async Task<IActionResult> CreateOrUpdateSsl(string id, [FromBody] SslCertificate sslConfig)
     {
         if (sslConfig == null || string.IsNullOrEmpty(sslConfig.Cert) || string.IsNullOrEmpty(sslConfig.Key))
-            return BadRequest("Certificate and key are required");
+            return BadRequest(new ApiError("ValidationError", "Certificate and key are required"));
 
         try
         {
@@ -93,7 +93,7 @@ public class SSLController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating/updating SSL certificate {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -119,7 +119,7 @@ public class SSLController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error deleting SSL certificate {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 }

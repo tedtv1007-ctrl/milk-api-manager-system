@@ -39,6 +39,11 @@ namespace MilkApiManager.Services
 
                 if (channel.Type == "Webhook")
                 {
+                    if (!IsAllowedWebhookUrl(channel.Target))
+                    {
+                        _logger.LogWarning("Webhook URL blocked (SSRF protection): {Url}", channel.Target);
+                        continue;
+                    }
                     await SendWebhookAsync(channel.Target, title, message, isCritical);
                 }
                 else if (channel.Type == "Email")
@@ -81,6 +86,34 @@ namespace MilkApiManager.Services
             {
                 _logger.LogError(ex, "Error sending webhook to {Url}", url);
             }
+        }
+
+        /// <summary>
+        /// SSRF protection: Validates webhook URL is not targeting internal/private networks.
+        /// </summary>
+        private static bool IsAllowedWebhookUrl(string url)
+        {
+            if (!Uri.TryCreate(url, UriKind.Absolute, out var uri))
+                return false;
+
+            if (uri.Scheme != "https" && uri.Scheme != "http")
+                return false;
+
+            var host = uri.Host;
+
+            // Block private/internal IP ranges
+            if (host == "localhost" || host == "127.0.0.1" || host == "::1")
+                return false;
+            if (host.StartsWith("10."))
+                return false;
+            if (host.StartsWith("172.") && int.TryParse(host.Split('.')[1], out var octet) && octet >= 16 && octet <= 31)
+                return false;
+            if (host.StartsWith("192.168."))
+                return false;
+            if (host.StartsWith("169.254."))
+                return false;
+
+            return true;
         }
     }
 }

@@ -94,7 +94,7 @@ namespace MilkApiManager.Controllers
         {
             if (request == null || string.IsNullOrEmpty(request.Owner))
             {
-                return BadRequest("Invalid request payload");
+                return BadRequest(new ApiError("ValidationError", "Invalid request payload"));
             }
 
             try

@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.RateLimiting;
 using MilkApiManager.Auth;
 using MilkApiManager.Models;
 using MilkApiManager.Services;
@@ -32,13 +33,15 @@ public class AuthController : ControllerBase
     /// <returns>JWT token and user information</returns>
     [HttpPost("login")]
     [AllowAnonymous]
+    [EnableRateLimiting("auth")]
     [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(LoginResponse))]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType(StatusCodes.Status429TooManyRequests)]
     public async Task<IActionResult> Login([FromBody] LoginRequest request)
     {
         if (string.IsNullOrWhiteSpace(request.Username) || string.IsNullOrWhiteSpace(request.Password))
         {
-            return BadRequest(new { error = "Username and password are required." });
+            return BadRequest(new ApiError("ValidationError", "Username and password are required."));
         }
 
         var result = await _authService.AuthenticateAsync(request.Username, request.Password, HttpContext.RequestAborted);
@@ -46,7 +49,7 @@ public class AuthController : ControllerBase
         if (result == null)
         {
             _logger.LogWarning("Failed login attempt for user {Username}", request.Username);
-            return Unauthorized(new { error = "Invalid username or password." });
+            return Unauthorized(new ApiError("Unauthorized", "Invalid username or password."));
         }
 
         _logger.LogInformation("User {Username} logged in successfully with roles: {Roles}", 

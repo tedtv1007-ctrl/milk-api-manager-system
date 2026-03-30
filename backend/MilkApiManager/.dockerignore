@@ -4,3 +4,16 @@ TestResults/
 *.log
 vault_storage/
 scripts/
+.git/
+.gitignore
+.github/
+.vscode/
+.idea/
+*.user
+*.suo
+*.md
+__pycache__/
+*.pyc
+.pytest_cache/
+test-results/
+load-tests/

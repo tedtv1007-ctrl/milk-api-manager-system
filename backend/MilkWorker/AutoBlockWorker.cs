@@ -31,6 +31,7 @@ public class AutoBlockWorker : BackgroundService
             try
             {
                 await MonitorAndBlockAsync(stoppingToken);
+                CleanupExpiredBlockCache();
             }
             catch (Exception ex)
             {
@@ -38,6 +39,21 @@ public class AutoBlockWorker : BackgroundService
             }
 
             await Task.Delay(_checkInterval, stoppingToken);
+        }
+    }
+
+    /// <summary>
+    /// Prevents unbounded ConcurrentDictionary growth by removing entries older than 30 minutes.
+    /// </summary>
+    private void CleanupExpiredBlockCache()
+    {
+        var cutoff = DateTime.UtcNow.AddMinutes(-30);
+        foreach (var kvp in _recentlyBlockedIps)
+        {
+            if (kvp.Value < cutoff)
+            {
+                _recentlyBlockedIps.TryRemove(kvp.Key, out _);
+            }
         }
     }
 

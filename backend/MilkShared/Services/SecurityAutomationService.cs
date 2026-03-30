@@ -37,14 +37,14 @@ public class SecurityAutomationService : ISecurityAutomationService
             if (daysToExpiry <= 0)
             {
                 // 已過期，執行輪轉
-                _logger.LogWarning($"Key for {key.Owner} has expired. Executing auto-rotation.");
+                _logger.LogWarning("Key for {Owner} has expired. Executing auto-rotation.", key.Owner);
                 await _vaultService.RotateApiKeyAsync(key.Owner);
                 await NotifyMattermost(key.Owner, "API Key has been automatically rotated due to expiration.");
             }
             else if (daysToExpiry <= 7)
             {
                 // 即將過期，發送通知
-                _logger.LogInformation($"Key for {key.Owner} will expire in {Math.Round(daysToExpiry, 1)} days. Sending notification.");
+                _logger.LogInformation("Key for {Owner} will expire in {DaysToExpiry} days. Sending notification.", key.Owner, Math.Round(daysToExpiry, 1));
                 await NotifyMattermost(key.Owner, $"API Key will expire in {Math.Round(daysToExpiry, 1)} days. Please prepare for rotation.");
             }
         }
@@ -53,7 +53,7 @@ public class SecurityAutomationService : ISecurityAutomationService
     private async Task NotifyMattermost(string owner, string message)
     {
         // 實作 Webhook 推送到 Mattermost 安全頻道 (Issue #32)
-        _logger.LogInformation($"[Notification] To: {owner}, Msg: {message}");
+        _logger.LogInformation("[Notification] To: {Owner}, Msg: {Message}", owner, message);
         // 實際程式碼會呼叫 HttpClient 發送 POST 到 Mattermost Hook URL
     }
 
@@ -62,7 +62,7 @@ public class SecurityAutomationService : ISecurityAutomationService
     /// </summary>
     public async Task BlockMaliciousIP(string ip, string reason)
     {
-        Console.WriteLine($"[SECURITY] 偵測到異常流量，IP: {ip}, 原因: {reason}. 執行自動阻斷...");
+        _logger.LogWarning("[SECURITY] Detected abnormal traffic, IP: {Ip}, Reason: {Reason}. Executing auto-block...", ip, reason);
         
         // 呼叫之前龍蝦夥伴實作的 ApisixClient 進行插件更新
         // 這裡示範更新全域 IP 限制名單

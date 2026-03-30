@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using MilkApiManager.Auth;
+using MilkApiManager.Models;
 using MilkApiManager.Services;
 using System.Text.Json;
 using Asp.Versioning;
@@ -52,7 +53,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving consumers");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 
@@ -67,7 +68,7 @@ namespace MilkApiManager.Controllers
                 var consumer = await _apisixClient.GetConsumerAsync(username);
                 if (consumer == null)
                 {
-                    return NotFound(new { Error = $"Consumer '{username}' not found." });
+                    return NotFound(new ApiError("NotFound", $"Consumer '{username}' not found."));
                 }
 
                 // 構建回傳物件
@@ -110,12 +111,12 @@ namespace MilkApiManager.Controllers
             }
             catch (HttpRequestException ex) when (ex.StatusCode == System.Net.HttpStatusCode.NotFound)
             {
-                return NotFound(new { Error = $"Consumer '{username}' not found." });
+                return NotFound(new ApiError("NotFound", $"Consumer '{username}' not found."));
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error retrieving consumer {Username}", username);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 
@@ -128,7 +129,7 @@ namespace MilkApiManager.Controllers
                 if (!consumerData.TryGetProperty("username", out var usernameProp) || 
                     string.IsNullOrWhiteSpace(usernameProp.GetString()))
                 {
-                    return BadRequest("Username is required.");
+                    return BadRequest(new ApiError("ValidationError", "Username is required."));
                 }
 
                 string username = usernameProp.GetString()!;
@@ -174,7 +175,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error updating consumer");
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 
@@ -190,7 +191,7 @@ namespace MilkApiManager.Controllers
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error deleting consumer {Username}", username);
-                return StatusCode(500, "Internal server error");
+                return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
             }
         }
 

@@ -13,11 +13,12 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 # Create storage directories and set permissions for non-root user
-USER root
-RUN mkdir -p /app/vault_storage /app/load-tests && \
-  chown -R $APP_UID:$APP_UID /app/vault_storage /app/load-tests
+RUN addgroup -g 1654 -S appgroup && \
+    adduser -u 1654 -S appuser -G appgroup && \
+    mkdir -p /app/vault_storage /app/load-tests && \
+    chown -R appuser:appgroup /app/vault_storage /app/load-tests
 
-USER $APP_UID
+USER appuser
 HEALTHCHECK --interval=30s --timeout=5s --start-period=30s --retries=3 \
   CMD curl -f http://localhost:8080/health/ready || exit 1
 ENTRYPOINT ["dotnet", "MilkApiManager.dll"]

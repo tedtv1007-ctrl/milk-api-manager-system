@@ -36,7 +36,7 @@ public class GlobalRuleController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error retrieving global rules");
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -44,7 +44,7 @@ public class GlobalRuleController : ControllerBase
     [Authorize(Policy = AuthorizationPolicies.OperatorOrAbove)]
     public async Task<IActionResult> CreateOrUpdateGlobalRule(string id, [FromBody] GlobalRule ruleConfig)
     {
-        if (ruleConfig == null) return BadRequest("Invalid global rule configuration");
+        if (ruleConfig == null) return BadRequest(new ApiError("ValidationError", "Invalid global rule configuration"));
 
         try
         {
@@ -65,7 +65,7 @@ public class GlobalRuleController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error creating/updating global rule {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 
@@ -91,7 +91,7 @@ public class GlobalRuleController : ControllerBase
         catch (Exception ex)
         {
             _logger.LogError(ex, "Error deleting global rule {Id}", id);
-            return StatusCode(500, "Internal server error");
+            return StatusCode(500, new ApiError("InternalError", "An unexpected error occurred."));
         }
     }
 }

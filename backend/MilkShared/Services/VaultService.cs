@@ -27,10 +27,10 @@ namespace MilkApiManager.Services
         {
             // In a real Intranet scenario, this would call HashiCorp Vault.
             // For now, we use a Secure Environment Variable lookup with a file fallback.
-            var envSecret = Environment.GetEnvironmentVariable($"VAULT_{key.ToUpper()}");
+            var envSecret = Environment.GetEnvironmentVariable($"VAULT_{SanitizeKey(key).ToUpper()}");
             if (!string.IsNullOrEmpty(envSecret)) return envSecret;
 
-            var filePath = Path.Combine(_storagePath, $"{key}.secret");
+            var filePath = Path.Combine(_storagePath, $"{SanitizeKey(key)}.secret");
             if (File.Exists(filePath)) return await File.ReadAllTextAsync(filePath);
 
             return "mock-secret-value";
@@ -38,8 +38,8 @@ namespace MilkApiManager.Services
 
         public async Task StoreSecretAsync(string key, string value)
         {
-            _logger.LogInformation("Storing secret for {Key}", key);
-            var filePath = Path.Combine(_storagePath, $"{key}.secret");
+            _logger.LogWarning("Storing secret for {Key} to local file system — use a proper vault in production", key);
+            var filePath = Path.Combine(_storagePath, $"{SanitizeKey(key)}.secret");
             var directory = Path.GetDirectoryName(filePath);
             if (!string.IsNullOrEmpty(directory) && !Directory.Exists(directory))
             {
@@ -71,6 +71,14 @@ namespace MilkApiManager.Services
             await StoreSecretAsync($"apikey_{consumerName}", newKey);
 
             return newKey;
+        }
+
+        /// <summary>
+        /// Sanitize key to prevent path traversal attacks.
+        /// </summary>
+        private static string SanitizeKey(string key)
+        {
+            return string.Concat(key.Where(c => char.IsLetterOrDigit(c) || c == '_' || c == '-'));
         }
     }
 }
