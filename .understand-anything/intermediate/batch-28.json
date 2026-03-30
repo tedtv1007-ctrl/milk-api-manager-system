@@ -1,0 +1,149 @@
+{
+  "nodes": [
+    {
+      "id": "file:sdk/python/docs/ProblemDetails.md",
+      "summary": "Documentation for the ProblemDetails model used for error reporting in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/RequestStatus.md",
+      "summary": "Documentation for the RequestStatus enumeration in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "enum"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/Route.md",
+      "summary": "Documentation for the Route data model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/RouteApi.md",
+      "summary": "Documentation for the Route management API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/Service.md",
+      "summary": "Documentation for the Service data model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/SyncStatusApi.md",
+      "summary": "Documentation for the Synchronization Status API in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/TestExecutionApi.md",
+      "summary": "Documentation for the Test Execution API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/Upstream.md",
+      "summary": "Documentation for the Upstream data model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/WhitelistApi.md",
+      "summary": "Documentation for the Whitelist management API in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/WhitelistEntry.md",
+      "summary": "Documentation for the WhitelistEntry model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/WhitelistUpdateRequest.md",
+      "summary": "Documentation for the WhitelistUpdateRequest model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/git_push.sh",
+      "summary": "Automation script for pushing the generated Python SDK to a remote Git repository.",
+      "tags": ["script", "git", "automation", "devops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api_client.py",
+      "summary": "Core API client implementation handling HTTP requests, authentication, and serialization for the Python SDK.",
+      "tags": ["python", "sdk", "implementation", "core"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api_response.py",
+      "summary": "Container class for encapsulated HTTP responses in the Python SDK.",
+      "tags": ["python", "sdk", "implementation", "core"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/access_request_api.py",
+      "summary": "Implementation of the Access Request API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/alert_rules_api.py",
+      "summary": "Implementation of the Alert Rules API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/analytics_api.py",
+      "summary": "Implementation of the Analytics API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/api_api.py",
+      "summary": "Implementation of the core API management client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/api_catalog_api.py",
+      "summary": "Implementation of the API Catalog client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/audit_logs_api.py",
+      "summary": "Implementation of the Audit Logs API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/blacklist_api.py",
+      "summary": "Implementation of the Blacklist API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/consumer_api.py",
+      "summary": "Implementation of the Consumer management client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/consumer_group_api.py",
+      "summary": "Implementation of the Consumer Group API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    { "source": "file:sdk/python/milk_api_client/api/access_request_api.py", "target": "file:sdk/python/docs/AccessRequestApi.md", "type": "documents" },
+    { "source": "file:sdk/python/milk_api_client/api/alert_rules_api.py", "target": "file:sdk/python/docs/AlertRulesApi.md", "type": "documents" },
+    { "source": "file:sdk/python/milk_api_client/api_client.py", "target": "file:sdk/python/milk_api_client/api/access_request_api.py", "type": "contains" },
+    { "source": "file:sdk/python/milk_api_client/api_client.py", "target": "file:sdk/python/milk_api_client/api/api_api.py", "type": "contains" },
+    { "source": "file:sdk/python/milk_api_client/api_response.py", "target": "file:sdk/python/milk_api_client/api/api_api.py", "type": "contains" }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "monitoring/grafana-provisioning/alerting/notification-routing.yml",
+      "language": "yaml",
+      "sizeLines": 31,
+      "fileCategory": "config"
+    },
+    {
+      "path": "monitoring/grafana-provisioning/alerting/slo-alert-rules.yml",
+      "language": "yaml",
+      "sizeLines": 173,
+      "fileCategory": "config"
+    },
+    {
+      "path": "monitoring/grafana-provisioning/datasources/prometheus.yml",
+      "language": "yaml",
+      "sizeLines": 11,
+      "fileCategory": "config"
+    },
+    {
+      "path": "monitoring/kibana-dashboard.json",
+      "language": "json",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": "monitoring/logstash.conf",
+      "language": "unknown",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "monitoring/prometheus.yml",
+      "language": "yaml",
+      "sizeLines": 17,
+      "fileCategory": "config"
+    },
+    {
+      "path": "portal/public/index.html",
+      "language": "html",
+      "sizeLines": 21,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "portal/public/openapi.yaml",
+      "language": "yaml",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "README.md",
+      "language": "markdown",
+      "sizeLines": 270,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "scripts/compliance-report.js",
+      "language": "javascript",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "scripts/generate-python-sdk.ps1",
+      "language": "powershell",
+      "sizeLines": 30,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/generate-sdk.ps1",
+      "language": "powershell",
+      "sizeLines": 35,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/setup-consumers.sh",
+      "language": "shell",
+      "sizeLines": 46,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/setup-oidc.sh",
+      "language": "shell",
+      "sizeLines": 38,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/setup-traffic-control.sh",
+      "language": "shell",
+      "sizeLines": 68,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/start-all.sh",
+      "language": "shell",
+      "sizeLines": 46,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/sync-openapi-to-apisix.sh",
+      "language": "shell",
+      "sizeLines": 61,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/verify-all.ps1",
+      "language": "powershell",
+      "sizeLines": 98,
+      "fileCategory": "script"
+    },
+    {
+      "path": "scripts/verify-all.sh",
+      "language": "shell",
+      "sizeLines": 160,
+      "fileCategory": "script"
+    },
+    {
+      "path": "sdk/MilkApi.Client.cs",
+      "language": "csharp",
+      "sizeLines": 5027,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/.github/workflows/python.yml",
+      "language": "yaml",
+      "sizeLines": 35,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/python/.gitlab-ci.yml",
+      "language": "yaml",
+      "sizeLines": 32,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/python/.openapi-generator-ignore",
+      "language": "unknown",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/.openapi-generator/FILES",
+      "language": "unknown",
+      "sizeLines": 129,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/.openapi-generator/VERSION",
+      "language": "unknown",
+      "sizeLines": 2,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "monitoring/grafana-provisioning/alerting/notification-routing.yml": [],
+    "monitoring/grafana-provisioning/alerting/slo-alert-rules.yml": [],
+    "monitoring/grafana-provisioning/datasources/prometheus.yml": [],
+    "monitoring/kibana-dashboard.json": [],
+    "monitoring/logstash.conf": [],
+    "monitoring/prometheus.yml": [],
+    "portal/public/index.html": [],
+    "portal/public/openapi.yaml": [],
+    "README.md": [],
+    "scripts/compliance-report.js": [],
+    "scripts/generate-python-sdk.ps1": [],
+    "scripts/generate-sdk.ps1": [],
+    "scripts/setup-consumers.sh": [],
+    "scripts/setup-oidc.sh": [],
+    "scripts/setup-traffic-control.sh": [],
+    "scripts/start-all.sh": [],
+    "scripts/sync-openapi-to-apisix.sh": [],
+    "scripts/verify-all.ps1": [],
+    "scripts/verify-all.sh": [],
+    "sdk/MilkApi.Client.cs": [],
+    "sdk/python/.github/workflows/python.yml": [],
+    "sdk/python/.gitlab-ci.yml": [],
+    "sdk/python/.openapi-generator-ignore": [],
+    "sdk/python/.openapi-generator/FILES": [],
+    "sdk/python/.openapi-generator/VERSION": []
+  }
+}

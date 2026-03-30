@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkApiManager/Controllers/AuditLogsController.cs",
+      "language": "csharp",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AuthController.cs",
+      "language": "csharp",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/BlacklistController.cs",
+      "language": "csharp",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ConsumerController.cs",
+      "language": "csharp",
+      "sizeLines": 247,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ConsumerGroupController.cs",
+      "language": "csharp",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/GlobalRuleController.cs",
+      "language": "csharp",
+      "sizeLines": 98,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/KeysController.cs",
+      "language": "csharp",
+      "sizeLines": 218,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/LoadTestController.cs",
+      "language": "csharp",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/MockController.cs",
+      "language": "csharp",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/PiiMaskingController.cs",
+      "language": "csharp",
+      "sizeLines": 203,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/RouteController.cs",
+      "language": "csharp",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ServerInfoController.cs",
+      "language": "csharp",
+      "sizeLines": 83,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ServiceController.cs",
+      "language": "csharp",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SloMetricsController.cs",
+      "language": "csharp",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SSLController.cs",
+      "language": "csharp",
+      "sizeLines": 126,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SyncStatusController.cs",
+      "language": "csharp",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/TestExecutionController.cs",
+      "language": "csharp",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/UpstreamController.cs",
+      "language": "csharp",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/WhitelistController.cs",
+      "language": "csharp",
+      "sizeLines": 206,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 24,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "backend/MilkApiManager/Filters/GlobalExceptionFilter.cs",
+      "language": "csharp",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.cs",
+      "language": "csharp",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.sql",
+      "language": "sql",
+      "sizeLines": 25,
+      "fileCategory": "data"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.cs",
+      "language": "csharp",
+      "sizeLines": 267,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.Designer.cs",
+      "language": "csharp",
+      "sizeLines": 407,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkApiManager/Controllers/AuditLogsController.cs": [],
+    "backend/MilkApiManager/Controllers/AuthController.cs": [],
+    "backend/MilkApiManager/Controllers/BlacklistController.cs": [],
+    "backend/MilkApiManager/Controllers/ConsumerController.cs": [],
+    "backend/MilkApiManager/Controllers/ConsumerGroupController.cs": [],
+    "backend/MilkApiManager/Controllers/GlobalRuleController.cs": [],
+    "backend/MilkApiManager/Controllers/KeysController.cs": [],
+    "backend/MilkApiManager/Controllers/LoadTestController.cs": [],
+    "backend/MilkApiManager/Controllers/MockController.cs": [],
+    "backend/MilkApiManager/Controllers/PiiMaskingController.cs": [],
+    "backend/MilkApiManager/Controllers/RouteController.cs": [],
+    "backend/MilkApiManager/Controllers/ServerInfoController.cs": [],
+    "backend/MilkApiManager/Controllers/ServiceController.cs": [],
+    "backend/MilkApiManager/Controllers/SloMetricsController.cs": [],
+    "backend/MilkApiManager/Controllers/SSLController.cs": [],
+    "backend/MilkApiManager/Controllers/SyncStatusController.cs": [],
+    "backend/MilkApiManager/Controllers/TestExecutionController.cs": [],
+    "backend/MilkApiManager/Controllers/UpstreamController.cs": [],
+    "backend/MilkApiManager/Controllers/WhitelistController.cs": [],
+    "backend/MilkApiManager/Dockerfile": [],
+    "backend/MilkApiManager/Filters/GlobalExceptionFilter.cs": [],
+    "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.cs": [],
+    "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.sql": [],
+    "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.cs": [],
+    "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.Designer.cs": []
+  }
+}

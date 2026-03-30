@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/api-gateway/references/notion/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/one-drive/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/outlook/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/pdf-co/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/pipedrive/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/podio/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/posthog/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/quickbooks/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/quo/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/reducto/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/salesforce/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sendgrid/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sentry/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sharepoint/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/signnow/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/slack/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/snapchat/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/squarespace/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/squareup/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:skills/api-gateway/references/stripe/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json",
+      "summary": "Configuration file accept_meeting_invite.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json",
+      "summary": "Configuration file add_subtasks_to_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json",
+      "summary": "Configuration file add_task_to_channel.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "summary": "Configuration file align_task_with_objective.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

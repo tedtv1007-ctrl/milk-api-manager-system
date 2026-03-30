@@ -1,0 +1,394 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkAdminBlazor/MilkAdminBlazor.csproj",
+      "type": "file",
+      "label": "MilkAdminBlazor.csproj",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Models/ApiEntry.cs",
+      "type": "file",
+      "label": "ApiEntry.cs",
+      "summary": "CSHARP code file containing classes (RiskLevel, ApiEntry).",
+      "tags": [
+        "code",
+        "csharp",
+        "dotnet"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Models/ApiEntry.cs:RiskLevel",
+      "type": "class",
+      "label": "RiskLevel",
+      "summary": "Class RiskLevel defined in ApiEntry.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Models/ApiEntry.cs:ApiEntry",
+      "type": "class",
+      "label": "ApiEntry",
+      "summary": "Class ApiEntry defined in ApiEntry.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/_Host.cshtml",
+      "type": "file",
+      "label": "_Host.cshtml",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/AlertRules.razor",
+      "type": "file",
+      "label": "AlertRules.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/ApiInventory.razor",
+      "type": "file",
+      "label": "ApiInventory.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/ApiList.razor",
+      "type": "file",
+      "label": "ApiList.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/AuditLogs.razor",
+      "type": "file",
+      "label": "AuditLogs.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/Blacklist.razor",
+      "type": "file",
+      "label": "Blacklist.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/ConsumerAnalytics.razor",
+      "type": "file",
+      "label": "ConsumerAnalytics.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/ConsumerGroups.razor",
+      "type": "file",
+      "label": "ConsumerGroups.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/Consumers.razor",
+      "type": "file",
+      "label": "Consumers.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/DevPortal.razor",
+      "type": "file",
+      "label": "DevPortal.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/GatewayDashboard.razor",
+      "type": "file",
+      "label": "GatewayDashboard.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/GlobalPlugins.razor",
+      "type": "file",
+      "label": "GlobalPlugins.razor",
+      "summary": "UNKNOWN code file containing classes (PluginInfo).",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Pages/GlobalPlugins.razor:PluginInfo",
+      "type": "class",
+      "label": "PluginInfo",
+      "summary": "Class PluginInfo defined in GlobalPlugins.razor.",
+      "tags": [
+        "class",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/LoadTesting.razor",
+      "type": "file",
+      "label": "LoadTesting.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/MockLab.razor",
+      "type": "file",
+      "label": "MockLab.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/PiiManagement.razor",
+      "type": "file",
+      "label": "PiiManagement.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/Reports.razor",
+      "type": "file",
+      "label": "Reports.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/RoutesManagement.razor",
+      "type": "file",
+      "label": "RoutesManagement.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/ServicesManagement.razor",
+      "type": "file",
+      "label": "ServicesManagement.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown",
+        "service"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/SSLManagement.razor",
+      "type": "file",
+      "label": "SSLManagement.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/SyncStatus.razor",
+      "type": "file",
+      "label": "SyncStatus.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Pages/UpstreamsManagement.razor",
+      "type": "file",
+      "label": "UpstreamsManagement.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "file",
+      "label": "Program.cs",
+      "summary": "CSHARP code file containing classes (Program) and functions.",
+      "tags": [
+        "code",
+        "csharp",
+        "dotnet"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Program.cs:Program",
+      "type": "class",
+      "label": "Program",
+      "summary": "Class Program defined in Program.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "function:backend/MilkAdminBlazor/Program.cs:Main",
+      "type": "function",
+      "label": "Main",
+      "summary": "Function Main defined in Program.cs.",
+      "tags": [
+        "function",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Properties/launchSettings.json",
+      "type": "file",
+      "label": "launchSettings.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:backend/MilkAdminBlazor/Models/ApiEntry.cs",
+      "target": "class:backend/MilkAdminBlazor/Models/ApiEntry.cs:RiskLevel",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Models/ApiEntry.cs",
+      "target": "class:backend/MilkAdminBlazor/Models/ApiEntry.cs:ApiEntry",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Pages/GlobalPlugins.razor",
+      "target": "class:backend/MilkAdminBlazor/Pages/GlobalPlugins.razor:PluginInfo",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "class:backend/MilkAdminBlazor/Program.cs:Program",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "function:backend/MilkAdminBlazor/Program.cs:Main",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "ext:Microsoft.AspNetCore.Components",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "ext:Microsoft.AspNetCore.Components.Web",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "ext:MudBlazor.Services",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "ext:MilkAdminBlazor.Data",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Program.cs",
+      "target": "ext:Microsoft.Extensions.Http.Resilience",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Properties/launchSettings.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    }
+  ]
+}

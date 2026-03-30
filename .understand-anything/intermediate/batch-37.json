@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json",
+      "summary": "Configuration file append_task_notes.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json",
+      "summary": "Configuration file change_backlog_folder.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json",
+      "summary": "Configuration file create_braindump_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json",
+      "summary": "Configuration file create_calendar_event.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json",
+      "summary": "Configuration file create_channel.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json",
+      "summary": "Configuration file create_follow_up_task_from_email.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_task.json",
+      "summary": "Configuration file create_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json",
+      "summary": "Configuration file create_weekly_objective.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json",
+      "summary": "Configuration file decline_meeting_invite.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json",
+      "summary": "Configuration file delete_all_incomplete_recurring_task_instances.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json",
+      "summary": "Configuration file delete_calendar_event.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json",
+      "summary": "Configuration file delete_email_thread.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json",
+      "summary": "Configuration file delete_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json",
+      "summary": "Configuration file edit_subtask_title.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json",
+      "summary": "Configuration file edit_task_recurrence_rule.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json",
+      "summary": "Configuration file edit_task_time_estimate.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json",
+      "summary": "Configuration file edit_task_title.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json",
+      "summary": "Configuration file get_archived_tasks.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json",
+      "summary": "Configuration file get_backlog_tasks.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json",
+      "summary": "Configuration file get_task_time_estimate.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json",
+      "summary": "Configuration file import_task_from_calendar_event.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json",
+      "summary": "Configuration file list_email_threads.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json",
+      "summary": "Configuration file log_user_feedback.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json",
+      "summary": "Configuration file mark_email_thread_as_read.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_completed.json",
+      "summary": "Configuration file mark_subtask_as_completed.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

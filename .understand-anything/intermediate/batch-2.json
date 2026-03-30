@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-search-console/README.md",
+      "type": "file",
+      "label": "google-search-console/README.md",
+      "summary": "Routing reference for Google Search Console, detailing site management and search analytics queries.",
+      "tags": ["api-reference", "google-search-console", "seo", "analytics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-sheets/README.md",
+      "type": "file",
+      "label": "google-sheets/README.md",
+      "summary": "Routing reference for Google Sheets, covering spreadsheet metadata, value operations, and batch updates.",
+      "tags": ["api-reference", "google-sheets", "spreadsheets", "data-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-slides/README.md",
+      "type": "file",
+      "label": "google-slides/README.md",
+      "summary": "Routing reference for Google Slides, detailing presentation creation and page-level modifications.",
+      "tags": ["api-reference", "google-slides", "presentations", "google-workspace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-tasks/README.md",
+      "type": "file",
+      "label": "google-tasks/README.md",
+      "summary": "Routing reference for Google Tasks, focusing on task list and task management.",
+      "tags": ["api-reference", "google-tasks", "tasks", "todo"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-workspace-admin/README.md",
+      "type": "file",
+      "label": "google-workspace-admin/README.md",
+      "summary": "Routing reference for Google Workspace Admin SDK, covering user, group, and organizational unit management.",
+      "tags": ["api-reference", "google-workspace", "admin", "identity"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/grafana/README.md",
+      "type": "file",
+      "label": "grafana/README.md",
+      "summary": "Routing reference for Grafana, detailing dashboard, folder, data source, and alert rule management.",
+      "tags": ["api-reference", "grafana", "monitoring", "dashboards"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/granola-mcp/README.md",
+      "type": "file",
+      "label": "granola-mcp/README.md",
+      "summary": "Routing reference for Granola MCP, covering connection management and meeting transcript retrieval.",
+      "tags": ["api-reference", "granola-mcp", "mcp", "meetings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json",
+      "type": "file",
+      "label": "get_meeting_transcript.json",
+      "summary": "JSON schema for the Granola MCP 'get_meeting_transcript' tool.",
+      "tags": ["schema", "mcp", "granola", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json",
+      "type": "file",
+      "label": "get_meetings.json",
+      "summary": "JSON schema for the Granola MCP 'get_meetings' tool.",
+      "tags": ["schema", "mcp", "granola", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json",
+      "type": "file",
+      "label": "list_meetings.json",
+      "summary": "JSON schema for the Granola MCP 'list_meetings' tool.",
+      "tags": ["schema", "mcp", "granola", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json",
+      "type": "file",
+      "label": "query_granola_meetings.json",
+      "summary": "JSON schema for the Granola MCP 'query_granola_meetings' tool.",
+      "tags": ["schema", "mcp", "granola", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/gumroad/README.md",
+      "type": "file",
+      "label": "gumroad/README.md",
+      "summary": "Routing reference for Gumroad, covering product, sale, and subscriber management.",
+      "tags": ["api-reference", "gumroad", "ecommerce", "billing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/hubspot/README.md",
+      "type": "file",
+      "label": "hubspot/README.md",
+      "summary": "Routing reference for HubSpot, detailing contact, company, deal, and association management.",
+      "tags": ["api-reference", "hubspot", "crm", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/instantly/README.md",
+      "type": "file",
+      "label": "instantly/README.md",
+      "summary": "Routing reference for Instantly, covering cold email campaign, lead, and account management.",
+      "tags": ["api-reference", "instantly", "email-marketing", "sales"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/jira/README.md",
+      "type": "file",
+      "label": "jira/README.md",
+      "summary": "Routing reference for Jira, detailing issue, project, and user management.",
+      "tags": ["api-reference", "jira", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/jobber/README.md",
+      "type": "file",
+      "label": "jobber/README.md",
+      "summary": "Routing reference for Jobber, focusing on client, job, and invoice management.",
+      "tags": ["api-reference", "jobber", "field-service", "business"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/jotform/README.md",
+      "type": "file",
+      "label": "jotform/README.md",
+      "summary": "Routing reference for JotForm, detailing form, submission, and report management.",
+      "tags": ["api-reference", "jotform", "forms", "data-collection"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/kaggle/README.md",
+      "type": "file",
+      "label": "kaggle/README.md",
+      "summary": "Routing reference for Kaggle, covering dataset, model, and competition management.",
+      "tags": ["api-reference", "kaggle", "data-science", "machine-learning"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/keap/README.md",
+      "type": "file",
+      "label": "keap/README.md",
+      "summary": "Routing reference for Keap (Infusionsoft), detailing contact, campaign, and automation management.",
+      "tags": ["api-reference", "keap", "crm", "marketing-automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/kibana/README.md",
+      "type": "file",
+      "label": "kibana/README.md",
+      "summary": "Routing reference for Kibana, covering saved objects, data views, and alerting.",
+      "tags": ["api-reference", "kibana", "logging", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/kit/README.md",
+      "type": "file",
+      "label": "kit/README.md",
+      "summary": "Routing reference for Kit (ConvertKit), detailing subscriber, tag, and form management.",
+      "tags": ["api-reference", "kit", "email-marketing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/klaviyo/README.md",
+      "type": "file",
+      "label": "klaviyo/README.md",
+      "summary": "Routing reference for Klaviyo, covering profile, list, campaign, and flow management.",
+      "tags": ["api-reference", "klaviyo", "email-marketing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/lemlist/README.md",
+      "type": "file",
+      "label": "lemlist/README.md",
+      "summary": "Routing reference for Lemlist, detailing campaign, lead, and schedule management.",
+      "tags": ["api-reference", "lemlist", "cold-email", "sales"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/linear/README.md",
+      "type": "file",
+      "label": "linear/README.md",
+      "summary": "Routing reference for Linear, focusing on issue, team, and project management.",
+      "tags": ["api-reference", "linear", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/linkedin/README.md",
+      "type": "file",
+      "label": "linkedin/README.md",
+      "summary": "Routing reference for LinkedIn, covering profile, post, and marketing API operations.",
+      "tags": ["api-reference", "linkedin", "social-media", "marketing"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-search-console/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-sheets/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-slides/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-tasks/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-workspace-admin/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/grafana/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/granola-mcp/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/gumroad/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/hubspot/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/instantly/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/jira/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/jobber/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/jotform/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/kaggle/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/keap/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/kibana/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/kit/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/klaviyo/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/lemlist/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/linear/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/linkedin/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/references/granola-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/granola-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/granola-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/granola-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json", "type": "configures" }
+  ]
+}

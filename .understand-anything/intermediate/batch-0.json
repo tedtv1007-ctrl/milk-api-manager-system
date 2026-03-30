@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/CONTRIBUTING.md",
+      "type": "file",
+      "label": "CONTRIBUTING.md",
+      "summary": "Contribution guidelines and CLA information for the Maton API Gateway skill.",
+      "tags": ["contribution", "guidelines", "cla", "documentation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Main entry point for the Maton API Gateway skill, including quick start and Slack integration examples.",
+      "tags": ["readme", "api-gateway", "quick-start", "slack-integration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/active-campaign/README.md",
+      "type": "file",
+      "label": "active-campaign/README.md",
+      "summary": "Routing reference for ActiveCampaign, covering contacts, tags, deals, and automations.",
+      "tags": ["api-reference", "active-campaign", "routing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/acuity-scheduling/README.md",
+      "type": "file",
+      "label": "acuity-scheduling/README.md",
+      "summary": "Routing reference for Acuity Scheduling, detailing appointment and calendar management endpoints.",
+      "tags": ["api-reference", "acuity-scheduling", "scheduling", "appointments"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/airtable/README.md",
+      "type": "file",
+      "label": "airtable/README.md",
+      "summary": "Routing reference for Airtable, focusing on record and base schema operations.",
+      "tags": ["api-reference", "airtable", "database", "no-code"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/apollo/README.md",
+      "type": "file",
+      "label": "apollo/README.md",
+      "summary": "Routing reference for Apollo, covering people, organizations, contacts, and sequences.",
+      "tags": ["api-reference", "apollo", "sales-intelligence", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/asana/README.md",
+      "type": "file",
+      "label": "asana/README.md",
+      "summary": "Routing reference for Asana, detailing task, project, and workspace management.",
+      "tags": ["api-reference", "asana", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/attio/README.md",
+      "type": "file",
+      "label": "attio/README.md",
+      "summary": "Routing reference for Attio, covering object, record, list, and meeting operations.",
+      "tags": ["api-reference", "attio", "crm", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/basecamp/README.md",
+      "type": "file",
+      "label": "basecamp/README.md",
+      "summary": "Routing reference for Basecamp, detailing project, todo, and message management.",
+      "tags": ["api-reference", "basecamp", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/baserow/README.md",
+      "type": "file",
+      "label": "baserow/README.md",
+      "summary": "Routing reference for Baserow, focusing on row and table operations in an open-source database.",
+      "tags": ["api-reference", "baserow", "database", "no-code"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/beehiiv/README.md",
+      "type": "file",
+      "label": "beehiiv/README.md",
+      "summary": "Routing reference for beehiiv, covering publication, subscription, and post management.",
+      "tags": ["api-reference", "beehiiv", "newsletter", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/box/README.md",
+      "type": "file",
+      "label": "box/README.md",
+      "summary": "Routing reference for Box, detailing file, folder, and collaboration management.",
+      "tags": ["api-reference", "box", "cloud-storage", "files"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/brevo/README.md",
+      "type": "file",
+      "label": "brevo/README.md",
+      "summary": "Routing reference for Brevo, covering contact, email campaign, and template management.",
+      "tags": ["api-reference", "brevo", "email-marketing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/cal-com/README.md",
+      "type": "file",
+      "label": "cal-com/README.md",
+      "summary": "Routing reference for Cal.com, detailing profile, booking, and schedule management.",
+      "tags": ["api-reference", "cal-com", "scheduling", "calendar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/calendly/README.md",
+      "type": "file",
+      "label": "calendly/README.md",
+      "summary": "Routing reference for Calendly, focusing on event type and scheduled event management.",
+      "tags": ["api-reference", "calendly", "scheduling", "calendar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/callrail/README.md",
+      "type": "file",
+      "label": "callrail/README.md",
+      "summary": "Routing reference for CallRail, detailing call tracking and account management.",
+      "tags": ["api-reference", "callrail", "call-tracking", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/chargebee/README.md",
+      "type": "file",
+      "label": "chargebee/README.md",
+      "summary": "Routing reference for Chargebee, covering customer, subscription, and invoice management.",
+      "tags": ["api-reference", "chargebee", "billing", "subscriptions"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/clickfunnels/README.md",
+      "type": "file",
+      "label": "clickfunnels/README.md",
+      "summary": "Routing reference for ClickFunnels, detailing team, contact, product, and order management.",
+      "tags": ["api-reference", "clickfunnels", "sales-funnel", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/clicksend/README.md",
+      "type": "file",
+      "label": "clicksend/README.md",
+      "summary": "Routing reference for ClickSend, covering SMS, voice, and contact list management.",
+      "tags": ["api-reference", "clicksend", "sms", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/clickup/README.md",
+      "type": "file",
+      "label": "clickup/README.md",
+      "summary": "Routing reference for ClickUp, detailing workspace hierarchy and task management.",
+      "tags": ["api-reference", "clickup", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/clio/README.md",
+      "type": "file",
+      "label": "clio/README.md",
+      "summary": "Routing reference for Clio, covering matter, contact, activity, and task management for legal services.",
+      "tags": ["api-reference", "clio", "legal", "practice-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/clockify/README.md",
+      "type": "file",
+      "label": "clockify/README.md",
+      "summary": "Routing reference for Clockify, detailing time entry, project, and client management.",
+      "tags": ["api-reference", "clockify", "time-tracking", "project-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/coda/README.md",
+      "type": "file",
+      "label": "coda/README.md",
+      "summary": "Routing reference for Coda, focusing on doc, page, table, and row operations.",
+      "tags": ["api-reference", "coda", "collaboration", "database"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/cognito-forms/README.md",
+      "type": "file",
+      "label": "cognito-forms/README.md",
+      "summary": "Routing reference for Cognito Forms, detailing form and entry management.",
+      "tags": ["api-reference", "cognito-forms", "forms", "data-collection"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/companycam/README.md",
+      "type": "file",
+      "label": "companycam/README.md",
+      "summary": "Routing reference for CompanyCam, covering project, photo, and document management.",
+      "tags": ["api-reference", "companycam", "photos", "construction"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/CONTRIBUTING.md", "type": "documents" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/active-campaign/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/acuity-scheduling/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/airtable/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/apollo/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/asana/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/attio/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/basecamp/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/baserow/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/beehiiv/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/box/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/brevo/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/cal-com/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/calendly/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/callrail/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/chargebee/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/clickfunnels/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/clicksend/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/clickup/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/clio/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/clockify/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/coda/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/cognito-forms/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/companycam/README.md", "type": "contains" }
+  ]
+}

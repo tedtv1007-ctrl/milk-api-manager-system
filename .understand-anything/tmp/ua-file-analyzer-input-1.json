@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": ".agent/skills/api-gateway/references/confluence/README.md",
+      "language": "markdown",
+      "sizeLines": 209,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/constant-contact/README.md",
+      "language": "markdown",
+      "sizeLines": 131,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/dropbox-business/README.md",
+      "language": "markdown",
+      "sizeLines": 565,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/dropbox/README.md",
+      "language": "markdown",
+      "sizeLines": 205,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/elevenlabs/README.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/eventbrite/README.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/fathom/README.md",
+      "language": "markdown",
+      "sizeLines": 86,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/firebase/README.md",
+      "language": "markdown",
+      "sizeLines": 140,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/fireflies/README.md",
+      "language": "markdown",
+      "sizeLines": 104,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/getresponse/README.md",
+      "language": "markdown",
+      "sizeLines": 161,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/github/README.md",
+      "language": "markdown",
+      "sizeLines": 126,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-ads/README.md",
+      "language": "markdown",
+      "sizeLines": 172,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-analytics-admin/README.md",
+      "language": "markdown",
+      "sizeLines": 210,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-analytics-data/README.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-bigquery/README.md",
+      "language": "markdown",
+      "sizeLines": 181,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-calendar/README.md",
+      "language": "markdown",
+      "sizeLines": 139,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-classroom/README.md",
+      "language": "markdown",
+      "sizeLines": 145,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-contacts/README.md",
+      "language": "markdown",
+      "sizeLines": 140,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-docs/README.md",
+      "language": "markdown",
+      "sizeLines": 158,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-drive/README.md",
+      "language": "markdown",
+      "sizeLines": 213,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-forms/README.md",
+      "language": "markdown",
+      "sizeLines": 206,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-mail/README.md",
+      "language": "markdown",
+      "sizeLines": 146,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-meet/README.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-merchant/README.md",
+      "language": "markdown",
+      "sizeLines": 181,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-play/README.md",
+      "language": "markdown",
+      "sizeLines": 148,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    ".agent/skills/api-gateway/references/confluence/README.md": [],
+    ".agent/skills/api-gateway/references/constant-contact/README.md": [],
+    ".agent/skills/api-gateway/references/dropbox-business/README.md": [],
+    ".agent/skills/api-gateway/references/dropbox/README.md": [],
+    ".agent/skills/api-gateway/references/elevenlabs/README.md": [],
+    ".agent/skills/api-gateway/references/eventbrite/README.md": [],
+    ".agent/skills/api-gateway/references/fathom/README.md": [],
+    ".agent/skills/api-gateway/references/firebase/README.md": [],
+    ".agent/skills/api-gateway/references/fireflies/README.md": [],
+    ".agent/skills/api-gateway/references/getresponse/README.md": [],
+    ".agent/skills/api-gateway/references/github/README.md": [],
+    ".agent/skills/api-gateway/references/google-ads/README.md": [],
+    ".agent/skills/api-gateway/references/google-analytics-admin/README.md": [],
+    ".agent/skills/api-gateway/references/google-analytics-data/README.md": [],
+    ".agent/skills/api-gateway/references/google-bigquery/README.md": [],
+    ".agent/skills/api-gateway/references/google-calendar/README.md": [],
+    ".agent/skills/api-gateway/references/google-classroom/README.md": [],
+    ".agent/skills/api-gateway/references/google-contacts/README.md": [],
+    ".agent/skills/api-gateway/references/google-docs/README.md": [],
+    ".agent/skills/api-gateway/references/google-drive/README.md": [],
+    ".agent/skills/api-gateway/references/google-forms/README.md": [],
+    ".agent/skills/api-gateway/references/google-mail/README.md": [],
+    ".agent/skills/api-gateway/references/google-meet/README.md": [],
+    ".agent/skills/api-gateway/references/google-merchant/README.md": [],
+    ".agent/skills/api-gateway/references/google-play/README.md": []
+  }
+}

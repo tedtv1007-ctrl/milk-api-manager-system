@@ -1,0 +1,456 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "type": "file",
+      "label": "align_task_with_objective.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json",
+      "type": "file",
+      "label": "append_task_notes.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json",
+      "type": "file",
+      "label": "change_backlog_folder.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json",
+      "type": "file",
+      "label": "create_braindump_task.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json",
+      "type": "file",
+      "label": "create_calendar_event.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json",
+      "type": "file",
+      "label": "create_channel.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json",
+      "type": "file",
+      "label": "create_follow_up_task_from_email.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_task.json",
+      "type": "file",
+      "label": "create_task.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json",
+      "type": "file",
+      "label": "create_weekly_objective.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json",
+      "type": "file",
+      "label": "decline_meeting_invite.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json",
+      "type": "file",
+      "label": "delete_all_incomplete_recurring_task_instances.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json",
+      "type": "file",
+      "label": "delete_calendar_event.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json",
+      "type": "file",
+      "label": "delete_email_thread.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json",
+      "type": "file",
+      "label": "delete_task.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json",
+      "type": "file",
+      "label": "edit_subtask_title.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json",
+      "type": "file",
+      "label": "edit_task_recurrence_rule.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json",
+      "type": "file",
+      "label": "edit_task_time_estimate.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json",
+      "type": "file",
+      "label": "edit_task_title.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json",
+      "type": "file",
+      "label": "get_archived_tasks.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json",
+      "type": "file",
+      "label": "get_backlog_tasks.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json",
+      "type": "file",
+      "label": "get_task_time_estimate.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json",
+      "type": "file",
+      "label": "import_task_from_calendar_event.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json",
+      "type": "file",
+      "label": "list_email_threads.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json",
+      "type": "file",
+      "label": "log_user_feedback.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json",
+      "type": "file",
+      "label": "mark_email_thread_as_read.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_task.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    }
+  ]
+}

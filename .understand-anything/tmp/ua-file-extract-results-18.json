@@ -1,0 +1,738 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkAdminBlazor/Shared/MainLayout.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 128,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/wwwroot/css/app.css",
+      "category": "markup",
+      "language": "css",
+      "lineCount": 405,
+      "extracted": {}
+    },
+    {
+      "path": "backend/MilkApiManager.sln",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 53,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AccessRequestControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 239,
+      "extracted": {
+        "classes": [
+          "AccessRequestControllerTests"
+        ],
+        "functions": [
+          "Dispose",
+          "GetRequests_ReturnsAllOrderedByCreatedAt",
+          "GetRequests_EmptyDb_ReturnsEmptyList",
+          "SubmitRequest_SetsStatusToPendingAndSaves",
+          "SubmitRequest_SendsNotification",
+          "ApproveRequest_ValidPendingRequest_ApprovesAndProvisions",
+          "ApproveRequest_AlreadyApproved_ReturnsBadRequest",
+          "ApproveRequest_NonExistent_ReturnsBadRequest",
+          "ApproveRequest_ApisixFailure_Returns500",
+          "RejectRequest_ValidPendingRequest_Rejects",
+          "RejectRequest_NonExistent_ReturnsBadRequest",
+          "RejectRequest_AlreadyRejected_ReturnsBadRequest"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Logging",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Moq",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AlertRulesControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 117,
+      "extracted": {
+        "classes": [
+          "AlertRulesControllerTests"
+        ],
+        "functions": [
+          "GetRules_ReturnsOkWithDefaultRules",
+          "CreateRule_ValidRule_ReturnsCreated",
+          "DeleteRule_NonExistent_ReturnsNotFound",
+          "ToggleRule_NonExistent_ReturnsNotFound",
+          "ToggleRule_Existing_TogglesIsEnabled",
+          "DeleteRule_Existing_ReturnsNoContent"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AnalyticsControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 127,
+      "extracted": {
+        "classes": [
+          "AnalyticsControllerTests"
+        ],
+        "functions": [
+          "GetRequests_DefaultQuery_ReturnsOk",
+          "GetRequests_WithConsumerFilter_PassesCorrectQuery",
+          "GetLatency_ReturnsOk",
+          "GetErrors_ReturnsOk",
+          "GetRequests_30MinRange_Uses1mStep",
+          "GetRequests_12HourRange_Uses10mStep"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Microsoft.Extensions.Logging",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ApiCatalogControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 104,
+      "extracted": {
+        "classes": [
+          "ApiCatalogControllerTests"
+        ],
+        "functions": [
+          "GetCatalog_Empty_ReturnsEmptyList",
+          "GetCatalog_WithData_ReturnsSortedByName",
+          "RegisterService_NewService_AddsToDb",
+          "RegisterService_ExistingService_UpdatesFields"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "Microsoft.EntityFrameworkCore",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AuthControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 141,
+      "extracted": {
+        "classes": [
+          "AuthControllerTests"
+        ],
+        "functions": [
+          "Login_ValidAdmin_ReturnsOkWithToken",
+          "Login_InvalidCredentials_ReturnsUnauthorized",
+          "Login_EmptyUsername_ReturnsBadRequest",
+          "Login_EmptyPassword_ReturnsBadRequest",
+          "GetCurrentUser_Authenticated_ReturnsUserInfo",
+          "Login_OperatorUser_ReturnsCorrectRoles"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "System.Security.Claims",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/BlacklistControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 64,
+      "extracted": {
+        "classes": [
+          "BlacklistControllerTests"
+        ],
+        "functions": [
+          "GetBlacklist_ReturnsOk",
+          "UpdateBlacklist_Add_ReturnsOk",
+          "UpdateBlacklist_Remove_ReturnsOk"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "System.Net",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ConsumerControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 255,
+      "extracted": {
+        "classes": [
+          "ConsumerControllerTests"
+        ],
+        "functions": [
+          "GetConsumers_ReturnsOk_WithConsumerList",
+          "GetConsumers_WithLimitReq_ParsesRateLimit",
+          "GetConsumers_EmptyList_ReturnsOk",
+          "GetConsumers_OnException_Returns500",
+          "GetConsumer_ValidUsername_ReturnsOk",
+          "GetConsumer_NotFound_ReturnsNotFound",
+          "UpdateConsumer_WithQuotaAndRateLimit_ReturnsOk",
+          "UpdateConsumer_QuotaOnly_ReturnsOk",
+          "UpdateConsumer_MissingUsername_ReturnsBadRequest",
+          "DeleteConsumer_ValidUsername_ReturnsNoContent",
+          "DeleteConsumer_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "System.Text.Json",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ConsumerGroupControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 103,
+      "extracted": {
+        "classes": [
+          "ConsumerGroupControllerTests"
+        ],
+        "functions": [
+          "GetGroups_EmptyList_ReturnsOkWithEmptyArray",
+          "GetGroups_WithData_ReturnsOkWithParsedGroups",
+          "GetGroups_ApisixError_Returns500",
+          "UpdateGroup_ValidData_SetsIdAndReturnsOk",
+          "UpdateGroup_NullData_ReturnsBadRequest",
+          "DeleteGroup_Existing_ReturnsNoContent",
+          "DeleteGroup_ApisixError_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/GlobalRuleControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 202,
+      "extracted": {
+        "classes": [
+          "GlobalRuleControllerTests"
+        ],
+        "functions": [
+          "GetGlobalRules_ReturnsOk_WithRuleList",
+          "GetGlobalRules_EmptyList_ReturnsOk",
+          "GetGlobalRules_OnException_Returns500",
+          "CreateOrUpdateGlobalRule_ValidConfig_ReturnsOk",
+          "CreateOrUpdateGlobalRule_SetsIdFromRoute",
+          "CreateOrUpdateGlobalRule_NullConfig_ReturnsBadRequest",
+          "CreateOrUpdateGlobalRule_OnException_Returns500",
+          "DeleteGlobalRule_ValidId_Returns204",
+          "DeleteGlobalRule_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/KeysControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 262,
+      "extracted": {
+        "classes": [
+          "KeysControllerTests"
+        ],
+        "functions": [
+          "CreateKey_ValidRequest_ReturnsCreated",
+          "CreateKey_WithValidityDays_SetsCorrectExpiresAt",
+          "CreateKey_NullRequest_ReturnsBadRequest",
+          "CreateKey_EmptyOwner_ReturnsBadRequest",
+          "GetKeys_ReturnsOk_WithKeysList",
+          "GetKeys_EmptyDb_ReturnsEmptyList",
+          "GetKey_ExistingKey_ReturnsOk",
+          "GetKey_NonExistingKey_ReturnsNotFound",
+          "RotateKey_ValidConsumer_ReturnsOkAndUpdatesDb",
+          "RotateKey_ConsumerNotFound_ReturnsBadRequest",
+          "DeleteKey_ExistingKey_ReturnsNoContent",
+          "DeleteKey_NonExistingKey_ReturnsNotFound"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/LoadTestControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 82,
+      "extracted": {
+        "classes": [
+          "LoadTestControllerTests"
+        ],
+        "functions": [
+          "RunTest_ValidParameters_ReturnsOkWithReport",
+          "RunTest_DefaultParameters_Uses10Vus30Duration",
+          "RunTest_CustomParameters_PassedCorrectly",
+          "RunTest_ServiceThrows_PropagatesException",
+          "RunTest_ReturnsReportInExpectedFormat"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Services",
+          "Moq",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/MockControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 199,
+      "extracted": {
+        "classes": [
+          "MockControllerTests"
+        ],
+        "functions": [
+          "Dispose",
+          "GetRules_ReturnsAllRules",
+          "GetRules_EmptyDb_ReturnsEmptyList",
+          "CreateRule_ValidRule_ReturnsCreatedAtAction",
+          "CreateRule_SyncsToApisix",
+          "UpdateRule_ValidUpdate_ReturnsNoContent",
+          "UpdateRule_IdMismatch_ReturnsBadRequest",
+          "DeleteRule_ExistingRule_ReturnsNoContent",
+          "DeleteRule_NonExistent_ReturnsNotFound",
+          "DeleteRule_RemovesMockingPluginFromApisix"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Logging",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Moq",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/PiiMaskingControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 227,
+      "extracted": {
+        "classes": [
+          "PiiMaskingControllerTests"
+        ],
+        "functions": [
+          "Dispose",
+          "GetRules_ReturnsAllRules",
+          "GetRules_EmptyDb_ReturnsEmptyList",
+          "CreateRule_ValidRule_ReturnsCreatedAtAction",
+          "CreateRule_EmptyRegex_ReturnsBadRequest",
+          "CreateRule_InvalidRegex_ReturnsBadRequest",
+          "UpdateRule_ValidUpdate_ReturnsNoContent",
+          "UpdateRule_IdMismatch_ReturnsBadRequest",
+          "UpdateRule_EmptyRegex_ReturnsBadRequest",
+          "DeleteRule_ExistingRule_ReturnsNoContent",
+          "DeleteRule_NonExistent_ReturnsNotFound",
+          "CreateRule_SyncsToApisixWithActiveRules"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Logging",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Moq",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/RouteControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 184,
+      "extracted": {
+        "classes": [
+          "RouteControllerTests"
+        ],
+        "functions": [
+          "GetRoutes_ReturnsOk",
+          "GetRoutes_OnException_Returns500",
+          "GetRoute_ExistingId_ReturnsOk",
+          "GetRoute_NotFound_ReturnsNotFound",
+          "CreateRoute_ValidConfig_Returns201",
+          "CreateRoute_NullConfig_ReturnsBadRequest",
+          "CreateRoute_EmptyId_ReturnsBadRequest",
+          "UpdateRoute_ValidConfig_Returns204",
+          "UpdateRoute_NullConfig_ReturnsBadRequest",
+          "DeleteRoute_ValidId_Returns204",
+          "DeleteRoute_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ServerInfoControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 159,
+      "extracted": {
+        "classes": [
+          "ServerInfoControllerTests"
+        ],
+        "functions": [
+          "GetServerInfo_ReturnsJsonContent",
+          "GetServerInfo_OnException_Returns500",
+          "GetDashboardStats_ReturnsAggregatedCounts",
+          "GetDashboardStats_OnException_ReturnsDefaultCounts",
+          "GetDashboardStats_AllEmpty_ReturnsZeroCounts"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ServiceControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 220,
+      "extracted": {
+        "classes": [
+          "ServiceControllerTests"
+        ],
+        "functions": [
+          "GetServices_ReturnsOk_WithServiceList",
+          "GetServices_EmptyList_ReturnsOk",
+          "GetServices_OnException_Returns500",
+          "GetService_ExistingId_ReturnsOk",
+          "GetService_NotFound_ReturnsNotFound",
+          "GetService_OnException_Returns500",
+          "CreateOrUpdateService_ValidConfig_ReturnsOk",
+          "CreateOrUpdateService_NullConfig_ReturnsBadRequest",
+          "CreateOrUpdateService_OnException_Returns500",
+          "DeleteService_ValidId_Returns204",
+          "DeleteService_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SloMetricsControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 78,
+      "extracted": {
+        "classes": [
+          "SloMetricsControllerTests"
+        ],
+        "functions": [
+          "Get_ReturnsPrometheusFormattedMetrics",
+          "Dispose"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SSLControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 295,
+      "extracted": {
+        "classes": [
+          "SSLControllerTests",
+          "SNIs"
+        ],
+        "functions": [
+          "GetSsls_ReturnsOk_WithSafeProjection",
+          "GetSsls_EmptyList_ReturnsOk",
+          "GetSsls_OnException_Returns500",
+          "GetSsl_ExistingId_ReturnsOk",
+          "GetSsl_NotFound_ReturnsNotFound",
+          "GetSsl_OnException_Returns500",
+          "CreateOrUpdateSsl_ValidConfig_ReturnsOk",
+          "CreateOrUpdateSsl_NullConfig_ReturnsBadRequest",
+          "CreateOrUpdateSsl_EmptyCert_ReturnsBadRequest",
+          "CreateOrUpdateSsl_EmptyKey_ReturnsBadRequest",
+          "CreateOrUpdateSsl_AuditLogDoesNotContainCertContent",
+          "CreateOrUpdateSsl_OnException_Returns500",
+          "DeleteSsl_ValidId_Returns204",
+          "DeleteSsl_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SyncStatusControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 70,
+      "extracted": {
+        "classes": [
+          "SyncStatusControllerTests"
+        ],
+        "functions": [
+          "GetStatus_ReturnsOk",
+          "GetBlacklistDrift_ReturnsOkWithReport",
+          "ReconcileBlacklist_ReturnsOkWithMessage"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/TestExecutionControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 131,
+      "extracted": {
+        "classes": [
+          "TestExecutionControllerTests"
+        ],
+        "functions": [
+          "GetScenarios_Empty_ReturnsEmptyList",
+          "GetScenarios_WithData_ReturnsFilteredByServiceId",
+          "CreateScenario_ValidInput_ReturnsOkAndPersists",
+          "RunTest_NonExistentScenario_ReturnsNotFound",
+          "RunTest_ScenarioWithMissingService_ReturnsBadRequest"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "Microsoft.EntityFrameworkCore",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/UpstreamControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 245,
+      "extracted": {
+        "classes": [
+          "UpstreamControllerTests"
+        ],
+        "functions": [
+          "GetUpstreams_ReturnsOk_WithUpstreamList",
+          "GetUpstreams_EmptyList_ReturnsOk",
+          "GetUpstreams_OnException_Returns500",
+          "GetUpstream_ExistingId_ReturnsOk",
+          "GetUpstream_NotFound_ReturnsNotFound",
+          "GetUpstream_OnException_Returns500",
+          "CreateOrUpdateUpstream_ValidConfig_ReturnsOk",
+          "CreateOrUpdateUpstream_SetsIdFromRoute",
+          "CreateOrUpdateUpstream_NullConfig_ReturnsBadRequest",
+          "CreateOrUpdateUpstream_OnException_Returns500",
+          "DeleteUpstream_ValidId_Returns204",
+          "DeleteUpstream_OnException_Returns500"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Http",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/WhitelistControllerTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 70,
+      "extracted": {
+        "classes": [
+          "WhitelistControllerTests"
+        ],
+        "functions": [
+          "GetWhitelistForRoute_ReturnsOk",
+          "AddWhitelistEntry_ValidRequest_ReturnsOk"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Controllers",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Microsoft.EntityFrameworkCore",
+          "System.Net",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Controllers"
+      }
+    }
+  ]
+}

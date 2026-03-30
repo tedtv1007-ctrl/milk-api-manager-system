@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.cs",
+      "language": "csharp",
+      "sizeLines": 52,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.Designer.cs",
+      "language": "csharp",
+      "sizeLines": 449,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.cs",
+      "language": "csharp",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.Designer.cs",
+      "language": "csharp",
+      "sizeLines": 452,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/AppDbContextModelSnapshot.cs",
+      "language": "csharp",
+      "sizeLines": 449,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/README_AddAuditMetadata.md",
+      "language": "markdown",
+      "sizeLines": 21,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend/MilkApiManager/MilkApiManager.csproj",
+      "language": "unknown",
+      "sizeLines": 33,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Program.cs",
+      "language": "csharp",
+      "sizeLines": 417,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Properties/launchSettings.json",
+      "language": "json",
+      "sizeLines": 12,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/apply_audit_migration.sh",
+      "language": "shell",
+      "sizeLines": 53,
+      "fileCategory": "script"
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/rollback_audit_migration.sh",
+      "language": "shell",
+      "sizeLines": 50,
+      "fileCategory": "script"
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/smoke_test_audit_migration.sh",
+      "language": "shell",
+      "sizeLines": 60,
+      "fileCategory": "script"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/AuditLogService.cs",
+      "language": "csharp",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/AuthService.cs",
+      "language": "csharp",
+      "sizeLines": 265,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/BlacklistService.cs",
+      "language": "csharp",
+      "sizeLines": 197,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/IAuthService.cs",
+      "language": "csharp",
+      "sizeLines": 12,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/ILoadTestService.cs",
+      "language": "csharp",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/LoadTestService.cs",
+      "language": "csharp",
+      "sizeLines": 71,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Services/WhitelistService.cs",
+      "language": "csharp",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Data/AppDbContext.cs",
+      "language": "csharp",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Data/AuditContext.cs",
+      "language": "csharp",
+      "sizeLines": 18,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/GlobalUsings.cs",
+      "language": "csharp",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/MilkShared.csproj",
+      "language": "unknown",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/AccessRequest.cs",
+      "language": "csharp",
+      "sizeLines": 37,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/AlertModels.cs",
+      "language": "csharp",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.cs": [],
+    "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.Designer.cs": [],
+    "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.cs": [],
+    "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.Designer.cs": [],
+    "backend/MilkApiManager/Migrations/AppDbContextModelSnapshot.cs": [],
+    "backend/MilkApiManager/Migrations/README_AddAuditMetadata.md": [],
+    "backend/MilkApiManager/MilkApiManager.csproj": [],
+    "backend/MilkApiManager/Program.cs": [],
+    "backend/MilkApiManager/Properties/launchSettings.json": [],
+    "backend/MilkApiManager/scripts/apply_audit_migration.sh": [],
+    "backend/MilkApiManager/scripts/rollback_audit_migration.sh": [],
+    "backend/MilkApiManager/scripts/smoke_test_audit_migration.sh": [],
+    "backend/MilkApiManager/Services/AuditLogService.cs": [],
+    "backend/MilkApiManager/Services/AuthService.cs": [],
+    "backend/MilkApiManager/Services/BlacklistService.cs": [],
+    "backend/MilkApiManager/Services/IAuthService.cs": [],
+    "backend/MilkApiManager/Services/ILoadTestService.cs": [],
+    "backend/MilkApiManager/Services/LoadTestService.cs": [],
+    "backend/MilkApiManager/Services/WhitelistService.cs": [],
+    "backend/MilkShared/Data/AppDbContext.cs": [],
+    "backend/MilkShared/Data/AuditContext.cs": [],
+    "backend/MilkShared/GlobalUsings.cs": [],
+    "backend/MilkShared/MilkShared.csproj": [],
+    "backend/MilkShared/Models/AccessRequest.cs": [],
+    "backend/MilkShared/Models/AlertModels.cs": []
+  }
+}

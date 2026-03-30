@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": ".agent/skills/api-gateway/references/google-search-console/README.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-sheets/README.md",
+      "language": "markdown",
+      "sizeLines": 240,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-slides/README.md",
+      "language": "markdown",
+      "sizeLines": 216,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-tasks/README.md",
+      "language": "markdown",
+      "sizeLines": 157,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/google-workspace-admin/README.md",
+      "language": "markdown",
+      "sizeLines": 237,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/grafana/README.md",
+      "language": "markdown",
+      "sizeLines": 187,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/granola-mcp/README.md",
+      "language": "markdown",
+      "sizeLines": 192,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json",
+      "language": "json",
+      "sizeLines": 20,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json",
+      "language": "json",
+      "sizeLines": 31,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json",
+      "language": "json",
+      "sizeLines": 28,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/gumroad/README.md",
+      "language": "markdown",
+      "sizeLines": 148,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/hubspot/README.md",
+      "language": "markdown",
+      "sizeLines": 357,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/instantly/README.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/jira/README.md",
+      "language": "markdown",
+      "sizeLines": 181,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/jobber/README.md",
+      "language": "markdown",
+      "sizeLines": 169,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/jotform/README.md",
+      "language": "markdown",
+      "sizeLines": 190,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/kaggle/README.md",
+      "language": "markdown",
+      "sizeLines": 145,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/keap/README.md",
+      "language": "markdown",
+      "sizeLines": 191,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/kibana/README.md",
+      "language": "markdown",
+      "sizeLines": 184,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/kit/README.md",
+      "language": "markdown",
+      "sizeLines": 222,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/klaviyo/README.md",
+      "language": "markdown",
+      "sizeLines": 238,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/lemlist/README.md",
+      "language": "markdown",
+      "sizeLines": 170,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/linear/README.md",
+      "language": "markdown",
+      "sizeLines": 204,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/linkedin/README.md",
+      "language": "markdown",
+      "sizeLines": 255,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    ".agent/skills/api-gateway/references/google-search-console/README.md": [],
+    ".agent/skills/api-gateway/references/google-sheets/README.md": [],
+    ".agent/skills/api-gateway/references/google-slides/README.md": [],
+    ".agent/skills/api-gateway/references/google-tasks/README.md": [],
+    ".agent/skills/api-gateway/references/google-workspace-admin/README.md": [],
+    ".agent/skills/api-gateway/references/grafana/README.md": [],
+    ".agent/skills/api-gateway/references/granola-mcp/README.md": [],
+    ".agent/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json": [],
+    ".agent/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json": [],
+    ".agent/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json": [],
+    ".agent/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json": [],
+    ".agent/skills/api-gateway/references/gumroad/README.md": [],
+    ".agent/skills/api-gateway/references/hubspot/README.md": [],
+    ".agent/skills/api-gateway/references/instantly/README.md": [],
+    ".agent/skills/api-gateway/references/jira/README.md": [],
+    ".agent/skills/api-gateway/references/jobber/README.md": [],
+    ".agent/skills/api-gateway/references/jotform/README.md": [],
+    ".agent/skills/api-gateway/references/kaggle/README.md": [],
+    ".agent/skills/api-gateway/references/keap/README.md": [],
+    ".agent/skills/api-gateway/references/kibana/README.md": [],
+    ".agent/skills/api-gateway/references/kit/README.md": [],
+    ".agent/skills/api-gateway/references/klaviyo/README.md": [],
+    ".agent/skills/api-gateway/references/lemlist/README.md": [],
+    ".agent/skills/api-gateway/references/linear/README.md": [],
+    ".agent/skills/api-gateway/references/linkedin/README.md": []
+  }
+}

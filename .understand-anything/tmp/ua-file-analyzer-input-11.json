@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": ".agents/skills/api-gateway/references/linear/README.md",
+      "language": "markdown",
+      "sizeLines": 204,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/linkedin/README.md",
+      "language": "markdown",
+      "sizeLines": 255,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/mailchimp/README.md",
+      "language": "markdown",
+      "sizeLines": 214,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/mailerlite/README.md",
+      "language": "markdown",
+      "sizeLines": 239,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/mailgun/README.md",
+      "language": "markdown",
+      "sizeLines": 295,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/manus/README.md",
+      "language": "markdown",
+      "sizeLines": 150,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/manychat/README.md",
+      "language": "markdown",
+      "sizeLines": 213,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/microsoft-excel/README.md",
+      "language": "markdown",
+      "sizeLines": 175,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/microsoft-teams/README.md",
+      "language": "markdown",
+      "sizeLines": 307,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/microsoft-to-do/README.md",
+      "language": "markdown",
+      "sizeLines": 167,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/monday/README.md",
+      "language": "markdown",
+      "sizeLines": 208,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/motion/README.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/netlify/README.md",
+      "language": "markdown",
+      "sizeLines": 159,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/README.md",
+      "language": "markdown",
+      "sizeLines": 570,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-comment.json",
+      "language": "json",
+      "sizeLines": 414,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-database.json",
+      "language": "json",
+      "sizeLines": 47,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-pages.json",
+      "language": "json",
+      "sizeLines": 107,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-duplicate-page.json",
+      "language": "json",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-fetch.json",
+      "language": "json",
+      "sizeLines": 25,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-comments.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-teams.json",
+      "language": "json",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-users.json",
+      "language": "json",
+      "sizeLines": 36,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-move-pages.json",
+      "language": "json",
+      "sizeLines": 102,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-search.json",
+      "language": "json",
+      "sizeLines": 78,
+      "fileCategory": "config"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-data-source.json",
+      "language": "json",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    ".agents/skills/api-gateway/references/linear/README.md": [],
+    ".agents/skills/api-gateway/references/linkedin/README.md": [],
+    ".agents/skills/api-gateway/references/mailchimp/README.md": [],
+    ".agents/skills/api-gateway/references/mailerlite/README.md": [],
+    ".agents/skills/api-gateway/references/mailgun/README.md": [],
+    ".agents/skills/api-gateway/references/manus/README.md": [],
+    ".agents/skills/api-gateway/references/manychat/README.md": [],
+    ".agents/skills/api-gateway/references/microsoft-excel/README.md": [],
+    ".agents/skills/api-gateway/references/microsoft-teams/README.md": [],
+    ".agents/skills/api-gateway/references/microsoft-to-do/README.md": [],
+    ".agents/skills/api-gateway/references/monday/README.md": [],
+    ".agents/skills/api-gateway/references/motion/README.md": [],
+    ".agents/skills/api-gateway/references/netlify/README.md": [],
+    ".agents/skills/api-gateway/references/notion-mcp/README.md": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-comment.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-database.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-pages.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-duplicate-page.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-fetch.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-comments.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-teams.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-users.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-move-pages.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-search.json": [],
+    ".agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-data-source.json": []
+  }
+}

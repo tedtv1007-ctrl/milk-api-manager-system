@@ -1,0 +1,156 @@
+{
+  "nodes": [
+    {
+      "id": "file:sdk/python/milk_api_client/api/keys_api.py",
+      "summary": "Implementation of the API Key management client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/load_test_api.py",
+      "summary": "Implementation of the Load Test API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/mock_api.py",
+      "summary": "Implementation of the Mock API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/pii_masking_api.py",
+      "summary": "Implementation of the PII Masking API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/route_api.py",
+      "summary": "Implementation of the Route management client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/sync_status_api.py",
+      "summary": "Implementation of the Synchronization Status API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/test_execution_api.py",
+      "summary": "Implementation of the Test Execution API client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/api/whitelist_api.py",
+      "summary": "Implementation of the Whitelist management client in Python.",
+      "tags": ["python", "sdk", "implementation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/configuration.py",
+      "summary": "Configuration class for the Python SDK, managing host settings, authentication, and defaults.",
+      "tags": ["python", "sdk", "implementation", "config"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/exceptions.py",
+      "summary": "Custom exception hierarchy for the Python SDK to handle API-specific error scenarios.",
+      "tags": ["python", "sdk", "implementation", "exceptions"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/access_request.py",
+      "summary": "Python model representing an access request resource.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/alert_rule.py",
+      "summary": "Python model representing an alerting rule.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/api_service_metadata.py",
+      "summary": "Python model for API service metadata.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/api_test_scenario.py",
+      "summary": "Python model for API testing scenarios.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/audit_log_entry.py",
+      "summary": "Python model for audit log entries.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/blacklist_entry.py",
+      "summary": "Python model for blacklist entries.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/blacklist_update_request.py",
+      "summary": "Python model for updating blacklist entries.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/consumer_group.py",
+      "summary": "Python model representing a consumer group.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/create_key_request.py",
+      "summary": "Python model for requesting new API keys.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/mock_rule.py",
+      "summary": "Python model representing a mock rule for API responses.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/pii_masking_rule.py",
+      "summary": "Python model for PII masking policies.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/problem_details.py",
+      "summary": "Python model for RFC 7807 problem details error responses.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/request_status.py",
+      "summary": "Python enumeration for tracking request processing states.",
+      "tags": ["python", "sdk", "implementation", "enum"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/route.py",
+      "summary": "Python model representing an API route configuration.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:sdk/python/milk_api_client/api/keys_api.py", "target": "file:sdk/python/milk_api_client/models/create_key_request.py", "type": "imports" },
+    { "source": "file:sdk/python/milk_api_client/api/mock_api.py", "target": "file:sdk/python/milk_api_client/models/mock_rule.py", "type": "imports" },
+    { "source": "file:sdk/python/milk_api_client/api/route_api.py", "target": "file:sdk/python/milk_api_client/models/route.py", "type": "imports" },
+    { "source": "file:sdk/python/milk_api_client/api/pii_masking_api.py", "target": "file:sdk/python/milk_api_client/models/pii_masking_rule.py", "type": "imports" },
+    { "source": "file:sdk/python/milk_api_client/api/keys_api.py", "target": "file:sdk/python/configuration.py", "type": "imports" },
+    { "source": "file:sdk/python/milk_api_client/api/keys_api.py", "target": "file:sdk/python/milk_api_client/exceptions.py", "type": "imports" }
+  ]
+}

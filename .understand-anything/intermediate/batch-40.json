@@ -1,0 +1,99 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/monitoring-observability/SKILL.md",
+      "summary": "Documentation file SKILL.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/monitoring-observability/SKILL.toon",
+      "summary": "Source file SKILL.toon (unknown).",
+      "tags": [
+        "unknown",
+        "code"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/net-conventions/SKILL.md",
+      "summary": "Documentation file SKILL.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/postgresql-optimization/SKILL.md",
+      "summary": "Documentation file SKILL.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:start-all.bat",
+      "summary": "Project file start-all.bat.",
+      "tags": [
+        "batch",
+        "script"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test_build_errors.txt",
+      "summary": "Documentation file test_build_errors.txt focusing on project information.",
+      "tags": [
+        "unknown",
+        "docs",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:test_debug.txt",
+      "summary": "Documentation file test_debug.txt focusing on project information.",
+      "tags": [
+        "unknown",
+        "docs",
+        "test"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:test_debug2.txt",
+      "summary": "Documentation file test_debug2.txt focusing on project information.",
+      "tags": [
+        "unknown",
+        "docs",
+        "test"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:test-results/.last-run.json",
+      "summary": "Configuration file .last-run.json for project settings.",
+      "tags": [
+        "json",
+        "config",
+        "test"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:walkthrough.md.resolved",
+      "summary": "Source file walkthrough.md.resolved (unknown).",
+      "tags": [
+        "unknown",
+        "code"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

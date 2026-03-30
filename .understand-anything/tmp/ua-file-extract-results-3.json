@@ -1,0 +1,720 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": ".agent/skills/api-gateway/references/mailchimp/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 214,
+      "extracted": {
+        "headings": [
+          "Mailchimp Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Get All Lists (Audiences)",
+          "Get a List",
+          "Create a List",
+          "Get List Members",
+          "Add a Member",
+          "Update a Member",
+          "Add or Update a Member (Upsert)",
+          "Delete a Member",
+          "Add or Remove Tags",
+          "Get Segments",
+          "Get All Campaigns",
+          "Create a Campaign",
+          "Set Campaign Content",
+          "Send a Campaign",
+          "Schedule a Campaign",
+          "Get All Templates",
+          "Get All Automations",
+          "Start an Automation",
+          "Get Campaign Reports",
+          "Get Campaign Report",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/mailerlite/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 239,
+      "extracted": {
+        "headings": [
+          "MailerLite Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Subscribers",
+          "List Subscribers",
+          "Get Subscriber",
+          "Create/Upsert Subscriber",
+          "Update Subscriber",
+          "Delete Subscriber",
+          "Groups",
+          "List Groups",
+          "Create Group",
+          "Update Group",
+          "Delete Group",
+          "Get Group Subscribers",
+          "Campaigns",
+          "List Campaigns",
+          "Get Campaign",
+          "Create Campaign",
+          "Schedule Campaign",
+          "Delete Campaign",
+          "Automations",
+          "List Automations",
+          "Get Automation",
+          "Delete Automation",
+          "Fields",
+          "List Fields",
+          "Create Field",
+          "Segments",
+          "List Segments",
+          "Get Segment Subscribers",
+          "Forms",
+          "List Forms",
+          "Get Form Subscribers",
+          "Webhooks",
+          "List Webhooks",
+          "Create Webhook",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/mailgun/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 295,
+      "extracted": {
+        "headings": [
+          "Mailgun Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Domains",
+          "List Domains",
+          "Get Domain",
+          "Create Domain",
+          "Delete Domain",
+          "Messages",
+          "Send Message",
+          "Send MIME Message",
+          "Events",
+          "List Events",
+          "Routes",
+          "List Routes",
+          "Create Route",
+          "Get Route",
+          "Update Route",
+          "Delete Route",
+          "Webhooks",
+          "List Webhooks",
+          "Create Webhook",
+          "Get Webhook",
+          "Update Webhook",
+          "Delete Webhook",
+          "Templates",
+          "List Templates",
+          "Create Template",
+          "Get Template",
+          "Delete Template",
+          "Mailing Lists",
+          "List Mailing Lists",
+          "Create Mailing List",
+          "Get Mailing List",
+          "Update Mailing List",
+          "Delete Mailing List",
+          "Mailing List Members",
+          "List Members",
+          "Add Member",
+          "Get Member",
+          "Update Member",
+          "Delete Member",
+          "Suppressions",
+          "Bounces",
+          "Unsubscribes",
+          "Complaints",
+          "Whitelists",
+          "Statistics",
+          "Get Stats",
+          "Tags",
+          "List Tags",
+          "Get Tag",
+          "Delete Tag",
+          "IPs",
+          "List IPs",
+          "Get IP",
+          "Domain Tracking",
+          "Get Tracking Settings",
+          "Update Tracking",
+          "Credentials",
+          "List Credentials",
+          "Create Credential",
+          "Delete Credential",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/manus/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 150,
+      "extracted": {
+        "headings": [
+          "Manus Routing Reference",
+          "API Path Pattern",
+          "Important Notes",
+          "Common Endpoints",
+          "Projects",
+          "List Projects",
+          "Create Project",
+          "Tasks",
+          "List Tasks",
+          "Get Task",
+          "Create Task",
+          "Delete Task",
+          "Files",
+          "List Files",
+          "Get File",
+          "Create File",
+          "Delete File",
+          "Webhooks",
+          "Create Webhook",
+          "Delete Webhook",
+          "Task Status Values",
+          "File Status Values",
+          "Available Models",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/manychat/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 213,
+      "extracted": {
+        "headings": [
+          "ManyChat Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Page Operations",
+          "Get Page Info",
+          "List Tags",
+          "Create Tag",
+          "Remove Tag",
+          "List Custom Fields",
+          "Create Custom Field",
+          "List Bot Fields",
+          "Set Bot Field",
+          "List Flows",
+          "List Growth Tools",
+          "List OTN Topics",
+          "Subscriber Operations",
+          "Get Subscriber Info",
+          "Find Subscriber by Name",
+          "Find Subscriber by Email/Phone",
+          "Create Subscriber",
+          "Update Subscriber",
+          "Add Tag to Subscriber",
+          "Set Custom Field",
+          "Sending Operations",
+          "Send Content",
+          "Send Flow",
+          "Rate Limits",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/microsoft-excel/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 175,
+      "extracted": {
+        "headings": [
+          "Microsoft Excel Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Drive Operations",
+          "Get Drive Info",
+          "List Root Files",
+          "Search Files",
+          "Session Management",
+          "Create Session",
+          "Worksheet Operations",
+          "List Worksheets",
+          "Create Worksheet",
+          "Delete Worksheet",
+          "Range Operations",
+          "Get Range",
+          "Update Range",
+          "Get Used Range",
+          "Table Operations",
+          "List Tables",
+          "Create Table",
+          "Get Table Rows",
+          "Add Table Row",
+          "Delete Table Row",
+          "Get Table Columns",
+          "Named Items",
+          "List Named Items",
+          "Charts",
+          "List Charts",
+          "Add Chart",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/microsoft-teams/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 307,
+      "extracted": {
+        "headings": [
+          "Microsoft Teams Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Teams",
+          "List Joined Teams",
+          "Get Team",
+          "Channels",
+          "List Channels",
+          "List Private Channels",
+          "Get Channel",
+          "Create Channel",
+          "Update Channel",
+          "Delete Channel",
+          "Channel Members",
+          "List Channel Members",
+          "Messages",
+          "List Channel Messages",
+          "Send Message",
+          "Send HTML Message",
+          "Reply to Message",
+          "List Message Replies",
+          "Edit Message",
+          "Team Members",
+          "List Members",
+          "Presence",
+          "Get User Presence",
+          "Get User Presence by ID",
+          "Tabs",
+          "List Channel Tabs",
+          "Apps",
+          "List Installed Apps",
+          "Online Meetings",
+          "Create Meeting",
+          "Create Meeting with Attendees",
+          "Get Meeting",
+          "Find Meeting by Join URL",
+          "Delete Meeting",
+          "List Calendar Events",
+          "List Meeting Recordings",
+          "Get Meeting Recording",
+          "List Meeting Transcripts",
+          "Get Meeting Transcript",
+          "List Attendance Reports",
+          "Get Attendance Report",
+          "Chats",
+          "List Chats",
+          "Get Chat",
+          "List Chat Messages",
+          "Send Chat Message",
+          "OData Query Parameters",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/microsoft-to-do/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 167,
+      "extracted": {
+        "headings": [
+          "Microsoft To Do Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Task Lists",
+          "List All Task Lists",
+          "Get Task List",
+          "Create Task List",
+          "Update Task List",
+          "Delete Task List",
+          "Tasks",
+          "List Tasks",
+          "Get Task",
+          "Create Task",
+          "Update Task",
+          "Delete Task",
+          "Checklist Items",
+          "List Checklist Items",
+          "Create Checklist Item",
+          "Update Checklist Item",
+          "Delete Checklist Item",
+          "Linked Resources",
+          "List Linked Resources",
+          "Create Linked Resource",
+          "Delete Linked Resource",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/monday/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 208,
+      "extracted": {
+        "headings": [
+          "Monday.com Routing Reference",
+          "API Type",
+          "API Path Pattern",
+          "Common Operations",
+          "Get Current User",
+          "List Workspaces",
+          "List Boards",
+          "Get Board with Items",
+          "Create Board",
+          "Update Board",
+          "Delete Board",
+          "Get Items by ID",
+          "Create Item",
+          "Create Item with Column Values",
+          "Update Item",
+          "Delete Item",
+          "Create Column",
+          "Create Group",
+          "List Users",
+          "Pagination",
+          "First page",
+          "Next page",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/motion/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 171,
+      "extracted": {
+        "headings": [
+          "Motion Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Get Current User",
+          "List Workspaces",
+          "List Tasks",
+          "Get Task",
+          "Create Task",
+          "Update Task",
+          "Delete Task",
+          "Move Task",
+          "Unassign Task",
+          "List Projects",
+          "Get Project",
+          "Create Project",
+          "List Users",
+          "List Comments",
+          "Create Comment",
+          "List Recurring Tasks",
+          "Create Recurring Task",
+          "Delete Recurring Task",
+          "List Schedules",
+          "List Statuses",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/netlify/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 159,
+      "extracted": {
+        "headings": [
+          "Netlify Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "User",
+          "Accounts",
+          "Sites",
+          "Deploys",
+          "Builds",
+          "Environment Variables",
+          "DNS Zones",
+          "DNS Records",
+          "Build Hooks",
+          "Webhooks",
+          "Forms & Submissions",
+          "Team Members",
+          "SSL/TLS",
+          "Functions",
+          "Services",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 570,
+      "extracted": {
+        "headings": [
+          "Notion MCP Routing Reference",
+          "Request Headers",
+          "Connection Management",
+          "List Connections",
+          "Create Connection",
+          "API Path Pattern",
+          "MCP Reference",
+          "Common Endpoints",
+          "Search",
+          "Fetch Content",
+          "Create Pages",
+          "Update Page",
+          "Move Pages",
+          "Duplicate Page",
+          "Create Database",
+          "Update Data Source",
+          "Get Comments",
+          "Create Comment",
+          "List Teams",
+          "List Users",
+          "Property Types",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-create-comment.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 414,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-create-database.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 47,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-create-pages.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 107,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-duplicate-page.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-fetch.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 25,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-get-comments.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 29,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-get-teams.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 18,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-get-users.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 36,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-move-pages.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 102,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-search.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 78,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-update-data-source.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 37,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion-mcp/schemas/notion-update-page.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 69,
+      "extracted": {
+        "keys": [
+          "name",
+          "title",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/notion/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 345,
+      "extracted": {
+        "headings": [
+          "Notion Routing Reference",
+          "Required Headers",
+          "API Path Pattern",
+          "Key Concept: Databases vs Data Sources",
+          "Common Endpoints",
+          "Search",
+          "Data Sources",
+          "Get Data Source",
+          "Query Data Source",
+          "Update Data Source (title, schema, properties)",
+          "Databases",
+          "Get Database (to find data_source_id)",
+          "Create Database",
+          "Pages",
+          "Get Page",
+          "Create Page in Data Source",
+          "Create Child Page (under another page)",
+          "Update Page Properties",
+          "Archive Page",
+          "Blocks",
+          "Get Block",
+          "Get Block Children",
+          "Append Block Children",
+          "Update Block",
+          "Delete Block",
+          "Users",
+          "List Users",
+          "Get User by ID",
+          "Get Current User (Bot)",
+          "Filter Operators",
+          "Block Types",
+          "Migration from Older API Versions",
+          "Notes",
+          "Resources"
+        ]
+      }
+    }
+  ]
+}

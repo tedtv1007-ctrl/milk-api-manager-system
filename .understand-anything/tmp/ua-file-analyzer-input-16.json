@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": ".agents/skills/monitoring-observability/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 395,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/monitoring-observability/SKILL.toon",
+      "language": "unknown",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".agents/skills/net-conventions/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/postgresql-optimization/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 405,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".env.example",
+      "language": "unknown",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "language": "yaml",
+      "sizeLines": 91,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apisix_conf/config.yaml",
+      "language": "yaml",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": "apisix_conf/plugins/pii-masker.lua",
+      "language": "unknown",
+      "sizeLines": 150,
+      "fileCategory": "code"
+    },
+    {
+      "path": "apisix_conf/plugins/traffic-blocker.lua",
+      "language": "unknown",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "language": "markdown",
+      "sizeLines": 89,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs_utf8.txt",
+      "language": "unknown",
+      "sizeLines": 101,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs.txt",
+      "language": "unknown",
+      "sizeLines": 970,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs2_utf8.txt",
+      "language": "unknown",
+      "sizeLines": 420,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs2.txt",
+      "language": "unknown",
+      "sizeLines": 420,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs3_utf8.txt",
+      "language": "unknown",
+      "sizeLines": 338,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs3.txt",
+      "language": "unknown",
+      "sizeLines": 338,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs4_utf8.txt",
+      "language": "unknown",
+      "sizeLines": 501,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend_logs4.txt",
+      "language": "unknown",
+      "sizeLines": 501,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/_Imports.razor",
+      "language": "unknown",
+      "sizeLines": 8,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/App.razor",
+      "language": "unknown",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/appsettings.json",
+      "language": "json",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Components/RouteWhitelistManager.razor",
+      "language": "unknown",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "language": "csharp",
+      "sizeLines": 869,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "language": "csharp",
+      "sizeLines": 395,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 24,
+      "fileCategory": "infra"
+    }
+  ],
+  "batchImportData": {
+    ".agents/skills/monitoring-observability/SKILL.md": [],
+    ".agents/skills/monitoring-observability/SKILL.toon": [],
+    ".agents/skills/net-conventions/SKILL.md": [],
+    ".agents/skills/postgresql-optimization/SKILL.md": [],
+    ".env.example": [],
+    ".github/workflows/ci.yml": [],
+    "apisix_conf/config.yaml": [],
+    "apisix_conf/plugins/pii-masker.lua": [],
+    "apisix_conf/plugins/traffic-blocker.lua": [],
+    "ARCHITECTURE.md": [],
+    "backend_logs_utf8.txt": [],
+    "backend_logs.txt": [],
+    "backend_logs2_utf8.txt": [],
+    "backend_logs2.txt": [],
+    "backend_logs3_utf8.txt": [],
+    "backend_logs3.txt": [],
+    "backend_logs4_utf8.txt": [],
+    "backend_logs4.txt": [],
+    "backend/MilkAdminBlazor/_Imports.razor": [],
+    "backend/MilkAdminBlazor/App.razor": [],
+    "backend/MilkAdminBlazor/appsettings.json": [],
+    "backend/MilkAdminBlazor/Components/RouteWhitelistManager.razor": [],
+    "backend/MilkAdminBlazor/Data/ApisixService.cs": [],
+    "backend/MilkAdminBlazor/Data/ApisixServiceModels.cs": [],
+    "backend/MilkAdminBlazor/Dockerfile": []
+  }
+}

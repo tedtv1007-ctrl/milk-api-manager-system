@@ -1,0 +1,297 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkAdminBlazor/MilkAdminBlazor.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 21,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Models/ApiEntry.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 15,
+      "extracted": {
+        "classes": [
+          "RiskLevel",
+          "ApiEntry"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "Milk.Apim.Admin.Models"
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/_Host.cshtml",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 45,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/AlertRules.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 118,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/ApiInventory.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 65,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/ApiList.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 106,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/AuditLogs.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 143,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/Blacklist.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 115,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/ConsumerAnalytics.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 177,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/ConsumerGroups.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 125,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/Consumers.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 198,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/DevPortal.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 184,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/GatewayDashboard.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 172,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/GlobalPlugins.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 202,
+      "extracted": {
+        "classes": [
+          "PluginInfo"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/LoadTesting.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 77,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/MockLab.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 71,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/PiiManagement.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 147,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/Reports.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 82,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/RoutesManagement.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 286,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/ServicesManagement.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 169,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/SSLManagement.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 179,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/SyncStatus.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 68,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Pages/UpstreamsManagement.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 199,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Program.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "Program"
+        ],
+        "functions": [
+          "Main"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Components",
+          "Microsoft.AspNetCore.Components.Web",
+          "MudBlazor.Services",
+          "MilkAdminBlazor.Data",
+          "Microsoft.Extensions.Http.Resilience"
+        ],
+        "namespace": "MilkAdminBlazor"
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Properties/launchSettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 12,
+      "extracted": {
+        "keys": [
+          "profiles"
+        ]
+      }
+    }
+  ]
+}

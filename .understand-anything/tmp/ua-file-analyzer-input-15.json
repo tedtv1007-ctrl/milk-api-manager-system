@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": ".agents/skills/api-gateway/references/telegram/README.md",
+      "language": "markdown",
+      "sizeLines": 196,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/ticktick/README.md",
+      "language": "markdown",
+      "sizeLines": 118,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/todoist/README.md",
+      "language": "markdown",
+      "sizeLines": 177,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/toggl-track/README.md",
+      "language": "markdown",
+      "sizeLines": 188,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/trello/README.md",
+      "language": "markdown",
+      "sizeLines": 193,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/twilio/README.md",
+      "language": "markdown",
+      "sizeLines": 171,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/typeform/README.md",
+      "language": "markdown",
+      "sizeLines": 186,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/unbounce/README.md",
+      "language": "markdown",
+      "sizeLines": 148,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/vimeo/README.md",
+      "language": "markdown",
+      "sizeLines": 124,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/whatsapp-business/README.md",
+      "language": "markdown",
+      "sizeLines": 213,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/woocommerce/README.md",
+      "language": "markdown",
+      "sizeLines": 278,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/wordpress/README.md",
+      "language": "markdown",
+      "sizeLines": 169,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/xero/README.md",
+      "language": "markdown",
+      "sizeLines": 203,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/youtube/README.md",
+      "language": "markdown",
+      "sizeLines": 168,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-bigin/README.md",
+      "language": "markdown",
+      "sizeLines": 105,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-bookings/README.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-books/README.md",
+      "language": "markdown",
+      "sizeLines": 152,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-calendar/README.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-crm/README.md",
+      "language": "markdown",
+      "sizeLines": 161,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-inventory/README.md",
+      "language": "markdown",
+      "sizeLines": 215,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-mail/README.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-people/README.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-projects/README.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/zoho-recruit/README.md",
+      "language": "markdown",
+      "sizeLines": 154,
+      "fileCategory": "docs"
+    },
+    {
+      "path": ".agents/skills/api-gateway/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 643,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    ".agents/skills/api-gateway/references/telegram/README.md": [],
+    ".agents/skills/api-gateway/references/ticktick/README.md": [],
+    ".agents/skills/api-gateway/references/todoist/README.md": [],
+    ".agents/skills/api-gateway/references/toggl-track/README.md": [],
+    ".agents/skills/api-gateway/references/trello/README.md": [],
+    ".agents/skills/api-gateway/references/twilio/README.md": [],
+    ".agents/skills/api-gateway/references/typeform/README.md": [],
+    ".agents/skills/api-gateway/references/unbounce/README.md": [],
+    ".agents/skills/api-gateway/references/vimeo/README.md": [],
+    ".agents/skills/api-gateway/references/whatsapp-business/README.md": [],
+    ".agents/skills/api-gateway/references/woocommerce/README.md": [],
+    ".agents/skills/api-gateway/references/wordpress/README.md": [],
+    ".agents/skills/api-gateway/references/xero/README.md": [],
+    ".agents/skills/api-gateway/references/youtube/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-bigin/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-bookings/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-books/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-calendar/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-crm/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-inventory/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-mail/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-people/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-projects/README.md": [],
+    ".agents/skills/api-gateway/references/zoho-recruit/README.md": [],
+    ".agents/skills/api-gateway/SKILL.md": []
+  }
+}

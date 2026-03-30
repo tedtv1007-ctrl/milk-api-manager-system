@@ -1,0 +1,176 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkApiManager/Controllers/AuditLogsController.cs",
+      "summary": "Controller for retrieving and exporting audit logs within the MilkApiManager.",
+      "tags": ["audit-logs", "controller", "backend", "csharp"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/AuthController.cs",
+      "summary": "Handles authentication requests and provides current user information.",
+      "tags": ["auth", "identity", "controller", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/BlacklistController.cs",
+      "summary": "Manages IP and consumer blacklisting for the API gateway.",
+      "tags": ["blacklist", "security", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/ConsumerController.cs",
+      "summary": "Manages consumer entities and their integration with APISIX.",
+      "tags": ["consumer", "apisix", "controller", "backend"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/ConsumerGroupController.cs",
+      "summary": "Handles management of consumer groups in the system.",
+      "tags": ["consumer-group", "apisix", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/GlobalRuleController.cs",
+      "summary": "Manages global rules that apply across the API gateway.",
+      "tags": ["global-rule", "apisix", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/KeysController.cs",
+      "summary": "Handles API key management, creation, and rotation.",
+      "tags": ["api-key", "security", "controller", "backend"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/LoadTestController.cs",
+      "summary": "Entry point for triggering load tests against the gateway.",
+      "tags": ["load-test", "testing", "controller", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/MockController.cs",
+      "summary": "Manages mock rules and their synchronization to APISIX.",
+      "tags": ["mocking", "apisix", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/PiiMaskingController.cs",
+      "summary": "Handles PII masking rules and configuration for data privacy.",
+      "tags": ["pii-masking", "security", "controller", "backend"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/RouteController.cs",
+      "summary": "Manages API routes and their configuration in APISIX.",
+      "tags": ["routing", "apisix", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/ServerInfoController.cs",
+      "summary": "Provides system status and dashboard statistics.",
+      "tags": ["server-info", "monitoring", "controller", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/ServiceController.cs",
+      "summary": "Manages backend services and their APISIX configuration.",
+      "tags": ["service-management", "apisix", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/SloMetricsController.cs",
+      "summary": "Exposes SLO and performance metrics for API consumers.",
+      "tags": ["slo-metrics", "monitoring", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/SSLController.cs",
+      "summary": "Manages SSL certificates and their synchronization with the gateway.",
+      "tags": ["ssl", "security", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/SyncStatusController.cs",
+      "summary": "Monitors synchronization state and drifts between local DB and APISIX.",
+      "tags": ["sync-status", "apisix", "controller", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/TestExecutionController.cs",
+      "summary": "Manages test scenarios and execution tracking.",
+      "tags": ["test-execution", "testing", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/UpstreamController.cs",
+      "summary": "Manages upstream targets and load balancing configuration.",
+      "tags": ["upstream", "load-balancing", "controller", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Controllers/WhitelistController.cs",
+      "summary": "Manages IP whitelisting for routes and synchronization to the gateway.",
+      "tags": ["whitelist", "security", "controller", "backend"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Dockerfile",
+      "summary": "Container definition for the MilkApiManager backend service.",
+      "tags": ["docker", "deployment", "infra", "alpine"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Filters/GlobalExceptionFilter.cs",
+      "summary": "Global exception handling filter for standardizing API error responses.",
+      "tags": ["exception-handling", "filter", "backend"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.cs",
+      "summary": "Database migration to add audit-related metadata fields.",
+      "tags": ["database", "migration", "ef-core", "audit"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.sql",
+      "summary": "SQL script for adding audit metadata to the database.",
+      "tags": ["database", "sql", "migration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.cs",
+      "summary": "Migration adding several missing core entities to the database schema.",
+      "tags": ["database", "migration", "ef-core"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.Designer.cs",
+      "summary": "Designer file for the AddMissingEntities migration.",
+      "tags": ["database", "migration", "ef-core", "designer"],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    { "source": "file:backend/MilkApiManager/Controllers/AuditLogsController.cs", "target": "class:MilkApiManager.Controllers:AuditLogsController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/AuthController.cs", "target": "class:MilkApiManager.Controllers:AuthController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/BlacklistController.cs", "target": "class:MilkApiManager.Controllers:BlacklistController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/ConsumerController.cs", "target": "class:MilkApiManager.Controllers:ConsumerController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/ConsumerGroupController.cs", "target": "class:MilkApiManager.Controllers:ConsumerGroupController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/GlobalRuleController.cs", "target": "class:MilkApiManager.Controllers:GlobalRuleController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/KeysController.cs", "target": "class:MilkApiManager.Controllers:KeysController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/LoadTestController.cs", "target": "class:MilkApiManager.Controllers:LoadTestController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/MockController.cs", "target": "class:MilkApiManager.Controllers:MockController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/PiiMaskingController.cs", "target": "class:MilkApiManager.Controllers:PiiMaskingController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/RouteController.cs", "target": "class:MilkApiManager.Controllers:RouteController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/ServerInfoController.cs", "target": "class:MilkApiManager.Controllers:ServerInfoController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/ServiceController.cs", "target": "class:MilkApiManager.Controllers:ServiceController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/SloMetricsController.cs", "target": "class:MilkApiManager.Controllers:SloMetricsController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/SSLController.cs", "target": "class:MilkApiManager.Controllers:SSLController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/SyncStatusController.cs", "target": "class:MilkApiManager.Controllers:SyncStatusController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/TestExecutionController.cs", "target": "class:MilkApiManager.Controllers:TestExecutionController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/UpstreamController.cs", "target": "class:MilkApiManager.Controllers:UpstreamController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Controllers/WhitelistController.cs", "target": "class:MilkApiManager.Controllers:WhitelistController", "type": "contains" },
+    { "source": "file:backend/MilkApiManager/Filters/GlobalExceptionFilter.cs", "target": "class:MilkApiManager.Filters:GlobalExceptionFilter", "type": "contains" }
+  ]
+}

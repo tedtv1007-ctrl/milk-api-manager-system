@@ -1,0 +1,354 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "sdk/python/test/test_blacklist_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 58,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestBlacklistEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_blacklist_update_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestBlacklistUpdateRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_consumer_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 50,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestConsumerApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_consumer_group_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 50,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestConsumerGroupApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_consumer_group.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 55,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestConsumerGroup"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_create_key_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 53,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestCreateKeyRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_keys_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 44,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestKeysApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_load_test_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 38,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestLoadTestApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_mock_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestMockApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_mock_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 59,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestMockRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_pii_masking_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 60,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestPiiMaskingApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_pii_masking_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 63,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestPiiMaskingRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_problem_details.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestProblemDetails"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_request_status.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 34,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestRequestStatus"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_route_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestRouteApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_route.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 64,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestRoute"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_service.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 59,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestService"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_sync_status_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 38,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestSyncStatusApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_test_execution_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 50,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestTestExecutionApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_upstream.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 55,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestUpstream"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 46,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestWhitelistApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 60,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestWhitelistEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_update_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestWhitelistUpdateRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/tox.ini",
+      "category": "config",
+      "language": "config",
+      "lineCount": 10,
+      "extracted": {}
+    },
+    {
+      "path": "sdk/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 55,
+      "extracted": {
+        "headings": [
+          "Milk API Manager SDK",
+          "C# SDK",
+          "使用方式",
+          "Python SDK",
+          "安裝與使用",
+          "安裝",
+          "使用",
+          "重新生成 SDK",
+          "C# SDK",
+          "Python SDK"
+        ]
+      }
+    }
+  ]
+}

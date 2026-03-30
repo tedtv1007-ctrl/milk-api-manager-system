@@ -1,0 +1,521 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkShared/Services/IAuditLogService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 16,
+      "extracted": {
+        "classes": [
+          "IAuditLogService"
+        ],
+        "functions": [],
+        "imports": [
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/IDistributedLock.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 15,
+      "extracted": {
+        "classes": [
+          "IDistributedLock"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/INotificationService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 10,
+      "extracted": {
+        "classes": [
+          "INotificationService"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/IPrometheusService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 13,
+      "extracted": {
+        "classes": [
+          "IPrometheusService"
+        ],
+        "functions": [],
+        "imports": [
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/ISecurityAutomationService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 11,
+      "extracted": {
+        "classes": [
+          "ISecurityAutomationService"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/MockApisixClient.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 318,
+      "extracted": {
+        "classes": [
+          "MockApisixClient"
+        ],
+        "functions": [
+          "CreateRouteAsync",
+          "DeleteRouteAsync",
+          "GetRoutesAsync",
+          "UpdateRouteAsync",
+          "CreateServiceAsync",
+          "GetServicesAsync",
+          "UpdateServiceAsync",
+          "DeleteServiceAsync",
+          "CreateConsumerAsync",
+          "GetConsumersAsync",
+          "UpdateConsumerAsync",
+          "DeleteConsumerAsync",
+          "GetBlacklistAsync",
+          "UpdateBlacklistAsync",
+          "UpdateGlobalPlugin",
+          "GetWhitelistForRouteAsync",
+          "UpdateWhitelistForRouteAsync",
+          "CreateConsumerGroupAsync",
+          "GetConsumerGroupsAsync",
+          "DeleteConsumerGroupAsync",
+          "CreateUpstreamAsync",
+          "GetUpstreamsAsync",
+          "UpdateUpstreamAsync",
+          "DeleteUpstreamAsync",
+          "CreateSslAsync",
+          "GetSslsAsync",
+          "UpdateSslAsync",
+          "DeleteSslAsync",
+          "CreateGlobalRuleAsync",
+          "GetGlobalRulesAsync",
+          "DeleteGlobalRuleAsync",
+          "CreatePluginConfigAsync",
+          "GetPluginConfigsAsync",
+          "DeletePluginConfigAsync",
+          "GetServerInfoAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Options",
+          "System.Collections.Concurrent",
+          "System.Text.Json",
+          "Microsoft.Extensions.Options"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/NotificationService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 87,
+      "extracted": {
+        "classes": [
+          "NotificationService"
+        ],
+        "functions": [
+          "AlertAsync",
+          "SendWebhookAsync"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "System.Text.Json"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/PostgresAdvisoryLock.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 108,
+      "extracted": {
+        "classes": [
+          "PostgresAdvisoryLock",
+          "LockHandle"
+        ],
+        "functions": [
+          "ComputeLockId",
+          "DisposeAsync"
+        ],
+        "imports": [
+          "System.Security.Cryptography",
+          "System.Text",
+          "Microsoft.Extensions.Configuration",
+          "Npgsql"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/ProductionStartupGuardrails.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 105,
+      "extracted": {
+        "classes": [
+          "ProductionStartupGuardrails"
+        ],
+        "functions": [
+          "ValidateForApi",
+          "ValidateForWorker",
+          "ValidateCommon",
+          "IsLocalOrigin",
+          "ContainsInsensitive"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Hosting"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/PrometheusService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 131,
+      "extracted": {
+        "classes": [
+          "PrometheusService"
+        ],
+        "functions": [
+          "GetMetricAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Models",
+          "System.Text.Json",
+          "Microsoft.Extensions.Options",
+          "MilkApiManager.Options"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/SecurityAutomationService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 76,
+      "extracted": {
+        "classes": [
+          "SecurityAutomationService"
+        ],
+        "functions": [
+          "CheckAndRotateKeys",
+          "NotifyMattermost",
+          "BlockMaliciousIP"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Logging",
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/VaultService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 77,
+      "extracted": {
+        "classes": [
+          "IVaultService",
+          "VaultService"
+        ],
+        "functions": [
+          "GetSecretAsync",
+          "StoreSecretAsync",
+          "RotateApiKeyAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Models",
+          "System.Text.Json"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkWorker.Tests/KeyRotationBackgroundServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 237,
+      "extracted": {
+        "classes": [
+          "KeyRotationBackgroundServiceTests"
+        ],
+        "functions": [
+          "BuildServiceProvider",
+          "CheckAndProcessKeys_DeactivatesExpiredKeys",
+          "CheckAndProcessKeys_KeepsSoonToExpireKeysActive",
+          "CheckAndProcessKeys_SkipsActiveNonExpiringKeys",
+          "CheckAndProcessKeys_MultipleExpiredKeys_DeactivatesAll",
+          "CheckAndProcessKeys_MixedKeys_CorrectlyProcesses"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.DependencyInjection",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkWorker.Tests"
+      }
+    },
+    {
+      "path": "backend/MilkWorker.Tests/MilkWorker.Tests.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 31,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkWorker/AdGroupSyncService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 249,
+      "extracted": {
+        "classes": [
+          "AdGroupSyncService",
+          "AdGroup"
+        ],
+        "functions": [
+          "StartAsync",
+          "DoWork",
+          "DoSecurityCheck",
+          "DoSync",
+          "FetchAdGroupsFromLdap",
+          "GetCnFromDn",
+          "SyncGroupToApisix",
+          "SyncUserToApisix",
+          "StopAsync",
+          "Dispose",
+          "GetStatus"
+        ],
+        "imports": [
+          "System.Text.Json",
+          "System.Text.Json.Serialization",
+          "Microsoft.Extensions.DependencyInjection",
+          "Microsoft.Extensions.Configuration",
+          "MilkApiManager.Models.Apisix",
+          "Novell.Directory.Ldap"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/AlertMonitoringService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 97,
+      "extracted": {
+        "classes": [
+          "AlertMonitoringService"
+        ],
+        "functions": [
+          "ExecuteAsync",
+          "CheckRuleAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Models",
+          "System.Text.Json"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/ApisixRouteSyncService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 96,
+      "extracted": {
+        "classes": [
+          "ApisixRouteSyncService"
+        ],
+        "functions": [
+          "StartAsync",
+          "StopAsync",
+          "SyncRoutesAsync",
+          "CombinePaths"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.AspNetCore.Mvc.Routing",
+          "System.Reflection",
+          "MilkApiManager.Models.Apisix"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/ApisixSyncOutboxWorker.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 45,
+      "extracted": {
+        "classes": [
+          "ApisixSyncOutboxWorker"
+        ],
+        "functions": [
+          "ExecuteAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Workers"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/appsettings.Development.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 9,
+      "extracted": {
+        "keys": [
+          "Logging"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkWorker/appsettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 9,
+      "extracted": {
+        "keys": [
+          "Logging"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkWorker/AuditLogShippingOutboxWorker.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 45,
+      "extracted": {
+        "classes": [
+          "AuditLogShippingOutboxWorker"
+        ],
+        "functions": [
+          "ExecuteAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Workers"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/AutoBlockWorker.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 118,
+      "extracted": {
+        "classes": [
+          "AutoBlockWorker",
+          "a"
+        ],
+        "functions": [
+          "ExecuteAsync",
+          "MonitorAndBlockAsync"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "System.Collections.Concurrent",
+          "System.Net"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/BlacklistReconcileWorker.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 50,
+      "extracted": {
+        "classes": [
+          "BlacklistReconcileWorker"
+        ],
+        "functions": [
+          "ExecuteAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Workers"
+      }
+    },
+    {
+      "path": "backend/MilkWorker/Dockerfile",
+      "category": "infra",
+      "language": "dockerfile",
+      "lineCount": 23,
+      "extracted": {
+        "stages": [
+          "build",
+          "final"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkWorker/KeyRotationBackgroundService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 122,
+      "extracted": {
+        "classes": [
+          "KeyRotationBackgroundService"
+        ],
+        "functions": [
+          "StartAsync",
+          "StopAsync",
+          "DoWork",
+          "CheckAndProcessKeysAsync",
+          "Dispose"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    }
+  ]
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkApiManager.Tests/Integration/AuthorizationIntegrationTests.cs",
+      "language": "csharp",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Integration/HealthAndMiddlewareIntegrationTests.cs",
+      "language": "csharp",
+      "sizeLines": 259,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj",
+      "language": "unknown",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ApisixServiceBlazorTests.cs",
+      "language": "csharp",
+      "sizeLines": 353,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ApisixSyncOutboxProcessorTests.cs",
+      "language": "csharp",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuditLogServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuditLogShippingOutboxProcessorTests.cs",
+      "language": "csharp",
+      "sizeLines": 143,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuthServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 146,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/BlacklistConsistencyServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 67,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/BlacklistServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 75,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ProductionStartupGuardrailsTests.cs",
+      "language": "csharp",
+      "sizeLines": 145,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/SecurityAutomationServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 81,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/VaultServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/WhitelistServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/unit_test_results.txt",
+      "language": "unknown",
+      "sizeLines": 15,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "backend/MilkApiManager/.config/dotnet-tools.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkApiManager/.dockerignore",
+      "language": "unknown",
+      "sizeLines": 7,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/appsettings.json",
+      "language": "json",
+      "sizeLines": 72,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkApiManager/Auth/ApiKeyAuthenticationHandler.cs",
+      "language": "csharp",
+      "sizeLines": 74,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Auth/AuthorizationPolicies.cs",
+      "language": "csharp",
+      "sizeLines": 9,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AccessRequestController.cs",
+      "language": "csharp",
+      "sizeLines": 102,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AlertRulesController.cs",
+      "language": "csharp",
+      "sizeLines": 69,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AnalyticsController.cs",
+      "language": "csharp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ApiCatalogController.cs",
+      "language": "csharp",
+      "sizeLines": 51,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ApiController.cs",
+      "language": "csharp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkApiManager.Tests/Integration/AuthorizationIntegrationTests.cs": [],
+    "backend/MilkApiManager.Tests/Integration/HealthAndMiddlewareIntegrationTests.cs": [],
+    "backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj": [],
+    "backend/MilkApiManager.Tests/Services/ApisixServiceBlazorTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/ApisixSyncOutboxProcessorTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/AuditLogServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/AuditLogShippingOutboxProcessorTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/AuthServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/BlacklistConsistencyServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/BlacklistServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/ProductionStartupGuardrailsTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/SecurityAutomationServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/VaultServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/Services/WhitelistServiceTests.cs": [],
+    "backend/MilkApiManager.Tests/unit_test_results.txt": [],
+    "backend/MilkApiManager/.config/dotnet-tools.json": [],
+    "backend/MilkApiManager/.dockerignore": [],
+    "backend/MilkApiManager/appsettings.json": [],
+    "backend/MilkApiManager/Auth/ApiKeyAuthenticationHandler.cs": [],
+    "backend/MilkApiManager/Auth/AuthorizationPolicies.cs": [],
+    "backend/MilkApiManager/Controllers/AccessRequestController.cs": [],
+    "backend/MilkApiManager/Controllers/AlertRulesController.cs": [],
+    "backend/MilkApiManager/Controllers/AnalyticsController.cs": [],
+    "backend/MilkApiManager/Controllers/ApiCatalogController.cs": [],
+    "backend/MilkApiManager/Controllers/ApiController.cs": []
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "sdk/python/docs/ProblemDetails.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/RequestStatus.md",
+      "language": "markdown",
+      "sizeLines": 15,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/Route.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/RouteApi.md",
+      "language": "markdown",
+      "sizeLines": 314,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/Service.md",
+      "language": "markdown",
+      "sizeLines": 33,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/SyncStatusApi.md",
+      "language": "markdown",
+      "sizeLines": 66,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/TestExecutionApi.md",
+      "language": "markdown",
+      "sizeLines": 198,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/Upstream.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/WhitelistApi.md",
+      "language": "markdown",
+      "sizeLines": 145,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/WhitelistEntry.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/WhitelistUpdateRequest.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/git_push.sh",
+      "language": "shell",
+      "sizeLines": 58,
+      "fileCategory": "script"
+    },
+    {
+      "path": "sdk/python/milk_api_client/__init__.py",
+      "language": "python",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api_client.py",
+      "language": "python",
+      "sizeLines": 806,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api_response.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/__init__.py",
+      "language": "python",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/access_request_api.py",
+      "language": "python",
+      "sizeLines": 1090,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/alert_rules_api.py",
+      "language": "python",
+      "sizeLines": 1056,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/analytics_api.py",
+      "language": "python",
+      "sizeLines": 1539,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/api_api.py",
+      "language": "python",
+      "sizeLines": 1318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/api_catalog_api.py",
+      "language": "python",
+      "sizeLines": 546,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/audit_logs_api.py",
+      "language": "python",
+      "sizeLines": 778,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/blacklist_api.py",
+      "language": "python",
+      "sizeLines": 564,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/consumer_api.py",
+      "language": "python",
+      "sizeLines": 787,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/consumer_group_api.py",
+      "language": "python",
+      "sizeLines": 803,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sdk/python/docs/ProblemDetails.md": [],
+    "sdk/python/docs/RequestStatus.md": [],
+    "sdk/python/docs/Route.md": [],
+    "sdk/python/docs/RouteApi.md": [],
+    "sdk/python/docs/Service.md": [],
+    "sdk/python/docs/SyncStatusApi.md": [],
+    "sdk/python/docs/TestExecutionApi.md": [],
+    "sdk/python/docs/Upstream.md": [],
+    "sdk/python/docs/WhitelistApi.md": [],
+    "sdk/python/docs/WhitelistEntry.md": [],
+    "sdk/python/docs/WhitelistUpdateRequest.md": [],
+    "sdk/python/git_push.sh": [],
+    "sdk/python/milk_api_client/__init__.py": [],
+    "sdk/python/milk_api_client/api_client.py": [],
+    "sdk/python/milk_api_client/api_response.py": [],
+    "sdk/python/milk_api_client/api/__init__.py": [],
+    "sdk/python/milk_api_client/api/access_request_api.py": [],
+    "sdk/python/milk_api_client/api/alert_rules_api.py": [],
+    "sdk/python/milk_api_client/api/analytics_api.py": [],
+    "sdk/python/milk_api_client/api/api_api.py": [],
+    "sdk/python/milk_api_client/api/api_catalog_api.py": [],
+    "sdk/python/milk_api_client/api/audit_logs_api.py": [],
+    "sdk/python/milk_api_client/api/blacklist_api.py": [],
+    "sdk/python/milk_api_client/api/consumer_api.py": [],
+    "sdk/python/milk_api_client/api/consumer_group_api.py": []
+  }
+}

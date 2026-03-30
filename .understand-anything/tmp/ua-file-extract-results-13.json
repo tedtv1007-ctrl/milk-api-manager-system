@@ -1,0 +1,330 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 18,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 27,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_task.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 10,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 10,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    }
+  ]
+}

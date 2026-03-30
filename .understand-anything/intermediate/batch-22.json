@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkShared/Models/ApisixDto.cs",
+      "summary": "Data Transfer Objects representing core APISIX entities like Routes, Services, and Upstreams.",
+      "tags": ["apisix", "dto", "models", "shared"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/SyncOutboxEntry.cs",
+      "summary": "Entity for the outbox pattern, ensuring reliable synchronization of changes to the APISIX gateway.",
+      "tags": ["outbox", "sync", "models", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/ApisixClient.cs",
+      "summary": "Primary HTTP client for interacting with the APISIX Admin API, supporting full CRUD for gateway configuration.",
+      "tags": ["apisix", "http-client", "service", "shared"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/ApisixSyncOutboxService.cs",
+      "summary": "Service responsible for processing the sync outbox and pushing updates to APISIX.",
+      "tags": ["outbox", "sync", "service", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs",
+      "summary": "Background processor that ships audit logs to external SIEM or storage systems via an outbox.",
+      "tags": ["audit-logs", "shipping", "service", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/BlacklistConsistencyService.cs",
+      "summary": "Service to detect and report configuration drift between the local database and the APISIX gateway.",
+      "tags": ["security", "consistency", "service", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/ApiKey.cs",
+      "summary": "Data model for API keys managed by the system.",
+      "tags": ["models", "api-key", "security", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/AuditLogEntry.cs",
+      "summary": "Data model for individual audit log records.",
+      "tags": ["models", "audit", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/MockRule.cs",
+      "summary": "Data model for API mocking rules.",
+      "tags": ["models", "mocking", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/PiiMaskingRule.cs",
+      "summary": "Data model for PII masking and data redaction rules.",
+      "tags": ["models", "security", "pii", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Options/ApisixOptions.cs",
+      "summary": "Configuration options for connecting to the APISIX Admin API.",
+      "tags": ["options", "configuration", "apisix", "shared"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:backend/MilkShared/Services/ApisixClient.cs", "target": "file:backend/MilkShared/Services/IApisixClient.cs", "type": "implements" },
+    { "source": "file:backend/MilkShared/Services/ApisixClient.cs", "target": "file:backend/MilkShared/Models/ApisixDto.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Services/ApisixClient.cs", "target": "file:backend/MilkShared/Options/ApisixOptions.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Services/ApisixSyncOutboxService.cs", "target": "file:backend/MilkShared/Services/ApisixClient.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Services/ApisixSyncOutboxService.cs", "target": "file:backend/MilkShared/Models/SyncOutboxEntry.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Services/BlacklistConsistencyService.cs", "target": "file:backend/MilkShared/Services/ApisixClient.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs", "target": "file:backend/MilkShared/Models/SyncOutboxEntry.cs", "type": "uses" }
+  ]
+}

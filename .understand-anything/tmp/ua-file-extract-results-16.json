@@ -1,0 +1,441 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": ".agents/skills/monitoring-observability/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 395,
+      "extracted": {
+        "headings": [
+          "Monitoring & Observability",
+          "When to use this skill",
+          "Instructions",
+          "Step 1: Metrics Collection (Prometheus)",
+          "Step 2: Alert Rules",
+          "Step 3: Log Aggregation (Structured Logging)",
+          "Step 4: Grafana Dashboard",
+          "Step 5: Health Checks",
+          "Output format",
+          "Monitoring Dashboard Configuration",
+          "Constraints",
+          "Required Rules (MUST)",
+          "Prohibited (MUST NOT)",
+          "Best practices",
+          "References",
+          "Metadata",
+          "Version",
+          "Related Skills",
+          "Tags",
+          "Examples",
+          "Example 1: Basic usage",
+          "Example 2: Advanced usage"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/monitoring-observability/SKILL.toon",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": ".agents/skills/net-conventions/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 174,
+      "extracted": {
+        "headings": [
+          ".NET Conventions",
+          "Style & Formatting",
+          "Naming Conventions",
+          "Formatting Rules",
+          "Async Patterns",
+          "Structured Logging",
+          "Log Scopes with ExceptionlessState",
+          "Nullable Reference Types",
+          "Resource Disposal",
+          "Constructor Injection",
+          "Validation Patterns",
+          "Input Validation",
+          "Domain Validation"
+        ]
+      }
+    },
+    {
+      "path": ".agents/skills/postgresql-optimization/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 405,
+      "extracted": {
+        "headings": [
+          "PostgreSQL Development Assistant",
+          "� PostgreSQL-Specific Features",
+          "JSONB Operations",
+          "Array Operations",
+          "Window Functions & Analytics",
+          "Full-Text Search",
+          "� PostgreSQL Performance Tuning",
+          "Query Optimization",
+          "Index Strategies",
+          "Connection & Memory Management",
+          "�️ PostgreSQL Advanced Data Types",
+          "Custom Types & Domains",
+          "Range Types",
+          "Geometric Types",
+          "📊 PostgreSQL Extensions & Tools",
+          "Useful Extensions",
+          "Monitoring & Maintenance",
+          "PostgreSQL-Specific Optimization Tips",
+          "📊 Monitoring and Maintenance",
+          "Query Performance Monitoring",
+          "Database Maintenance",
+          "🛠️ Common Query Patterns",
+          "Pagination",
+          "Aggregation",
+          "JSON Queries",
+          "📋 Optimization Checklist",
+          "Query Analysis",
+          "Index Strategy",
+          "Security Review",
+          "Performance Monitoring",
+          "🎯 Optimization Output Format",
+          "Query Analysis Results",
+          "Query Performance Analysis",
+          "🚀 Advanced PostgreSQL Features",
+          "Window Functions",
+          "Common Table Expressions (CTEs)"
+        ]
+      }
+    },
+    {
+      "path": ".env.example",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 29,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 91,
+      "extracted": {
+        "keys": [
+          "name",
+          "on",
+          "jobs"
+        ]
+      }
+    },
+    {
+      "path": "apisix_conf/config.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 46,
+      "extracted": {
+        "keys": [
+          "deployment",
+          "apisix",
+          "plugins",
+          "plugin_attr"
+        ]
+      }
+    },
+    {
+      "path": "apisix_conf/plugins/pii-masker.lua",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 150,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "apisix_conf/plugins/traffic-blocker.lua",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 51,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "ARCHITECTURE.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 89,
+      "extracted": {
+        "headings": [
+          "System Architecture",
+          "Overview",
+          "Architecture Diagram",
+          "Core Components",
+          "1. Backend API (.NET 8)",
+          "2. Apache APISIX",
+          "3. Security Architecture",
+          "4. Database Schema (PostgreSQL)",
+          "Infrastructure Services"
+        ]
+      }
+    },
+    {
+      "path": "backend_logs_utf8.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 101,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 970,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs2_utf8.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 420,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs2.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 420,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs3_utf8.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 338,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs3.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 338,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs4_utf8.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 501,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend_logs4.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 501,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/_Imports.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 8,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/App.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 13,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/appsettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 10,
+      "extracted": {
+        "keys": [
+          "Logging",
+          "BackendApiKey",
+          "AllowedHosts"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Components/RouteWhitelistManager.razor",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 79,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 869,
+      "extracted": {
+        "classes": [
+          "ApisixService"
+        ],
+        "functions": [
+          "GetRoutesAsync",
+          "GetBlacklistedIpsAsync",
+          "AddIpToBlacklistAsync",
+          "RemoveIpFromBlacklistAsync",
+          "GetConsumersAsync",
+          "UpdateConsumerAsync",
+          "DeleteConsumerAsync",
+          "GetConsumerStatsAsync",
+          "UpdateRouteAsync",
+          "GetAnalyticsRequestsAsync",
+          "GetAnalyticsLatencyAsync",
+          "GetAnalyticsErrorsAsync",
+          "GetTopSlowRoutesAsync",
+          "GetRouteWhitelistAsync",
+          "AddRouteWhitelistEntryAsync",
+          "RemoveRouteWhitelistEntryAsync",
+          "GetPiiRulesAsync",
+          "SavePiiRuleAsync",
+          "DeletePiiRuleAsync",
+          "GetConsumerGroupsAsync",
+          "SaveConsumerGroupAsync",
+          "DeleteConsumerGroupAsync",
+          "GetMockRulesAsync",
+          "SaveMockRuleAsync",
+          "DeleteMockRuleAsync",
+          "RunLoadTestAsync",
+          "GetAccessRequestsAsync",
+          "SubmitAccessRequestAsync",
+          "ApproveRequestAsync",
+          "RejectRequestAsync",
+          "GetApiCatalogAsync",
+          "GetTestScenariosAsync",
+          "RunApiTestAsync",
+          "GetAuditLogsAsync",
+          "GetApisixRoutesAsync",
+          "SaveApisixRouteAsync",
+          "DeleteApisixRouteAsync",
+          "GetUpstreamsAsync",
+          "SaveUpstreamAsync",
+          "DeleteUpstreamAsync",
+          "GetApisixServicesAsync",
+          "SaveApisixServiceAsync",
+          "DeleteApisixServiceAsync",
+          "GetSslCertificatesAsync",
+          "SaveSslCertificateAsync",
+          "DeleteSslCertificateAsync",
+          "GetGlobalRulesAsync",
+          "SaveGlobalRuleAsync",
+          "DeleteGlobalRuleAsync",
+          "GetDashboardStatsAsync",
+          "GetServerInfoRawAsync"
+        ],
+        "imports": [
+          "System",
+          "System.Collections.Generic",
+          "System.Net.Http",
+          "System.Net.Http.Json",
+          "System.Threading.Tasks",
+          "System.Text.Json",
+          "System.Text.Json.Serialization",
+          "Microsoft.Extensions.Logging"
+        ],
+        "namespace": "MilkAdminBlazor.Data"
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 395,
+      "extracted": {
+        "classes": [
+          "ApiRoute",
+          "BlacklistRequest",
+          "ApiConsumer",
+          "ApiQuota",
+          "SyncStatusResponse",
+          "ConsumerStats",
+          "MetricPoint",
+          "AnalyticsResult",
+          "BlacklistEntryDto",
+          "WhitelistEntryDto",
+          "PiiMaskingRuleDto",
+          "ConsumerGroupDto",
+          "MockRuleDto",
+          "AccessRequestDto",
+          "ApiServiceDto",
+          "TestScenarioDto",
+          "SlaDto",
+          "AuditLogEntryDto",
+          "ApisixRouteDto",
+          "ApisixUpstreamDto",
+          "ApisixStandaloneUpstreamDto",
+          "ApisixServiceDto",
+          "SslCertificateDto",
+          "GlobalRuleDto",
+          "DashboardStatsDto"
+        ],
+        "functions": [],
+        "imports": [
+          "System.Text.Json.Serialization"
+        ],
+        "namespace": "MilkAdminBlazor.Data"
+      }
+    },
+    {
+      "path": "backend/MilkAdminBlazor/Dockerfile",
+      "category": "infra",
+      "language": "dockerfile",
+      "lineCount": 24,
+      "extracted": {
+        "stages": [
+          "build",
+          "mcr.microsoft.com/dotnet/aspnet:8.0-alpine"
+        ]
+      }
+    }
+  ]
+}

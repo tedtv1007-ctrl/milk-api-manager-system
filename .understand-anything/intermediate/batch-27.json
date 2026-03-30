@@ -1,0 +1,165 @@
+{
+  "nodes": [
+    {
+      "id": "file:sdk/python/.travis.yml",
+      "summary": "Travis CI configuration for automated building and testing of the Python SDK.",
+      "tags": ["cicd", "travis-ci", "python", "automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/AccessRequest.md",
+      "summary": "Documentation for the AccessRequest data model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/AccessRequestApi.md",
+      "summary": "Documentation for the Access Request API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/AlertRule.md",
+      "summary": "Documentation for the AlertRule data model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/AlertRulesApi.md",
+      "summary": "Documentation for the Alert Rules API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/AnalyticsApi.md",
+      "summary": "Documentation for the Analytics API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/ApiApi.md",
+      "summary": "Documentation for the core API management endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/ApiCatalogApi.md",
+      "summary": "Documentation for the API Catalog endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/ApiServiceMetadata.md",
+      "summary": "Documentation for the ApiServiceMetadata model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/ApiTestScenario.md",
+      "summary": "Documentation for the ApiTestScenario model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/AuditLogEntry.md",
+      "summary": "Documentation for the AuditLogEntry model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/AuditLogsApi.md",
+      "summary": "Documentation for the Audit Logs API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/BlacklistApi.md",
+      "summary": "Documentation for the Blacklist API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/BlacklistEntry.md",
+      "summary": "Documentation for the BlacklistEntry model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/BlacklistUpdateRequest.md",
+      "summary": "Documentation for the BlacklistUpdateRequest model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/ConsumerApi.md",
+      "summary": "Documentation for the Consumer management API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/ConsumerGroup.md",
+      "summary": "Documentation for the ConsumerGroup model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/ConsumerGroupApi.md",
+      "summary": "Documentation for the Consumer Group API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/CreateKeyRequest.md",
+      "summary": "Documentation for the CreateKeyRequest model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/KeysApi.md",
+      "summary": "Documentation for the API Key management endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/LoadTestApi.md",
+      "summary": "Documentation for the Load Test API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/MockApi.md",
+      "summary": "Documentation for the Mock API management endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/MockRule.md",
+      "summary": "Documentation for the MockRule model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/docs/PiiMaskingApi.md",
+      "summary": "Documentation for the PII Masking API endpoints in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "api"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/docs/PiiMaskingRule.md",
+      "summary": "Documentation for the PiiMaskingRule model in the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "model"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:sdk/python/docs/AccessRequestApi.md", "target": "file:sdk/python/docs/AccessRequest.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/AlertRulesApi.md", "target": "file:sdk/python/docs/AlertRule.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/ApiApi.md", "target": "file:sdk/python/docs/ApiServiceMetadata.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/AuditLogsApi.md", "target": "file:sdk/python/docs/AuditLogEntry.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/BlacklistApi.md", "target": "file:sdk/python/docs/BlacklistEntry.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/ConsumerApi.md", "target": "file:sdk/python/docs/ConsumerGroup.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/MockApi.md", "target": "file:sdk/python/docs/MockRule.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/PiiMaskingApi.md", "target": "file:sdk/python/docs/PiiMaskingRule.md", "type": "documents" },
+    { "source": "file:sdk/python/docs/KeysApi.md", "target": "file:sdk/python/docs/CreateKeyRequest.md", "type": "documents" }
+  ]
+}

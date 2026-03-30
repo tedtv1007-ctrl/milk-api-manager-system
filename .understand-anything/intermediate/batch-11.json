@@ -1,0 +1,470 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/linear/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Linear Routing Reference, API Type, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/linkedin/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering LinkedIn Routing Reference, API Path Pattern, Required Headers.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/mailchimp/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Mailchimp Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/mailerlite/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering MailerLite Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/mailgun/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Mailgun Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/manus/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Manus Routing Reference, API Path Pattern, Important Notes.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/manychat/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ManyChat Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/microsoft-excel/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Microsoft Excel Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/microsoft-teams/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Microsoft Teams Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/microsoft-to-do/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Microsoft To Do Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/monday/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Monday.com Routing Reference, API Type, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/motion/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Motion Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/netlify/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Netlify Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Notion MCP Routing Reference, Request Headers, Connection Management.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-comment.json",
+      "type": "file",
+      "label": "notion-create-comment.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-database.json",
+      "type": "file",
+      "label": "notion-create-database.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-pages.json",
+      "type": "file",
+      "label": "notion-create-pages.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-duplicate-page.json",
+      "type": "file",
+      "label": "notion-duplicate-page.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-fetch.json",
+      "type": "file",
+      "label": "notion-fetch.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-comments.json",
+      "type": "file",
+      "label": "notion-get-comments.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-teams.json",
+      "type": "file",
+      "label": "notion-get-teams.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-users.json",
+      "type": "file",
+      "label": "notion-get-users.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-move-pages.json",
+      "type": "file",
+      "label": "notion-move-pages.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-search.json",
+      "type": "file",
+      "label": "notion-search.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-data-source.json",
+      "type": "file",
+      "label": "notion-update-data-source.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/linear/README.md",
+      "target": "file:.agents/skills/api-gateway/references/linear",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/linkedin/README.md",
+      "target": "file:.agents/skills/api-gateway/references/linkedin",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/mailchimp/README.md",
+      "target": "file:.agents/skills/api-gateway/references/mailchimp",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/mailerlite/README.md",
+      "target": "file:.agents/skills/api-gateway/references/mailerlite",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/mailgun/README.md",
+      "target": "file:.agents/skills/api-gateway/references/mailgun",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/manus/README.md",
+      "target": "file:.agents/skills/api-gateway/references/manus",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/manychat/README.md",
+      "target": "file:.agents/skills/api-gateway/references/manychat",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/microsoft-excel/README.md",
+      "target": "file:.agents/skills/api-gateway/references/microsoft-excel",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/microsoft-teams/README.md",
+      "target": "file:.agents/skills/api-gateway/references/microsoft-teams",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/microsoft-to-do/README.md",
+      "target": "file:.agents/skills/api-gateway/references/microsoft-to-do",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/monday/README.md",
+      "target": "file:.agents/skills/api-gateway/references/monday",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/motion/README.md",
+      "target": "file:.agents/skills/api-gateway/references/motion",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/netlify/README.md",
+      "target": "file:.agents/skills/api-gateway/references/netlify",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/README.md",
+      "target": "file:.agents/skills/api-gateway/references/notion-mcp",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-comment.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-database.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-create-pages.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-duplicate-page.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-fetch.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-comments.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-teams.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-get-users.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-move-pages.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-search.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-data-source.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/api-gateway/references/ticktick/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/todoist/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/toggl-track/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/trello/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/twilio/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/typeform/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/unbounce/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/vimeo/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/whatsapp-business/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/woocommerce/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/wordpress/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/xero/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/youtube/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-bigin/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-bookings/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-books/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-calendar/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-crm/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-inventory/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-mail/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-people/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-projects/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/zoho-recruit/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/SKILL.md",
+      "summary": "Documentation file SKILL.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:skills/insecure-defaults/SKILL.md",
+      "summary": "Documentation file SKILL.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

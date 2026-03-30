@@ -1,0 +1,487 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkShared/Models/Analytics.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 24,
+      "extracted": {
+        "classes": [
+          "AnalyticsQuery",
+          "MetricPoint",
+          "AnalyticsResult"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiError.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 10,
+      "extracted": {
+        "classes": [
+          "ApiError"
+        ],
+        "functions": [
+          "ApiError"
+        ],
+        "imports": [],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiKey.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 41,
+      "extracted": {
+        "classes": [
+          "ApiKey",
+          "CreateKeyRequest"
+        ],
+        "functions": [],
+        "imports": [
+          "System",
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiServiceMetadata.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 27,
+      "extracted": {
+        "classes": [
+          "ApiServiceMetadata"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/Apisix/ApisixListResponse.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 35,
+      "extracted": {
+        "classes": [
+          "ApisixListResponse",
+          "ApisixNodeItem"
+        ],
+        "functions": [],
+        "imports": [
+          "System.Text.Json.Serialization"
+        ],
+        "namespace": "MilkApiManager.Models.Apisix"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/ApisixDto.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 192,
+      "extracted": {
+        "classes": [
+          "Route",
+          "Service",
+          "Upstream",
+          "Consumer",
+          "ConsumerGroup",
+          "StandaloneUpstream",
+          "UpstreamTimeout",
+          "SslCertificate",
+          "GlobalRule",
+          "PluginConfig"
+        ],
+        "functions": [],
+        "imports": [
+          "System.Collections.Generic",
+          "System.Text.Json.Serialization"
+        ],
+        "namespace": "MilkApiManager.Models.Apisix"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiTestScenario.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 27,
+      "extracted": {
+        "classes": [
+          "ApiTestScenario"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/AuditLogEntry.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 27,
+      "extracted": {
+        "classes": [
+          "AuditLogEntry"
+        ],
+        "functions": [],
+        "imports": [
+          "System.Text.Json.Nodes",
+          "System.ComponentModel.DataAnnotations",
+          "System.ComponentModel.DataAnnotations.Schema"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/AuthModels.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 39,
+      "extracted": {
+        "classes": [
+          "LoginRequest",
+          "LoginResponse",
+          "UserRole"
+        ],
+        "functions": [],
+        "imports": [
+          "System.Text.Json.Serialization"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/BlacklistDriftReport.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 10,
+      "extracted": {
+        "classes": [
+          "BlacklistDriftReport"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/BlacklistEntry.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 23,
+      "extracted": {
+        "classes": [
+          "BlacklistEntry"
+        ],
+        "functions": [],
+        "imports": [
+          "System",
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/MockRule.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 23,
+      "extracted": {
+        "classes": [
+          "MockRule"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/NotificationChannel.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 24,
+      "extracted": {
+        "classes": [
+          "NotificationChannel"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/PiiMaskingRule.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 29,
+      "extracted": {
+        "classes": [
+          "PiiMaskingRule"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/SyncOutboxEntry.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 47,
+      "extracted": {
+        "classes": [
+          "SyncOutboxEventType",
+          "SyncOutboxStatus",
+          "SyncOutboxEntry",
+          "BlacklistSyncPayload",
+          "AuditLogShipPayload"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/WhitelistEntry.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 25,
+      "extracted": {
+        "classes": [
+          "WhitelistEntry"
+        ],
+        "functions": [],
+        "imports": [
+          "System",
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Options/ApisixOptions.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 19,
+      "extracted": {
+        "classes": [
+          "ApisixOptions"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Options"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Options/AuthOptions.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 25,
+      "extracted": {
+        "classes": [
+          "AuthOptions"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Options"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Options/JwtOptions.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [
+          "JwtOptions"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Options"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Options/PrometheusOptions.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 13,
+      "extracted": {
+        "classes": [
+          "PrometheusOptions"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Options"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/ApisixClient.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 573,
+      "extracted": {
+        "classes": [
+          "ApisixClient"
+        ],
+        "functions": [
+          "CreateRequest",
+          "CreateRouteAsync",
+          "DeleteRouteAsync",
+          "GetRoutesAsync",
+          "ExtractValueFromJson",
+          "UpdateRouteAsync",
+          "CreateServiceAsync",
+          "GetServicesAsync",
+          "UpdateServiceAsync",
+          "DeleteServiceAsync",
+          "CreateConsumerAsync",
+          "GetConsumersAsync",
+          "UpdateConsumerAsync",
+          "DeleteConsumerAsync",
+          "GetRoutesTypedAsync",
+          "GetServicesTypedAsync",
+          "GetConsumersTypedAsync",
+          "GetConsumerGroupsTypedAsync",
+          "GetBlacklistAsync",
+          "UpdateBlacklistAsync",
+          "UpdateGlobalPlugin",
+          "GetWhitelistForRouteAsync",
+          "UpdateWhitelistForRouteAsync",
+          "CreateConsumerGroupAsync",
+          "GetConsumerGroupsAsync",
+          "DeleteConsumerGroupAsync",
+          "CreateUpstreamAsync",
+          "GetUpstreamsAsync",
+          "GetUpstreamsTypedAsync",
+          "UpdateUpstreamAsync",
+          "DeleteUpstreamAsync",
+          "CreateSslAsync",
+          "GetSslsAsync",
+          "GetSslsTypedAsync",
+          "UpdateSslAsync",
+          "DeleteSslAsync",
+          "CreateGlobalRuleAsync",
+          "GetGlobalRulesAsync",
+          "GetGlobalRulesTypedAsync",
+          "DeleteGlobalRuleAsync",
+          "CreatePluginConfigAsync",
+          "GetPluginConfigsAsync",
+          "GetPluginConfigsTypedAsync",
+          "DeletePluginConfigAsync",
+          "GetServerInfoAsync"
+        ],
+        "imports": [
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Options",
+          "System.Text.Json",
+          "System.Text",
+          "System.Text.Json.Serialization",
+          "Microsoft.Extensions.Options"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/ApisixSyncOutboxService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 122,
+      "extracted": {
+        "classes": [
+          "ApisixSyncOutboxService",
+          "ApisixSyncOutboxProcessor"
+        ],
+        "functions": [
+          "EnqueueBlacklistSyncAsync",
+          "ProcessBatchAsync",
+          "ProcessOneAsync"
+        ],
+        "imports": [
+          "System.Text.Json",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 93,
+      "extracted": {
+        "classes": [
+          "AuditLogShippingOutboxProcessor"
+        ],
+        "functions": [
+          "ProcessBatchAsync",
+          "ProcessOneAsync"
+        ],
+        "imports": [
+          "System.Net.Http.Json",
+          "System.Text.Json",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/BlacklistConsistencyService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 55,
+      "extracted": {
+        "classes": [
+          "BlacklistConsistencyService"
+        ],
+        "functions": [
+          "GetBlacklistDriftReportAsync",
+          "ReconcileDatabaseToGatewayAsync"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Services/IApisixClient.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 87,
+      "extracted": {
+        "classes": [
+          "IApisixClient"
+        ],
+        "functions": [],
+        "imports": [
+          "MilkApiManager.Models.Apisix"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    }
+  ]
+}

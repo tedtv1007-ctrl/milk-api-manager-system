@@ -1,0 +1,310 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "monitoring/grafana-provisioning/alerting/notification-routing.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 31,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "contactPoints",
+          "policies"
+        ]
+      }
+    },
+    {
+      "path": "monitoring/grafana-provisioning/alerting/slo-alert-rules.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 173,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "groups"
+        ]
+      }
+    },
+    {
+      "path": "monitoring/grafana-provisioning/datasources/prometheus.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 11,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "datasources"
+        ]
+      }
+    },
+    {
+      "path": "monitoring/kibana-dashboard.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "version",
+          "objects"
+        ]
+      }
+    },
+    {
+      "path": "monitoring/logstash.conf",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 52,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "monitoring/prometheus.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 17,
+      "extracted": {
+        "keys": [
+          "global",
+          "rule_files",
+          "scrape_configs"
+        ]
+      }
+    },
+    {
+      "path": "portal/public/index.html",
+      "category": "markup",
+      "language": "html",
+      "lineCount": 21,
+      "extracted": {}
+    },
+    {
+      "path": "portal/public/openapi.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 12,
+      "extracted": {
+        "keys": [
+          "openapi",
+          "info",
+          "paths"
+        ]
+      }
+    },
+    {
+      "path": "README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 270,
+      "extracted": {
+        "headings": [
+          "🥛 Milk API Manager System",
+          "✨ 核心亮點 (Core Features)",
+          "⚡ 全功能 Blazor Gateway 控制面板 (Gateway Control Plane)",
+          "🛡️ 主動式安全治理 (Security & Privacy)",
+          "🛠️ 開發者自助門戶 (Developer Experience)",
+          "📊 深度可觀測性 (Observability)",
+          "🎨 UI 設計風格 (Dark Trading Terminal Theme)",
+          "🏗️ 系統架構 (Architecture)",
+          "Blazor Admin UI 頁面清單 (20 Pages)",
+          "🚀 快速啟動 (Quick Start)",
+          "1. 啟動基礎設施 (Docker)",
+          "2. 執行全系統自動驗證",
+          "3. 存取入口",
+          "🔑 Demo 預設帳密 (Default Credentials)",
+          "SSO Demo 帳號 (USE_TEST_MODE=true)",
+          "登入取得 JWT Token",
+          "使用 JWT Token 呼叫 API",
+          "🧪 測試 (Testing)",
+          "Unit Tests",
+          "E2E Tests (Playwright)",
+          "📖 使用與操作",
+          "🛠️ 技術棧 (Tech Stack)",
+          "📅 開發藍圖 (Roadmap)",
+          "🤝 協作規範"
+        ]
+      }
+    },
+    {
+      "path": "scripts/compliance-report.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 52,
+      "extracted": {
+        "classes": [
+          "MockEsClient"
+        ],
+        "functions": [
+          "generateReport",
+          "search"
+        ],
+        "exports": [],
+        "imports": [
+          "fs",
+          "path"
+        ]
+      }
+    },
+    {
+      "path": "scripts/generate-python-sdk.ps1",
+      "category": "script",
+      "language": "powershell",
+      "lineCount": 30,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/generate-sdk.ps1",
+      "category": "script",
+      "language": "powershell",
+      "lineCount": 35,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/setup-consumers.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 46,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/setup-oidc.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 38,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/setup-traffic-control.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 68,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/start-all.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 46,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/sync-openapi-to-apisix.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 61,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/verify-all.ps1",
+      "category": "script",
+      "language": "powershell",
+      "lineCount": 98,
+      "extracted": {}
+    },
+    {
+      "path": "scripts/verify-all.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 160,
+      "extracted": {}
+    },
+    {
+      "path": "sdk/MilkApi.Client.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 5027,
+      "extracted": {
+        "classes": [
+          "Client",
+          "ObjectResponseResult",
+          "AccessRequest",
+          "AlertRule",
+          "ApiServiceMetadata",
+          "ApiTestScenario",
+          "AuditLogEntry",
+          "BlacklistEntry",
+          "BlacklistUpdateRequest",
+          "ConsumerGroup",
+          "CreateKeyRequest",
+          "MockRule",
+          "PiiMaskingRule",
+          "ProblemDetails",
+          "RequestStatus",
+          "Route",
+          "Service",
+          "Upstream",
+          "WhitelistEntry",
+          "WhitelistUpdateRequest",
+          "ApiException"
+        ],
+        "functions": [
+          "ConvertToString",
+          "ToString"
+        ],
+        "imports": [],
+        "namespace": "MilkApi.Client"
+      }
+    },
+    {
+      "path": "sdk/python/.github/workflows/python.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 35,
+      "extracted": {
+        "keys": [
+          "name",
+          "on",
+          "permissions",
+          "jobs"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/.gitlab-ci.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 32,
+      "extracted": {
+        "keys": [
+          "stages"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/.openapi-generator-ignore",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 24,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/.openapi-generator/FILES",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 129,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/.openapi-generator/VERSION",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 2,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    }
+  ]
+}

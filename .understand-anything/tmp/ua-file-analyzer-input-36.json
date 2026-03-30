@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "skills/api-gateway/references/notion/README.md",
+      "language": "markdown",
+      "sizeLines": 345,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/one-drive/README.md",
+      "language": "markdown",
+      "sizeLines": 119,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/outlook/README.md",
+      "language": "markdown",
+      "sizeLines": 239,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/pdf-co/README.md",
+      "language": "markdown",
+      "sizeLines": 320,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/pipedrive/README.md",
+      "language": "markdown",
+      "sizeLines": 162,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/podio/README.md",
+      "language": "markdown",
+      "sizeLines": 219,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/posthog/README.md",
+      "language": "markdown",
+      "sizeLines": 167,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/quickbooks/README.md",
+      "language": "markdown",
+      "sizeLines": 384,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/quo/README.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/reducto/README.md",
+      "language": "markdown",
+      "sizeLines": 146,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/salesforce/README.md",
+      "language": "markdown",
+      "sizeLines": 193,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/sendgrid/README.md",
+      "language": "markdown",
+      "sizeLines": 140,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/sentry/README.md",
+      "language": "markdown",
+      "sizeLines": 156,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/sharepoint/README.md",
+      "language": "markdown",
+      "sizeLines": 275,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/signnow/README.md",
+      "language": "markdown",
+      "sizeLines": 97,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/slack/README.md",
+      "language": "markdown",
+      "sizeLines": 178,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/snapchat/README.md",
+      "language": "markdown",
+      "sizeLines": 151,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/squarespace/README.md",
+      "language": "markdown",
+      "sizeLines": 326,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/squareup/README.md",
+      "language": "markdown",
+      "sizeLines": 599,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/stripe/README.md",
+      "language": "markdown",
+      "sizeLines": 263,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/sunsama-mcp/README.md",
+      "language": "markdown",
+      "sizeLines": 169,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json",
+      "language": "json",
+      "sizeLines": 15,
+      "fileCategory": "config"
+    },
+    {
+      "path": "skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json",
+      "language": "json",
+      "sizeLines": 29,
+      "fileCategory": "config"
+    },
+    {
+      "path": "skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json",
+      "language": "json",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    },
+    {
+      "path": "skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "language": "json",
+      "sizeLines": 19,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "skills/api-gateway/references/notion/README.md": [],
+    "skills/api-gateway/references/one-drive/README.md": [],
+    "skills/api-gateway/references/outlook/README.md": [],
+    "skills/api-gateway/references/pdf-co/README.md": [],
+    "skills/api-gateway/references/pipedrive/README.md": [],
+    "skills/api-gateway/references/podio/README.md": [],
+    "skills/api-gateway/references/posthog/README.md": [],
+    "skills/api-gateway/references/quickbooks/README.md": [],
+    "skills/api-gateway/references/quo/README.md": [],
+    "skills/api-gateway/references/reducto/README.md": [],
+    "skills/api-gateway/references/salesforce/README.md": [],
+    "skills/api-gateway/references/sendgrid/README.md": [],
+    "skills/api-gateway/references/sentry/README.md": [],
+    "skills/api-gateway/references/sharepoint/README.md": [],
+    "skills/api-gateway/references/signnow/README.md": [],
+    "skills/api-gateway/references/slack/README.md": [],
+    "skills/api-gateway/references/snapchat/README.md": [],
+    "skills/api-gateway/references/squarespace/README.md": [],
+    "skills/api-gateway/references/squareup/README.md": [],
+    "skills/api-gateway/references/stripe/README.md": [],
+    "skills/api-gateway/references/sunsama-mcp/README.md": [],
+    "skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json": [],
+    "skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json": [],
+    "skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json": [],
+    "skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json": []
+  }
+}

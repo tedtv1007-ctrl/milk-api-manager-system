@@ -1,0 +1,477 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-page.json",
+      "type": "file",
+      "label": "notion-update-page.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/notion/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Notion Routing Reference, Required Headers, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/one-drive/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering OneDrive Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/outlook/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Outlook Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/pdf-co/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering PDF.co Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/pipedrive/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Pipedrive Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/podio/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Podio Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/posthog/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering PostHog Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/quickbooks/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering QuickBooks Routing Reference, Special Handling, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/quo/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Quo Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/reducto/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Reducto Routing Reference, API Path Pattern, Important Notes.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/salesforce/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Salesforce Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sendgrid/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering SendGrid Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sentry/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Sentry Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sharepoint/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering SharePoint Routing Reference, API Path Pattern, Sites.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/signnow/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering SignNow Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/slack/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Slack Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/snapchat/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Snapchat Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/squarespace/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Squarespace Routing Reference, API Path Pattern, Important Notes.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/squareup/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Square Routing Reference, API Path Pattern, Merchants.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/stripe/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Stripe Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Sunsama MCP Routing Reference, Connection Management, List Connections.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json",
+      "type": "file",
+      "label": "accept_meeting_invite.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json",
+      "type": "file",
+      "label": "add_subtasks_to_task.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json",
+      "type": "file",
+      "label": "add_task_to_channel.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion-mcp/schemas/notion-update-page.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/notion/README.md",
+      "target": "file:.agents/skills/api-gateway/references/notion",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/one-drive/README.md",
+      "target": "file:.agents/skills/api-gateway/references/one-drive",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/outlook/README.md",
+      "target": "file:.agents/skills/api-gateway/references/outlook",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/pdf-co/README.md",
+      "target": "file:.agents/skills/api-gateway/references/pdf-co",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/pipedrive/README.md",
+      "target": "file:.agents/skills/api-gateway/references/pipedrive",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/podio/README.md",
+      "target": "file:.agents/skills/api-gateway/references/podio",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/posthog/README.md",
+      "target": "file:.agents/skills/api-gateway/references/posthog",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/quickbooks/README.md",
+      "target": "file:.agents/skills/api-gateway/references/quickbooks",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/quo/README.md",
+      "target": "file:.agents/skills/api-gateway/references/quo",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/reducto/README.md",
+      "target": "file:.agents/skills/api-gateway/references/reducto",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/salesforce/README.md",
+      "target": "file:.agents/skills/api-gateway/references/salesforce",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sendgrid/README.md",
+      "target": "file:.agents/skills/api-gateway/references/sendgrid",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sentry/README.md",
+      "target": "file:.agents/skills/api-gateway/references/sentry",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sharepoint/README.md",
+      "target": "file:.agents/skills/api-gateway/references/sharepoint",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/signnow/README.md",
+      "target": "file:.agents/skills/api-gateway/references/signnow",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/slack/README.md",
+      "target": "file:.agents/skills/api-gateway/references/slack",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/snapchat/README.md",
+      "target": "file:.agents/skills/api-gateway/references/snapchat",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/squarespace/README.md",
+      "target": "file:.agents/skills/api-gateway/references/squarespace",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/squareup/README.md",
+      "target": "file:.agents/skills/api-gateway/references/squareup",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/stripe/README.md",
+      "target": "file:.agents/skills/api-gateway/references/stripe",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/README.md",
+      "target": "file:.agents/skills/api-gateway/references/sunsama-mcp",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    }
+  ]
+}

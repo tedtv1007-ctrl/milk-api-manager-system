@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkWorker/MilkWorker.csproj",
+      "language": "unknown",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/Program.cs",
+      "language": "csharp",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/Properties/launchSettings.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/test_ad_sync.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/test_analytics.py",
+      "language": "python",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "build_errors.txt",
+      "language": "unknown",
+      "sizeLines": 39,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "dashboard_conf/conf.yaml",
+      "language": "yaml",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/Chart.yaml",
+      "language": "yaml",
+      "sizeLines": 14,
+      "fileCategory": "config"
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/_helpers.tpl",
+      "language": "unknown",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/admin-ui.yaml",
+      "language": "yaml",
+      "sizeLines": 37,
+      "fileCategory": "config"
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/backend.yaml",
+      "language": "yaml",
+      "sizeLines": 46,
+      "fileCategory": "config"
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/values.yaml",
+      "language": "yaml",
+      "sizeLines": 50,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docker_test_logs_utf8.txt",
+      "language": "unknown",
+      "sizeLines": 982,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docker_test_logs.txt",
+      "language": "unknown",
+      "sizeLines": 982,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docker-compose.test.yml",
+      "language": "yaml",
+      "sizeLines": 86,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docker-compose.yml",
+      "language": "yaml",
+      "sizeLines": 266,
+      "fileCategory": "config"
+    },
+    {
+      "path": "docs/architecture_flow_detailed.md",
+      "language": "markdown",
+      "sizeLines": 48,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/architecture_flow.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/architecture_remediation_checklist.md",
+      "language": "markdown",
+      "sizeLines": 45,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/compliance/APIM_AUDIT_RESPONSE_20260212.md",
+      "language": "markdown",
+      "sizeLines": 46,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/OPERATIONS_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 111,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/SCENARIOS.md",
+      "language": "markdown",
+      "sizeLines": 702,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/manual/USER_GUIDE.md",
+      "language": "markdown",
+      "sizeLines": 401,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/observability/audit_log_strategy.md",
+      "language": "markdown",
+      "sizeLines": 121,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/security/auto_blocking_design.md",
+      "language": "markdown",
+      "sizeLines": 42,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkWorker/MilkWorker.csproj": [],
+    "backend/MilkWorker/Program.cs": [],
+    "backend/MilkWorker/Properties/launchSettings.json": [],
+    "backend/test_ad_sync.py": [],
+    "backend/test_analytics.py": [],
+    "build_errors.txt": [],
+    "dashboard_conf/conf.yaml": [],
+    "deploy/helm/milk-api-manager/Chart.yaml": [],
+    "deploy/helm/milk-api-manager/templates/_helpers.tpl": [],
+    "deploy/helm/milk-api-manager/templates/admin-ui.yaml": [],
+    "deploy/helm/milk-api-manager/templates/backend.yaml": [],
+    "deploy/helm/milk-api-manager/values.yaml": [],
+    "docker_test_logs_utf8.txt": [],
+    "docker_test_logs.txt": [],
+    "docker-compose.test.yml": [],
+    "docker-compose.yml": [],
+    "docs/architecture_flow_detailed.md": [],
+    "docs/architecture_flow.md": [],
+    "docs/architecture_remediation_checklist.md": [],
+    "docs/compliance/APIM_AUDIT_RESPONSE_20260212.md": [],
+    "docs/manual/OPERATIONS_GUIDE.md": [],
+    "docs/manual/SCENARIOS.md": [],
+    "docs/manual/USER_GUIDE.md": [],
+    "docs/observability/audit_log_strategy.md": [],
+    "docs/security/auto_blocking_design.md": []
+  }
+}

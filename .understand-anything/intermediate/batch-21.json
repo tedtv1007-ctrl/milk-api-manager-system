@@ -1,0 +1,87 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkApiManager/Program.cs",
+      "summary": "Main entry point for the MilkApiManager backend, configuring middleware, dependency injection, and system startup.",
+      "tags": ["entry-point", "backend", "configuration", "web-api"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Services/AuditLogService.cs",
+      "summary": "Service for recording, retrieving, and shipping audit logs to external systems.",
+      "tags": ["audit-logs", "service", "backend"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Services/AuthService.cs",
+      "summary": "Handles user authentication via LDAP and generates JWT tokens for session management.",
+      "tags": ["auth", "ldap", "jwt", "service"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Services/BlacklistService.cs",
+      "summary": "Business logic for managing IP/consumer blacklists and syncing with the APISIX gateway.",
+      "tags": ["security", "blacklist", "service", "apisix"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Services/LoadTestService.cs",
+      "summary": "Executes automated load tests and reports results.",
+      "tags": ["load-test", "testing", "service"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Services/WhitelistService.cs",
+      "summary": "Business logic for managing IP whitelists and ensuring synchronization with the gateway.",
+      "tags": ["security", "whitelist", "service", "apisix"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Data/AppDbContext.cs",
+      "summary": "Entity Framework Core database context for the main application database.",
+      "tags": ["ef-core", "data-access", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Data/AuditContext.cs",
+      "summary": "Specialized database context for audit logs.",
+      "tags": ["ef-core", "data-access", "audit", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/AccessRequest.cs",
+      "summary": "Data model for user access requests.",
+      "tags": ["models", "access-control", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkShared/Models/AlertModels.cs",
+      "summary": "Data models for system alerts and anomaly detection.",
+      "tags": ["models", "monitoring", "shared"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkApiManager/Migrations/AppDbContextModelSnapshot.cs",
+      "summary": "Current state snapshot of the EF Core model for AppDbContext.",
+      "tags": ["database", "migration", "ef-core", "snapshot"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkApiManager/scripts/apply_audit_migration.sh",
+      "summary": "Utility script to apply audit-related database migrations.",
+      "tags": ["script", "deployment", "database"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:backend/MilkApiManager/Program.cs", "target": "file:backend/MilkApiManager/Services/AuthService.cs", "type": "configures" },
+    { "source": "file:backend/MilkApiManager/Program.cs", "target": "file:backend/MilkApiManager/Services/AuditLogService.cs", "type": "configures" },
+    { "source": "file:backend/MilkApiManager/Program.cs", "target": "file:backend/MilkShared/Data/AppDbContext.cs", "type": "configures" },
+    { "source": "file:backend/MilkApiManager/Services/AuditLogService.cs", "target": "file:backend/MilkShared/Data/AppDbContext.cs", "type": "uses" },
+    { "source": "file:backend/MilkApiManager/Services/AuthService.cs", "target": "file:backend/MilkApiManager/Services/IAuthService.cs", "type": "implements" },
+    { "source": "file:backend/MilkApiManager/Services/BlacklistService.cs", "target": "file:backend/MilkShared/Data/AppDbContext.cs", "type": "uses" },
+    { "source": "file:backend/MilkApiManager/Services/WhitelistService.cs", "target": "file:backend/MilkShared/Data/AppDbContext.cs", "type": "uses" },
+    { "source": "file:backend/MilkShared/Data/AppDbContext.cs", "target": "file:backend/MilkShared/Models/AccessRequest.cs", "type": "contains" },
+    { "source": "file:backend/MilkShared/Data/AppDbContext.cs", "target": "file:backend/MilkShared/Models/AlertModels.cs", "type": "contains" }
+  ]
+}

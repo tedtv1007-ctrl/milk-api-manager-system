@@ -1,0 +1,135 @@
+{
+  "nodes": [
+    {
+      "id": "file:sdk/python/milk_api_client/models/service.py",
+      "summary": "Python model representing an API service in the SDK.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/upstream.py",
+      "summary": "Python model representing an upstream server configuration.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/whitelist_entry.py",
+      "summary": "Python model for whitelist entries.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/models/whitelist_update_request.py",
+      "summary": "Python model for updating whitelist entries.",
+      "tags": ["python", "sdk", "implementation", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/milk_api_client/rest.py",
+      "summary": "Lower-level REST client implementation using urllib3 for the Python SDK.",
+      "tags": ["python", "sdk", "implementation", "core"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/python/pyproject.toml",
+      "summary": "Modern Python project metadata and build system configuration.",
+      "tags": ["python", "sdk", "config", "build"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/README.md",
+      "summary": "Usage documentation, installation instructions, and examples for the Python SDK.",
+      "tags": ["python", "sdk", "documentation", "readme"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/setup.py",
+      "summary": "Legacy setuptools build script for the Python SDK.",
+      "tags": ["python", "sdk", "config", "build"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_access_request_api.py",
+      "summary": "Unit tests for the Access Request API client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_access_request.py",
+      "summary": "Unit tests for the AccessRequest data model.",
+      "tags": ["python", "sdk", "test", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_alert_rule.py",
+      "summary": "Unit tests for the AlertRule data model.",
+      "tags": ["python", "sdk", "test", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_alert_rules_api.py",
+      "summary": "Unit tests for the Alert Rules API client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_analytics_api.py",
+      "summary": "Unit tests for the Analytics API client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_api_api.py",
+      "summary": "Unit tests for the core API management client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_api_catalog_api.py",
+      "summary": "Unit tests for the API Catalog client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_api_service_metadata.py",
+      "summary": "Unit tests for the ApiServiceMetadata model.",
+      "tags": ["python", "sdk", "test", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_api_test_scenario.py",
+      "summary": "Unit tests for the ApiTestScenario model.",
+      "tags": ["python", "sdk", "test", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_audit_log_entry.py",
+      "summary": "Unit tests for the AuditLogEntry model.",
+      "tags": ["python", "sdk", "test", "model"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_audit_logs_api.py",
+      "summary": "Unit tests for the Audit Logs API client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_blacklist_api.py",
+      "summary": "Unit tests for the Blacklist API client.",
+      "tags": ["python", "sdk", "test", "api"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:sdk/python/test/test_access_request_api.py", "target": "file:sdk/python/milk_api_client/api/access_request_api.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_access_request.py", "target": "file:sdk/python/milk_api_client/models/access_request.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_alert_rule.py", "target": "file:sdk/python/milk_api_client/models/alert_rule.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_alert_rules_api.py", "target": "file:sdk/python/milk_api_client/api/alert_rules_api.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_analytics_api.py", "target": "file:sdk/python/milk_api_client/api/analytics_api.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_api_api.py", "target": "file:sdk/python/milk_api_client/api/api_api.py", "type": "tests" },
+    { "source": "file:sdk/python/test/test_api_catalog_api.py", "target": "file:sdk/python/milk_api_client/api/api_catalog_api.py", "type": "tests" },
+    { "source": "file:sdk/python/milk_api_client/rest.py", "target": "file:sdk/python/milk_api_client/api_client.py", "type": "contains" },
+    { "source": "file:sdk/python/README.md", "target": "file:sdk/python/pyproject.toml", "type": "documents" }
+  ]
+}

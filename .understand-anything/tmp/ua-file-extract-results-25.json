@@ -1,0 +1,350 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "docs/security/key_rotation_vault.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 24,
+      "extracted": {
+        "headings": [
+          "Milk API Manager System: 金鑰生命週期與 Vault 整合方案 (Issue #16)",
+          "1. 金鑰發放安全機制",
+          "1.1 簽發流程 (C# Backend + Vault)",
+          "2. 自動化輪轉 (Rotation) 策略",
+          "3. APISIX 配置連動"
+        ]
+      }
+    },
+    {
+      "path": "docs/security/rbac_endpoint_matrix.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 61,
+      "extracted": {
+        "headings": [
+          "RBAC Endpoint Matrix",
+          "Policy Definitions",
+          "Endpoint Matrix",
+          "Enforcement Notes"
+        ]
+      }
+    },
+    {
+      "path": "e2e/package.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 13,
+      "extracted": {
+        "keys": [
+          "name",
+          "private",
+          "devDependencies",
+          "scripts"
+        ]
+      }
+    },
+    {
+      "path": "e2e/playwright.config.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test"
+        ]
+      }
+    },
+    {
+      "path": "e2e/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 36,
+      "extracted": {
+        "headings": [
+          "E2E UI Tests (Playwright)",
+          "Prerequisites",
+          "Install",
+          "Run tests",
+          "Outputs",
+          "Notes"
+        ]
+      }
+    },
+    {
+      "path": "e2e/result.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 73,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "e2e/scripts/run-e2e.ps1",
+      "category": "script",
+      "language": "powershell",
+      "lineCount": 16,
+      "extracted": {}
+    },
+    {
+      "path": "e2e/scripts/run-e2e.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 16,
+      "extracted": {}
+    },
+    {
+      "path": "e2e/test_latest.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 267,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "e2e/test_output.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 155,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "e2e/tests/api-endpoints.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 170,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test",
+          "fs",
+          "path"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/auth-sso.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 163,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/crud-operations.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 581,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/gateway-crud.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 414,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/gateway-ui-pages.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 141,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test",
+          "fs",
+          "path"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/pii-masking.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 88,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 12,
+      "extracted": {
+        "headings": [
+          "UI Coverage"
+        ]
+      }
+    },
+    {
+      "path": "e2e/tests/ui-pages.spec.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 124,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [],
+        "imports": [
+          "@playwright/test",
+          "fs",
+          "path"
+        ]
+      }
+    },
+    {
+      "path": "HEARTBEAT.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 22,
+      "extracted": {
+        "headings": [
+          "System Heartbeat - Milk API Manager",
+          "Current Status: ALL GREEN ✅",
+          "Active Development Locks",
+          "Completed Milestones"
+        ]
+      }
+    },
+    {
+      "path": "load-test-gateway.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 25,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [
+          "options",
+          "function"
+        ],
+        "imports": [
+          "k6/http",
+          "k6"
+        ]
+      }
+    },
+    {
+      "path": "load-test-local.js",
+      "category": "code",
+      "language": "javascript",
+      "lineCount": 23,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "exports": [
+          "options",
+          "function"
+        ],
+        "imports": [
+          "k6/http",
+          "k6"
+        ]
+      }
+    },
+    {
+      "path": "MEMORY.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 22,
+      "extracted": {
+        "headings": [
+          "Memory",
+          "Development Flow & Stability (穩定開發流程)",
+          "Multi-VPS & Human Collaboration (人機多節點協作規範)",
+          "Security Notes"
+        ]
+      }
+    },
+    {
+      "path": "milk-api-manager-system.sln",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 44,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "monitoring/alert_rules.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 50,
+      "extracted": {
+        "keys": [
+          "groups"
+        ]
+      }
+    },
+    {
+      "path": "monitoring/grafana-dashboard.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 273,
+      "extracted": {
+        "keys": [
+          "annotations",
+          "editable",
+          "fiscalYearStartMonth",
+          "graphTooltip",
+          "id",
+          "links",
+          "liveNow",
+          "panels",
+          "refresh",
+          "schemaVersion",
+          "style",
+          "tags",
+          "templating",
+          "time",
+          "timepicker",
+          "timezone",
+          "title",
+          "uid",
+          "version",
+          "weekStart"
+        ]
+      }
+    }
+  ]
+}

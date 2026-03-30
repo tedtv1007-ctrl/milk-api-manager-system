@@ -1,0 +1,481 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/cognito-forms/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Cognito Forms Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/companycam/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering CompanyCam Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/confluence/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Confluence Routing Reference, Getting Cloud ID, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/constant-contact/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Constant Contact Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/dropbox-business/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Dropbox Business Routing Reference, API Path Pattern, Team Information.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/dropbox/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Dropbox Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/elevenlabs/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ElevenLabs Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/eventbrite/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Eventbrite Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/fathom/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Fathom Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/firebase/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Firebase Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/fireflies/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Fireflies Routing Reference, API Path Pattern, GraphQL Queries.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/getresponse/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering GetResponse Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/github/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering GitHub Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-ads/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Ads Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-analytics-admin/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Analytics Admin Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-analytics-data/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Analytics Data Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-bigquery/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google BigQuery Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-calendar/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Calendar Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-classroom/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Classroom Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-contacts/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Contacts Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-docs/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Docs Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-drive/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Drive Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-forms/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Forms Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-mail/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Gmail Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-meet/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Meet Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/cognito-forms/README.md",
+      "target": "file:.agents/skills/api-gateway/references/cognito-forms",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/companycam/README.md",
+      "target": "file:.agents/skills/api-gateway/references/companycam",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/confluence/README.md",
+      "target": "file:.agents/skills/api-gateway/references/confluence",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/constant-contact/README.md",
+      "target": "file:.agents/skills/api-gateway/references/constant-contact",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/dropbox-business/README.md",
+      "target": "file:.agents/skills/api-gateway/references/dropbox-business",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/dropbox/README.md",
+      "target": "file:.agents/skills/api-gateway/references/dropbox",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/elevenlabs/README.md",
+      "target": "file:.agents/skills/api-gateway/references/elevenlabs",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/eventbrite/README.md",
+      "target": "file:.agents/skills/api-gateway/references/eventbrite",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/fathom/README.md",
+      "target": "file:.agents/skills/api-gateway/references/fathom",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/firebase/README.md",
+      "target": "file:.agents/skills/api-gateway/references/firebase",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/fireflies/README.md",
+      "target": "file:.agents/skills/api-gateway/references/fireflies",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/getresponse/README.md",
+      "target": "file:.agents/skills/api-gateway/references/getresponse",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/github/README.md",
+      "target": "file:.agents/skills/api-gateway/references/github",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-ads/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-ads",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-analytics-admin/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-analytics-admin",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-analytics-data/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-analytics-data",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-bigquery/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-bigquery",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-calendar/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-calendar",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-classroom/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-classroom",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-contacts/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-contacts",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-docs/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-docs",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-drive/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-drive",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-forms/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-forms",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-mail/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-mail",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-meet/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-meet",
+      "type": "documents"
+    }
+  ]
+}

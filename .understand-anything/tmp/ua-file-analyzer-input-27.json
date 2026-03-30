@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "sdk/python/.travis.yml",
+      "language": "yaml",
+      "sizeLines": 18,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/python/docs/AccessRequest.md",
+      "language": "markdown",
+      "sizeLines": 38,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AccessRequestApi.md",
+      "language": "markdown",
+      "sizeLines": 259,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AlertRule.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AlertRulesApi.md",
+      "language": "markdown",
+      "sizeLines": 255,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AnalyticsApi.md",
+      "language": "markdown",
+      "sizeLines": 334,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ApiApi.md",
+      "language": "markdown",
+      "sizeLines": 314,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ApiCatalogApi.md",
+      "language": "markdown",
+      "sizeLines": 131,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ApiServiceMetadata.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ApiTestScenario.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AuditLogEntry.md",
+      "language": "markdown",
+      "sizeLines": 40,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/AuditLogsApi.md",
+      "language": "markdown",
+      "sizeLines": 189,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/BlacklistApi.md",
+      "language": "markdown",
+      "sizeLines": 139,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/BlacklistEntry.md",
+      "language": "markdown",
+      "sizeLines": 35,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/BlacklistUpdateRequest.md",
+      "language": "markdown",
+      "sizeLines": 34,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ConsumerApi.md",
+      "language": "markdown",
+      "sizeLines": 188,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ConsumerGroup.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/ConsumerGroupApi.md",
+      "language": "markdown",
+      "sizeLines": 191,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/CreateKeyRequest.md",
+      "language": "markdown",
+      "sizeLines": 31,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/KeysApi.md",
+      "language": "markdown",
+      "sizeLines": 132,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/LoadTestApi.md",
+      "language": "markdown",
+      "sizeLines": 74,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/MockApi.md",
+      "language": "markdown",
+      "sizeLines": 258,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/MockRule.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/PiiMaskingApi.md",
+      "language": "markdown",
+      "sizeLines": 274,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/docs/PiiMaskingRule.md",
+      "language": "markdown",
+      "sizeLines": 37,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "sdk/python/.travis.yml": [],
+    "sdk/python/docs/AccessRequest.md": [],
+    "sdk/python/docs/AccessRequestApi.md": [],
+    "sdk/python/docs/AlertRule.md": [],
+    "sdk/python/docs/AlertRulesApi.md": [],
+    "sdk/python/docs/AnalyticsApi.md": [],
+    "sdk/python/docs/ApiApi.md": [],
+    "sdk/python/docs/ApiCatalogApi.md": [],
+    "sdk/python/docs/ApiServiceMetadata.md": [],
+    "sdk/python/docs/ApiTestScenario.md": [],
+    "sdk/python/docs/AuditLogEntry.md": [],
+    "sdk/python/docs/AuditLogsApi.md": [],
+    "sdk/python/docs/BlacklistApi.md": [],
+    "sdk/python/docs/BlacklistEntry.md": [],
+    "sdk/python/docs/BlacklistUpdateRequest.md": [],
+    "sdk/python/docs/ConsumerApi.md": [],
+    "sdk/python/docs/ConsumerGroup.md": [],
+    "sdk/python/docs/ConsumerGroupApi.md": [],
+    "sdk/python/docs/CreateKeyRequest.md": [],
+    "sdk/python/docs/KeysApi.md": [],
+    "sdk/python/docs/LoadTestApi.md": [],
+    "sdk/python/docs/MockApi.md": [],
+    "sdk/python/docs/MockRule.md": [],
+    "sdk/python/docs/PiiMaskingApi.md": [],
+    "sdk/python/docs/PiiMaskingRule.md": []
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkWorker/Program.cs",
+      "summary": "Main entry point for the MilkWorker background service, configuring workers and infrastructure connections.",
+      "tags": ["entry-point", "worker", "backend", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docker-compose.yml",
+      "summary": "Main Docker Compose file defining the entire Milk API Manager ecosystem, including APISIX, etcd, Prometheus, and Grafana.",
+      "tags": ["docker-compose", "deployment", "infrastructure"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:deploy/helm/milk-api-manager/values.yaml",
+      "summary": "Default configuration values for the Milk API Manager Helm chart.",
+      "tags": ["helm", "kubernetes", "deployment", "configuration"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/architecture_flow_detailed.md",
+      "summary": "Detailed technical documentation of the system's architecture, including control plane and data plane flows.",
+      "tags": ["architecture", "documentation", "technical"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/manual/OPERATIONS_GUIDE.md",
+      "summary": "Comprehensive operations guide for the Milk API Manager, covering environment setup and core functions.",
+      "tags": ["manual", "operations", "guide"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/manual/SCENARIOS.md",
+      "summary": "Detailed operational scenarios and step-by-step guides for common tasks like API onboarding and security incident response.",
+      "tags": ["manual", "scenarios", "guide"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:docs/manual/USER_GUIDE.md",
+      "summary": "End-user manual for the Milk API Manager dashboard and management interfaces.",
+      "tags": ["manual", "user-guide", "dashboard"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:docs/compliance/APIM_AUDIT_RESPONSE_20260212.md",
+      "summary": "Official audit response document addressing API management standards and security controls.",
+      "tags": ["compliance", "audit", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/observability/audit_log_strategy.md",
+      "summary": "Strategy document for API audit logging and integration with ELK/Grafana.",
+      "tags": ["observability", "audit", "strategy"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/security/auto_blocking_design.md",
+      "summary": "Design document for the automated traffic blocking and security incident response system.",
+      "tags": ["security", "auto-block", "design"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    { "source": "file:backend/MilkWorker/Program.cs", "target": "file:backend/MilkWorker/ApisixSyncOutboxWorker.cs", "type": "configures" },
+    { "source": "file:backend/MilkWorker/Program.cs", "target": "file:backend/MilkWorker/AuditLogShippingOutboxWorker.cs", "type": "configures" },
+    { "source": "file:backend/MilkWorker/Program.cs", "target": "file:backend/MilkWorker/KeyRotationBackgroundService.cs", "type": "configures" },
+    { "source": "file:docker-compose.yml", "target": "file:backend/MilkApiManager/Dockerfile", "type": "configures" },
+    { "source": "file:docker-compose.yml", "target": "file:backend/MilkWorker/Dockerfile", "type": "configures" },
+    { "source": "file:docs/manual/SCENARIOS.md", "target": "file:docs/manual/USER_GUIDE.md", "type": "documents" },
+    { "source": "file:docs/architecture_flow_detailed.md", "target": "file:docs/architecture_flow.md", "type": "documents" }
+  ]
+}

@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_incomplete.json",
+      "summary": "Configuration file mark_subtask_as_incomplete.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/mark_task_as_completed.json",
+      "summary": "Configuration file mark_task_as_completed.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/mark_task_as_incomplete.json",
+      "summary": "Configuration file mark_task_as_incomplete.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/move_calendar_event.json",
+      "summary": "Configuration file move_calendar_event.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/move_task_from_backlog.json",
+      "summary": "Configuration file move_task_from_backlog.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/move_task_to_backlog.json",
+      "summary": "Configuration file move_task_to_backlog.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/move_task_to_day.json",
+      "summary": "Configuration file move_task_to_day.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/reorder_tasks.json",
+      "summary": "Configuration file reorder_tasks.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/reposition_task_in_backlog.json",
+      "summary": "Configuration file reposition_task_in_backlog.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/restore_task.json",
+      "summary": "Configuration file restore_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/schedule_next_call.json",
+      "summary": "Configuration file schedule_next_call.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/search_tasks.json",
+      "summary": "Configuration file search_tasks.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/set_calendar_event_allow_task_projections.json",
+      "summary": "Configuration file set_calendar_event_allow_task_projections.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/set_shutdown_time.json",
+      "summary": "Configuration file set_shutdown_time.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/start_task_timer.json",
+      "summary": "Configuration file start_task_timer.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/stop_task_timer.json",
+      "summary": "Configuration file stop_task_timer.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/timebox_a_task_to_calendar.json",
+      "summary": "Configuration file timebox_a_task_to_calendar.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/toggle_auto_import_events.json",
+      "summary": "Configuration file toggle_auto_import_events.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/unarchive_task.json",
+      "summary": "Configuration file unarchive_task.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/update_all_incomplete_recurring_task_instances.json",
+      "summary": "Configuration file update_all_incomplete_recurring_task_instances.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/update_calendar_preferences.json",
+      "summary": "Configuration file update_calendar_preferences.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/sunsama-mcp/schemas/update_import_event_filters.json",
+      "summary": "Configuration file update_import_event_filters.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/systeme/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/tally/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/telegram/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

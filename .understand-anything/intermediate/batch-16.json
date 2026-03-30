@@ -1,0 +1,763 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/monitoring-observability/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering Monitoring & Observability, When to use this skill, Instructions.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/monitoring-observability/SKILL.toon",
+      "type": "file",
+      "label": "SKILL.toon",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/net-conventions/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering .NET Conventions, Style & Formatting, Naming Conventions.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/postgresql-optimization/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering PostgreSQL Development Assistant, � PostgreSQL-Specific Features, JSONB Operations.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.env.example",
+      "type": "file",
+      "label": ".env.example",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.github/workflows/ci.yml",
+      "type": "file",
+      "label": "ci.yml",
+      "summary": "Configuration file in yaml format.",
+      "tags": [
+        "config",
+        "yaml"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apisix_conf/config.yaml",
+      "type": "file",
+      "label": "config.yaml",
+      "summary": "Configuration file in yaml format.",
+      "tags": [
+        "config",
+        "yaml"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:apisix_conf/plugins/pii-masker.lua",
+      "type": "file",
+      "label": "pii-masker.lua",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:apisix_conf/plugins/traffic-blocker.lua",
+      "type": "file",
+      "label": "traffic-blocker.lua",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:ARCHITECTURE.md",
+      "type": "file",
+      "label": "ARCHITECTURE.md",
+      "summary": "Documentation covering System Architecture, Overview, Architecture Diagram.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend_logs_utf8.txt",
+      "type": "file",
+      "label": "backend_logs_utf8.txt",
+      "summary": "Documentation file for backend_logs_utf8.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend_logs.txt",
+      "type": "file",
+      "label": "backend_logs.txt",
+      "summary": "Documentation file for backend_logs.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs2_utf8.txt",
+      "type": "file",
+      "label": "backend_logs2_utf8.txt",
+      "summary": "Documentation file for backend_logs2_utf8.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs2.txt",
+      "type": "file",
+      "label": "backend_logs2.txt",
+      "summary": "Documentation file for backend_logs2.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs3_utf8.txt",
+      "type": "file",
+      "label": "backend_logs3_utf8.txt",
+      "summary": "Documentation file for backend_logs3_utf8.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs3.txt",
+      "type": "file",
+      "label": "backend_logs3.txt",
+      "summary": "Documentation file for backend_logs3.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs4_utf8.txt",
+      "type": "file",
+      "label": "backend_logs4_utf8.txt",
+      "summary": "Documentation file for backend_logs4_utf8.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend_logs4.txt",
+      "type": "file",
+      "label": "backend_logs4.txt",
+      "summary": "Documentation file for backend_logs4.txt.",
+      "tags": [
+        "docs",
+        "unknown"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/_Imports.razor",
+      "type": "file",
+      "label": "_Imports.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/App.razor",
+      "type": "file",
+      "label": "App.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/appsettings.json",
+      "type": "file",
+      "label": "appsettings.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Components/RouteWhitelistManager.razor",
+      "type": "file",
+      "label": "RouteWhitelistManager.razor",
+      "summary": "UNKNOWN code file containing utility logic.",
+      "tags": [
+        "code",
+        "unknown"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "type": "file",
+      "label": "ApisixService.cs",
+      "summary": "CSHARP code file containing classes (ApisixService) and functions.",
+      "tags": [
+        "code",
+        "csharp",
+        "dotnet"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixService.cs:ApisixService",
+      "type": "class",
+      "label": "ApisixService",
+      "summary": "Class ApisixService defined in ApisixService.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "type": "file",
+      "label": "ApisixServiceModels.cs",
+      "summary": "CSHARP code file containing classes (ApiRoute, BlacklistRequest, ApiConsumer, ApiQuota, SyncStatusResponse, ConsumerStats, MetricPoint, AnalyticsResult, BlacklistEntryDto, WhitelistEntryDto, PiiMaskingRuleDto, ConsumerGroupDto, MockRuleDto, AccessRequestDto, ApiServiceDto, TestScenarioDto, SlaDto, AuditLogEntryDto, ApisixRouteDto, ApisixUpstreamDto, ApisixStandaloneUpstreamDto, ApisixServiceDto, SslCertificateDto, GlobalRuleDto, DashboardStatsDto).",
+      "tags": [
+        "code",
+        "csharp",
+        "dotnet"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiRoute",
+      "type": "class",
+      "label": "ApiRoute",
+      "summary": "Class ApiRoute defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:BlacklistRequest",
+      "type": "class",
+      "label": "BlacklistRequest",
+      "summary": "Class BlacklistRequest defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiConsumer",
+      "type": "class",
+      "label": "ApiConsumer",
+      "summary": "Class ApiConsumer defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiQuota",
+      "type": "class",
+      "label": "ApiQuota",
+      "summary": "Class ApiQuota defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SyncStatusResponse",
+      "type": "class",
+      "label": "SyncStatusResponse",
+      "summary": "Class SyncStatusResponse defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ConsumerStats",
+      "type": "class",
+      "label": "ConsumerStats",
+      "summary": "Class ConsumerStats defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:MetricPoint",
+      "type": "class",
+      "label": "MetricPoint",
+      "summary": "Class MetricPoint defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AnalyticsResult",
+      "type": "class",
+      "label": "AnalyticsResult",
+      "summary": "Class AnalyticsResult defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:BlacklistEntryDto",
+      "type": "class",
+      "label": "BlacklistEntryDto",
+      "summary": "Class BlacklistEntryDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:WhitelistEntryDto",
+      "type": "class",
+      "label": "WhitelistEntryDto",
+      "summary": "Class WhitelistEntryDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:PiiMaskingRuleDto",
+      "type": "class",
+      "label": "PiiMaskingRuleDto",
+      "summary": "Class PiiMaskingRuleDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ConsumerGroupDto",
+      "type": "class",
+      "label": "ConsumerGroupDto",
+      "summary": "Class ConsumerGroupDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:MockRuleDto",
+      "type": "class",
+      "label": "MockRuleDto",
+      "summary": "Class MockRuleDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AccessRequestDto",
+      "type": "class",
+      "label": "AccessRequestDto",
+      "summary": "Class AccessRequestDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiServiceDto",
+      "type": "class",
+      "label": "ApiServiceDto",
+      "summary": "Class ApiServiceDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:TestScenarioDto",
+      "type": "class",
+      "label": "TestScenarioDto",
+      "summary": "Class TestScenarioDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SlaDto",
+      "type": "class",
+      "label": "SlaDto",
+      "summary": "Class SlaDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AuditLogEntryDto",
+      "type": "class",
+      "label": "AuditLogEntryDto",
+      "summary": "Class AuditLogEntryDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixRouteDto",
+      "type": "class",
+      "label": "ApisixRouteDto",
+      "summary": "Class ApisixRouteDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixUpstreamDto",
+      "type": "class",
+      "label": "ApisixUpstreamDto",
+      "summary": "Class ApisixUpstreamDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixStandaloneUpstreamDto",
+      "type": "class",
+      "label": "ApisixStandaloneUpstreamDto",
+      "summary": "Class ApisixStandaloneUpstreamDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixServiceDto",
+      "type": "class",
+      "label": "ApisixServiceDto",
+      "summary": "Class ApisixServiceDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SslCertificateDto",
+      "type": "class",
+      "label": "SslCertificateDto",
+      "summary": "Class SslCertificateDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:GlobalRuleDto",
+      "type": "class",
+      "label": "GlobalRuleDto",
+      "summary": "Class GlobalRuleDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:DashboardStatsDto",
+      "type": "class",
+      "label": "DashboardStatsDto",
+      "summary": "Class DashboardStatsDto defined in ApisixServiceModels.cs.",
+      "tags": [
+        "class",
+        "csharp"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkAdminBlazor/Dockerfile",
+      "type": "file",
+      "label": "Dockerfile",
+      "summary": "Infrastructure definition file (dockerfile).",
+      "tags": [
+        "infra",
+        "dockerfile"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.github/workflows/ci.yml",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:apisix_conf/config.yaml",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/appsettings.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixService.cs:ApisixService",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Collections.Generic",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Net.Http",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Net.Http.Json",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Threading.Tasks",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Text.Json",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:System.Text.Json.Serialization",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixService.cs",
+      "target": "ext:Microsoft.Extensions.Logging",
+      "type": "imports"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiRoute",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:BlacklistRequest",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiConsumer",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiQuota",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SyncStatusResponse",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ConsumerStats",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:MetricPoint",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AnalyticsResult",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:BlacklistEntryDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:WhitelistEntryDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:PiiMaskingRuleDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ConsumerGroupDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:MockRuleDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AccessRequestDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApiServiceDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:TestScenarioDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SlaDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:AuditLogEntryDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixRouteDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixUpstreamDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixStandaloneUpstreamDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:ApisixServiceDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:SslCertificateDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:GlobalRuleDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "class:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs:DashboardStatsDto",
+      "type": "contains"
+    },
+    {
+      "source": "file:backend/MilkAdminBlazor/Data/ApisixServiceModels.cs",
+      "target": "ext:System.Text.Json.Serialization",
+      "type": "imports"
+    }
+  ]
+}

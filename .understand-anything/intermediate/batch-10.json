@@ -1,0 +1,477 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-merchant/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Merchant Routing Reference, API Path Pattern, Developer Registration.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-play/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Play Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-search-console/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Search Console Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-sheets/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Sheets Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-slides/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Slides Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-tasks/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Tasks Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/google-workspace-admin/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Google Workspace Admin Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/grafana/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Grafana Routing Reference, API Path Pattern, Organization & User.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/granola-mcp/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Granola MCP Routing Reference, Connection Management, List Connections.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json",
+      "type": "file",
+      "label": "get_meeting_transcript.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json",
+      "type": "file",
+      "label": "get_meetings.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json",
+      "type": "file",
+      "label": "list_meetings.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json",
+      "type": "file",
+      "label": "query_granola_meetings.json",
+      "summary": "Configuration file in json format.",
+      "tags": [
+        "config",
+        "json",
+        "api-gateway",
+        "api-reference"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/gumroad/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Gumroad Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/hubspot/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering HubSpot Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/instantly/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Instantly Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/jira/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Jira Routing Reference, Getting Cloud ID, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/jobber/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Jobber Routing Reference, API Type, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/jotform/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering JotForm Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/kaggle/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Kaggle Routing Reference, API Path Pattern, Datasets.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/keap/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Keap Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/kibana/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Kibana Routing Reference, API Path Pattern, Status & Features.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/kit/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Kit Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/klaviyo/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Klaviyo Routing Reference, API Path Pattern, API Versioning.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/lemlist/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Lemlist Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-merchant/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-merchant",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-play/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-play",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-search-console/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-search-console",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-sheets/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-sheets",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-slides/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-slides",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-tasks/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-tasks",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/google-workspace-admin/README.md",
+      "target": "file:.agents/skills/api-gateway/references/google-workspace-admin",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/grafana/README.md",
+      "target": "file:.agents/skills/api-gateway/references/grafana",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/granola-mcp/README.md",
+      "target": "file:.agents/skills/api-gateway/references/granola-mcp",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/get_meeting_transcript.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/get_meetings.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/list_meetings.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/granola-mcp/schemas/query_granola_meetings.json",
+      "target": "file:backend/MilkAdminBlazor/Program.cs",
+      "type": "configures"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/gumroad/README.md",
+      "target": "file:.agents/skills/api-gateway/references/gumroad",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/hubspot/README.md",
+      "target": "file:.agents/skills/api-gateway/references/hubspot",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/instantly/README.md",
+      "target": "file:.agents/skills/api-gateway/references/instantly",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/jira/README.md",
+      "target": "file:.agents/skills/api-gateway/references/jira",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/jobber/README.md",
+      "target": "file:.agents/skills/api-gateway/references/jobber",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/jotform/README.md",
+      "target": "file:.agents/skills/api-gateway/references/jotform",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/kaggle/README.md",
+      "target": "file:.agents/skills/api-gateway/references/kaggle",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/keap/README.md",
+      "target": "file:.agents/skills/api-gateway/references/keap",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/kibana/README.md",
+      "target": "file:.agents/skills/api-gateway/references/kibana",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/kit/README.md",
+      "target": "file:.agents/skills/api-gateway/references/kit",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/klaviyo/README.md",
+      "target": "file:.agents/skills/api-gateway/references/klaviyo",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/lemlist/README.md",
+      "target": "file:.agents/skills/api-gateway/references/lemlist",
+      "type": "documents"
+    }
+  ]
+}

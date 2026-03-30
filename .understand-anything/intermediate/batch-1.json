@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/references/confluence/README.md",
+      "type": "file",
+      "label": "confluence/README.md",
+      "summary": "Routing reference for Confluence, covering page, space, blogpost, and attachment management.",
+      "tags": ["api-reference", "confluence", "documentation", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/constant-contact/README.md",
+      "type": "file",
+      "label": "constant-contact/README.md",
+      "summary": "Routing reference for Constant Contact, detailing contact, list, and email campaign management.",
+      "tags": ["api-reference", "constant-contact", "email-marketing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/dropbox-business/README.md",
+      "type": "file",
+      "label": "dropbox-business/README.md",
+      "summary": "Extensive routing reference for Dropbox Business, covering team members, groups, folders, and audit logs.",
+      "tags": ["api-reference", "dropbox", "business", "cloud-storage"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/dropbox/README.md",
+      "type": "file",
+      "label": "dropbox/README.md",
+      "summary": "Routing reference for Dropbox personal, focusing on file and folder operations.",
+      "tags": ["api-reference", "dropbox", "cloud-storage", "files"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/elevenlabs/README.md",
+      "type": "file",
+      "label": "elevenlabs/README.md",
+      "summary": "Routing reference for ElevenLabs, covering text-to-speech, voice cloning, and audio processing.",
+      "tags": ["api-reference", "elevenlabs", "ai", "text-to-speech"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/eventbrite/README.md",
+      "type": "file",
+      "label": "eventbrite/README.md",
+      "summary": "Routing reference for Eventbrite, detailing event, ticket, and attendee management.",
+      "tags": ["api-reference", "eventbrite", "events", "ticketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/fathom/README.md",
+      "type": "file",
+      "label": "fathom/README.md",
+      "summary": "Routing reference for Fathom, covering meeting summaries, transcripts, and webhooks.",
+      "tags": ["api-reference", "fathom", "ai", "meetings"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/firebase/README.md",
+      "type": "file",
+      "label": "firebase/README.md",
+      "summary": "Routing reference for Firebase, focusing on project and app management.",
+      "tags": ["api-reference", "firebase", "backend-as-a-service", "google-cloud"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/fireflies/README.md",
+      "type": "file",
+      "label": "fireflies/README.md",
+      "summary": "Routing reference for Fireflies using GraphQL, covering transcripts, bites, and AskFred threads.",
+      "tags": ["api-reference", "fireflies", "ai", "graphql"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/getresponse/README.md",
+      "type": "file",
+      "label": "getresponse/README.md",
+      "summary": "Routing reference for GetResponse, detailing campaign, contact, and newsletter management.",
+      "tags": ["api-reference", "getresponse", "email-marketing", "crm"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/github/README.md",
+      "type": "file",
+      "label": "github/README.md",
+      "summary": "Routing reference for GitHub, covering repositories, issues, pull requests, and searching.",
+      "tags": ["api-reference", "github", "source-control", "git"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-ads/README.md",
+      "type": "file",
+      "label": "google-ads/README.md",
+      "summary": "Routing reference for Google Ads, focusing on GAQL queries for campaigns and performance data.",
+      "tags": ["api-reference", "google-ads", "marketing", "advertising"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-analytics-admin/README.md",
+      "type": "file",
+      "label": "google-analytics-admin/README.md",
+      "summary": "Routing reference for Google Analytics Admin API, covering account and property management.",
+      "tags": ["api-reference", "google-analytics", "admin", "analytics"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-analytics-data/README.md",
+      "type": "file",
+      "label": "google-analytics-data/README.md",
+      "summary": "Routing reference for Google Analytics Data API, focusing on running reports and retrieving metadata.",
+      "tags": ["api-reference", "google-analytics", "data", "reporting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-bigquery/README.md",
+      "type": "file",
+      "label": "google-bigquery/README.md",
+      "summary": "Routing reference for Google BigQuery, covering datasets, tables, and query execution.",
+      "tags": ["api-reference", "google-bigquery", "data-warehouse", "sql"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-calendar/README.md",
+      "type": "file",
+      "label": "google-calendar/README.md",
+      "summary": "Routing reference for Google Calendar, detailing calendar and event management.",
+      "tags": ["api-reference", "google-calendar", "scheduling", "calendar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-classroom/README.md",
+      "type": "file",
+      "label": "google-classroom/README.md",
+      "summary": "Routing reference for Google Classroom, covering courses, coursework, and teacher/student management.",
+      "tags": ["api-reference", "google-classroom", "education", "google-workspace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-contacts/README.md",
+      "type": "file",
+      "label": "google-contacts/README.md",
+      "summary": "Routing reference for Google Contacts, detailing contact and group management.",
+      "tags": ["api-reference", "google-contacts", "crm", "contacts"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-docs/README.md",
+      "type": "file",
+      "label": "google-docs/README.md",
+      "summary": "Routing reference for Google Docs, focusing on document creation and batch updates.",
+      "tags": ["api-reference", "google-docs", "documents", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-drive/README.md",
+      "type": "file",
+      "label": "google-drive/README.md",
+      "summary": "Routing reference for Google Drive, covering file/folder management, sharing, and uploads.",
+      "tags": ["api-reference", "google-drive", "cloud-storage", "files"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-forms/README.md",
+      "type": "file",
+      "label": "google-forms/README.md",
+      "summary": "Routing reference for Google Forms, detailing form creation, batch updates, and response retrieval.",
+      "tags": ["api-reference", "google-forms", "forms", "data-collection"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-mail/README.md",
+      "type": "file",
+      "label": "google-mail/README.md",
+      "summary": "Routing reference for Gmail, focusing on message, thread, and label management.",
+      "tags": ["api-reference", "gmail", "email", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-meet/README.md",
+      "type": "file",
+      "label": "google-meet/README.md",
+      "summary": "Routing reference for Google Meet, covering space creation, recordings, and transcripts.",
+      "tags": ["api-reference", "google-meet", "video-conferencing", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-merchant/README.md",
+      "type": "file",
+      "label": "google-merchant/README.md",
+      "summary": "Routing reference for Google Merchant, detailing product and account management.",
+      "tags": ["api-reference", "google-merchant", "ecommerce", "advertising"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/google-play/README.md",
+      "type": "file",
+      "label": "google-play/README.md",
+      "summary": "Routing reference for Google Play Developer API, covering in-app products, subscriptions, and reviews.",
+      "tags": ["api-reference", "google-play", "app-store", "billing"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/confluence/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/constant-contact/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/dropbox-business/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/dropbox/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/elevenlabs/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/eventbrite/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/fathom/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/firebase/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/fireflies/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/getresponse/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/github/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-ads/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-analytics-admin/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-analytics-data/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-bigquery/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-calendar/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-classroom/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-contacts/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-docs/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-drive/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-forms/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-mail/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-meet/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-merchant/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/google-play/README.md", "type": "contains" }
+  ]
+}

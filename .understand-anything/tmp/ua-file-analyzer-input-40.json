@@ -1,0 +1,77 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "skills/monitoring-observability/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 395,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/monitoring-observability/SKILL.toon",
+      "language": "unknown",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "skills/net-conventions/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/postgresql-optimization/SKILL.md",
+      "language": "markdown",
+      "sizeLines": 405,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "start-all.bat",
+      "language": "batch",
+      "sizeLines": 50,
+      "fileCategory": "script"
+    },
+    {
+      "path": "test_build_errors.txt",
+      "language": "unknown",
+      "sizeLines": 63,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "test_debug.txt",
+      "language": "unknown",
+      "sizeLines": 20562,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "test_debug2.txt",
+      "language": "unknown",
+      "sizeLines": 253,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "test-results/.last-run.json",
+      "language": "json",
+      "sizeLines": 4,
+      "fileCategory": "config"
+    },
+    {
+      "path": "walkthrough.md.resolved",
+      "language": "unknown",
+      "sizeLines": 79,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "skills/monitoring-observability/SKILL.md": [],
+    "skills/monitoring-observability/SKILL.toon": [],
+    "skills/net-conventions/SKILL.md": [],
+    "skills/postgresql-optimization/SKILL.md": [],
+    "start-all.bat": [],
+    "test_build_errors.txt": [],
+    "test_debug.txt": [],
+    "test_debug2.txt": [],
+    "test-results/.last-run.json": [],
+    "walkthrough.md.resolved": []
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "sdk/python/milk_api_client/api/keys_api.py",
+      "language": "python",
+      "sizeLines": 553,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/load_test_api.py",
+      "language": "python",
+      "sizeLines": 323,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/mock_api.py",
+      "language": "python",
+      "sizeLines": 1086,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/pii_masking_api.py",
+      "language": "python",
+      "sizeLines": 1117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/route_api.py",
+      "language": "python",
+      "sizeLines": 1318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/sync_status_api.py",
+      "language": "python",
+      "sizeLines": 270,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/test_execution_api.py",
+      "language": "python",
+      "sizeLines": 821,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/whitelist_api.py",
+      "language": "python",
+      "sizeLines": 594,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/configuration.py",
+      "language": "python",
+      "sizeLines": 577,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/exceptions.py",
+      "language": "python",
+      "sizeLines": 219,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/__init__.py",
+      "language": "python",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/access_request.py",
+      "language": "python",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/alert_rule.py",
+      "language": "python",
+      "sizeLines": 123,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/api_service_metadata.py",
+      "language": "python",
+      "sizeLines": 114,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/api_test_scenario.py",
+      "language": "python",
+      "sizeLines": 119,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/audit_log_entry.py",
+      "language": "python",
+      "sizeLines": 149,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/blacklist_entry.py",
+      "language": "python",
+      "sizeLines": 116,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/blacklist_update_request.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/consumer_group.py",
+      "language": "python",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/create_key_request.py",
+      "language": "python",
+      "sizeLines": 95,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/mock_rule.py",
+      "language": "python",
+      "sizeLines": 112,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/pii_masking_rule.py",
+      "language": "python",
+      "sizeLines": 109,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/problem_details.py",
+      "language": "python",
+      "sizeLines": 134,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/request_status.py",
+      "language": "python",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/route.py",
+      "language": "python",
+      "sizeLines": 135,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sdk/python/milk_api_client/api/keys_api.py": [],
+    "sdk/python/milk_api_client/api/load_test_api.py": [],
+    "sdk/python/milk_api_client/api/mock_api.py": [],
+    "sdk/python/milk_api_client/api/pii_masking_api.py": [],
+    "sdk/python/milk_api_client/api/route_api.py": [],
+    "sdk/python/milk_api_client/api/sync_status_api.py": [],
+    "sdk/python/milk_api_client/api/test_execution_api.py": [],
+    "sdk/python/milk_api_client/api/whitelist_api.py": [],
+    "sdk/python/milk_api_client/configuration.py": [],
+    "sdk/python/milk_api_client/exceptions.py": [],
+    "sdk/python/milk_api_client/models/__init__.py": [],
+    "sdk/python/milk_api_client/models/access_request.py": [],
+    "sdk/python/milk_api_client/models/alert_rule.py": [],
+    "sdk/python/milk_api_client/models/api_service_metadata.py": [],
+    "sdk/python/milk_api_client/models/api_test_scenario.py": [],
+    "sdk/python/milk_api_client/models/audit_log_entry.py": [],
+    "sdk/python/milk_api_client/models/blacklist_entry.py": [],
+    "sdk/python/milk_api_client/models/blacklist_update_request.py": [],
+    "sdk/python/milk_api_client/models/consumer_group.py": [],
+    "sdk/python/milk_api_client/models/create_key_request.py": [],
+    "sdk/python/milk_api_client/models/mock_rule.py": [],
+    "sdk/python/milk_api_client/models/pii_masking_rule.py": [],
+    "sdk/python/milk_api_client/models/problem_details.py": [],
+    "sdk/python/milk_api_client/models/request_status.py": [],
+    "sdk/python/milk_api_client/models/route.py": []
+  }
+}

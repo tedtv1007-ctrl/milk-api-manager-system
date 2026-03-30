@@ -1,0 +1,638 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkApiManager.Tests/Integration/AuthorizationIntegrationTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 124,
+      "extracted": {
+        "classes": [
+          "AuthorizationIntegrationTests"
+        ],
+        "functions": [
+          "ProtectedEndpoint_WithoutAuth_Returns401",
+          "ProtectedEndpoint_WithApiKey_ReturnsSuccessStatus",
+          "HealthLive_WithoutAuth_ReturnsOk",
+          "AuthLogin_WithoutAuthHeader_ReturnsOk",
+          "Viewer_CanReadRoutes_ButCannotCreateRoute",
+          "Operator_CanAccessOperatorEndpoint_ButNotAdminEndpoint",
+          "GetTokenAsync"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc.Testing",
+          "System.Net",
+          "System.Net.Http.Headers",
+          "System.Text.Json",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Integration"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Integration/HealthAndMiddlewareIntegrationTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 259,
+      "extracted": {
+        "classes": [
+          "HealthAndMiddlewareIntegrationTests"
+        ],
+        "functions": [
+          "HealthLive_ReturnsOk",
+          "HealthReady_ReturnsOk",
+          "ProtectedEndpoint_WithValidApiKey_ReturnsOk",
+          "ProtectedEndpoint_WithInvalidApiKey_Returns401",
+          "ProtectedEndpoint_WithNoAuth_Returns401",
+          "ProtectedEndpoint_WithValidJwt_ReturnsOk",
+          "ProtectedEndpoint_WithExpiredOrInvalidJwt_Returns401",
+          "ApiResponse_ReturnsJsonContentType",
+          "NonExistentEndpoint_Returns404",
+          "InvalidJsonPayload_ReturnsBadRequest",
+          "Admin_CanAccessBlacklist",
+          "Viewer_CannotModifyBlacklist",
+          "Viewer_CanAccessReadOnlyEndpoints",
+          "Operator_CanCreateRoute",
+          "AuditLogs_ReturnsOkForOperator",
+          "Analytics_ReturnsOkForViewer",
+          "GetTokenAsync"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc.Testing",
+          "System.Net",
+          "System.Net.Http.Headers",
+          "System.Text",
+          "System.Text.Json",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Integration"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/MilkApiManager.Tests.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 31,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ApisixServiceBlazorTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 353,
+      "extracted": {
+        "classes": [
+          "ApisixServiceBlazorTests"
+        ],
+        "functions": [
+          "GetSyncStatusAsync_Success_ReturnsStatus",
+          "GetSyncStatusAsync_Failure_ReturnsOffline",
+          "GetBlacklistedIpsAsync_Success_ReturnsList",
+          "GetBlacklistedIpsAsync_Failure_ReturnsEmpty",
+          "AddIpToBlacklistAsync_Success_NoException",
+          "AddIpToBlacklistAsync_Failure_Throws",
+          "GetConsumersAsync_Success_ReturnsList",
+          "DeleteConsumerAsync_Success_NoException",
+          "DeleteConsumerAsync_Failure_Throws",
+          "GetConsumerStatsAsync_Success_ReturnsList",
+          "GetConsumerStatsAsync_Failure_ReturnsEmpty",
+          "GetPiiRulesAsync_Success_ReturnsList",
+          "SavePiiRuleAsync_NewRule_PostsAndChecksResponse",
+          "SavePiiRuleAsync_ExistingRule_PutsAndChecksResponse",
+          "GetMockRulesAsync_Success_ReturnsList",
+          "GetAccessRequestsAsync_Success_ReturnsList",
+          "SubmitAccessRequestAsync_Failure_Throws",
+          "GetApisixRoutesAsync_Success_ReturnsList",
+          "SaveApisixRouteAsync_NewRoute_GeneratesId",
+          "DeleteApisixRouteAsync_Failure_Throws",
+          "GetAuditLogsAsync_Success_ReturnsList",
+          "GetAuditLogsAsync_Failure_ReturnsEmpty",
+          "RunLoadTestAsync_Success_ReturnsReport",
+          "RunLoadTestAsync_Failure_ReturnsErrorString",
+          "GetDashboardStatsAsync_Success_ReturnsStats",
+          "GetDashboardStatsAsync_Failure_ReturnsDefault"
+        ],
+        "imports": [
+          "System.Net",
+          "System.Net.Http",
+          "System.Net.Http.Json",
+          "System.Text.Json",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "Moq.Protected",
+          "MilkAdminBlazor.Data",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ApisixSyncOutboxProcessorTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 82,
+      "extracted": {
+        "classes": [
+          "ApisixSyncOutboxProcessorTests"
+        ],
+        "functions": [
+          "ProcessBatchAsync_BlacklistSync_CompletesEntry",
+          "ProcessBatchAsync_WhenApisixFails_MarksFailedAndSchedulesRetry",
+          "Dispose"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuditLogServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 78,
+      "extracted": {
+        "classes": [
+          "AuditLogServiceTests"
+        ],
+        "functions": [
+          "LogAsync_DurableShippingEnabled_PersistsAuditAndOutbox"
+        ],
+        "imports": [
+          "System.Text.Json",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.DependencyInjection",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuditLogShippingOutboxProcessorTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 143,
+      "extracted": {
+        "classes": [
+          "AuditLogShippingOutboxProcessorTests",
+          "StubHandler"
+        ],
+        "functions": [
+          "ProcessBatchAsync_WhenDeliverySucceeds_CompletesEntry",
+          "ProcessBatchAsync_WhenDeliveryKeepsFailing_MovesToDeadLetterAtMaxAttempts",
+          "Dispose",
+          "SendAsync"
+        ],
+        "imports": [
+          "System.Net",
+          "System.Text.Json",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/AuthServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 146,
+      "extracted": {
+        "classes": [
+          "AuthServiceTests"
+        ],
+        "functions": [
+          "AuthenticateAsync_AdminUser_ReturnsTokenWithAllRoles",
+          "AuthenticateAsync_OperatorUser_ReturnsOperatorAndViewerRoles",
+          "AuthenticateAsync_ViewerUser_ReturnsViewerRoleOnly",
+          "AuthenticateAsync_WrongPassword_ReturnsNull",
+          "AuthenticateAsync_NonExistentUser_ReturnsNull",
+          "AuthenticateAsync_EmptyCredentials_ReturnsNull",
+          "AuthenticateAsync_JwtTokenIsValidFormat",
+          "AuthenticateAsync_ExpirationIsInFuture",
+          "EscapeLdapFilter_SpecialChars_EscapedCorrectly"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/BlacklistConsistencyServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 67,
+      "extracted": {
+        "classes": [
+          "BlacklistConsistencyServiceTests"
+        ],
+        "functions": [
+          "GetBlacklistDriftReportAsync_NoDrift_ReturnsEmptyReport",
+          "GetBlacklistDriftReportAsync_WithDrift_IdentifiesIssues"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Microsoft.EntityFrameworkCore",
+          "System.Net",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/BlacklistServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 75,
+      "extracted": {
+        "classes": [
+          "BlacklistServiceTests"
+        ],
+        "functions": [
+          "AddAsync_ValidIp_AddsToDbAndGateway",
+          "RemoveAsync_ExistingIp_RemovesFromDbAndGateway"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Microsoft.EntityFrameworkCore",
+          "System.Net",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/ProductionStartupGuardrailsTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 145,
+      "extracted": {
+        "classes": [
+          "ProductionStartupGuardrailsTests",
+          "FakeHostEnvironment"
+        ],
+        "functions": [
+          "ValidateForApi_NonProduction_AllowsInsecureDefaults",
+          "ValidateForApi_Production_WithDemoAuth_Throws",
+          "ValidateForApi_Production_WithInsecureConnectionString_Throws",
+          "ValidateForApi_Production_WithSecureSettings_DoesNotThrow",
+          "ValidateForWorker_Production_WithDefaultApisixKey_Throws",
+          "BuildConfig"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.FileProviders",
+          "Microsoft.Extensions.Hosting",
+          "MilkApiManager.Services"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/SecurityAutomationServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 81,
+      "extracted": {
+        "classes": [
+          "SecurityAutomationServiceTests"
+        ],
+        "functions": [
+          "CheckAndRotateKeys_ExpiredKey_TriggersRotation",
+          "CheckAndRotateKeys_NearExpiryKey_DoesNotRotate",
+          "BlockMaliciousIP_UpdatesGlobalPlugin",
+          "CheckAndRotateKeys_CompletesWithoutError"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/VaultServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 100,
+      "extracted": {
+        "classes": [
+          "VaultServiceTests"
+        ],
+        "functions": [
+          "GetSecretAsync_ReturnsMockSecret",
+          "RotateApiKeyAsync_ValidConsumer_ReturnsNewKey",
+          "RotateApiKeyAsync_ConsumerNotFound_ThrowsException",
+          "RotateApiKeyAsync_ConsumerWithNullPlugins_InitializesPlugins"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Services/WhitelistServiceTests.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 245,
+      "extracted": {
+        "classes": [
+          "WhitelistServiceTests"
+        ],
+        "functions": [
+          "GetWhitelistForRouteAsync_WithPersistence_ReturnsDbEntries",
+          "GetWhitelistForRouteAsync_ExcludesExpiredEntries",
+          "AddAsync_NewIp_AddsToDbAndSyncsToApisix",
+          "AddAsync_DuplicateIp_DoesNotCreateDuplicateEntry",
+          "RemoveAsync_ExistingIp_RemovesFromDbAndSyncsToApisix",
+          "RemoveAsync_NonExistentIp_DoesNotThrow",
+          "AddAsync_WritesAuditLog",
+          "GetWhitelistForRouteAsync_WithoutPersistence_QueriesApisixDirectly"
+        ],
+        "imports": [
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.Logging",
+          "Moq",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Microsoft.EntityFrameworkCore",
+          "System.Net",
+          "Xunit"
+        ],
+        "namespace": "MilkApiManager.Tests.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/unit_test_results.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 15,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/.config/dotnet-tools.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 13,
+      "extracted": {
+        "keys": [
+          "version",
+          "isRoot",
+          "tools"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/.dockerignore",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 7,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/appsettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 72,
+      "extracted": {
+        "keys": [
+          "Logging",
+          "AllowedHosts",
+          "Cors",
+          "ConnectionStrings",
+          "AuditLog",
+          "Ldap",
+          "Jwt",
+          "Blacklist",
+          "Sync",
+          "Slo",
+          "Apisix",
+          "Prometheus",
+          "Auth"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Auth/ApiKeyAuthenticationHandler.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 74,
+      "extracted": {
+        "classes": [
+          "ApiKeyAuthenticationOptions",
+          "ApiKeyAuthenticationHandler"
+        ],
+        "functions": [
+          "HandleAuthenticateAsync"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authentication",
+          "Microsoft.Extensions.Options",
+          "MilkApiManager.Options",
+          "System.Security.Claims",
+          "System.Security.Cryptography",
+          "System.Text",
+          "System.Text.Encodings.Web"
+        ],
+        "namespace": "MilkApiManager.Auth"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Auth/AuthorizationPolicies.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 9,
+      "extracted": {
+        "classes": [
+          "AuthorizationPolicies"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Auth"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AccessRequestController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 102,
+      "extracted": {
+        "classes": [
+          "AccessRequestController"
+        ],
+        "functions": [
+          "GetRequests",
+          "SubmitRequest",
+          "ApproveRequest",
+          "RejectRequest"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AlertRulesController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 69,
+      "extracted": {
+        "classes": [
+          "AlertRulesController"
+        ],
+        "functions": [
+          "GetRules",
+          "CreateRule",
+          "DeleteRule",
+          "ToggleRule"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Models",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AnalyticsController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 122,
+      "extracted": {
+        "classes": [
+          "AnalyticsController"
+        ],
+        "functions": [
+          "GetRequests",
+          "GetStep",
+          "GetLatency",
+          "GetErrors",
+          "GetTopSlowRoutes",
+          "GetSlaStats"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ApiCatalogController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 51,
+      "extracted": {
+        "classes": [
+          "ApiCatalogController"
+        ],
+        "functions": [
+          "GetCatalog",
+          "RegisterService"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ApiController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 118,
+      "extracted": {
+        "classes": [
+          "ApiController"
+        ],
+        "functions": [
+          "GetApis",
+          "GetApi",
+          "CreateApi",
+          "UpdateApi",
+          "DeleteApi"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    }
+  ]
+}

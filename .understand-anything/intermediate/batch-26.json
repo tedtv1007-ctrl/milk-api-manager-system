@@ -1,0 +1,163 @@
+{
+  "nodes": [
+    {
+      "id": "file:monitoring/grafana-provisioning/alerting/notification-routing.yml",
+      "summary": "Grafana notification routing configuration defining how alerts are delivered to contact points.",
+      "tags": ["grafana", "alerting", "config", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:monitoring/grafana-provisioning/alerting/slo-alert-rules.yml",
+      "summary": "Service Level Objective (SLO) alert rules for monitoring system availability and performance in Grafana.",
+      "tags": ["grafana", "slo", "alerting", "monitoring"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:monitoring/grafana-provisioning/datasources/prometheus.yml",
+      "summary": "Configuration for connecting Grafana to the Prometheus datasource.",
+      "tags": ["grafana", "prometheus", "config", "infrastructure"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:monitoring/kibana-dashboard.json",
+      "summary": "Kibana dashboard definition for log visualization and analysis.",
+      "tags": ["kibana", "monitoring", "visualization", "logging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:monitoring/logstash.conf",
+      "summary": "Logstash pipeline configuration for log ingestion, filtering, and output to Elasticsearch.",
+      "tags": ["logstash", "monitoring", "logging", "pipeline"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:monitoring/prometheus.yml",
+      "summary": "Main Prometheus configuration for metric scraping and alerting rule evaluation.",
+      "tags": ["prometheus", "monitoring", "config", "infrastructure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:portal/public/index.html",
+      "summary": "Main HTML entry point for the portal UI application.",
+      "tags": ["portal", "ui", "html", "web"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:portal/public/openapi.yaml",
+      "summary": "OpenAPI specification defining the portal's REST API contract.",
+      "tags": ["openapi", "documentation", "api", "contract"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:README.md",
+      "summary": "Comprehensive project documentation covering architecture, features, and setup instructions.",
+      "tags": ["documentation", "readme", "overview", "onboarding"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/compliance-report.js",
+      "summary": "Utility script for generating security compliance reports from system logs.",
+      "tags": ["script", "compliance", "report", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/generate-python-sdk.ps1",
+      "summary": "PowerShell script to automate the generation of the Python client SDK from OpenAPI specs.",
+      "tags": ["sdk", "python", "automation", "devops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/generate-sdk.ps1",
+      "summary": "PowerShell script for triggering client SDK generation across multiple languages.",
+      "tags": ["sdk", "automation", "scripts", "devops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/setup-consumers.sh",
+      "summary": "Shell script for configuring API consumers and their credentials in APISIX.",
+      "tags": ["setup", "apisix", "consumer", "auth"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/setup-oidc.sh",
+      "summary": "Shell script to automate OIDC authentication provider setup and integration.",
+      "tags": ["setup", "oidc", "auth", "security"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/setup-traffic-control.sh",
+      "summary": "Shell script for deploying traffic control and rate limiting policies to APISIX.",
+      "tags": ["setup", "apisix", "traffic-control", "governance"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/start-all.sh",
+      "summary": "Master orchestration script to launch all system components and dependencies.",
+      "tags": ["setup", "startup", "orchestration", "devops"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:scripts/sync-openapi-to-apisix.sh",
+      "summary": "Synchronization script to update APISIX routes based on the current OpenAPI specification.",
+      "tags": ["setup", "apisix", "openapi", "api-gateway"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/verify-all.ps1",
+      "summary": "PowerShell implementation of the full-system verification suite.",
+      "tags": ["testing", "verification", "automation", "qa"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:scripts/verify-all.sh",
+      "summary": "Shell script implementation of the full-system verification suite.",
+      "tags": ["testing", "verification", "automation", "qa"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:sdk/MilkApi.Client.cs",
+      "summary": "Generated C# client library providing strongly-typed access to the Milk API services.",
+      "tags": ["sdk", "csharp", "api-client", "generated"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:sdk/python/.github/workflows/python.yml",
+      "summary": "GitHub Actions workflow for building and testing the Python SDK.",
+      "tags": ["cicd", "github-actions", "python", "automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/.gitlab-ci.yml",
+      "summary": "GitLab CI pipeline configuration for the Python SDK project.",
+      "tags": ["cicd", "gitlab-ci", "python", "automation"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/.openapi-generator-ignore",
+      "summary": "Configuration file specifying paths to be excluded during SDK generation.",
+      "tags": ["config", "openapi-generator", "metadata"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/.openapi-generator/FILES",
+      "summary": "Tracking file listing all artifacts produced by the OpenAPI generator.",
+      "tags": ["metadata", "openapi-generator", "generated"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/.openapi-generator/VERSION",
+      "summary": "Metadata file recording the version of the OpenAPI generator tool used.",
+      "tags": ["metadata", "openapi-generator", "versioning"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:monitoring/grafana-provisioning/alerting/notification-routing.yml", "target": "file:monitoring/grafana-provisioning/alerting/slo-alert-rules.yml", "type": "configures" },
+    { "source": "file:monitoring/grafana-provisioning/datasources/prometheus.yml", "target": "file:monitoring/prometheus.yml", "type": "configures" },
+    { "source": "file:scripts/generate-python-sdk.ps1", "target": "file:portal/public/openapi.yaml", "type": "configures" },
+    { "source": "file:scripts/sync-openapi-to-apisix.sh", "target": "file:portal/public/openapi.yaml", "type": "configures" },
+    { "source": "file:sdk/MilkApi.Client.cs", "target": "file:portal/public/openapi.yaml", "type": "documents" },
+    { "source": "file:scripts/verify-all.sh", "target": "file:scripts/start-all.sh", "type": "tests" },
+    { "source": "file:scripts/compliance-report.js", "target": "file:monitoring/logstash.conf", "type": "documents" }
+  ]
+}

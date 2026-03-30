@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "sdk/python/milk_api_client/models/service.py",
+      "language": "python",
+      "sizeLines": 113,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/upstream.py",
+      "language": "python",
+      "sizeLines": 100,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/whitelist_entry.py",
+      "language": "python",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/whitelist_update_request.py",
+      "language": "python",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/py.typed",
+      "language": "unknown",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/milk_api_client/rest.py",
+      "language": "python",
+      "sizeLines": 264,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/pyproject.toml",
+      "language": "toml",
+      "sizeLines": 95,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/python/README.md",
+      "language": "markdown",
+      "sizeLines": 174,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/requirements.txt",
+      "language": "unknown",
+      "sizeLines": 5,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/setup.cfg",
+      "language": "config",
+      "sizeLines": 3,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/python/setup.py",
+      "language": "python",
+      "sizeLines": 48,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test-requirements.txt",
+      "language": "unknown",
+      "sizeLines": 7,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "sdk/python/test/__init__.py",
+      "language": "python",
+      "sizeLines": 1,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_access_request_api.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_access_request.py",
+      "language": "python",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_alert_rule.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_alert_rules_api.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_analytics_api.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_api_api.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_api_catalog_api.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_api_service_metadata.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_api_test_scenario.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_audit_log_entry.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_audit_logs_api.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_blacklist_api.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "sdk/python/milk_api_client/models/service.py": [],
+    "sdk/python/milk_api_client/models/upstream.py": [],
+    "sdk/python/milk_api_client/models/whitelist_entry.py": [],
+    "sdk/python/milk_api_client/models/whitelist_update_request.py": [],
+    "sdk/python/milk_api_client/py.typed": [],
+    "sdk/python/milk_api_client/rest.py": [],
+    "sdk/python/pyproject.toml": [],
+    "sdk/python/README.md": [],
+    "sdk/python/requirements.txt": [],
+    "sdk/python/setup.cfg": [],
+    "sdk/python/setup.py": [],
+    "sdk/python/test-requirements.txt": [],
+    "sdk/python/test/__init__.py": [],
+    "sdk/python/test/test_access_request_api.py": [],
+    "sdk/python/test/test_access_request.py": [],
+    "sdk/python/test/test_alert_rule.py": [],
+    "sdk/python/test/test_alert_rules_api.py": [],
+    "sdk/python/test/test_analytics_api.py": [],
+    "sdk/python/test/test_api_api.py": [],
+    "sdk/python/test/test_api_catalog_api.py": [],
+    "sdk/python/test/test_api_service_metadata.py": [],
+    "sdk/python/test/test_api_test_scenario.py": [],
+    "sdk/python/test/test_audit_log_entry.py": [],
+    "sdk/python/test/test_audit_logs_api.py": [],
+    "sdk/python/test/test_blacklist_api.py": []
+  }
+}

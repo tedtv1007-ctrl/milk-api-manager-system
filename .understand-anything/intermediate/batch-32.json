@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills-lock.json",
+      "summary": "Configuration file skills-lock.json for project settings.",
+      "tags": [
+        "json",
+        "config"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/CONTRIBUTING.md",
+      "summary": "Documentation file CONTRIBUTING.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/active-campaign/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/acuity-scheduling/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/airtable/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/apollo/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/asana/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/attio/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/basecamp/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/baserow/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/beehiiv/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/box/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/brevo/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/cal-com/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/calendly/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/callrail/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/chargebee/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/clickfunnels/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/clicksend/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/clickup/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/clio/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/clockify/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/coda/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/cognito-forms/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

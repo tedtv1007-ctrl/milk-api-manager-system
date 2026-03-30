@@ -1,0 +1,623 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkApiManager/Controllers/AuditLogsController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 45,
+      "extracted": {
+        "classes": [
+          "AuditLogsController"
+        ],
+        "functions": [
+          "Get",
+          "Export"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/AuthController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 81,
+      "extracted": {
+        "classes": [
+          "AuthController"
+        ],
+        "functions": [
+          "Login",
+          "GetCurrentUser"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/BlacklistController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 95,
+      "extracted": {
+        "classes": [
+          "BlacklistController"
+        ],
+        "functions": [
+          "GetBlacklist",
+          "UpdateBlacklist"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "Microsoft.EntityFrameworkCore",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ConsumerController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 247,
+      "extracted": {
+        "classes": [
+          "ConsumerController"
+        ],
+        "functions": [
+          "GetConsumers",
+          "GetConsumer",
+          "UpdateConsumer",
+          "DeleteConsumer",
+          "ParseConsumerFromApisix"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ConsumerGroupController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 93,
+      "extracted": {
+        "classes": [
+          "ConsumerGroupController"
+        ],
+        "functions": [
+          "GetGroups",
+          "UpdateGroup",
+          "DeleteGroup"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Models.Apisix",
+          "MilkApiManager.Services",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/GlobalRuleController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 98,
+      "extracted": {
+        "classes": [
+          "GlobalRuleController"
+        ],
+        "functions": [
+          "GetGlobalRules",
+          "CreateOrUpdateGlobalRule",
+          "DeleteGlobalRule"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/KeysController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 218,
+      "extracted": {
+        "classes": [
+          "KeysController"
+        ],
+        "functions": [
+          "GetKeys",
+          "GetKey",
+          "CreateKey",
+          "RotateKey",
+          "DeleteKey",
+          "ComputeHash"
+        ],
+        "imports": [
+          "System",
+          "System.Security.Cryptography",
+          "System.Threading.Tasks",
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models.Apisix",
+          "System.Collections.Generic",
+          "System.Linq",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/LoadTestController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 29,
+      "extracted": {
+        "classes": [
+          "LoadTestController"
+        ],
+        "functions": [
+          "RunTest"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/MockController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 105,
+      "extracted": {
+        "classes": [
+          "MockController"
+        ],
+        "functions": [
+          "GetRules",
+          "CreateRule",
+          "UpdateRule",
+          "DeleteRule",
+          "SyncMockToApisix"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/PiiMaskingController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 203,
+      "extracted": {
+        "classes": [
+          "PiiMaskingController",
+          "plugin"
+        ],
+        "functions": [
+          "GetRules",
+          "CreateRule",
+          "UpdateRule",
+          "DeleteRule",
+          "SyncToApisix",
+          "RuleExists"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Services",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/RouteController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 159,
+      "extracted": {
+        "classes": [
+          "RouteController"
+        ],
+        "functions": [
+          "GetRoutes",
+          "GetRoute",
+          "CreateRoute",
+          "UpdateRoute",
+          "DeleteRoute"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ServerInfoController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 83,
+      "extracted": {
+        "classes": [
+          "ServerInfoController"
+        ],
+        "functions": [
+          "GetServerInfo",
+          "GetDashboardStats"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/ServiceController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 114,
+      "extracted": {
+        "classes": [
+          "ServiceController"
+        ],
+        "functions": [
+          "GetServices",
+          "GetService",
+          "CreateOrUpdateService",
+          "DeleteService"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "System.Text.Json",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SloMetricsController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 117,
+      "extracted": {
+        "classes": [
+          "SloMetricsController"
+        ],
+        "functions": [
+          "Get",
+          "Percentile",
+          "Format"
+        ],
+        "imports": [
+          "System.Globalization",
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SSLController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 126,
+      "extracted": {
+        "classes": [
+          "SSLController"
+        ],
+        "functions": [
+          "GetSsls",
+          "GetSsl",
+          "CreateOrUpdateSsl",
+          "DeleteSsl"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/SyncStatusController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 53,
+      "extracted": {
+        "classes": [
+          "SyncStatusController"
+        ],
+        "functions": [
+          "GetStatus",
+          "GetBlacklistDrift",
+          "ReconcileBlacklist"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/TestExecutionController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 93,
+      "extracted": {
+        "classes": [
+          "TestExecutionController",
+          "target"
+        ],
+        "functions": [
+          "GetScenarios",
+          "CreateScenario",
+          "RunTest"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "System.Diagnostics",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/UpstreamController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 114,
+      "extracted": {
+        "classes": [
+          "UpstreamController"
+        ],
+        "functions": [
+          "GetUpstreams",
+          "GetUpstream",
+          "CreateOrUpdateUpstream",
+          "DeleteUpstream"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Models",
+          "MilkApiManager.Models.Apisix",
+          "Asp.Versioning"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Controllers/WhitelistController.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 206,
+      "extracted": {
+        "classes": [
+          "WhitelistController"
+        ],
+        "functions": [
+          "GetWhitelistForRoute",
+          "AddWhitelistEntry",
+          "IsValidIpOrCidr",
+          "SyncWhitelistToApisix"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.AspNetCore.Mvc",
+          "MilkApiManager.Auth",
+          "MilkApiManager.Services",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "Microsoft.EntityFrameworkCore",
+          "Asp.Versioning",
+          "System.Net"
+        ],
+        "namespace": "MilkApiManager.Controllers"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Dockerfile",
+      "category": "infra",
+      "language": "dockerfile",
+      "lineCount": 24,
+      "extracted": {
+        "stages": [
+          "build",
+          "mcr.microsoft.com/dotnet/aspnet:8.0-alpine"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Filters/GlobalExceptionFilter.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 60,
+      "extracted": {
+        "classes": [
+          "GlobalExceptionFilter"
+        ],
+        "functions": [
+          "OnException"
+        ],
+        "imports": [
+          "Microsoft.AspNetCore.Mvc",
+          "Microsoft.AspNetCore.Mvc.Filters"
+        ],
+        "namespace": "MilkApiManager.Filters"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 64,
+      "extracted": {
+        "classes": [
+          "AddAuditMetadata"
+        ],
+        "functions": [
+          "Up",
+          "Down"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore.Migrations"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260214_AddAuditMetadata.sql",
+      "category": "data",
+      "language": "sql",
+      "lineCount": 25,
+      "extracted": {
+        "tables": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 267,
+      "extracted": {
+        "classes": [
+          "AddMissingEntities"
+        ],
+        "functions": [
+          "Up",
+          "Down"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore.Migrations",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260226164045_AddMissingEntities.Designer.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 407,
+      "extracted": {
+        "classes": [
+          "AddMissingEntities"
+        ],
+        "functions": [
+          "BuildTargetModel"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.EntityFrameworkCore.Infrastructure",
+          "Microsoft.EntityFrameworkCore.Migrations",
+          "Microsoft.EntityFrameworkCore.Storage.ValueConversion",
+          "MilkApiManager.Data",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    }
+  ]
+}

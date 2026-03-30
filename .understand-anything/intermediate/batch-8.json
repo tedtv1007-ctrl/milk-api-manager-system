@@ -1,0 +1,460 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/net-conventions/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering .NET Conventions, Style & Formatting, Naming Conventions.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agent/skills/postgresql-optimization/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering PostgreSQL Development Assistant, � PostgreSQL-Specific Features, JSONB Operations.",
+      "tags": [
+        "docs",
+        "markdown",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/CONTRIBUTING.md",
+      "type": "file",
+      "label": "CONTRIBUTING.md",
+      "summary": "Documentation covering Contributing, Contributor License Agreement ([CLA](https://en.wikipedia.org/wiki/Contributor_License_Agreement)).",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Maton API Gateway, Quick Start, Send a Slack message.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "documentation"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/active-campaign/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ActiveCampaign Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/acuity-scheduling/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Acuity Scheduling Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/airtable/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Airtable Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/apollo/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Apollo Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/asana/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Asana Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/attio/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Attio Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/basecamp/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Basecamp Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/baserow/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Baserow Routing Reference, API Path Pattern, Important Notes.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/beehiiv/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering beehiiv Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/box/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Box Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/brevo/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Brevo Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/cal-com/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Cal.com Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/calendly/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Calendly Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/callrail/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering CallRail Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/chargebee/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Chargebee Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/clickfunnels/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ClickFunnels Routing Reference, API Path Pattern, Required Headers.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/clicksend/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ClickSend Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/clickup/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering ClickUp Routing Reference, API Path Pattern, ClickUp Hierarchy.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/clio/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Clio Routing Reference, API Path Pattern, Field Selection.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/clockify/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Clockify Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/coda/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Coda Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/README.md",
+      "target": "file:.agents/skills/api-gateway",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/active-campaign/README.md",
+      "target": "file:.agents/skills/api-gateway/references/active-campaign",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/acuity-scheduling/README.md",
+      "target": "file:.agents/skills/api-gateway/references/acuity-scheduling",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/airtable/README.md",
+      "target": "file:.agents/skills/api-gateway/references/airtable",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/apollo/README.md",
+      "target": "file:.agents/skills/api-gateway/references/apollo",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/asana/README.md",
+      "target": "file:.agents/skills/api-gateway/references/asana",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/attio/README.md",
+      "target": "file:.agents/skills/api-gateway/references/attio",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/basecamp/README.md",
+      "target": "file:.agents/skills/api-gateway/references/basecamp",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/baserow/README.md",
+      "target": "file:.agents/skills/api-gateway/references/baserow",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/beehiiv/README.md",
+      "target": "file:.agents/skills/api-gateway/references/beehiiv",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/box/README.md",
+      "target": "file:.agents/skills/api-gateway/references/box",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/brevo/README.md",
+      "target": "file:.agents/skills/api-gateway/references/brevo",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/cal-com/README.md",
+      "target": "file:.agents/skills/api-gateway/references/cal-com",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/calendly/README.md",
+      "target": "file:.agents/skills/api-gateway/references/calendly",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/callrail/README.md",
+      "target": "file:.agents/skills/api-gateway/references/callrail",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/chargebee/README.md",
+      "target": "file:.agents/skills/api-gateway/references/chargebee",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/clickfunnels/README.md",
+      "target": "file:.agents/skills/api-gateway/references/clickfunnels",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/clicksend/README.md",
+      "target": "file:.agents/skills/api-gateway/references/clicksend",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/clickup/README.md",
+      "target": "file:.agents/skills/api-gateway/references/clickup",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/clio/README.md",
+      "target": "file:.agents/skills/api-gateway/references/clio",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/clockify/README.md",
+      "target": "file:.agents/skills/api-gateway/references/clockify",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/coda/README.md",
+      "target": "file:.agents/skills/api-gateway/references/coda",
+      "type": "documents"
+    }
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkWorker/MilkWorker.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 25,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkWorker/Program.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 109,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": [
+          "MilkApiManager.Data",
+          "MilkApiManager.Services",
+          "MilkApiManager.Options",
+          "MilkApiManager.Workers",
+          "Microsoft.EntityFrameworkCore",
+          "OpenTelemetry.Resources",
+          "OpenTelemetry.Trace",
+          "OpenTelemetry.Metrics"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkWorker/Properties/launchSettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 13,
+      "extracted": {}
+    },
+    {
+      "path": "backend/test_ad_sync.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 38,
+      "extracted": {
+        "classes": [
+          "AdGroup",
+          "TestAdGroupSyncLogic"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/test_analytics.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 15,
+      "extracted": {
+        "classes": [
+          "TestAnalyticsAPI"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "build_errors.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 39,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "dashboard_conf/conf.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 10,
+      "extracted": {
+        "keys": [
+          "conf"
+        ]
+      }
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/Chart.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 14,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "name",
+          "description",
+          "type",
+          "version",
+          "appVersion",
+          "dependencies"
+        ]
+      }
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/_helpers.tpl",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 25,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/admin-ui.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 37,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec"
+        ]
+      }
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/templates/backend.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 46,
+      "extracted": {
+        "keys": [
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec",
+          "apiVersion",
+          "kind",
+          "metadata",
+          "spec"
+        ]
+      }
+    },
+    {
+      "path": "deploy/helm/milk-api-manager/values.yaml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 50,
+      "extracted": {
+        "keys": [
+          "global",
+          "backend",
+          "adminUi",
+          "apisix",
+          "etcd"
+        ]
+      }
+    },
+    {
+      "path": "docker_test_logs_utf8.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 982,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "docker_test_logs.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 982,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "docker-compose.test.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 86,
+      "extracted": {
+        "keys": [
+          "services",
+          "networks"
+        ]
+      }
+    },
+    {
+      "path": "docker-compose.yml",
+      "category": "config",
+      "language": "yaml",
+      "lineCount": 266,
+      "extracted": {
+        "keys": [
+          "services",
+          "networks",
+          "volumes"
+        ]
+      }
+    },
+    {
+      "path": "docs/architecture_flow_detailed.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 48,
+      "extracted": {
+        "headings": [
+          "Architecture Flow (Detailed Technical View)",
+          "1. Control Plane Flow (API Management)",
+          "2. Data Plane Flow (Traffic Handling)",
+          "3. Observability Loop"
+        ]
+      }
+    },
+    {
+      "path": "docs/architecture_flow.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 46,
+      "extracted": {
+        "headings": [
+          "Architecture Flow (System Overview)",
+          "Key Interaction Flows:"
+        ]
+      }
+    },
+    {
+      "path": "docs/architecture_remediation_checklist.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 45,
+      "extracted": {
+        "headings": [
+          "Architecture Remediation Checklist",
+          "Scope",
+          "Status Legend",
+          "P0 (Security Baseline)",
+          "P1 (Consistency & Reliability)",
+          "Rollout Note",
+          "P2 (Governance)",
+          "Governance Artifacts",
+          "Validation Evidence (Current Iteration)"
+        ]
+      }
+    },
+    {
+      "path": "docs/compliance/APIM_AUDIT_RESPONSE_20260212.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 46,
+      "extracted": {
+        "headings": [
+          "APIM 金檢查核回覆說明 (2026-02-12)",
+          "1. API 分級標準及管理程序",
+          "2. API 部署及使用授權",
+          "3. API 認證及授權程序 (含金鑰管理)",
+          "4. API 連線存取活動監控",
+          "5. APIM 管理情形",
+          "6. 參數檢核機制",
+          "7. API 呼叫紀錄與收容",
+          "8. 效能監控與告警",
+          "9. 敏感資料管控機制 (TSP/代理人)"
+        ]
+      }
+    },
+    {
+      "path": "docs/manual/OPERATIONS_GUIDE.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 111,
+      "extracted": {
+        "headings": [
+          "🥛 Milk API Manager System - 操作手冊 (MVP v1.0)",
+          "1. 系統簡介",
+          "2. 環境啟動指南 (Windows 11)",
+          "前提條件",
+          "啟動步驟",
+          "MilkApiManager (ASP.NET Core Web API)",
+          "MilkAdminBlazor (Blazor Server UI)",
+          "Flask wrapper (選用，啟動 APISIX 管理封裝)",
+          "3. 核心功能操作",
+          "A. IP 黑名單管理 (Traffic Blocker)",
+          "B. API 治理與路由清單",
+          "C. API 密鑰自動化輪轉 (Secret Rotation)",
+          "4. 監控與觀測系統 (Observability)",
+          "5. 常見問題排除 (Troubleshooting)"
+        ]
+      }
+    },
+    {
+      "path": "docs/manual/SCENARIOS.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 702,
+      "extracted": {
+        "headings": [
+          "🎬 Milk API Manager — 模擬操作情境手冊",
+          "目錄",
+          "情境一：API 申請上架",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：建立 Upstream (上游節點)",
+          "Step 2：建立 Service (服務定義)",
+          "Step 3：建立 Route (路由)",
+          "Step 4：驗證上架成功",
+          "預期結果",
+          "情境二：API 過量限流",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：確認流量異常",
+          "Step 2：緊急加掛限流插件",
+          "Step 3：設定告警規則",
+          "Step 4：驗證限流生效",
+          "快速送出多次請求",
+          "前 500 次應回傳 200，之後回傳 429 Too Many Requests",
+          "預期結果",
+          "情境三：惡意 IP 攻擊與自動封鎖",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：確認攻擊行為",
+          "Step 2：手動加入 IP 黑名單",
+          "Step 3：驗證封鎖",
+          "模擬該 IP 的請求 (若在本地測試需使用 X-Forwarded-For)",
+          "預期回傳 403 Forbidden",
+          "Step 4：記錄與通報",
+          "後續：解除封鎖（誤判情況）",
+          "情境四：SSL 憑證即將到期更換",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：準備新憑證",
+          "Step 2：上傳新憑證",
+          "Step 3：驗證",
+          "測試 HTTPS 連線",
+          "應顯示新的到期日期",
+          "或使用 openssl",
+          "Step 4：設定到期提醒",
+          "預期結果",
+          "情境五：開發者使用 Mock Lab 進行前後端聯調",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：建立 Mock Route",
+          "Step 2：配置 Mock Response",
+          "Step 3：前端開發驗證",
+          "回傳 Mock 的 JSON 內容",
+          "Step 4：後端完成後切換",
+          "預期結果",
+          "情境六：API 回應個資洩漏 — PII 遮蔽緊急處置",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：確認問題",
+          "回傳:",
+          "{",
+          "\"id\": 123,",
+          "\"name\": \"王小明\",",
+          "\"email\": \"ming@example.com\",     ← 個資暴露",
+          "\"phone\": \"0912-345-678\",          ← 個資暴露",
+          "\"address\": \"台北市信義區...\"       ← 個資暴露",
+          "}",
+          "Step 2：新增 PII 遮蔽規則",
+          "Step 3：驗證遮蔽效果",
+          "預期回傳:",
+          "{",
+          "\"id\": 123,",
+          "\"name\": \"王小明\",",
+          "\"email\": \"***@***.com\",",
+          "\"phone\": \"***\",",
+          "\"address\": \"***\"",
+          "}",
+          "Step 4：審計記錄",
+          "預期結果",
+          "情境七：新微服務上線 — 全流程 Gateway 配置",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：建立 Upstream",
+          "Step 2：建立 Service",
+          "Step 3：建立三條 Route",
+          "Step 4：建立消費者與 API Key",
+          "Step 5：加入 PII 遮蔽 (支付卡號)",
+          "Step 6：設定告警",
+          "Step 7：驗證",
+          "預期結果",
+          "情境八：效能瓶頸定位與壓力測試",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：確認延遲數據",
+          "Step 2：Jaeger 鏈路追蹤",
+          "Step 3：執行壓力測試 (基準線)",
+          "Step 4：後端優化後重測",
+          "Step 5：檢查 Grafana Dashboard",
+          "預期結果",
+          "情境九：消費者權限分級與 Tier 管理",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：建立消費者群組",
+          "Step 2：建立消費者並分配 Tier",
+          "Step 3：開發者申請升級",
+          "Step 4：驗證配額",
+          "Free tier 使用者：1001 次時觸發限流",
+          "第 1001 次回傳 429",
+          "Gold tier 使用者：100000 次才觸發",
+          "可正常使用",
+          "Step 5：監控各 Tier 使用量",
+          "預期結果",
+          "情境十：全域限流插件上線",
+          "背景",
+          "角色",
+          "操作步驟",
+          "Step 1：規劃全域規則",
+          "Step 2：建立 Global Plugin Rule",
+          "Step 3：驗證全域生效",
+          "任意端點測試",
+          "回應 Header 應包含:",
+          "X-RateLimit-Limit: 600",
+          "X-RateLimit-Remaining: 599",
+          "X-Request-Id: xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+          "確認所有路由都被套用",
+          "同樣有 RateLimit Header",
+          "Step 4：確認不影響現有路由級限流",
+          "預期結果",
+          "情境速查表"
+        ]
+      }
+    },
+    {
+      "path": "docs/manual/USER_GUIDE.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 401,
+      "extracted": {
+        "headings": [
+          "📖 Milk API Manager — 使用操作手冊 v2.0",
+          "目錄",
+          "1. 🚀 快速開始",
+          "環境需求",
+          "啟動步驟",
+          "1. 啟動基礎設施 (APISIX, etcd, Prometheus, Grafana, Jaeger, ELK)",
+          "2. 啟動後端 API",
+          "3. 啟動 Blazor 管理介面",
+          "服務端口一覽",
+          "2. ⚡ 系統總覽 — Gateway Dashboard",
+          "功能區塊",
+          "操作",
+          "3. ⚙️ 網關核心管理 (GATEWAY)",
+          "3.1 Routes Management — 路由管理",
+          "3.2 Services Management — 服務管理",
+          "3.3 Upstreams Management — 上游管理",
+          "3.4 SSL Certificate Management — 憑證管理",
+          "3.5 Global Plugin Rules — 全域插件",
+          "4. 🔌 API 治理與開發者體驗 (API / DEVELOPER)",
+          "4.1 API Inventory — API 資產清冊",
+          "4.2 Sync Status — 同步狀態",
+          "4.3 Developer Hub — 開發者入口",
+          "4.4 Mock Lab — API 模擬實驗室",
+          "4.5 API List — 路由清單",
+          "5. 🛡️ 安全與合規 (OPERATIONS)",
+          "5.1 PII Protection — 個資隱私防護",
+          "5.2 IP Blacklist — IP 封鎖清單",
+          "5.3 Consumers — API 消費者管理",
+          "5.4 Consumer Groups — 消費者群組",
+          "5.5 Audit Logs — 審計日誌",
+          "5.6 Alert Rules — 告警設定",
+          "5.7 Reports — 合規報表",
+          "6. 📈 監控與觀測",
+          "6.1 Traffic Intelligence Center — 流量智慧中心",
+          "6.2 Stress Test Center — 壓力測試",
+          "6.3 外部監控服務",
+          "7. 🛠️ 疑難排解",
+          "附錄 — 頁面路由總覽"
+        ]
+      }
+    },
+    {
+      "path": "docs/observability/audit_log_strategy.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 121,
+      "extracted": {
+        "headings": [
+          "Milk API Manager System: API 稽核日誌與 ELK 整合方案 (Issue #15)",
+          "1. 日誌採集與收容路徑",
+          "2. APISIX 日誌配置範本",
+          "3. 稽核看板關鍵指標",
+          "4. SLO 觀測指標（Control Plane）",
+          "5. PromQL 查詢範本（Grafana/Alert Rule 可共用）",
+          "5.1 Control-plane Success Rate",
+          "5.2 Sync Latency P95",
+          "5.3 Drift Count（總量）",
+          "5.4 Drift Breakdown",
+          "6. 告警門檻建議（初始值）",
+          "6.1 Alert Rule（Prometheus 範例）"
+        ]
+      }
+    },
+    {
+      "path": "docs/security/auto_blocking_design.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 42,
+      "extracted": {
+        "headings": [
+          "Milk API Manager System: 異常流量自動阻斷設計 (Issue #17)",
+          "1. 運作流程",
+          "2. 核心組件實作",
+          "2.1 阻斷腳本 (`scripts/auto-blocker.sh`)",
+          "!/bin/bash",
+          "簡易 Mock 邏輯：偵測 403 頻繁出現的 IP",
+          "提取異常 IP",
+          "2.2 Mattermost 通報範本"
+        ]
+      }
+    }
+  ]
+}

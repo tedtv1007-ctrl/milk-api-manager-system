@@ -1,0 +1,230 @@
+{
+  "nodes": [
+    {
+      "id": "file:skills/api-gateway/references/companycam/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/confluence/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/constant-contact/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/dropbox-business/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:skills/api-gateway/references/dropbox/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/elevenlabs/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/eventbrite/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/fathom/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:skills/api-gateway/references/firebase/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/fireflies/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/getresponse/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/github/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-ads/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-analytics-admin/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-analytics-data/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-bigquery/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-calendar/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-classroom/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-contacts/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-docs/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-drive/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-forms/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-mail/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-meet/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:skills/api-gateway/references/google-merchant/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs"
+      ],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": []
+}

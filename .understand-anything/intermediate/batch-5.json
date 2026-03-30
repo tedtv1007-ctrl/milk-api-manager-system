@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json",
+      "type": "file",
+      "label": "change_backlog_folder.json",
+      "summary": "JSON schema for the Sunsama MCP 'change_backlog_folder' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json",
+      "type": "file",
+      "label": "create_braindump_task.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_braindump_task' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json",
+      "type": "file",
+      "label": "create_calendar_event.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_calendar_event' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json",
+      "type": "file",
+      "label": "create_channel.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_channel' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json",
+      "type": "file",
+      "label": "create_follow_up_task_from_email.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_follow_up_task_from_email' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_task.json",
+      "type": "file",
+      "label": "create_task.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_task' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json",
+      "type": "file",
+      "label": "create_weekly_objective.json",
+      "summary": "JSON schema for the Sunsama MCP 'create_weekly_objective' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json",
+      "type": "file",
+      "label": "decline_meeting_invite.json",
+      "summary": "JSON schema for the Sunsama MCP 'decline_meeting_invite' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json",
+      "type": "file",
+      "label": "delete_all_incomplete_recurring_task_instances.json",
+      "summary": "JSON schema for the Sunsama MCP 'delete_all_incomplete_recurring_task_instances' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json",
+      "type": "file",
+      "label": "delete_calendar_event.json",
+      "summary": "JSON schema for the Sunsama MCP 'delete_calendar_event' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json",
+      "type": "file",
+      "label": "delete_email_thread.json",
+      "summary": "JSON schema for the Sunsama MCP 'delete_email_thread' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json",
+      "type": "file",
+      "label": "delete_task.json",
+      "summary": "JSON schema for the Sunsama MCP 'delete_task' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json",
+      "type": "file",
+      "label": "edit_subtask_title.json",
+      "summary": "JSON schema for the Sunsama MCP 'edit_subtask_title' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json",
+      "type": "file",
+      "label": "edit_task_recurrence_rule.json",
+      "summary": "JSON schema for the Sunsama MCP 'edit_task_recurrence_rule' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json",
+      "type": "file",
+      "label": "edit_task_time_estimate.json",
+      "summary": "JSON schema for the Sunsama MCP 'edit_task_time_estimate' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json",
+      "type": "file",
+      "label": "edit_task_title.json",
+      "summary": "JSON schema for the Sunsama MCP 'edit_task_title' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json",
+      "type": "file",
+      "label": "get_archived_tasks.json",
+      "summary": "JSON schema for the Sunsama MCP 'get_archived_tasks' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json",
+      "type": "file",
+      "label": "get_backlog_tasks.json",
+      "summary": "JSON schema for the Sunsama MCP 'get_backlog_tasks' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json",
+      "type": "file",
+      "label": "get_task_time_estimate.json",
+      "summary": "JSON schema for the Sunsama MCP 'get_task_time_estimate' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json",
+      "type": "file",
+      "label": "import_task_from_calendar_event.json",
+      "summary": "JSON schema for the Sunsama MCP 'import_task_from_calendar_event' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json",
+      "type": "file",
+      "label": "list_email_threads.json",
+      "summary": "JSON schema for the Sunsama MCP 'list_email_threads' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json",
+      "type": "file",
+      "label": "log_user_feedback.json",
+      "summary": "JSON schema for the Sunsama MCP 'log_user_feedback' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json",
+      "type": "file",
+      "label": "mark_email_thread_as_read.json",
+      "summary": "JSON schema for the Sunsama MCP 'mark_email_thread_as_read' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_completed.json",
+      "type": "file",
+      "label": "mark_subtask_as_completed.json",
+      "summary": "JSON schema for the Sunsama MCP 'mark_subtask_as_completed' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_incomplete.json",
+      "type": "file",
+      "label": "mark_subtask_as_incomplete.json",
+      "summary": "JSON schema for the Sunsama MCP 'mark_subtask_as_incomplete' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/change_backlog_folder.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_braindump_task.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_calendar_event.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_channel.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_follow_up_task_from_email.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_task.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/create_weekly_objective.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/decline_meeting_invite.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_all_incomplete_recurring_task_instances.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_calendar_event.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_email_thread.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/delete_task.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_subtask_title.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_recurrence_rule.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_time_estimate.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/edit_task_title.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_archived_tasks.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_backlog_tasks.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/get_task_time_estimate.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/import_task_from_calendar_event.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/list_email_threads.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/log_user_feedback.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_email_thread_as_read.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_completed.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_subtask_as_incomplete.json", "type": "configures" }
+  ]
+}

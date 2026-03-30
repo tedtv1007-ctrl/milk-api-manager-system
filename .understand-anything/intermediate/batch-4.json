@@ -1,0 +1,231 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/references/one-drive/README.md",
+      "type": "file",
+      "label": "one-drive/README.md",
+      "summary": "Routing reference for OneDrive, covering drive, folder, and file management.",
+      "tags": ["api-reference", "onedrive", "cloud-storage", "files"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/outlook/README.md",
+      "type": "file",
+      "label": "outlook/README.md",
+      "summary": "Routing reference for Outlook, detailing mail folder, message, calendar, and contact management.",
+      "tags": ["api-reference", "outlook", "email", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/pdf-co/README.md",
+      "type": "file",
+      "label": "pdf-co/README.md",
+      "summary": "Routing reference for PDF.co, covering PDF conversion, merging, splitting, and AI parsing.",
+      "tags": ["api-reference", "pdf-co", "pdf", "file-conversion"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/pipedrive/README.md",
+      "type": "file",
+      "label": "pipedrive/README.md",
+      "summary": "Routing reference for Pipedrive, detailing deal, person, organization, and activity management.",
+      "tags": ["api-reference", "pipedrive", "crm", "sales"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/podio/README.md",
+      "type": "file",
+      "label": "podio/README.md",
+      "summary": "Routing reference for Podio, covering organization, space, application, and item management.",
+      "tags": ["api-reference", "podio", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/posthog/README.md",
+      "type": "file",
+      "label": "posthog/README.md",
+      "summary": "Routing reference for PostHog, detailing project, person, dashboard, and feature flag management.",
+      "tags": ["api-reference", "posthog", "analytics", "product-intelligence"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/quickbooks/README.md",
+      "type": "file",
+      "label": "quickbooks/README.md",
+      "summary": "Routing reference for QuickBooks, covering customer, vendor, invoice, and payment management.",
+      "tags": ["api-reference", "quickbooks", "accounting", "fintech"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/quo/README.md",
+      "type": "file",
+      "label": "quo/README.md",
+      "summary": "Routing reference for Quo, detailing phone number, user, message, and call management.",
+      "tags": ["api-reference", "quo", "communication", "telephony"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/reducto/README.md",
+      "type": "file",
+      "label": "reducto/README.md",
+      "summary": "Routing reference for Reducto, covering document parsing, data extraction, and splitting.",
+      "tags": ["api-reference", "reducto", "document-processing", "ai"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/salesforce/README.md",
+      "type": "file",
+      "label": "salesforce/README.md",
+      "summary": "Routing reference for Salesforce, detailing SOQL query and sObject management via REST API.",
+      "tags": ["api-reference", "salesforce", "crm", "enterprise"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sendgrid/README.md",
+      "type": "file",
+      "label": "sendgrid/README.md",
+      "summary": "Routing reference for SendGrid, focusing on mail send, marketing contact, and template management.",
+      "tags": ["api-reference", "sendgrid", "email", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sentry/README.md",
+      "type": "file",
+      "label": "sentry/README.md",
+      "summary": "Routing reference for Sentry, detailing organization, project, issue, and event management.",
+      "tags": ["api-reference", "sentry", "error-tracking", "monitoring"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sharepoint/README.md",
+      "type": "file",
+      "label": "sharepoint/README.md",
+      "summary": "Routing reference for SharePoint, covering site, list, drive, and file/folder management.",
+      "tags": ["api-reference", "sharepoint", "document-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/signnow/README.md",
+      "type": "file",
+      "label": "signnow/README.md",
+      "summary": "Routing reference for SignNow, detailing document, template, and invite management.",
+      "tags": ["api-reference", "signnow", "e-signature", "contracts"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/slack/README.md",
+      "type": "file",
+      "label": "slack/README.md",
+      "summary": "Routing reference for Slack, focusing on message, channel, and user management.",
+      "tags": ["api-reference", "slack", "communication", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/snapchat/README.md",
+      "type": "file",
+      "label": "snapchat/README.md",
+      "summary": "Routing reference for Snapchat Ads API, detailing organization, ad account, and campaign management.",
+      "tags": ["api-reference", "snapchat", "social-media", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/squarespace/README.md",
+      "type": "file",
+      "label": "squarespace/README.md",
+      "summary": "Routing reference for Squarespace, covering inventory, order, and product management.",
+      "tags": ["api-reference", "squarespace", "ecommerce", "website-builder"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/squareup/README.md",
+      "type": "file",
+      "label": "squareup/README.md",
+      "summary": "Extensive routing reference for Square, detailing merchant, location, customer, and payment management.",
+      "tags": ["api-reference", "square", "payments", "pos"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/stripe/README.md",
+      "type": "file",
+      "label": "stripe/README.md",
+      "summary": "Routing reference for Stripe, covering customer, product, subscription, and payment intent management.",
+      "tags": ["api-reference", "stripe", "payments", "fintech"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md",
+      "type": "file",
+      "label": "sunsama-mcp/README.md",
+      "summary": "Routing reference for Sunsama MCP, covering connection management and task operations.",
+      "tags": ["api-reference", "sunsama-mcp", "mcp", "tasks"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json",
+      "type": "file",
+      "label": "accept_meeting_invite.json",
+      "summary": "JSON schema for the Sunsama MCP 'accept_meeting_invite' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json",
+      "type": "file",
+      "label": "add_subtasks_to_task.json",
+      "summary": "JSON schema for the Sunsama MCP 'add_subtasks_to_task' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json",
+      "type": "file",
+      "label": "add_task_to_channel.json",
+      "summary": "JSON schema for the Sunsama MCP 'add_task_to_channel' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json",
+      "type": "file",
+      "label": "align_task_with_objective.json",
+      "summary": "JSON schema for the Sunsama MCP 'align_task_with_objective' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json",
+      "type": "file",
+      "label": "append_task_notes.json",
+      "summary": "JSON schema for the Sunsama MCP 'append_task_notes' tool.",
+      "tags": ["schema", "mcp", "sunsama", "json"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/one-drive/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/outlook/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/pdf-co/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/pipedrive/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/podio/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/posthog/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/quickbooks/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/quo/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/reducto/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/salesforce/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/sendgrid/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/sentry/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/sharepoint/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/signnow/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/slack/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/snapchat/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/squarespace/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/squareup/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/stripe/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/accept_meeting_invite.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/add_subtasks_to_task.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/add_task_to_channel.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/align_task_with_objective.json", "type": "configures" },
+    { "source": "file:.agent/skills/api-gateway/references/sunsama-mcp/README.md", "target": "file:.agent/skills/api-gateway/references/sunsama-mcp/schemas/append_task_notes.json", "type": "configures" }
+  ]
+}

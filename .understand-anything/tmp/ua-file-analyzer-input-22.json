@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkShared/Models/Analytics.cs",
+      "language": "csharp",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiError.cs",
+      "language": "csharp",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiKey.cs",
+      "language": "csharp",
+      "sizeLines": 41,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiServiceMetadata.cs",
+      "language": "csharp",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/Apisix/ApisixListResponse.cs",
+      "language": "csharp",
+      "sizeLines": 35,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/ApisixDto.cs",
+      "language": "csharp",
+      "sizeLines": 192,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/ApiTestScenario.cs",
+      "language": "csharp",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/AuditLogEntry.cs",
+      "language": "csharp",
+      "sizeLines": 27,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/AuthModels.cs",
+      "language": "csharp",
+      "sizeLines": 39,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/BlacklistDriftReport.cs",
+      "language": "csharp",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/BlacklistEntry.cs",
+      "language": "csharp",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/MockRule.cs",
+      "language": "csharp",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/NotificationChannel.cs",
+      "language": "csharp",
+      "sizeLines": 24,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/PiiMaskingRule.cs",
+      "language": "csharp",
+      "sizeLines": 29,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/SyncOutboxEntry.cs",
+      "language": "csharp",
+      "sizeLines": 47,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Models/WhitelistEntry.cs",
+      "language": "csharp",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Options/ApisixOptions.cs",
+      "language": "csharp",
+      "sizeLines": 19,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Options/AuthOptions.cs",
+      "language": "csharp",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Options/JwtOptions.cs",
+      "language": "csharp",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Options/PrometheusOptions.cs",
+      "language": "csharp",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/ApisixClient.cs",
+      "language": "csharp",
+      "sizeLines": 573,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/ApisixSyncOutboxService.cs",
+      "language": "csharp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs",
+      "language": "csharp",
+      "sizeLines": 93,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/BlacklistConsistencyService.cs",
+      "language": "csharp",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/IApisixClient.cs",
+      "language": "csharp",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkShared/Models/Analytics.cs": [],
+    "backend/MilkShared/Models/ApiError.cs": [],
+    "backend/MilkShared/Models/ApiKey.cs": [],
+    "backend/MilkShared/Models/ApiServiceMetadata.cs": [],
+    "backend/MilkShared/Models/Apisix/ApisixListResponse.cs": [],
+    "backend/MilkShared/Models/ApisixDto.cs": [],
+    "backend/MilkShared/Models/ApiTestScenario.cs": [],
+    "backend/MilkShared/Models/AuditLogEntry.cs": [],
+    "backend/MilkShared/Models/AuthModels.cs": [],
+    "backend/MilkShared/Models/BlacklistDriftReport.cs": [],
+    "backend/MilkShared/Models/BlacklistEntry.cs": [],
+    "backend/MilkShared/Models/MockRule.cs": [],
+    "backend/MilkShared/Models/NotificationChannel.cs": [],
+    "backend/MilkShared/Models/PiiMaskingRule.cs": [],
+    "backend/MilkShared/Models/SyncOutboxEntry.cs": [],
+    "backend/MilkShared/Models/WhitelistEntry.cs": [],
+    "backend/MilkShared/Options/ApisixOptions.cs": [],
+    "backend/MilkShared/Options/AuthOptions.cs": [],
+    "backend/MilkShared/Options/JwtOptions.cs": [],
+    "backend/MilkShared/Options/PrometheusOptions.cs": [],
+    "backend/MilkShared/Services/ApisixClient.cs": [],
+    "backend/MilkShared/Services/ApisixSyncOutboxService.cs": [],
+    "backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs": [],
+    "backend/MilkShared/Services/BlacklistConsistencyService.cs": [],
+    "backend/MilkShared/Services/IApisixClient.cs": []
+  }
+}

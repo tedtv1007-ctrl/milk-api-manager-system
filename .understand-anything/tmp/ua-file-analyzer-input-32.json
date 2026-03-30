@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "skills-lock.json",
+      "language": "json",
+      "sizeLines": 26,
+      "fileCategory": "config"
+    },
+    {
+      "path": "skills/api-gateway/CONTRIBUTING.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/README.md",
+      "language": "markdown",
+      "sizeLines": 26,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/active-campaign/README.md",
+      "language": "markdown",
+      "sizeLines": 221,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/acuity-scheduling/README.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/airtable/README.md",
+      "language": "markdown",
+      "sizeLines": 149,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/apollo/README.md",
+      "language": "markdown",
+      "sizeLines": 213,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/asana/README.md",
+      "language": "markdown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/attio/README.md",
+      "language": "markdown",
+      "sizeLines": 292,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/basecamp/README.md",
+      "language": "markdown",
+      "sizeLines": 149,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/baserow/README.md",
+      "language": "markdown",
+      "sizeLines": 161,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/beehiiv/README.md",
+      "language": "markdown",
+      "sizeLines": 134,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/box/README.md",
+      "language": "markdown",
+      "sizeLines": 192,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/brevo/README.md",
+      "language": "markdown",
+      "sizeLines": 230,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/cal-com/README.md",
+      "language": "markdown",
+      "sizeLines": 217,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/calendly/README.md",
+      "language": "markdown",
+      "sizeLines": 109,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/callrail/README.md",
+      "language": "markdown",
+      "sizeLines": 179,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/chargebee/README.md",
+      "language": "markdown",
+      "sizeLines": 203,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/clickfunnels/README.md",
+      "language": "markdown",
+      "sizeLines": 275,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/clicksend/README.md",
+      "language": "markdown",
+      "sizeLines": 153,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/clickup/README.md",
+      "language": "markdown",
+      "sizeLines": 156,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/clio/README.md",
+      "language": "markdown",
+      "sizeLines": 354,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/clockify/README.md",
+      "language": "markdown",
+      "sizeLines": 191,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/coda/README.md",
+      "language": "markdown",
+      "sizeLines": 224,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "skills/api-gateway/references/cognito-forms/README.md",
+      "language": "markdown",
+      "sizeLines": 122,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "skills-lock.json": [],
+    "skills/api-gateway/CONTRIBUTING.md": [],
+    "skills/api-gateway/README.md": [],
+    "skills/api-gateway/references/active-campaign/README.md": [],
+    "skills/api-gateway/references/acuity-scheduling/README.md": [],
+    "skills/api-gateway/references/airtable/README.md": [],
+    "skills/api-gateway/references/apollo/README.md": [],
+    "skills/api-gateway/references/asana/README.md": [],
+    "skills/api-gateway/references/attio/README.md": [],
+    "skills/api-gateway/references/basecamp/README.md": [],
+    "skills/api-gateway/references/baserow/README.md": [],
+    "skills/api-gateway/references/beehiiv/README.md": [],
+    "skills/api-gateway/references/box/README.md": [],
+    "skills/api-gateway/references/brevo/README.md": [],
+    "skills/api-gateway/references/cal-com/README.md": [],
+    "skills/api-gateway/references/calendly/README.md": [],
+    "skills/api-gateway/references/callrail/README.md": [],
+    "skills/api-gateway/references/chargebee/README.md": [],
+    "skills/api-gateway/references/clickfunnels/README.md": [],
+    "skills/api-gateway/references/clicksend/README.md": [],
+    "skills/api-gateway/references/clickup/README.md": [],
+    "skills/api-gateway/references/clio/README.md": [],
+    "skills/api-gateway/references/clockify/README.md": [],
+    "skills/api-gateway/references/coda/README.md": [],
+    "skills/api-gateway/references/cognito-forms/README.md": []
+  }
+}

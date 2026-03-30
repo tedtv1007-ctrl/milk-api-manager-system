@@ -1,0 +1,478 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "sdk/python/docs/ProblemDetails.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 34,
+      "extracted": {
+        "headings": [
+          "ProblemDetails",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of ProblemDetails from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of ProblemDetails from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/RequestStatus.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 15,
+      "extracted": {
+        "headings": [
+          "RequestStatus",
+          "Enum"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/Route.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 36,
+      "extracted": {
+        "headings": [
+          "Route",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of Route from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of Route from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/RouteApi.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 314,
+      "extracted": {
+        "headings": [
+          "milk_api_client.RouteApi",
+          "**api_route_get**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_route_id_delete**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_route_id_get**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_route_id_put**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_route_post**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/Service.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 33,
+      "extracted": {
+        "headings": [
+          "Service",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of Service from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of Service from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/SyncStatusApi.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 66,
+      "extracted": {
+        "headings": [
+          "milk_api_client.SyncStatusApi",
+          "**api_sync_status_get**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/TestExecutionApi.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 198,
+      "extracted": {
+        "headings": [
+          "milk_api_client.TestExecutionApi",
+          "**api_test_execution_run_id_post**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_test_execution_scenarios_post**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_test_execution_scenarios_service_id_get**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/Upstream.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 31,
+      "extracted": {
+        "headings": [
+          "Upstream",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of Upstream from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of Upstream from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/WhitelistApi.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 145,
+      "extracted": {
+        "headings": [
+          "milk_api_client.WhitelistApi",
+          "**api_whitelist_route_route_id_get**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details",
+          "**api_whitelist_route_route_id_post**",
+          "Example",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Parameters",
+          "Return type",
+          "Authorization",
+          "HTTP request headers",
+          "HTTP response details"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/WhitelistEntry.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 36,
+      "extracted": {
+        "headings": [
+          "WhitelistEntry",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of WhitelistEntry from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of WhitelistEntry from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/docs/WhitelistUpdateRequest.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 34,
+      "extracted": {
+        "headings": [
+          "WhitelistUpdateRequest",
+          "Properties",
+          "Example",
+          "TODO update the JSON string below",
+          "create an instance of WhitelistUpdateRequest from a JSON string",
+          "print the JSON string representation of the object",
+          "convert the object into a dict",
+          "create an instance of WhitelistUpdateRequest from a dict"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/git_push.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 58,
+      "extracted": {}
+    },
+    {
+      "path": "sdk/python/milk_api_client/__init__.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 117,
+      "extracted": {
+        "classes": [
+          "manually"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api_client.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 806,
+      "extracted": {
+        "classes": [
+          "manually",
+          "import",
+          "ApiClient",
+          "or",
+          "literal",
+          "name",
+          "if",
+          "value"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api_response.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [
+          "ApiResponse"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/__init__.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/access_request_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1090,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AccessRequestApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/alert_rules_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1056,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AlertRulesApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/analytics_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1539,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AnalyticsApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/api_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1318,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ApiApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/api_catalog_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 546,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ApiCatalogApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/audit_logs_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 778,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AuditLogsApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/blacklist_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 564,
+      "extracted": {
+        "classes": [
+          "manually",
+          "BlacklistApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/consumer_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 787,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ConsumerApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/consumer_group_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 803,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ConsumerGroupApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    }
+  ]
+}

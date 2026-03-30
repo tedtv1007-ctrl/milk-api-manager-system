@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkShared/Services/IAuditLogService.cs",
+      "language": "csharp",
+      "sizeLines": 16,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/IDistributedLock.cs",
+      "language": "csharp",
+      "sizeLines": 15,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/INotificationService.cs",
+      "language": "csharp",
+      "sizeLines": 10,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/IPrometheusService.cs",
+      "language": "csharp",
+      "sizeLines": 13,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/ISecurityAutomationService.cs",
+      "language": "csharp",
+      "sizeLines": 11,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/MockApisixClient.cs",
+      "language": "csharp",
+      "sizeLines": 318,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/NotificationService.cs",
+      "language": "csharp",
+      "sizeLines": 87,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/PostgresAdvisoryLock.cs",
+      "language": "csharp",
+      "sizeLines": 108,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/ProductionStartupGuardrails.cs",
+      "language": "csharp",
+      "sizeLines": 105,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/PrometheusService.cs",
+      "language": "csharp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/SecurityAutomationService.cs",
+      "language": "csharp",
+      "sizeLines": 76,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkShared/Services/VaultService.cs",
+      "language": "csharp",
+      "sizeLines": 77,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker.Tests/KeyRotationBackgroundServiceTests.cs",
+      "language": "csharp",
+      "sizeLines": 237,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker.Tests/MilkWorker.Tests.csproj",
+      "language": "unknown",
+      "sizeLines": 31,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/AdGroupSyncService.cs",
+      "language": "csharp",
+      "sizeLines": 249,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/AlertMonitoringService.cs",
+      "language": "csharp",
+      "sizeLines": 97,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/ApisixRouteSyncService.cs",
+      "language": "csharp",
+      "sizeLines": 96,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/ApisixSyncOutboxWorker.cs",
+      "language": "csharp",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/appsettings.Development.json",
+      "language": "json",
+      "sizeLines": 9,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkWorker/appsettings.json",
+      "language": "json",
+      "sizeLines": 9,
+      "fileCategory": "config"
+    },
+    {
+      "path": "backend/MilkWorker/AuditLogShippingOutboxWorker.cs",
+      "language": "csharp",
+      "sizeLines": 45,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/AutoBlockWorker.cs",
+      "language": "csharp",
+      "sizeLines": 118,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/BlacklistReconcileWorker.cs",
+      "language": "csharp",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkWorker/Dockerfile",
+      "language": "dockerfile",
+      "sizeLines": 23,
+      "fileCategory": "infra"
+    },
+    {
+      "path": "backend/MilkWorker/KeyRotationBackgroundService.cs",
+      "language": "csharp",
+      "sizeLines": 122,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkShared/Services/IAuditLogService.cs": [],
+    "backend/MilkShared/Services/IDistributedLock.cs": [],
+    "backend/MilkShared/Services/INotificationService.cs": [],
+    "backend/MilkShared/Services/IPrometheusService.cs": [],
+    "backend/MilkShared/Services/ISecurityAutomationService.cs": [],
+    "backend/MilkShared/Services/MockApisixClient.cs": [],
+    "backend/MilkShared/Services/NotificationService.cs": [],
+    "backend/MilkShared/Services/PostgresAdvisoryLock.cs": [],
+    "backend/MilkShared/Services/ProductionStartupGuardrails.cs": [],
+    "backend/MilkShared/Services/PrometheusService.cs": [],
+    "backend/MilkShared/Services/SecurityAutomationService.cs": [],
+    "backend/MilkShared/Services/VaultService.cs": [],
+    "backend/MilkWorker.Tests/KeyRotationBackgroundServiceTests.cs": [],
+    "backend/MilkWorker.Tests/MilkWorker.Tests.csproj": [],
+    "backend/MilkWorker/AdGroupSyncService.cs": [],
+    "backend/MilkWorker/AlertMonitoringService.cs": [],
+    "backend/MilkWorker/ApisixRouteSyncService.cs": [],
+    "backend/MilkWorker/ApisixSyncOutboxWorker.cs": [],
+    "backend/MilkWorker/appsettings.Development.json": [],
+    "backend/MilkWorker/appsettings.json": [],
+    "backend/MilkWorker/AuditLogShippingOutboxWorker.cs": [],
+    "backend/MilkWorker/AutoBlockWorker.cs": [],
+    "backend/MilkWorker/BlacklistReconcileWorker.cs": [],
+    "backend/MilkWorker/Dockerfile": [],
+    "backend/MilkWorker/KeyRotationBackgroundService.cs": []
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "backend/MilkAdminBlazor/Shared/MainLayout.razor",
+      "language": "unknown",
+      "sizeLines": 128,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkAdminBlazor/wwwroot/css/app.css",
+      "language": "css",
+      "sizeLines": 405,
+      "fileCategory": "markup"
+    },
+    {
+      "path": "backend/MilkApiManager.sln",
+      "language": "unknown",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AccessRequestControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 239,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AlertRulesControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 117,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AnalyticsControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 127,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ApiCatalogControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 104,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/AuthControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/BlacklistControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ConsumerControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 255,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ConsumerGroupControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 103,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/GlobalRuleControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 202,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/KeysControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 262,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/LoadTestControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 82,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/MockControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 199,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/PiiMaskingControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 227,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/RouteControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 184,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ServerInfoControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 159,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/ServiceControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 220,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SloMetricsControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 78,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SSLControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 295,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/SyncStatusControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/TestExecutionControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 131,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/UpstreamControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 245,
+      "fileCategory": "code"
+    },
+    {
+      "path": "backend/MilkApiManager.Tests/Controllers/WhitelistControllerTests.cs",
+      "language": "csharp",
+      "sizeLines": 70,
+      "fileCategory": "code"
+    }
+  ],
+  "batchImportData": {
+    "backend/MilkAdminBlazor/Shared/MainLayout.razor": [],
+    "backend/MilkAdminBlazor/wwwroot/css/app.css": [],
+    "backend/MilkApiManager.sln": [],
+    "backend/MilkApiManager.Tests/Controllers/AccessRequestControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/AlertRulesControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/AnalyticsControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/ApiCatalogControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/AuthControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/BlacklistControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/ConsumerControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/ConsumerGroupControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/GlobalRuleControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/KeysControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/LoadTestControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/MockControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/PiiMaskingControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/RouteControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/ServerInfoControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/ServiceControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/SloMetricsControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/SSLControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/SyncStatusControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/TestExecutionControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/UpstreamControllerTests.cs": [],
+    "backend/MilkApiManager.Tests/Controllers/WhitelistControllerTests.cs": []
+  }
+}

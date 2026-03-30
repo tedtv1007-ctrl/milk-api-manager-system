@@ -1,0 +1,475 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agents/skills/api-gateway/references/telegram/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Telegram Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/ticktick/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering TickTick Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/todoist/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Todoist Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/toggl-track/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Toggl Track Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/trello/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Trello Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/twilio/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Twilio Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/typeform/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Typeform Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/unbounce/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Unbounce Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/vimeo/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Vimeo Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/whatsapp-business/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering WhatsApp Business Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/woocommerce/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering WooCommerce Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/wordpress/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering WordPress.com Routing Reference, API Path Pattern, Site Identifiers.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/xero/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Xero Routing Reference, Automatic Tenant ID Injection, API Path Pattern.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/youtube/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering YouTube Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-bigin/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Bigin Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-bookings/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Bookings Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-books/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Books Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-calendar/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Calendar Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-crm/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho CRM Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-inventory/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Inventory Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-mail/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Mail Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-people/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho People Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-projects/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Projects Routing Reference, API Path Pattern, Important Notes.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/references/zoho-recruit/README.md",
+      "type": "file",
+      "label": "README.md",
+      "summary": "Documentation covering Zoho Recruit Routing Reference, API Path Pattern, Common Endpoints.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "api-reference",
+        "documentation"
+      ],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agents/skills/api-gateway/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Documentation covering API Gateway, Quick Start, Native Slack API call.",
+      "tags": [
+        "docs",
+        "markdown",
+        "api-gateway",
+        "documentation"
+      ],
+      "complexity": "complex"
+    }
+  ],
+  "edges": [
+    {
+      "source": "file:.agents/skills/api-gateway/references/telegram/README.md",
+      "target": "file:.agents/skills/api-gateway/references/telegram",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/ticktick/README.md",
+      "target": "file:.agents/skills/api-gateway/references/ticktick",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/todoist/README.md",
+      "target": "file:.agents/skills/api-gateway/references/todoist",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/toggl-track/README.md",
+      "target": "file:.agents/skills/api-gateway/references/toggl-track",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/trello/README.md",
+      "target": "file:.agents/skills/api-gateway/references/trello",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/twilio/README.md",
+      "target": "file:.agents/skills/api-gateway/references/twilio",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/typeform/README.md",
+      "target": "file:.agents/skills/api-gateway/references/typeform",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/unbounce/README.md",
+      "target": "file:.agents/skills/api-gateway/references/unbounce",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/vimeo/README.md",
+      "target": "file:.agents/skills/api-gateway/references/vimeo",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/whatsapp-business/README.md",
+      "target": "file:.agents/skills/api-gateway/references/whatsapp-business",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/woocommerce/README.md",
+      "target": "file:.agents/skills/api-gateway/references/woocommerce",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/wordpress/README.md",
+      "target": "file:.agents/skills/api-gateway/references/wordpress",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/xero/README.md",
+      "target": "file:.agents/skills/api-gateway/references/xero",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/youtube/README.md",
+      "target": "file:.agents/skills/api-gateway/references/youtube",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-bigin/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-bigin",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-bookings/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-bookings",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-books/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-books",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-calendar/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-calendar",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-crm/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-crm",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-inventory/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-inventory",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-mail/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-mail",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-people/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-people",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-projects/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-projects",
+      "type": "documents"
+    },
+    {
+      "source": "file:.agents/skills/api-gateway/references/zoho-recruit/README.md",
+      "target": "file:.agents/skills/api-gateway/references/zoho-recruit",
+      "type": "documents"
+    }
+  ]
+}

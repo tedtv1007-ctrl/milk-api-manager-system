@@ -1,0 +1,300 @@
+{
+  "nodes": [
+    {
+      "id": "file:sdk/python/test/test_blacklist_entry.py",
+      "summary": "Source file test_blacklist_entry.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_blacklist_update_request.py",
+      "summary": "Source file test_blacklist_update_request.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_consumer_api.py",
+      "summary": "Source file test_consumer_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_consumer_group_api.py",
+      "summary": "Source file test_consumer_group_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_consumer_group.py",
+      "summary": "Source file test_consumer_group.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_create_key_request.py",
+      "summary": "Source file test_create_key_request.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_keys_api.py",
+      "summary": "Source file test_keys_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_load_test_api.py",
+      "summary": "Source file test_load_test_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_mock_api.py",
+      "summary": "Source file test_mock_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_mock_rule.py",
+      "summary": "Source file test_mock_rule.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_pii_masking_api.py",
+      "summary": "Source file test_pii_masking_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_pii_masking_rule.py",
+      "summary": "Source file test_pii_masking_rule.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_problem_details.py",
+      "summary": "Source file test_problem_details.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_request_status.py",
+      "summary": "Source file test_request_status.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_route_api.py",
+      "summary": "Source file test_route_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_route.py",
+      "summary": "Source file test_route.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_service.py",
+      "summary": "Source file test_service.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_sync_status_api.py",
+      "summary": "Source file test_sync_status_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_test_execution_api.py",
+      "summary": "Source file test_test_execution_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_upstream.py",
+      "summary": "Source file test_upstream.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_whitelist_api.py",
+      "summary": "Source file test_whitelist_api.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_whitelist_entry.py",
+      "summary": "Source file test_whitelist_entry.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/test/test_whitelist_update_request.py",
+      "summary": "Source file test_whitelist_update_request.py (python).",
+      "tags": [
+        "python",
+        "code",
+        "test",
+        "sdk",
+        "oo-design"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/python/tox.ini",
+      "summary": "Configuration file tox.ini for project settings.",
+      "tags": [
+        "config",
+        "sdk"
+      ],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:sdk/README.md",
+      "summary": "Documentation file README.md focusing on project information.",
+      "tags": [
+        "markdown",
+        "docs",
+        "sdk"
+      ],
+      "complexity": "simple"
+    }
+  ],
+  "edges": []
+}

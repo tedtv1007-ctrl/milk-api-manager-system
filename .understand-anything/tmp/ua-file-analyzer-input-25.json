@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "docs/security/key_rotation_vault.md",
+      "language": "markdown",
+      "sizeLines": 24,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "docs/security/rbac_endpoint_matrix.md",
+      "language": "markdown",
+      "sizeLines": 61,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/package.json",
+      "language": "json",
+      "sizeLines": 13,
+      "fileCategory": "config"
+    },
+    {
+      "path": "e2e/playwright.config.js",
+      "language": "javascript",
+      "sizeLines": 22,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/README.md",
+      "language": "markdown",
+      "sizeLines": 36,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/result.txt",
+      "language": "unknown",
+      "sizeLines": 73,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/scripts/run-e2e.ps1",
+      "language": "powershell",
+      "sizeLines": 16,
+      "fileCategory": "script"
+    },
+    {
+      "path": "e2e/scripts/run-e2e.sh",
+      "language": "shell",
+      "sizeLines": 16,
+      "fileCategory": "script"
+    },
+    {
+      "path": "e2e/test_latest.txt",
+      "language": "unknown",
+      "sizeLines": 267,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/test_output.txt",
+      "language": "unknown",
+      "sizeLines": 155,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/tests/api-endpoints.spec.js",
+      "language": "javascript",
+      "sizeLines": 170,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/auth-sso.spec.js",
+      "language": "javascript",
+      "sizeLines": 163,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/crud-operations.spec.js",
+      "language": "javascript",
+      "sizeLines": 581,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/gateway-crud.spec.js",
+      "language": "javascript",
+      "sizeLines": 414,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/gateway-ui-pages.spec.js",
+      "language": "javascript",
+      "sizeLines": 141,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/pii-masking.spec.js",
+      "language": "javascript",
+      "sizeLines": 88,
+      "fileCategory": "code"
+    },
+    {
+      "path": "e2e/tests/README.md",
+      "language": "markdown",
+      "sizeLines": 12,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "e2e/tests/ui-pages.spec.js",
+      "language": "javascript",
+      "sizeLines": 124,
+      "fileCategory": "code"
+    },
+    {
+      "path": "HEARTBEAT.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "load-test-gateway.js",
+      "language": "javascript",
+      "sizeLines": 25,
+      "fileCategory": "code"
+    },
+    {
+      "path": "load-test-local.js",
+      "language": "javascript",
+      "sizeLines": 23,
+      "fileCategory": "code"
+    },
+    {
+      "path": "MEMORY.md",
+      "language": "markdown",
+      "sizeLines": 22,
+      "fileCategory": "docs"
+    },
+    {
+      "path": "milk-api-manager-system.sln",
+      "language": "unknown",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "monitoring/alert_rules.yml",
+      "language": "yaml",
+      "sizeLines": 50,
+      "fileCategory": "config"
+    },
+    {
+      "path": "monitoring/grafana-dashboard.json",
+      "language": "json",
+      "sizeLines": 273,
+      "fileCategory": "config"
+    }
+  ],
+  "batchImportData": {
+    "docs/security/key_rotation_vault.md": [],
+    "docs/security/rbac_endpoint_matrix.md": [],
+    "e2e/package.json": [],
+    "e2e/playwright.config.js": [],
+    "e2e/README.md": [],
+    "e2e/result.txt": [],
+    "e2e/scripts/run-e2e.ps1": [],
+    "e2e/scripts/run-e2e.sh": [],
+    "e2e/test_latest.txt": [],
+    "e2e/test_output.txt": [],
+    "e2e/tests/api-endpoints.spec.js": [],
+    "e2e/tests/auth-sso.spec.js": [],
+    "e2e/tests/crud-operations.spec.js": [],
+    "e2e/tests/gateway-crud.spec.js": [],
+    "e2e/tests/gateway-ui-pages.spec.js": [],
+    "e2e/tests/pii-masking.spec.js": [],
+    "e2e/tests/README.md": [],
+    "e2e/tests/ui-pages.spec.js": [],
+    "HEARTBEAT.md": [],
+    "load-test-gateway.js": [],
+    "load-test-local.js": [],
+    "MEMORY.md": [],
+    "milk-api-manager-system.sln": [],
+    "monitoring/alert_rules.yml": [],
+    "monitoring/grafana-dashboard.json": []
+  }
+}

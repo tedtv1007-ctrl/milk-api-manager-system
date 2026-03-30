@@ -1,0 +1,182 @@
+{
+  "projectRoot": "D:/tedtv_github/milk-api-manager-system",
+  "batchFiles": [
+    {
+      "path": "sdk/python/test/test_blacklist_entry.py",
+      "language": "python",
+      "sizeLines": 58,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_blacklist_update_request.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_consumer_api.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_consumer_group_api.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_consumer_group.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_create_key_request.py",
+      "language": "python",
+      "sizeLines": 53,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_keys_api.py",
+      "language": "python",
+      "sizeLines": 44,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_load_test_api.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_mock_api.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_mock_rule.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_pii_masking_api.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_pii_masking_rule.py",
+      "language": "python",
+      "sizeLines": 63,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_problem_details.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_request_status.py",
+      "language": "python",
+      "sizeLines": 34,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_route_api.py",
+      "language": "python",
+      "sizeLines": 62,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_route.py",
+      "language": "python",
+      "sizeLines": 64,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_service.py",
+      "language": "python",
+      "sizeLines": 59,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_sync_status_api.py",
+      "language": "python",
+      "sizeLines": 38,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_test_execution_api.py",
+      "language": "python",
+      "sizeLines": 50,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_upstream.py",
+      "language": "python",
+      "sizeLines": 55,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_api.py",
+      "language": "python",
+      "sizeLines": 46,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_entry.py",
+      "language": "python",
+      "sizeLines": 60,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/test/test_whitelist_update_request.py",
+      "language": "python",
+      "sizeLines": 56,
+      "fileCategory": "code"
+    },
+    {
+      "path": "sdk/python/tox.ini",
+      "language": "config",
+      "sizeLines": 10,
+      "fileCategory": "config"
+    },
+    {
+      "path": "sdk/README.md",
+      "language": "markdown",
+      "sizeLines": 55,
+      "fileCategory": "docs"
+    }
+  ],
+  "batchImportData": {
+    "sdk/python/test/test_blacklist_entry.py": [],
+    "sdk/python/test/test_blacklist_update_request.py": [],
+    "sdk/python/test/test_consumer_api.py": [],
+    "sdk/python/test/test_consumer_group_api.py": [],
+    "sdk/python/test/test_consumer_group.py": [],
+    "sdk/python/test/test_create_key_request.py": [],
+    "sdk/python/test/test_keys_api.py": [],
+    "sdk/python/test/test_load_test_api.py": [],
+    "sdk/python/test/test_mock_api.py": [],
+    "sdk/python/test/test_mock_rule.py": [],
+    "sdk/python/test/test_pii_masking_api.py": [],
+    "sdk/python/test/test_pii_masking_rule.py": [],
+    "sdk/python/test/test_problem_details.py": [],
+    "sdk/python/test/test_request_status.py": [],
+    "sdk/python/test/test_route_api.py": [],
+    "sdk/python/test/test_route.py": [],
+    "sdk/python/test/test_service.py": [],
+    "sdk/python/test/test_sync_status_api.py": [],
+    "sdk/python/test/test_test_execution_api.py": [],
+    "sdk/python/test/test_upstream.py": [],
+    "sdk/python/test/test_whitelist_api.py": [],
+    "sdk/python/test/test_whitelist_entry.py": [],
+    "sdk/python/test/test_whitelist_update_request.py": [],
+    "sdk/python/tox.ini": [],
+    "sdk/README.md": []
+  }
+}

@@ -1,0 +1,463 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 52,
+      "extracted": {
+        "classes": [
+          "AddSyncOutboxEntries"
+        ],
+        "functions": [
+          "Up",
+          "Down"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore.Migrations"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260228151424_AddSyncOutboxEntries.Designer.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 449,
+      "extracted": {
+        "classes": [
+          "AddSyncOutboxEntries"
+        ],
+        "functions": [
+          "BuildTargetModel"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.EntityFrameworkCore.Infrastructure",
+          "Microsoft.EntityFrameworkCore.Migrations",
+          "Microsoft.EntityFrameworkCore.Storage.ValueConversion",
+          "MilkApiManager.Data",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 75,
+      "extracted": {
+        "classes": [
+          "PostgresOptimizations"
+        ],
+        "functions": [
+          "Up",
+          "Down"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore.Migrations"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/20260321061116_PostgresOptimizations.Designer.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 452,
+      "extracted": {
+        "classes": [
+          "PostgresOptimizations"
+        ],
+        "functions": [
+          "BuildTargetModel"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.EntityFrameworkCore.Infrastructure",
+          "Microsoft.EntityFrameworkCore.Migrations",
+          "Microsoft.EntityFrameworkCore.Storage.ValueConversion",
+          "MilkApiManager.Data",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/AppDbContextModelSnapshot.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 449,
+      "extracted": {
+        "classes": [
+          "AppDbContextModelSnapshot"
+        ],
+        "functions": [
+          "BuildModel"
+        ],
+        "imports": [
+          "System",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.EntityFrameworkCore.Infrastructure",
+          "Microsoft.EntityFrameworkCore.Storage.ValueConversion",
+          "MilkApiManager.Data",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Migrations"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Migrations/README_AddAuditMetadata.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 21,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/MilkApiManager.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 33,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Program.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 417,
+      "extracted": {
+        "classes": [
+          "to",
+          "Program"
+        ],
+        "functions": [
+          "InitializeSystemState"
+        ],
+        "imports": [
+          "MilkApiManager.Services",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "MilkApiManager.Options",
+          "MilkApiManager.Filters",
+          "Microsoft.EntityFrameworkCore",
+          "Microsoft.AspNetCore.Diagnostics.HealthChecks",
+          "Microsoft.Extensions.Diagnostics.HealthChecks",
+          "MilkApiManager.Auth",
+          "Microsoft.AspNetCore.Authentication.JwtBearer",
+          "Microsoft.AspNetCore.Authorization",
+          "Microsoft.IdentityModel.Tokens",
+          "System.Text",
+          "OpenTelemetry.Resources",
+          "OpenTelemetry.Trace",
+          "OpenTelemetry.Metrics",
+          "Asp.Versioning"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Properties/launchSettings.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 12,
+      "extracted": {
+        "keys": [
+          "profiles"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/apply_audit_migration.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 53,
+      "extracted": {}
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/rollback_audit_migration.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 50,
+      "extracted": {}
+    },
+    {
+      "path": "backend/MilkApiManager/scripts/smoke_test_audit_migration.sh",
+      "category": "script",
+      "language": "shell",
+      "lineCount": 60,
+      "extracted": {}
+    },
+    {
+      "path": "backend/MilkApiManager/Services/AuditLogService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 163,
+      "extracted": {
+        "classes": [
+          "AuditLogService"
+        ],
+        "functions": [
+          "LogAsync",
+          "GetLogsAsync",
+          "GetLogsCsvAsync",
+          "ShipLogsToSIEM"
+        ],
+        "imports": [
+          "System.Text.Json",
+          "Microsoft.Extensions.Configuration",
+          "Microsoft.Extensions.DependencyInjection",
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Models",
+          "MilkApiManager.Data"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/AuthService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 265,
+      "extracted": {
+        "classes": [
+          "AuthService"
+        ],
+        "functions": [
+          "GetUserRolesFromLdap",
+          "EscapeLdapFilter",
+          "GenerateJwtToken"
+        ],
+        "imports": [
+          "System.IdentityModel.Tokens.Jwt",
+          "System.Security.Claims",
+          "System.Text",
+          "Microsoft.Extensions.Options",
+          "Microsoft.IdentityModel.Tokens",
+          "MilkApiManager.Models",
+          "MilkApiManager.Options",
+          "Novell.Directory.Ldap"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/BlacklistService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 197,
+      "extracted": {
+        "classes": [
+          "IBlacklistService",
+          "BlacklistService",
+          "BlacklistUpdateRequest"
+        ],
+        "functions": [
+          "GetBlacklistAsync",
+          "AddAsync",
+          "RemoveAsync",
+          "IsValidIpOrCidr",
+          "SyncToGateway",
+          "SafeAuditLog"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "System.Net"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/IAuthService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 12,
+      "extracted": {
+        "classes": [
+          "IAuthService"
+        ],
+        "functions": [],
+        "imports": [
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/ILoadTestService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 10,
+      "extracted": {
+        "classes": [
+          "ILoadTestService"
+        ],
+        "functions": [],
+        "imports": [],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/LoadTestService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 71,
+      "extracted": {
+        "classes": [
+          "LoadTestService"
+        ],
+        "functions": [
+          "RunTestAsync"
+        ],
+        "imports": [
+          "System.Diagnostics",
+          "System.Text"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkApiManager/Services/WhitelistService.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 145,
+      "extracted": {
+        "classes": [
+          "IWhitelistService",
+          "WhitelistService",
+          "WhitelistUpdateRequest"
+        ],
+        "functions": [
+          "GetWhitelistForRouteAsync",
+          "AddAsync",
+          "RemoveAsync",
+          "SyncWhitelistToApisix",
+          "SafeAuditLog"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Data",
+          "MilkApiManager.Models",
+          "System.Net"
+        ],
+        "namespace": "MilkApiManager.Services"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Data/AppDbContext.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 135,
+      "extracted": {
+        "classes": [
+          "AppDbContext"
+        ],
+        "functions": [
+          "OnModelCreating"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Models",
+          "Npgsql.EntityFrameworkCore.PostgreSQL.Metadata"
+        ],
+        "namespace": "MilkApiManager.Data"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Data/AuditContext.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 18,
+      "extracted": {
+        "classes": [
+          "AuditContext"
+        ],
+        "functions": [
+          "OnModelCreating"
+        ],
+        "imports": [
+          "Microsoft.EntityFrameworkCore",
+          "MilkApiManager.Models"
+        ],
+        "namespace": "MilkApiManager.Data"
+      }
+    },
+    {
+      "path": "backend/MilkShared/GlobalUsings.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 10,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": [
+          "System",
+          "System.Collections.Generic",
+          "System.Linq",
+          "System.Threading.Tasks",
+          "Microsoft.Extensions.Logging",
+          "Microsoft.Extensions.Configuration",
+          "System.Net.Http",
+          "Microsoft.Extensions.DependencyInjection",
+          "System.Net.Http.Json"
+        ]
+      }
+    },
+    {
+      "path": "backend/MilkShared/MilkShared.csproj",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 24,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/AccessRequest.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 37,
+      "extracted": {
+        "classes": [
+          "RequestStatus",
+          "AccessRequest"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    },
+    {
+      "path": "backend/MilkShared/Models/AlertModels.cs",
+      "category": "code",
+      "language": "csharp",
+      "lineCount": 34,
+      "extracted": {
+        "classes": [
+          "AlertRule",
+          "AnomalyAlert"
+        ],
+        "functions": [],
+        "imports": [
+          "System.ComponentModel.DataAnnotations"
+        ],
+        "namespace": "MilkApiManager.Models"
+      }
+    }
+  ]
+}

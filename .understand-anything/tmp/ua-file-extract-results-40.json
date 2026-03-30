@@ -1,0 +1,174 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "skills/monitoring-observability/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 395,
+      "extracted": {
+        "headings": [
+          "Monitoring & Observability",
+          "When to use this skill",
+          "Instructions",
+          "Step 1: Metrics Collection (Prometheus)",
+          "Step 2: Alert Rules",
+          "Step 3: Log Aggregation (Structured Logging)",
+          "Step 4: Grafana Dashboard",
+          "Step 5: Health Checks",
+          "Output format",
+          "Monitoring Dashboard Configuration",
+          "Constraints",
+          "Required Rules (MUST)",
+          "Prohibited (MUST NOT)",
+          "Best practices",
+          "References",
+          "Metadata",
+          "Version",
+          "Related Skills",
+          "Tags",
+          "Examples",
+          "Example 1: Basic usage",
+          "Example 2: Advanced usage"
+        ]
+      }
+    },
+    {
+      "path": "skills/monitoring-observability/SKILL.toon",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 22,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "skills/net-conventions/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 174,
+      "extracted": {
+        "headings": [
+          ".NET Conventions",
+          "Style & Formatting",
+          "Naming Conventions",
+          "Formatting Rules",
+          "Async Patterns",
+          "Structured Logging",
+          "Log Scopes with ExceptionlessState",
+          "Nullable Reference Types",
+          "Resource Disposal",
+          "Constructor Injection",
+          "Validation Patterns",
+          "Input Validation",
+          "Domain Validation"
+        ]
+      }
+    },
+    {
+      "path": "skills/postgresql-optimization/SKILL.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 405,
+      "extracted": {
+        "headings": [
+          "PostgreSQL Development Assistant",
+          "� PostgreSQL-Specific Features",
+          "JSONB Operations",
+          "Array Operations",
+          "Window Functions & Analytics",
+          "Full-Text Search",
+          "� PostgreSQL Performance Tuning",
+          "Query Optimization",
+          "Index Strategies",
+          "Connection & Memory Management",
+          "�️ PostgreSQL Advanced Data Types",
+          "Custom Types & Domains",
+          "Range Types",
+          "Geometric Types",
+          "📊 PostgreSQL Extensions & Tools",
+          "Useful Extensions",
+          "Monitoring & Maintenance",
+          "PostgreSQL-Specific Optimization Tips",
+          "📊 Monitoring and Maintenance",
+          "Query Performance Monitoring",
+          "Database Maintenance",
+          "🛠️ Common Query Patterns",
+          "Pagination",
+          "Aggregation",
+          "JSON Queries",
+          "📋 Optimization Checklist",
+          "Query Analysis",
+          "Index Strategy",
+          "Security Review",
+          "Performance Monitoring",
+          "🎯 Optimization Output Format",
+          "Query Analysis Results",
+          "Query Performance Analysis",
+          "🚀 Advanced PostgreSQL Features",
+          "Window Functions",
+          "Common Table Expressions (CTEs)"
+        ]
+      }
+    },
+    {
+      "path": "start-all.bat",
+      "category": "script",
+      "language": "batch",
+      "lineCount": 50,
+      "extracted": {}
+    },
+    {
+      "path": "test_build_errors.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 63,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "test_debug.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 20562,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "test_debug2.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 253,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "test-results/.last-run.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 4,
+      "extracted": {
+        "keys": [
+          "status",
+          "failedTests"
+        ]
+      }
+    },
+    {
+      "path": "walkthrough.md.resolved",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 79,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    }
+  ]
+}

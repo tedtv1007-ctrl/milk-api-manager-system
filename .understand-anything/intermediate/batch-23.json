@@ -1,0 +1,79 @@
+{
+  "nodes": [
+    {
+      "id": "file:backend/MilkWorker/AdGroupSyncService.cs",
+      "summary": "Synchronizes Active Directory groups from LDAP to APISIX consumer groups.",
+      "tags": ["ldap", "sync", "apisix", "worker"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkWorker/AlertMonitoringService.cs",
+      "summary": "Background service that monitors system metrics and triggers alerts based on predefined rules.",
+      "tags": ["monitoring", "alerts", "worker"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkWorker/AutoBlockWorker.cs",
+      "summary": "Automatically identifies and blocks malicious IPs based on traffic patterns and security rules.",
+      "tags": ["security", "auto-block", "worker"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:backend/MilkWorker/KeyRotationBackgroundService.cs",
+      "summary": "Automates the rotation of API keys to enhance security posture.",
+      "tags": ["api-key", "security", "rotation", "worker"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/PostgresAdvisoryLock.cs",
+      "summary": "Distributed locking implementation using PostgreSQL advisory locks.",
+      "tags": ["locking", "postgres", "distributed", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/ProductionStartupGuardrails.cs",
+      "summary": "Security guardrails that validate environmental configurations during production startup.",
+      "tags": ["security", "guardrails", "production", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/PrometheusService.cs",
+      "summary": "Service for querying and interacting with Prometheus metrics data.",
+      "tags": ["metrics", "prometheus", "service", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkShared/Services/VaultService.cs",
+      "summary": "Service for secure storage and management of application secrets.",
+      "tags": ["secrets", "vault", "service", "shared"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:backend/MilkWorker/ApisixSyncOutboxWorker.cs",
+      "summary": "Hosted service that triggers the processing of the APISIX sync outbox.",
+      "tags": ["outbox", "sync", "worker"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkWorker/AuditLogShippingOutboxWorker.cs",
+      "summary": "Hosted service that triggers the shipping of audit logs via the outbox processor.",
+      "tags": ["audit-logs", "shipping", "worker"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:backend/MilkWorker.Tests/KeyRotationBackgroundServiceTests.cs",
+      "summary": "Unit tests for the KeyRotationBackgroundService logic.",
+      "tags": ["testing", "api-key", "backend"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    { "source": "file:backend/MilkWorker/AdGroupSyncService.cs", "target": "file:backend/MilkShared/Services/ApisixClient.cs", "type": "uses" },
+    { "source": "file:backend/MilkWorker/AlertMonitoringService.cs", "target": "file:backend/MilkShared/Services/INotificationService.cs", "type": "uses" },
+    { "source": "file:backend/MilkWorker/AutoBlockWorker.cs", "target": "file:backend/MilkShared/Services/ISecurityAutomationService.cs", "type": "uses" },
+    { "source": "file:backend/MilkWorker/KeyRotationBackgroundService.cs", "target": "file:backend/MilkShared/Services/IDistributedLock.cs", "type": "uses" },
+    { "source": "file:backend/MilkWorker/ApisixSyncOutboxWorker.cs", "target": "file:backend/MilkShared/Services/ApisixSyncOutboxService.cs", "type": "executes" },
+    { "source": "file:backend/MilkWorker/AuditLogShippingOutboxWorker.cs", "target": "file:backend/MilkShared/Services/AuditLogShippingOutboxProcessor.cs", "type": "executes" },
+    { "source": "file:backend/MilkWorker.Tests/KeyRotationBackgroundServiceTests.cs", "target": "file:backend/MilkWorker/KeyRotationBackgroundService.cs", "type": "tests" }
+  ]
+}

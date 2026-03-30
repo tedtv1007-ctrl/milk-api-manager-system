@@ -1,0 +1,407 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_task_as_completed.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/mark_task_as_incomplete.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/move_calendar_event.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/move_task_from_backlog.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/move_task_to_backlog.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/move_task_to_day.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/reorder_tasks.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 22,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/reposition_task_in_backlog.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 27,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/restore_task.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/schedule_next_call.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 24,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/search_tasks.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/set_calendar_event_allow_task_projections.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/set_shutdown_time.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/start_task_timer.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/stop_task_timer.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/timebox_a_task_to_calendar.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 23,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/toggle_auto_import_events.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/unarchive_task.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 19,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/update_all_incomplete_recurring_task_instances.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/update_calendar_preferences.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 15,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/sunsama-mcp/schemas/update_import_event_filters.json",
+      "category": "config",
+      "language": "json",
+      "lineCount": 18,
+      "extracted": {
+        "keys": [
+          "name",
+          "description",
+          "inputSchema"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/systeme/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 215,
+      "extracted": {
+        "headings": [
+          "Systeme.io Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "List Contacts",
+          "Get Contact",
+          "Create Contact",
+          "Update Contact",
+          "Delete Contact",
+          "List Tags",
+          "Create Tag",
+          "Update Tag",
+          "Delete Tag",
+          "Assign Tag to Contact",
+          "Remove Tag from Contact",
+          "List Contact Fields",
+          "List Courses",
+          "Create Enrollment",
+          "List Enrollments",
+          "Delete Enrollment",
+          "List Communities",
+          "Create Membership",
+          "List Memberships",
+          "Delete Membership",
+          "List Subscriptions",
+          "Cancel Subscription",
+          "List Webhooks",
+          "Create Webhook",
+          "Update Webhook",
+          "Delete Webhook",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/tally/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 175,
+      "extracted": {
+        "headings": [
+          "Tally Routing Reference",
+          "API Path Pattern",
+          "Required Headers",
+          "Common Endpoints",
+          "Get Current User",
+          "List Forms",
+          "Get Form",
+          "Create Form",
+          "Update Form",
+          "Delete Form",
+          "List Form Questions",
+          "List Form Submissions",
+          "Get Submission",
+          "Delete Submission",
+          "List Workspaces",
+          "Get Workspace",
+          "Create Workspace",
+          "List Organization Users",
+          "List Organization Invites",
+          "List Webhooks",
+          "Create Webhook",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/telegram/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 196,
+      "extracted": {
+        "headings": [
+          "Telegram Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "Get Bot Info",
+          "Get Updates",
+          "Send Message",
+          "Send Photo",
+          "Send Document",
+          "Send Location",
+          "Send Poll",
+          "Edit Message",
+          "Delete Message",
+          "Forward Message",
+          "Get Chat",
+          "Set Bot Commands",
+          "Get File",
+          "Set Webhook",
+          "Answer Callback Query",
+          "Notes",
+          "Resources"
+        ]
+      }
+    },
+    {
+      "path": ".agent/skills/api-gateway/references/ticktick/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 118,
+      "extracted": {
+        "headings": [
+          "TickTick Routing Reference",
+          "API Path Pattern",
+          "Common Endpoints",
+          "List Projects",
+          "Get Project with Tasks",
+          "Create Project",
+          "Delete Project",
+          "Get Task",
+          "Create Task",
+          "Update Task",
+          "Complete Task",
+          "Delete Task",
+          "Task Fields",
+          "Notes",
+          "Resources"
+        ]
+      }
+    }
+  ]
+}

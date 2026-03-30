@@ -1,0 +1,72 @@
+{
+  "nodes": [
+    {
+      "id": "file:e2e/playwright.config.js",
+      "summary": "Configuration for Playwright end-to-end tests, specifying browser environments and test directories.",
+      "tags": ["playwright", "e2e", "testing", "configuration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:e2e/tests/crud-operations.spec.js",
+      "summary": "Extensive E2E tests for core CRUD operations within the Milk API Manager UI.",
+      "tags": ["playwright", "test-spec", "e2e", "ui"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:e2e/tests/auth-sso.spec.js",
+      "summary": "E2E tests for authentication and Single Sign-On (SSO) integration.",
+      "tags": ["playwright", "test-spec", "e2e", "auth"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:load-test-gateway.js",
+      "summary": "k6 load testing script for benchmarking gateway performance under stress.",
+      "tags": ["k6", "load-test", "testing", "benchmarking"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:monitoring/alert_rules.yml",
+      "summary": "Prometheus alerting rules for system health and performance monitoring.",
+      "tags": ["prometheus", "alerts", "monitoring", "infrastructure"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:monitoring/grafana-dashboard.json",
+      "summary": "Grafana dashboard definition for visualizing system metrics and traffic patterns.",
+      "tags": ["grafana", "dashboard", "monitoring", "visualization"],
+      "complexity": "complex"
+    },
+    {
+      "id": "file:docs/security/rbac_endpoint_matrix.md",
+      "summary": "Documentation mapping system endpoints to RBAC roles and policies.",
+      "tags": ["security", "rbac", "documentation", "access-control"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:docs/security/key_rotation_vault.md",
+      "summary": "Technical design for integrating key rotation with HashiCorp Vault.",
+      "tags": ["security", "vault", "api-key", "documentation"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:HEARTBEAT.md",
+      "summary": "System status and milestone tracking document.",
+      "tags": ["documentation", "project-management", "status"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:MEMORY.md",
+      "summary": "Project memory document for development flow, multi-VPS coordination, and security notes.",
+      "tags": ["documentation", "project-management", "collaboration"],
+      "complexity": "simple"
+    }
+  ],
+  "edges": [
+    { "source": "file:e2e/playwright.config.js", "target": "file:e2e/tests/crud-operations.spec.js", "type": "configures" },
+    { "source": "file:e2e/playwright.config.js", "target": "file:e2e/tests/auth-sso.spec.js", "type": "configures" },
+    { "source": "file:monitoring/alert_rules.yml", "target": "file:monitoring/grafana-dashboard.json", "type": "configures" },
+    { "source": "file:load-test-gateway.js", "target": "file:backend/MilkApiManager/Program.cs", "type": "tests" },
+    { "source": "file:e2e/tests/crud-operations.spec.js", "target": "file:backend/MilkAdminBlazor/Program.cs", "type": "tests" },
+    { "source": "file:docs/security/key_rotation_vault.md", "target": "file:backend/MilkShared/Services/VaultService.cs", "type": "documents" }
+  ]
+}

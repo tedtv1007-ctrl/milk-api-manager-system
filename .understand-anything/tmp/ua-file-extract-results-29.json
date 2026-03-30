@@ -1,0 +1,382 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "sdk/python/milk_api_client/api/keys_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 553,
+      "extracted": {
+        "classes": [
+          "manually",
+          "KeysApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/load_test_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 323,
+      "extracted": {
+        "classes": [
+          "manually",
+          "LoadTestApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/mock_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1086,
+      "extracted": {
+        "classes": [
+          "manually",
+          "MockApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/pii_masking_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1117,
+      "extracted": {
+        "classes": [
+          "manually",
+          "PiiMaskingApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/route_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1318,
+      "extracted": {
+        "classes": [
+          "manually",
+          "RouteApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/sync_status_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 270,
+      "extracted": {
+        "classes": [
+          "manually",
+          "SyncStatusApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/test_execution_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 821,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestExecutionApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/api/whitelist_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 594,
+      "extracted": {
+        "classes": [
+          "manually",
+          "WhitelistApi",
+          "is"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/configuration.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 577,
+      "extracted": {
+        "classes": [
+          "manually",
+          "HostSettingVariable",
+          "HostSetting",
+          "Configuration",
+          "contains",
+          "values",
+          "or"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/exceptions.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 219,
+      "extracted": {
+        "classes": [
+          "manually",
+          "OpenApiException",
+          "for",
+          "ApiTypeError",
+          "ApiValueError",
+          "ApiAttributeError",
+          "ApiKeyError",
+          "ApiException",
+          "BadRequestException",
+          "NotFoundException",
+          "UnauthorizedException",
+          "ForbiddenException",
+          "ServiceException",
+          "ConflictException",
+          "UnprocessableEntityException"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/__init__.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 35,
+      "extracted": {
+        "classes": [
+          "manually"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/access_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 117,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AccessRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/alert_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 123,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AlertRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/api_service_metadata.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 114,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ApiServiceMetadata"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/api_test_scenario.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 119,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ApiTestScenario"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/audit_log_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 149,
+      "extracted": {
+        "classes": [
+          "manually",
+          "AuditLogEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/blacklist_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 116,
+      "extracted": {
+        "classes": [
+          "manually",
+          "BlacklistEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/blacklist_update_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 122,
+      "extracted": {
+        "classes": [
+          "manually",
+          "BlacklistUpdateRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/consumer_group.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 100,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ConsumerGroup"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/create_key_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 95,
+      "extracted": {
+        "classes": [
+          "manually",
+          "CreateKeyRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/mock_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 112,
+      "extracted": {
+        "classes": [
+          "manually",
+          "MockRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/pii_masking_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 109,
+      "extracted": {
+        "classes": [
+          "manually",
+          "PiiMaskingRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/problem_details.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 134,
+      "extracted": {
+        "classes": [
+          "manually",
+          "ProblemDetails"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/request_status.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 39,
+      "extracted": {
+        "classes": [
+          "manually",
+          "import",
+          "RequestStatus",
+          "values"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/route.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 135,
+      "extracted": {
+        "classes": [
+          "manually",
+          "Route"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    }
+  ]
+}

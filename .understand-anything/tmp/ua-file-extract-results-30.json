@@ -1,0 +1,335 @@
+{
+  "scriptCompleted": true,
+  "results": [
+    {
+      "path": "sdk/python/milk_api_client/models/service.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 113,
+      "extracted": {
+        "classes": [
+          "manually",
+          "Service"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/upstream.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 100,
+      "extracted": {
+        "classes": [
+          "manually",
+          "Upstream"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/whitelist_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 118,
+      "extracted": {
+        "classes": [
+          "manually",
+          "WhitelistEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/models/whitelist_update_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 122,
+      "extracted": {
+        "classes": [
+          "manually",
+          "WhitelistUpdateRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/py.typed",
+      "category": "code",
+      "language": "unknown",
+      "lineCount": 1,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/milk_api_client/rest.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 264,
+      "extracted": {
+        "classes": [
+          "manually",
+          "RESTResponse",
+          "RESTClientObject"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/pyproject.toml",
+      "category": "config",
+      "language": "toml",
+      "lineCount": 95,
+      "extracted": {}
+    },
+    {
+      "path": "sdk/python/README.md",
+      "category": "docs",
+      "language": "markdown",
+      "lineCount": 174,
+      "extracted": {
+        "headings": [
+          "milk-api-client",
+          "Requirements.",
+          "Installation & Usage",
+          "pip install",
+          "Setuptools",
+          "Tests",
+          "Getting Started",
+          "Defining the host is optional and defaults to http://localhost",
+          "See configuration.py for a list of all supported configuration parameters.",
+          "Enter a context with an instance of the API client",
+          "Documentation for API Endpoints",
+          "Documentation For Models",
+          "Documentation For Authorization",
+          "Author"
+        ]
+      }
+    },
+    {
+      "path": "sdk/python/requirements.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 5,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "sdk/python/setup.cfg",
+      "category": "config",
+      "language": "config",
+      "lineCount": 3,
+      "extracted": {}
+    },
+    {
+      "path": "sdk/python/setup.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 48,
+      "extracted": {
+        "classes": [
+          "manually"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test-requirements.txt",
+      "category": "docs",
+      "language": "unknown",
+      "lineCount": 7,
+      "extracted": {
+        "headings": []
+      }
+    },
+    {
+      "path": "sdk/python/test/__init__.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 1,
+      "extracted": {
+        "classes": [],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_access_request_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAccessRequestApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_access_request.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 64,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAccessRequest"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_alert_rule.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 63,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAlertRule"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_alert_rules_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 56,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAlertRulesApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_analytics_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAnalyticsApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_api_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestApiApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_api_catalog_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 44,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestApiCatalogApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_api_service_metadata.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestApiServiceMetadata"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_api_test_scenario.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestApiTestScenario"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_audit_log_entry.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 62,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAuditLogEntry"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_audit_logs_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 50,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestAuditLogsApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    },
+    {
+      "path": "sdk/python/test/test_blacklist_api.py",
+      "category": "code",
+      "language": "python",
+      "lineCount": 46,
+      "extracted": {
+        "classes": [
+          "manually",
+          "TestBlacklistApi"
+        ],
+        "functions": [],
+        "imports": []
+      }
+    }
+  ]
+}

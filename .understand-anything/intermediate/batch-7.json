@@ -1,0 +1,221 @@
+{
+  "nodes": [
+    {
+      "id": "file:.agent/skills/api-gateway/references/todoist/README.md",
+      "type": "file",
+      "label": "todoist/README.md",
+      "summary": "Routing reference for Todoist, covering project, task, section, and label management.",
+      "tags": ["api-reference", "todoist", "tasks", "todo"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/toggl-track/README.md",
+      "type": "file",
+      "label": "toggl-track/README.md",
+      "summary": "Routing reference for Toggl Track, detailing time entry, workspace, project, and client management.",
+      "tags": ["api-reference", "toggl-track", "time-tracking", "project-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/trello/README.md",
+      "type": "file",
+      "label": "trello/README.md",
+      "summary": "Routing reference for Trello, focusing on board, list, card, and checklist management.",
+      "tags": ["api-reference", "trello", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/twilio/README.md",
+      "type": "file",
+      "label": "twilio/README.md",
+      "summary": "Routing reference for Twilio, covering account, message, call, and phone number management.",
+      "tags": ["api-reference", "twilio", "communication", "sms"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/typeform/README.md",
+      "type": "file",
+      "label": "typeform/README.md",
+      "summary": "Routing reference for Typeform, detailing form, response, and workspace management.",
+      "tags": ["api-reference", "typeform", "forms", "data-collection"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/unbounce/README.md",
+      "type": "file",
+      "label": "unbounce/README.md",
+      "summary": "Routing reference for Unbounce, focusing on account, page, and lead management.",
+      "tags": ["api-reference", "unbounce", "landing-pages", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/vimeo/README.md",
+      "type": "file",
+      "label": "vimeo/README.md",
+      "summary": "Routing reference for Vimeo, covering video, folder, and album management.",
+      "tags": ["api-reference", "vimeo", "video", "hosting"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/whatsapp-business/README.md",
+      "type": "file",
+      "label": "whatsapp-business/README.md",
+      "summary": "Routing reference for WhatsApp Business API, detailing message, template, and profile management.",
+      "tags": ["api-reference", "whatsapp", "messaging", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/woocommerce/README.md",
+      "type": "file",
+      "label": "woocommerce/README.md",
+      "summary": "Routing reference for WooCommerce, covering product, order, customer, and report management.",
+      "tags": ["api-reference", "woocommerce", "ecommerce", "wordpress"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/wordpress/README.md",
+      "type": "file",
+      "label": "wordpress/README.md",
+      "summary": "Routing reference for WordPress.com API, focusing on site, post, and page management.",
+      "tags": ["api-reference", "wordpress", "cms", "blogging"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/xero/README.md",
+      "type": "file",
+      "label": "xero/README.md",
+      "summary": "Routing reference for Xero, detailing contact, invoice, account, and report management.",
+      "tags": ["api-reference", "xero", "accounting", "fintech"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/youtube/README.md",
+      "type": "file",
+      "label": "youtube/README.md",
+      "summary": "Routing reference for YouTube Data API, covering video search, channel, and playlist management.",
+      "tags": ["api-reference", "youtube", "video", "google-workspace"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-bigin/README.md",
+      "type": "file",
+      "label": "zoho-bigin/README.md",
+      "summary": "Routing reference for Zoho Bigin, detailing contact and company management for small businesses.",
+      "tags": ["api-reference", "zoho", "crm", "sales"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-bookings/README.md",
+      "type": "file",
+      "label": "zoho-bookings/README.md",
+      "summary": "Routing reference for Zoho Bookings, covering workspace, service, and appointment management.",
+      "tags": ["api-reference", "zoho", "scheduling", "appointments"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-books/README.md",
+      "type": "file",
+      "label": "zoho-books/README.md",
+      "summary": "Routing reference for Zoho Books, focusing on contact, invoice, bill, and expense management.",
+      "tags": ["api-reference", "zoho", "accounting", "fintech"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-calendar/README.md",
+      "type": "file",
+      "label": "zoho-calendar/README.md",
+      "summary": "Routing reference for Zoho Calendar, detailing calendar and event management.",
+      "tags": ["api-reference", "zoho", "scheduling", "calendar"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-crm/README.md",
+      "type": "file",
+      "label": "zoho-crm/README.md",
+      "summary": "Routing reference for Zoho CRM, covering record, search, user, and metadata management.",
+      "tags": ["api-reference", "zoho", "crm", "marketing"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-inventory/README.md",
+      "type": "file",
+      "label": "zoho-inventory/README.md",
+      "summary": "Routing reference for Zoho Inventory, detailing item, contact, order, and invoice management.",
+      "tags": ["api-reference", "zoho", "inventory", "ecommerce"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-mail/README.md",
+      "type": "file",
+      "label": "zoho-mail/README.md",
+      "summary": "Routing reference for Zoho Mail, focusing on account, folder, label, and message management.",
+      "tags": ["api-reference", "zoho", "email", "communication"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-people/README.md",
+      "type": "file",
+      "label": "zoho-people/README.md",
+      "summary": "Routing reference for Zoho People, covering form, record, attendance, and leave management.",
+      "tags": ["api-reference", "zoho", "hr", "people-management"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-projects/README.md",
+      "type": "file",
+      "label": "zoho-projects/README.md",
+      "summary": "Routing reference for Zoho Projects, detailing portal, project, task, and milestone management.",
+      "tags": ["api-reference", "zoho", "project-management", "collaboration"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/references/zoho-recruit/README.md",
+      "type": "file",
+      "label": "zoho-recruit/README.md",
+      "summary": "Routing reference for Zoho Recruit, covering module, record, and search management for recruitment.",
+      "tags": ["api-reference", "zoho", "recruitment", "hr"],
+      "complexity": "simple"
+    },
+    {
+      "id": "file:.agent/skills/api-gateway/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Core definition of the API Gateway skill, providing unified access to numerous third-party services.",
+      "tags": ["skill-definition", "api-gateway", "integration", "tool"],
+      "complexity": "moderate"
+    },
+    {
+      "id": "file:.agent/skills/monitoring-observability/SKILL.md",
+      "type": "file",
+      "label": "SKILL.md",
+      "summary": "Definition of the Monitoring & Observability skill, covering metrics, logging, and dashboards.",
+      "tags": ["skill-definition", "monitoring", "observability", "devops"],
+      "complexity": "moderate"
+    }
+  ],
+  "edges": [
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/todoist/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/toggl-track/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/trello/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/twilio/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/typeform/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/unbounce/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/vimeo/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/whatsapp-business/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/woocommerce/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/wordpress/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/xero/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/youtube/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-bigin/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-bookings/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-books/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-calendar/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-crm/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-inventory/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-mail/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-people/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-projects/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/README.md", "target": "file:.agent/skills/api-gateway/references/zoho-recruit/README.md", "type": "contains" },
+    { "source": "file:.agent/skills/api-gateway/SKILL.md", "target": "file:.agent/skills/api-gateway/README.md", "type": "documents" }
+  ]
+}
