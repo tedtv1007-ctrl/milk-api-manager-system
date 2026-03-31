@@ -18,6 +18,12 @@ public class AppDbContext : DbContext
     public DbSet<ApiServiceMetadata> ApiServices { get; set; }
     public DbSet<ApiTestScenario> ApiTestScenarios { get; set; }
     public DbSet<SyncOutboxEntry> SyncOutboxEntries { get; set; }
+    public DbSet<CircuitBreakerConfig> CircuitBreakerConfigs { get; set; }
+    public DbSet<CachePolicy> CachePolicies { get; set; }
+    public DbSet<RequestTransformRule> RequestTransformRules { get; set; }
+    public DbSet<HealthCheckConfig> HealthCheckConfigs { get; set; }
+    public DbSet<CanaryRelease> CanaryReleases { get; set; }
+    public DbSet<ApiLifecycleEntry> ApiLifecycleEntries { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -138,6 +144,97 @@ public class AppDbContext : DbContext
             entity.Property(e => e.ProcessedAt).HasConversion(
                 v => v.HasValue ? v.Value.ToUniversalTime() : v,
                 v => v.HasValue ? DateTime.SpecifyKind(v.Value, DateTimeKind.Utc) : v);
+        });
+
+        // Circuit Breaker Config
+        modelBuilder.Entity<CircuitBreakerConfig>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => e.RouteId).IsUnique();
+            entity.Property(e => e.RouteId).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // Cache Policy
+        modelBuilder.Entity<CachePolicy>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => e.RouteId).IsUnique();
+            entity.Property(e => e.RouteId).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // Request Transform Rule
+        modelBuilder.Entity<RequestTransformRule>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => new { e.RouteId, e.Phase, e.Priority });
+            entity.Property(e => e.RouteId).IsRequired();
+            entity.Property(e => e.Phase).IsRequired();
+            entity.Property(e => e.OperationType).IsRequired();
+            entity.Property(e => e.Key).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // Health Check Config
+        modelBuilder.Entity<HealthCheckConfig>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => e.UpstreamId).IsUnique();
+            entity.Property(e => e.UpstreamId).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // Canary Release
+        modelBuilder.Entity<CanaryRelease>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => e.RouteId);
+            entity.Property(e => e.RouteId).IsRequired();
+            entity.Property(e => e.Name).IsRequired();
+            entity.Property(e => e.MatchRulesJson).HasColumnType("jsonb");
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+        });
+
+        // API Lifecycle
+        modelBuilder.Entity<ApiLifecycleEntry>(entity =>
+        {
+            entity.HasKey(e => e.Id);
+            entity.HasIndex(e => new { e.ApiIdentifier, e.Version }).IsUnique();
+            entity.Property(e => e.ApiIdentifier).IsRequired();
+            entity.Property(e => e.Version).IsRequired();
+            entity.Property(e => e.Status).IsRequired();
+            entity.Property(e => e.CreatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
+            entity.Property(e => e.UpdatedAt).HasConversion(
+                v => v.ToUniversalTime(),
+                v => DateTime.SpecifyKind(v, DateTimeKind.Utc));
         });
     }
 }
