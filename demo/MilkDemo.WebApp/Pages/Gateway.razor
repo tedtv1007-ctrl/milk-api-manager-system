@@ -1,0 +1,98 @@
+@page "/gateway"
+@inject IGatewayApiService GatewayApi
+
+<PageTitle>Gateway Status - Milk Demo</PageTitle>
+
+<h1 class="page-title">🌐 Gateway Status</h1>
+
+<div class="metrics-grid">
+    <div class="metric-card @(status?.IsGatewayOnline == true ? "green" : "red")">
+        <div class="metric-label">APISIX Gateway</div>
+        <div class="metric-value">
+            <span class="status-badge @(status?.IsGatewayOnline == true ? "status-online" : "status-offline")">
+                @(status?.IsGatewayOnline == true ? "Online" : "Offline")
+            </span>
+        </div>
+    </div>
+    <div class="metric-card @(status?.IsBackendOnline == true ? "green" : "red")">
+        <div class="metric-label">API Manager Backend</div>
+        <div class="metric-value">
+            <span class="status-badge @(status?.IsBackendOnline == true ? "status-online" : "status-offline")">
+                @(status?.IsBackendOnline == true ? "Online" : "Offline")
+            </span>
+        </div>
+    </div>
+    <div class="metric-card cyan">
+        <div class="metric-label">Last Check</div>
+        <div class="metric-value" style="font-size:16px">@(status?.CheckedAt.ToString("HH:mm:ss") ?? "--")</div>
+    </div>
+</div>
+
+<div style="margin-bottom:16px">
+    <button class="btn btn-primary" @onclick="RefreshStatus">🔄 Refresh Status</button>
+</div>
+
+<div class="card">
+    <div class="card-header">🛤️ Registered Routes (via API Manager)</div>
+    @if (isLoadingRoutes)
+    {
+        <div class="loading">Loading routes from API Manager...</div>
+    }
+    else if (routesJson != null)
+    {
+        <div class="json-viewer">@routesJson</div>
+    }
+    else
+    {
+        <p style="color:var(--text-muted);padding:12px">
+            API Manager is not available. Start the Milk API Manager backend (port 5001) and APISIX Gateway (port 9080) to see routes.
+        </p>
+    }
+</div>
+
+<div class="card">
+    <div class="card-header">ℹ️ Connection Info</div>
+    <table class="data-table">
+        <tbody>
+            <tr><td style="color:var(--text-muted);width:200px">APISIX Gateway URL</td><td style="font-family:var(--font-mono)">http://localhost:9080</td></tr>
+            <tr><td style="color:var(--text-muted)">API Manager Backend URL</td><td style="font-family:var(--font-mono)">http://localhost:5001</td></tr>
+            <tr><td style="color:var(--text-muted)">Demo API URL</td><td style="font-family:var(--font-mono)">http://localhost:5003</td></tr>
+            <tr><td style="color:var(--text-muted)">Blazor Frontend URL</td><td style="font-family:var(--font-mono)">http://localhost:5002</td></tr>
+            <tr><td style="color:var(--text-muted)">Prometheus</td><td style="font-family:var(--font-mono)">http://localhost:9090</td></tr>
+            <tr><td style="color:var(--text-muted)">Grafana</td><td style="font-family:var(--font-mono)">http://localhost:3000</td></tr>
+            <tr><td style="color:var(--text-muted)">Kibana</td><td style="font-family:var(--font-mono)">http://localhost:5601</td></tr>
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private GatewayStatusDto? status;
+    private string? routesJson;
+    private bool isLoadingRoutes;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await RefreshStatus();
+    }
+
+    private async Task RefreshStatus()
+    {
+        status = await GatewayApi.GetStatusAsync();
+
+        isLoadingRoutes = true;
+        StateHasChanged();
+
+        routesJson = await GatewayApi.GetRoutesAsync();
+        if (routesJson != null)
+        {
+            try
+            {
+                var doc = System.Text.Json.JsonDocument.Parse(routesJson);
+                routesJson = System.Text.Json.JsonSerializer.Serialize(doc, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            }
+            catch { }
+        }
+
+        isLoadingRoutes = false;
+    }
+}

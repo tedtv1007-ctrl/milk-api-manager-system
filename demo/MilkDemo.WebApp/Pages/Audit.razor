@@ -1,0 +1,92 @@
+@page "/audit"
+@inject IGatewayApiService GatewayApi
+
+<PageTitle>Audit Logs - Milk Demo</PageTitle>
+
+<h1 class="page-title">📋 Audit Logs</h1>
+
+<p style="color:var(--text-secondary);margin-bottom:20px;font-size:14px">
+    View audit logs from the Milk API Manager. All configuration changes are tracked for compliance.
+</p>
+
+<div style="display:flex;gap:12px;margin-bottom:16px">
+    <button class="btn btn-primary" @onclick="LoadAuditLogs">🔄 Refresh Logs</button>
+    <select class="form-control" style="width:150px" @onchange="OnCountChanged">
+        <option value="20">Last 20</option>
+        <option value="50">Last 50</option>
+        <option value="100">Last 100</option>
+    </select>
+</div>
+
+@if (isLoading)
+{
+    <div class="loading">Loading audit logs from API Manager...</div>
+}
+else if (auditLogsJson != null)
+{
+    <div class="card">
+        <div class="card-header">📝 Audit Trail</div>
+        <div class="json-viewer">@auditLogsJson</div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">ℹ️ No Audit Logs Available</div>
+        <p style="color:var(--text-muted);padding:12px">
+            Connect to the Milk API Manager backend to view audit logs.
+            Audit logs track all Create, Update, Delete operations on routes, consumers, blacklists, and other resources.
+        </p>
+    </div>
+}
+
+<div class="card" style="margin-top:16px">
+    <div class="card-header">📖 Audit Log Features</div>
+    <table class="data-table">
+        <thead><tr><th>Feature</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>Full CRUD Tracking</td><td style="color:var(--text-secondary)">Every Create, Update, Delete action is recorded</td></tr>
+            <tr><td>User Attribution</td><td style="color:var(--text-secondary)">Each action is attributed to the authenticated user</td></tr>
+            <tr><td>Correlation IDs</td><td style="color:var(--text-secondary)">Request correlation for end-to-end tracing</td></tr>
+            <tr><td>IP Logging</td><td style="color:var(--text-secondary)">Operator IP address captured for each action</td></tr>
+            <tr><td>ELK Integration</td><td style="color:var(--text-secondary)">Logs shipped to Elasticsearch via Logstash for analysis</td></tr>
+            <tr><td>Durable Shipping</td><td style="color:var(--text-secondary)">Outbox pattern ensures no audit logs are lost</td></tr>
+        </tbody>
+    </table>
+</div>
+
+@code {
+    private string? auditLogsJson;
+    private bool isLoading;
+    private int logCount = 20;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadAuditLogs();
+    }
+
+    private async Task LoadAuditLogs()
+    {
+        isLoading = true;
+        auditLogsJson = await GatewayApi.GetAuditLogsAsync(logCount);
+        if (auditLogsJson != null)
+        {
+            try
+            {
+                var doc = System.Text.Json.JsonDocument.Parse(auditLogsJson);
+                auditLogsJson = System.Text.Json.JsonSerializer.Serialize(doc, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            }
+            catch { }
+        }
+        isLoading = false;
+    }
+
+    private async Task OnCountChanged(ChangeEventArgs e)
+    {
+        if (int.TryParse(e.Value?.ToString(), out var count))
+        {
+            logCount = count;
+            await LoadAuditLogs();
+        }
+    }
+}

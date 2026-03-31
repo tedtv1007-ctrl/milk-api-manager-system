@@ -1,0 +1,107 @@
+@page "/about"
+
+<PageTitle>About - Milk Demo</PageTitle>
+
+<h1 class="page-title">ℹ️ About Milk Demo</h1>
+
+<div class="card">
+    <div class="card-header">🥛 Project Overview</div>
+    <div style="color:var(--text-secondary);line-height:1.8;font-size:14px">
+        <p>
+            <strong>Milk Demo</strong> is a showcase project designed to demonstrate the capabilities of the
+            <strong>Milk API Manager System</strong> — an enterprise-grade API management platform built on
+            .NET 8 and Apache APISIX.
+        </p>
+        <br/>
+        <p>
+            This demo uses a <strong>front-end/back-end separation architecture</strong>:
+        </p>
+        <ul style="padding-left:24px;margin-top:8px">
+            <li><strong>Frontend:</strong> Blazor WebAssembly (standalone SPA)</li>
+            <li><strong>Backend:</strong> .NET 8 Web API with InMemory database</li>
+            <li><strong>Gateway:</strong> Apache APISIX managed by Milk API Manager</li>
+        </ul>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">🏗️ Architecture</div>
+    <div style="padding:12px">
+        <pre style="font-family:var(--font-mono);font-size:13px;color:var(--accent-cyan);line-height:1.6">
+┌─────────────────────────────────────────────────────────┐
+│                    Frontend Layer                        │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │  Blazor WebAssembly (MilkDemo.WebApp)             │  │
+│  │  - Dashboard, Products, Orders pages              │  │
+│  │  - Gateway status, Routes, Security views         │  │
+│  │  - API Test sandbox                               │  │
+│  │  - Dark Trading Terminal UI theme                 │  │
+│  └───────────────────────────────────────────────────┘  │
+│                          │ HTTP                          │
+├──────────────────────────┼──────────────────────────────┤
+│                    Gateway Layer                         │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │  Apache APISIX (via Milk API Manager)             │  │
+│  │  - Route management & proxy                       │  │
+│  │  - PII masking (Lua plugin)                       │  │
+│  │  - IP blacklist/whitelist                         │  │
+│  │  - Rate limiting                                  │  │
+│  │  - Metrics → Prometheus                           │  │
+│  └───────────────────────────────────────────────────┘  │
+│                          │ HTTP                          │
+├──────────────────────────┼──────────────────────────────┤
+│                    Backend Layer                          │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │  MilkDemo.Api (.NET 8 Web API)                    │  │
+│  │  - Product CRUD API                               │  │
+│  │  - Order management API                           │  │
+│  │  - JWT authentication                             │  │
+│  │  - Gateway proxy endpoints                        │  │
+│  └───────────────────────────────────────────────────┘  │
+│                                                          │
+│  ┌───────────────────────────────────────────────────┐  │
+│  │  Milk API Manager (.NET 8)                        │  │
+│  │  - Route/Service/Upstream management              │  │
+│  │  - Security governance                            │  │
+│  │  - Audit logging                                  │  │
+│  │  - Auto-defense worker                            │  │
+│  └───────────────────────────────────────────────────┘  │
+└─────────────────────────────────────────────────────────┘
+        </pre>
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header">✨ Demonstrated Features</div>
+    <table class="data-table">
+        <thead><tr><th>Feature</th><th>Page</th><th>Description</th></tr></thead>
+        <tbody>
+            <tr><td>JWT Authentication</td><td>Login</td><td style="color:var(--text-secondary)">RBAC-based login with Admin/Operator/Viewer roles</td></tr>
+            <tr><td>Product CRUD</td><td>Products</td><td style="color:var(--text-secondary)">Full CRUD through API → (optionally) APISIX → Backend</td></tr>
+            <tr><td>Order Management</td><td>Orders</td><td style="color:var(--text-secondary)">Create orders, stock management, status tracking</td></tr>
+            <tr><td>Gateway Monitor</td><td>Gateway</td><td style="color:var(--text-secondary)">Real-time APISIX and API Manager health status</td></tr>
+            <tr><td>Route Viewer</td><td>Routes</td><td style="color:var(--text-secondary)">View APISIX routes managed by API Manager</td></tr>
+            <tr><td>Security Dashboard</td><td>Security</td><td style="color:var(--text-secondary)">IP blacklist, PII masking demo, security features</td></tr>
+            <tr><td>Audit Logs</td><td>Audit</td><td style="color:var(--text-secondary)">View configuration change audit trail</td></tr>
+            <tr><td>API Test Sandbox</td><td>API Test</td><td style="color:var(--text-secondary)">Interactive HTTP request builder for testing</td></tr>
+        </tbody>
+    </table>
+</div>
+
+<div class="card">
+    <div class="card-header">🛠️ Technology Stack</div>
+    <table class="data-table">
+        <thead><tr><th>Component</th><th>Technology</th></tr></thead>
+        <tbody>
+            <tr><td>Frontend</td><td style="font-family:var(--font-mono)">Blazor WebAssembly (.NET 8)</td></tr>
+            <tr><td>Backend API</td><td style="font-family:var(--font-mono)">ASP.NET Core Web API (.NET 8)</td></tr>
+            <tr><td>Database</td><td style="font-family:var(--font-mono)">EF Core InMemory (demo) / PostgreSQL 17</td></tr>
+            <tr><td>API Gateway</td><td style="font-family:var(--font-mono)">Apache APISIX 3.11</td></tr>
+            <tr><td>API Manager</td><td style="font-family:var(--font-mono)">Milk API Manager (.NET 8)</td></tr>
+            <tr><td>Auth</td><td style="font-family:var(--font-mono)">JWT Bearer + API Key</td></tr>
+            <tr><td>Testing</td><td style="font-family:var(--font-mono)">xUnit + FluentAssertions + Playwright</td></tr>
+            <tr><td>Monitoring</td><td style="font-family:var(--font-mono)">Prometheus + Grafana + ELK 9.2.3</td></tr>
+            <tr><td>UI Theme</td><td style="font-family:var(--font-mono)">Dark Trading Terminal (custom CSS)</td></tr>
+        </tbody>
+    </table>
+</div>

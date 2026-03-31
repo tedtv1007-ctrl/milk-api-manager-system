@@ -1,0 +1,6 @@
+<Solution>
+  <Project Path="MilkDemo.Api/MilkDemo.Api.csproj" />
+  <Project Path="MilkDemo.Shared/MilkDemo.Shared.csproj" />
+  <Project Path="MilkDemo.Tests/MilkDemo.Tests.csproj" />
+  <Project Path="MilkDemo.WebApp/MilkDemo.WebApp.csproj" />
+</Solution>

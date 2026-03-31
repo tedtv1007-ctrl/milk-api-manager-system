@@ -1,0 +1,183 @@
+@page "/"
+@inject IProductApiService ProductApi
+@inject IOrderApiService OrderApi
+@inject IGatewayApiService GatewayApi
+
+<PageTitle>Dashboard - Milk Demo</PageTitle>
+
+<h1 class="page-title">📊 Dashboard</h1>
+
+<div class="metrics-grid">
+    <div class="metric-card">
+        <div class="metric-label">Total Products</div>
+        <div class="metric-value">@totalProducts</div>
+    </div>
+    <div class="metric-card green">
+        <div class="metric-label">Total Orders</div>
+        <div class="metric-value">@totalOrders</div>
+    </div>
+    <div class="metric-card yellow">
+        <div class="metric-label">Pending Orders</div>
+        <div class="metric-value">@pendingOrders</div>
+    </div>
+    <div class="metric-card cyan">
+        <div class="metric-label">Gateway Status</div>
+        <div class="metric-value">
+            <span class="status-badge @(gatewayOnline ? "status-online" : "status-offline")">
+                @(gatewayOnline ? "Online" : "Offline")
+            </span>
+        </div>
+    </div>
+    <div class="metric-card purple">
+        <div class="metric-label">API Manager</div>
+        <div class="metric-value">
+            <span class="status-badge @(backendOnline ? "status-online" : "status-offline")">
+                @(backendOnline ? "Online" : "Offline")
+            </span>
+        </div>
+    </div>
+</div>
+
+<div class="grid-2">
+    <div class="card">
+        <div class="card-header">📦 Recent Products</div>
+        @if (recentProducts != null)
+        {
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Category</th>
+                        <th>Price</th>
+                        <th>Stock</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var p in recentProducts)
+                    {
+                        <tr>
+                            <td>@p.Name</td>
+                            <td>@p.Category</td>
+                            <td style="font-family:var(--font-mono)">$@p.Price.ToString("N2")</td>
+                            <td style="font-family:var(--font-mono)">@p.StockQuantity</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+
+    <div class="card">
+        <div class="card-header">🛒 Recent Orders</div>
+        @if (recentOrders != null)
+        {
+            <table class="data-table">
+                <thead>
+                    <tr>
+                        <th>Customer</th>
+                        <th>Total</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var o in recentOrders)
+                    {
+                        <tr>
+                            <td>@o.CustomerName</td>
+                            <td style="font-family:var(--font-mono)">$@o.TotalAmount.ToString("N2")</td>
+                            <td><span class="status-badge status-@o.Status.ToString().ToLower()">@o.Status</span></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+    <div class="card-header">🏗️ System Architecture</div>
+    <div style="padding:12px;font-size:14px;color:var(--text-secondary);line-height:1.8">
+        <pre style="font-family:var(--font-mono);font-size:13px;color:var(--accent-cyan)">
+┌─────────────────┐     ┌──────────────────┐     ┌────────────────────┐
+│  Blazor WASM    │────▶│  APISIX Gateway  │────▶│  MilkDemo.Api      │
+│  (Frontend)     │     │  (API Manager)   │     │  (Business API)    │
+│  Port: 5002     │     │  Port: 9080      │     │  Port: 5003        │
+└─────────────────┘     └──────────────────┘     └────────────────────┘
+                               │                          │
+                        ┌──────┴──────┐           ┌───────┴───────┐
+                        │ Milk API    │           │ InMemory DB   │
+                        │ Manager     │           │ (Products,    │
+                        │ Port: 5001  │           │  Orders)      │
+                        └─────────────┘           └───────────────┘
+        </pre>
+    </div>
+</div>
+
+@code {
+    private int totalProducts;
+    private int totalOrders;
+    private int pendingOrders;
+    private bool gatewayOnline;
+    private bool backendOnline;
+    private List<Product>? recentProducts;
+    private List<Order>? recentOrders;
+
+    protected override async Task OnInitializedAsync()
+    {
+        var tasks = new List<Task>();
+
+        tasks.Add(Task.Run(async () =>
+        {
+            try
+            {
+                var result = await ProductApi.GetProductsAsync(1, 5);
+                if (result != null)
+                {
+                    totalProducts = result.TotalCount;
+                    recentProducts = result.Items;
+                }
+            }
+            catch { }
+        }));
+
+        tasks.Add(Task.Run(async () =>
+        {
+            try
+            {
+                var result = await OrderApi.GetOrdersAsync(1, 5);
+                if (result != null)
+                {
+                    totalOrders = result.TotalCount;
+                    recentOrders = result.Items;
+                }
+            }
+            catch { }
+        }));
+
+        tasks.Add(Task.Run(async () =>
+        {
+            try
+            {
+                var pending = await OrderApi.GetOrdersAsync(1, 1, OrderStatus.Pending);
+                if (pending != null) pendingOrders = pending.TotalCount;
+            }
+            catch { }
+        }));
+
+        tasks.Add(Task.Run(async () =>
+        {
+            try
+            {
+                var status = await GatewayApi.GetStatusAsync();
+                if (status != null)
+                {
+                    gatewayOnline = status.IsGatewayOnline;
+                    backendOnline = status.IsBackendOnline;
+                }
+            }
+            catch { }
+        }));
+
+        await Task.WhenAll(tasks);
+    }
+}

@@ -1,0 +1,78 @@
+@page "/routes"
+@inject IGatewayApiService GatewayApi
+
+<PageTitle>Routes - Milk Demo</PageTitle>
+
+<h1 class="page-title">🛤️ API Routes Management</h1>
+
+<p style="color:var(--text-secondary);margin-bottom:20px">
+    This page displays routes configured in the Milk API Manager System.
+    Routes are managed through the APISIX gateway and proxied to upstream services.
+</p>
+
+<div style="margin-bottom:16px">
+    <button class="btn btn-primary" @onclick="LoadRoutes">🔄 Refresh Routes</button>
+</div>
+
+@if (isLoading)
+{
+    <div class="loading">Loading routes from API Manager...</div>
+}
+else if (routesJson != null)
+{
+    <div class="card">
+        <div class="card-header">📋 Current Routes Configuration</div>
+        <div class="json-viewer">@routesJson</div>
+    </div>
+}
+else
+{
+    <div class="card">
+        <div class="card-header">⚠️ API Manager Not Available</div>
+        <p style="color:var(--text-muted);padding:12px">
+            Cannot connect to Milk API Manager. Please ensure:
+        </p>
+        <ul style="color:var(--text-secondary);padding:12px 12px 12px 32px;line-height:2">
+            <li>Docker services are running (<code>docker compose up -d</code>)</li>
+            <li>Milk API Manager backend is available at port 5001</li>
+            <li>APISIX Gateway is running at port 9080</li>
+        </ul>
+    </div>
+}
+
+<div class="card" style="margin-top:16px">
+    <div class="card-header">📖 How Routes Work with API Manager</div>
+    <div style="padding:4px;color:var(--text-secondary);line-height:1.8;font-size:14px">
+        <p><strong>1. Route Creation:</strong> Routes are created in the Milk Admin Blazor UI or via the Management API.</p>
+        <p><strong>2. Gateway Sync:</strong> The API Manager syncs route configurations to Apache APISIX via Admin API.</p>
+        <p><strong>3. Traffic Flow:</strong> Client requests hit APISIX → matched by URI/host → proxied to upstream service.</p>
+        <p><strong>4. Security:</strong> Each route can have IP whitelists, PII masking rules, and authentication plugins.</p>
+        <p><strong>5. Observability:</strong> All routed traffic is logged to ELK and metrics are exported to Prometheus.</p>
+    </div>
+</div>
+
+@code {
+    private string? routesJson;
+    private bool isLoading;
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadRoutes();
+    }
+
+    private async Task LoadRoutes()
+    {
+        isLoading = true;
+        routesJson = await GatewayApi.GetRoutesAsync();
+        if (routesJson != null)
+        {
+            try
+            {
+                var doc = System.Text.Json.JsonDocument.Parse(routesJson);
+                routesJson = System.Text.Json.JsonSerializer.Serialize(doc, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            }
+            catch { }
+        }
+        isLoading = false;
+    }
+}

@@ -1,0 +1,73 @@
+@page "/login"
+@layout MilkDemo.WebApp.Layout.EmptyLayout
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="login-container">
+    <div class="login-box">
+        <h1 class="login-title">🥛 Milk Demo</h1>
+        <p class="login-subtitle">API Manager System Showcase</p>
+
+        @if (!string.IsNullOrEmpty(errorMessage))
+        {
+            <div class="error-msg">@errorMessage</div>
+        }
+
+        <EditForm Model="loginModel" OnValidSubmit="HandleLogin">
+            <div class="form-group">
+                <label>Username</label>
+                <InputText @bind-Value="loginModel.Username" class="form-control" placeholder="Enter username" />
+            </div>
+            <div class="form-group">
+                <label>Password</label>
+                <InputText @bind-Value="loginModel.Password" class="form-control" type="password" placeholder="Enter password" />
+            </div>
+            <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center" disabled="@isLoading">
+                @(isLoading ? "Logging in..." : "Login")
+            </button>
+        </EditForm>
+
+        <div style="margin-top:24px;padding:16px;background:var(--bg-input);border-radius:8px;">
+            <p style="font-size:12px;color:var(--text-muted);margin-bottom:8px;">Demo Accounts:</p>
+            <p style="font-size:13px;color:var(--text-secondary);">
+                <strong>admin</strong> / admin — Full access<br/>
+                <strong>operator</strong> / operator — Operational access<br/>
+                <strong>viewer</strong> / viewer — Read-only<br/>
+                <strong>demo</strong> / demo — Basic access
+            </p>
+        </div>
+    </div>
+</div>
+
+@code {
+    private LoginRequestDto loginModel = new();
+    private string? errorMessage;
+    private bool isLoading;
+
+    private async Task HandleLogin()
+    {
+        isLoading = true;
+        errorMessage = null;
+
+        try
+        {
+            var result = await AuthService.LoginAsync(loginModel.Username, loginModel.Password);
+            if (result != null)
+            {
+                Navigation.NavigateTo("/");
+            }
+            else
+            {
+                errorMessage = "Invalid username or password.";
+            }
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"Login failed: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+}

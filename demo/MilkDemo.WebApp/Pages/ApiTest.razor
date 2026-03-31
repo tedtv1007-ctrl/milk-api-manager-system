@@ -1,0 +1,149 @@
+@page "/api-test"
+@inject HttpClient Http
+
+<PageTitle>API Test - Milk Demo</PageTitle>
+
+<h1 class="page-title">🧪 API Test Sandbox</h1>
+
+<p style="color:var(--text-secondary);margin-bottom:20px;font-size:14px">
+    Test API endpoints directly. Requests go through the configured path, demonstrating the API Manager gateway proxy.
+</p>
+
+<div class="card">
+    <div class="card-header">🔧 Request Builder</div>
+    <div class="grid-2">
+        <div class="form-group">
+            <label>HTTP Method</label>
+            <select class="form-control" @bind="method">
+                <option>GET</option>
+                <option>POST</option>
+                <option>PUT</option>
+                <option>DELETE</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Endpoint URL</label>
+            <input class="form-control" @bind="endpoint" placeholder="/api/products" />
+        </div>
+    </div>
+
+    @if (method is "POST" or "PUT")
+    {
+        <div class="form-group">
+            <label>Request Body (JSON)</label>
+            <textarea class="form-control" @bind="requestBody" rows="5"
+                      style="font-family:var(--font-mono);font-size:13px" placeholder='{"name": "value"}'></textarea>
+        </div>
+    }
+
+    <button class="btn btn-primary" @onclick="SendRequest" disabled="@isSending">
+        @(isSending ? "Sending..." : "▶ Send Request")
+    </button>
+</div>
+
+@if (lastResponse != null)
+{
+    <div class="card">
+        <div class="card-header">
+            📨 Response
+            <span class="status-badge @(lastStatusCode < 400 ? "status-online" : "status-offline")" style="margin-left:12px">
+                @lastStatusCode
+            </span>
+            <span style="font-size:12px;color:var(--text-muted);margin-left:8px">@responseTime ms</span>
+        </div>
+        <div class="json-viewer">@lastResponse</div>
+    </div>
+}
+
+<div class="card" style="margin-top:16px">
+    <div class="card-header">📋 Quick Test Presets</div>
+    <div style="display:flex;flex-wrap:wrap;gap:8px">
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/api/products")'>GET Products</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/api/products/1")'>GET Product #1</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/api/products/categories")'>GET Categories</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/api/orders")'>GET Orders</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/health")'>Health Check</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("GET", "/api/gateway/status")'>Gateway Status</button>
+        <button class="btn btn-outline btn-sm" @onclick='() => SetPreset("POST", "/api/products", CREATE_PRODUCT_JSON)'>Create Product</button>
+    </div>
+</div>
+
+@code {
+    private string method = "GET";
+    private string endpoint = "/api/products";
+    private string? requestBody;
+    private string? lastResponse;
+    private int lastStatusCode;
+    private long responseTime;
+    private bool isSending;
+
+    private const string CREATE_PRODUCT_JSON = @"{
+  ""name"": ""Test Product"",
+  ""description"": ""Created via API Test Sandbox"",
+  ""price"": 99.99,
+  ""stockQuantity"": 50,
+  ""category"": ""Test""
+}";
+
+    private void SetPreset(string m, string url, string? body = null)
+    {
+        method = m;
+        endpoint = url;
+        requestBody = body;
+    }
+
+    private async Task SendRequest()
+    {
+        isSending = true;
+        var sw = System.Diagnostics.Stopwatch.StartNew();
+
+        try
+        {
+            HttpResponseMessage response;
+
+            switch (method)
+            {
+                case "POST":
+                    var postContent = new StringContent(requestBody ?? "{}", System.Text.Encoding.UTF8, "application/json");
+                    response = await Http.PostAsync(endpoint, postContent);
+                    break;
+                case "PUT":
+                    var putContent = new StringContent(requestBody ?? "{}", System.Text.Encoding.UTF8, "application/json");
+                    response = await Http.PutAsync(endpoint, putContent);
+                    break;
+                case "DELETE":
+                    response = await Http.DeleteAsync(endpoint);
+                    break;
+                default:
+                    response = await Http.GetAsync(endpoint);
+                    break;
+            }
+
+            sw.Stop();
+            responseTime = sw.ElapsedMilliseconds;
+            lastStatusCode = (int)response.StatusCode;
+
+            var content = await response.Content.ReadAsStringAsync();
+            try
+            {
+                var doc = System.Text.Json.JsonDocument.Parse(content);
+                lastResponse = System.Text.Json.JsonSerializer.Serialize(doc, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            }
+            catch
+            {
+                lastResponse = content;
+            }
+        }
+        catch (Exception ex)
+        {
+            sw.Stop();
+            responseTime = sw.ElapsedMilliseconds;
+            lastStatusCode = 0;
+            lastResponse = $"Error: {ex.Message}";
+        }
+        finally
+        {
+            isSending = false;
+        }
+    }
+}

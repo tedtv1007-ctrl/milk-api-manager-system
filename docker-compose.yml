@@ -255,6 +255,54 @@ services:
       milk-backend:
         condition: service_healthy
 
+  # ─── Demo Project Services ───────────────────────────────────
+  milk-demo-api:
+    build:
+      context: ./demo
+      dockerfile: MilkDemo.Api/Dockerfile
+    restart: always
+    mem_limit: 256m
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080
+      - Jwt__Secret=${JWT_SECRET:-milk-demo-jwt-secret-key-change-in-production-32chars!}
+      - Jwt__Issuer=MilkDemo
+      - Jwt__Audience=MilkDemoClients
+      - MilkApiManager__BaseUrl=http://milk-backend:8080
+      - MilkApiManager__GatewayUrl=http://apisix:9080
+      - MilkApiManager__ApiKey=${API_AUTH_KEY:-milk-admin-secret-key-change-me}
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "5003:8080"
+    healthcheck:
+      test: [ "CMD-SHELL", "curl -f http://localhost:8080/health || exit 1" ]
+      interval: 15s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+    networks:
+      - apisix
+    depends_on:
+      milk-backend:
+        condition: service_healthy
+
+  milk-demo-webapp:
+    build:
+      context: ./demo
+      dockerfile: MilkDemo.WebApp/Dockerfile
+    restart: always
+    mem_limit: 128m
+    security_opt:
+      - no-new-privileges:true
+    ports:
+      - "5002:80"
+    networks:
+      - apisix
+    depends_on:
+      milk-demo-api:
+        condition: service_healthy
+
 networks:
   apisix:
     driver: bridge

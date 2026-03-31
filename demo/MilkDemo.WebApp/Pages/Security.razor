@@ -1,0 +1,131 @@
+@page "/security"
+@inject IGatewayApiService GatewayApi
+
+<PageTitle>Security - Milk Demo</PageTitle>
+
+<h1 class="page-title">🛡️ Security Dashboard</h1>
+
+<div class="grid-2">
+    <div class="card">
+        <div class="card-header">🚫 IP Blacklist</div>
+        <p style="color:var(--text-secondary);margin-bottom:12px;font-size:14px">
+            IP addresses blocked by the Milk API Manager's auto-defense or manual blacklisting.
+        </p>
+        <div style="margin-bottom:12px">
+            <button class="btn btn-outline btn-sm" @onclick="LoadBlacklist">🔄 Refresh</button>
+        </div>
+        @if (blacklistJson != null)
+        {
+            <div class="json-viewer" style="max-height:300px">@blacklistJson</div>
+        }
+        else
+        {
+            <p style="color:var(--text-muted);font-size:13px">No blacklist data available. Connect to API Manager to view.</p>
+        }
+    </div>
+
+    <div class="card">
+        <div class="card-header">🔐 Security Features</div>
+        <table class="data-table">
+            <thead><tr><th>Feature</th><th>Status</th><th>Description</th></tr></thead>
+            <tbody>
+                <tr>
+                    <td>JWT Authentication</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Bearer token auth for all protected endpoints</td>
+                </tr>
+                <tr>
+                    <td>API Key Auth</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">X-API-KEY header for management API</td>
+                </tr>
+                <tr>
+                    <td>Rate Limiting</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Per-IP rate limits on auth and API endpoints</td>
+                </tr>
+                <tr>
+                    <td>IP Blacklist</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Dynamic IP blocking via traffic-blocker plugin</td>
+                </tr>
+                <tr>
+                    <td>PII Masking</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Regex-based response data masking</td>
+                </tr>
+                <tr>
+                    <td>Auto-Defense</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Automatic IP blocking on auth error spikes</td>
+                </tr>
+                <tr>
+                    <td>Security Headers</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">X-Frame-Options, CSP, XSS-Protection</td>
+                </tr>
+                <tr>
+                    <td>CORS Policy</td>
+                    <td><span class="status-badge status-online">Active</span></td>
+                    <td style="color:var(--text-secondary);font-size:13px">Restricted origin whitelist</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="card" style="margin-top:16px">
+    <div class="card-header">📊 PII Masking Demo</div>
+    <p style="color:var(--text-secondary);margin-bottom:16px;font-size:14px">
+        Demonstrates how the API Manager's PII masking plugin protects sensitive data in API responses.
+    </p>
+    <div class="grid-2">
+        <div>
+            <h4 style="font-size:14px;color:var(--text-muted);margin-bottom:8px">Original Response</h4>
+            <div class="json-viewer">@originalData</div>
+        </div>
+        <div>
+            <h4 style="font-size:14px;color:var(--text-muted);margin-bottom:8px">Masked Response (via APISIX)</h4>
+            <div class="json-viewer">@maskedData</div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private string? blacklistJson;
+
+    private string originalData = @"{
+  ""customerName"": ""Alice Wang"",
+  ""email"": ""alice@example.com"",
+  ""phone"": ""0912345678"",
+  ""creditCard"": ""4111-1111-1111-1111"",
+  ""nationalId"": ""A123456789""
+}";
+
+    private string maskedData = @"{
+  ""customerName"": ""Alice Wang"",
+  ""email"": ""al***@example.com"",
+  ""phone"": ""091234****"",
+  ""creditCard"": ""****-****-****-1111"",
+  ""nationalId"": ""A*********""
+}";
+
+    protected override async Task OnInitializedAsync()
+    {
+        await LoadBlacklist();
+    }
+
+    private async Task LoadBlacklist()
+    {
+        blacklistJson = await GatewayApi.GetBlacklistAsync();
+        if (blacklistJson != null)
+        {
+            try
+            {
+                var doc = System.Text.Json.JsonDocument.Parse(blacklistJson);
+                blacklistJson = System.Text.Json.JsonSerializer.Serialize(doc, new System.Text.Json.JsonSerializerOptions { WriteIndented = true });
+            }
+            catch { }
+        }
+    }
+}

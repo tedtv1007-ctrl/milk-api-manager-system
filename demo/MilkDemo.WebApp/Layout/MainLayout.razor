@@ -1,0 +1,64 @@
+﻿@inherits LayoutComponentBase
+@inject IAuthService AuthService
+@inject NavigationManager Navigation
+
+<div class="app-container">
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2>🥛 Milk Demo</h2>
+            <span class="badge">API Manager</span>
+        </div>
+        <nav>
+            <div class="nav-section">
+                <span class="nav-section-title">MAIN</span>
+                <a href="/" class="nav-link">📊 Dashboard</a>
+                <a href="/products" class="nav-link">📦 Products</a>
+                <a href="/orders" class="nav-link">🛒 Orders</a>
+            </div>
+            <div class="nav-section">
+                <span class="nav-section-title">API MANAGER</span>
+                <a href="/gateway" class="nav-link">🌐 Gateway Status</a>
+                <a href="/routes" class="nav-link">🛤️ Routes</a>
+                <a href="/security" class="nav-link">🛡️ Security</a>
+                <a href="/audit" class="nav-link">📋 Audit Logs</a>
+            </div>
+            <div class="nav-section">
+                <span class="nav-section-title">TOOLS</span>
+                <a href="/api-test" class="nav-link">🧪 API Test</a>
+                <a href="/about" class="nav-link">ℹ️ About</a>
+            </div>
+        </nav>
+        @if (AuthService.IsAuthenticated)
+        {
+            <div class="sidebar-footer">
+                <div class="user-info">
+                    <span>👤 @AuthService.GetCurrentUser()?.DisplayName</span>
+                    <button class="btn-logout" @onclick="Logout">Logout</button>
+                </div>
+            </div>
+        }
+    </aside>
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="top-bar-left">
+                <span class="timestamp">@DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")</span>
+            </div>
+            <div class="top-bar-right">
+                <span class="tech-badge">.NET 8</span>
+                <span class="tech-badge">Blazor WASM</span>
+                <span class="tech-badge">APISIX</span>
+            </div>
+        </header>
+        <div class="page-content">
+            @Body
+        </div>
+    </main>
+</div>
+
+@code {
+    private async Task Logout()
+    {
+        await AuthService.LogoutAsync();
+        Navigation.NavigateTo("/login", forceLoad: true);
+    }
+}
