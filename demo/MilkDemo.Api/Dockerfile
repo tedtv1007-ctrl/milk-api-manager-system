@@ -12,11 +12,9 @@ RUN apk add --no-cache curl
 WORKDIR /app
 COPY --from=build /app/publish .
 
-RUN addgroup -g 1654 -S appgroup && \
-    adduser -u 1654 -S appuser -G appgroup && \
-    chown -R appuser:appgroup /app
+RUN chown -R app:app /app
 
-USER appuser
+USER app
 HEALTHCHECK --interval=15s --timeout=5s --start-period=15s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 ENTRYPOINT ["dotnet", "MilkDemo.Api.dll"]

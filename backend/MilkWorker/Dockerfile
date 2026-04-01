@@ -15,10 +15,8 @@ WORKDIR /app
 COPY --from=build /app/publish .
 
 # Create storage directories and set permissions for non-root user
-RUN addgroup -g 1654 -S appgroup && \
-    adduser -u 1654 -S appuser -G appgroup && \
-    mkdir -p /app/vault_storage && \
-    chown -R appuser:appgroup /app/vault_storage
+RUN mkdir -p /app/vault_storage && \
+    chown -R app:app /app/vault_storage
 
-USER appuser
+USER app
 ENTRYPOINT ["dotnet", "MilkWorker.dll"]

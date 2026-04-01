@@ -14,12 +14,10 @@ WORKDIR "/src/MilkAdminBlazor"
 RUN dotnet publish "MilkAdminBlazor.csproj" -c Release -o /app/publish /p:ErrorOnDuplicatePublishOutputFiles=false
 
 FROM mcr.microsoft.com/dotnet/aspnet:8.0-alpine
-RUN apk add --no-cache curl && \
-    addgroup -g 1654 -S appgroup && \
-    adduser -u 1654 -S appuser -G appgroup
+RUN apk add --no-cache curl
 WORKDIR /app
 COPY --from=build /app/publish .
-USER appuser
+USER app
 HEALTHCHECK --interval=30s --timeout=5s --start-period=15s --retries=3 \
   CMD curl -f http://localhost:8080/health || exit 1
 ENTRYPOINT ["dotnet", "MilkAdminBlazor.dll"]
