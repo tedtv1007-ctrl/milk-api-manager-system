@@ -1,0 +1,25 @@
+{
+  "openapi": "3.0.1",
+  "info": {
+    "title": "Milk API",
+    "version": "v1",
+    "description": "Minimal OpenAPI scaffold for SDK generation. Replace with full swagger.json from running the API in a test environment."
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health check",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": { "type": "object", "properties": { "status": { "type": "string" } } }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
