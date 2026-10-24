@@ -35,4 +35,12 @@
 
 ## 待處理事項
 
-測試輸出仍有既存 NuGet 安全性警告：`OpenTelemetry.Exporter.OpenTelemetryProtocol 1.8.1`（GHSA-4625-4j76-fww9，中度）。本次未更新套件，以避免擴大變更範圍；應另行評估升級與相容性。
+原測試輸出包含 `OpenTelemetry.Exporter.OpenTelemetryProtocol 1.8.1` 的中度警告（GHSA-4625-4j76-fww9）。後續修補已將 `MilkApiManager` 與 `MilkShared` 的直接相依版本升級至 `1.15.3`；詳見本報告末尾的安全修補追記。
+
+## 安全修補追記
+
+- `OpenTelemetry.Exporter.OpenTelemetryProtocol` 已於 `MilkApiManager.csproj` 與 `MilkShared.csproj` 升級至 `1.15.3`。
+- `dotnet restore backend\MilkApiManager.sln --force-evaluate` 成功；resolved package graph 確認兩個專案均使用 `1.15.3`。
+- 完整 .NET 測試通過：MilkApiManager.Tests 338/338，MilkWorker.Tests 5/5。
+- `dotnet list backend\MilkApiManager.sln package --vulnerable --include-transitive` 不再列出 `OpenTelemetry.Exporter.OpenTelemetryProtocol` 或 GHSA-4625-4j76-fww9。
+- NuGet audit 仍列出其他既存傳遞相依套件警告（包括 Microsoft.Extensions.Caching.Memory 8.0.0、Npgsql 8.0.0、System.Text.Json 8.0.0、IdentityModel 7.0.3，以及測試相依套件）。本次依需求僅處理 OpenTelemetry exporter；其餘套件需另行評估升級相容性。
