@@ -35,12 +35,42 @@
 
 ## 待處理事項
 
-原測試輸出包含 `OpenTelemetry.Exporter.OpenTelemetryProtocol 1.8.1` 的中度警告（GHSA-4625-4j76-fww9）。後續修補已將 `MilkApiManager` 與 `MilkShared` 的直接相依版本升級至 `1.15.3`；詳見本報告末尾的安全修補追記。
+原測試輸出包含 `OpenTelemetry.Exporter.OpenTelemetryProtocol 1.8.1` 的中度警告（GHSA-4625-4j76-fww9）。後續已將 `MilkApiManager` 與 `MilkShared` 的直接相依版本升級至 `1.15.3`，並在本次相依性評估中一併修補 NuGet audit 列出的其他套件；詳見下方追記。
 
 ## 安全修補追記
 
 - `OpenTelemetry.Exporter.OpenTelemetryProtocol` 已於 `MilkApiManager.csproj` 與 `MilkShared.csproj` 升級至 `1.15.3`。
 - `dotnet restore backend\MilkApiManager.sln --force-evaluate` 成功；resolved package graph 確認兩個專案均使用 `1.15.3`。
-- 完整 .NET 測試通過：MilkApiManager.Tests 338/338，MilkWorker.Tests 5/5。
+- 完整 .NET 測試通過：MilkApiManager.Tests 339/339，MilkWorker.Tests 5/5。
 - `dotnet list backend\MilkApiManager.sln package --vulnerable --include-transitive` 不再列出 `OpenTelemetry.Exporter.OpenTelemetryProtocol` 或 GHSA-4625-4j76-fww9。
-- NuGet audit 仍列出其他既存傳遞相依套件警告（包括 Microsoft.Extensions.Caching.Memory 8.0.0、Npgsql 8.0.0、System.Text.Json 8.0.0、IdentityModel 7.0.3，以及測試相依套件）。本次依需求僅處理 OpenTelemetry exporter；其餘套件需另行評估升級相容性。
+- 本次相依性評估追記：下述修補完成後，NuGet audit 不再列出已知漏洞套件。
+
+## NuGet 相依性評估與升級追記
+
+### 相容性決策
+
+- 保留應用程式 `net8.0`、EF Core 8 與 Npgsql EF provider 8，不跨 .NET/EF 主版本升級。
+- 對共享資料層的傳遞相依加入明確版本，讓 API、Worker 及 Blazor 使用同一安全版本。
+- Blazor 的 EF SQLite provider 8 仍維持原主版本；以 `SQLitePCLRaw.lib.e_sqlite3 3.53.3` 覆寫其原先解析到的 2.1.6 native SQLite runtime。GitHub Advisory 指出受影響版本為 `<=2.1.11`，建議 SQLite 3.50.2 以上；3.53.3 是 NuGet 穩定版。
+- `System.Net.Http 4.3.0` 與 `System.Text.RegularExpressions 4.3.0` 的舊傳遞相依追溯至 xUnit 2.5.3/舊 `NETStandard.Library`；升級 xUnit 到 2.9.3（仍在 xUnit 2 主版本），移除這些易受攻擊項目。
+
+### 升級版本
+
+| 套件 | 舊版 | 新版 | 影響範圍 |
+|---|---:|---:|---|
+| `Microsoft.Extensions.DependencyInjection.Abstractions` | 8.0.0 | 8.0.2 | MilkShared |
+| `Microsoft.Extensions.Logging.Abstractions` | 8.0.0 | 8.0.2 | MilkShared |
+| `Microsoft.Extensions.Caching.Memory` | 8.0.0 | 8.0.1 | MilkShared、MilkApiManager |
+| `Npgsql` | 8.0.0 | 8.0.3 | MilkShared、MilkApiManager |
+| `System.Text.Json` | 8.0.0 | 8.0.5 | MilkShared、MilkApiManager、MilkWorker |
+| `System.IdentityModel.Tokens.Jwt` | 7.0.3 | 7.1.2 | MilkApiManager |
+| `SQLitePCLRaw.lib.e_sqlite3` | 2.1.6 | 3.53.3 | MilkAdminBlazor |
+| `xunit` | 2.5.3 | 2.9.3 | 兩個測試專案 |
+
+### 驗證
+
+- `dotnet restore backend\MilkApiManager.sln --force-evaluate` 成功，更新後相依圖可解析。
+- `dotnet test backend\MilkApiManager.sln --no-restore` 通過：MilkApiManager.Tests 338/338、MilkWorker.Tests 5/5。
+- `dotnet list backend\MilkApiManager.sln package --vulnerable --include-transitive`：六個專案皆回報沒有易受攻擊套件。
+- `dotnet nuget why` 確認 SQLite native runtime 經 `Microsoft.EntityFrameworkCore.Sqlite 8.0.0` 解析到 3.53.3；舊測試框架造成的 System.Net.Http/System.Text.RegularExpressions 易受攻擊相依已不再出現。
+- 新增 SQLite native provider 整合測試，實際開啟記憶體資料庫並驗證 native engine 為 3.50.2 以上。
