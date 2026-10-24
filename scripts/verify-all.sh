@@ -50,11 +50,14 @@ if [ "$IS_TEST_MODE" = "true" ]; then
     # Test Mode: wait for milk-backend and milk-admin-ui health
     echo "   Waiting for milk-backend (5001)..."
     for i in {1..30}; do
-        if curl -sf http://127.0.0.1:5001/health/live > /dev/null 2>&1; then
-            echo "   [PASS] milk-backend is READY."
+        if curl -sf http://127.0.0.1:5001/health/ready > /dev/null 2>&1; then
+            echo "   [PASS] milk-backend and its database are READY."
             break
         fi
-        [ $i -eq 30 ] && echo "   [WARN] milk-backend wait timed out."
+        if [ "$i" -eq 30 ]; then
+            echo "   [FAIL] milk-backend and its database did not become ready."
+            exit 1
+        fi
         sleep 2
     done
 
@@ -64,7 +67,10 @@ if [ "$IS_TEST_MODE" = "true" ]; then
             echo "   [PASS] milk-admin-ui is READY."
             break
         fi
-        [ $i -eq 30 ] && echo "   [WARN] milk-admin-ui wait timed out."
+        if [ "$i" -eq 30 ]; then
+            echo "   [FAIL] milk-admin-ui did not become ready."
+            exit 1
+        fi
         sleep 2
     done
 else

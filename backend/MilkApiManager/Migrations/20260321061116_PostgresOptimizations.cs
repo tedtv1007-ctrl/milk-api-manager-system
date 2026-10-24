@@ -18,20 +18,17 @@ namespace MilkApiManager.Migrations
                 name: "IX_AuditLogs_Timestamp",
                 table: "AuditLogs");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "DetailsJson",
-                table: "AuditLogs",
-                type: "jsonb",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "text",
-                oldNullable: true);
+            migrationBuilder.Sql("""
+                ALTER TABLE "AuditLogs"
+                ALTER COLUMN "DetailsJson" TYPE jsonb
+                USING "DetailsJson"::jsonb;
+                """);
 
             migrationBuilder.CreateIndex(
                 name: "IX_SyncOutboxEntries_CreatedAt",
                 table: "SyncOutboxEntries",
                 column: "CreatedAt",
-                filter: "Status = 'Pending'");
+                filter: "\"Status\" = 'Pending'");
 
             migrationBuilder.CreateIndex(
                 name: "IX_AuditLogs_Timestamp",
@@ -51,14 +48,11 @@ namespace MilkApiManager.Migrations
                 name: "IX_AuditLogs_Timestamp",
                 table: "AuditLogs");
 
-            migrationBuilder.AlterColumn<string>(
-                name: "DetailsJson",
-                table: "AuditLogs",
-                type: "text",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "jsonb",
-                oldNullable: true);
+            migrationBuilder.Sql("""
+                ALTER TABLE "AuditLogs"
+                ALTER COLUMN "DetailsJson" TYPE text
+                USING "DetailsJson"::text;
+                """);
 
             migrationBuilder.CreateIndex(
                 name: "IX_SyncOutboxEntries_CreatedAt",

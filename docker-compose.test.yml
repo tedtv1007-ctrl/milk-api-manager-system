@@ -24,6 +24,7 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - USE_TEST_MODE=true
+      - Database__UseInMemory=false
       - APISIX_ADMIN_KEY=mock-key-not-used
       - APISIX_ADMIN_URL=http://localhost:9180/apisix/admin/
       - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
@@ -51,11 +52,12 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       - USE_TEST_MODE=true
+      - Database__UseInMemory=false
       - ConnectionStrings__DefaultConnection=Host=milk-db;Port=5432;Database=${POSTGRES_DB:-milk_db};Username=${POSTGRES_USER:-milk_user};Password=${POSTGRES_PASSWORD:-milk_password};SSL Mode=Disable;Maximum Pool Size=30;Minimum Pool Size=5;Connection Idle Lifetime=300
     networks:
       - test
     depends_on:
-      milk-db:
+      milk-backend:
         condition: service_healthy
 
   milk-admin-ui:

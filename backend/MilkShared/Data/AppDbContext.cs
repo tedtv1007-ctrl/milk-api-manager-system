@@ -133,7 +133,7 @@ public class AppDbContext : DbContext
             
             // PostgreSQL Optimization: Partial index for pending items only
             entity.HasIndex(e => e.CreatedAt)
-                  .HasFilter("Status = 'Pending'");
+                  .HasFilter("\"Status\" = 'Pending'");
 
             entity.Property(e => e.CreatedAt).HasConversion(
                 v => v.ToUniversalTime(),

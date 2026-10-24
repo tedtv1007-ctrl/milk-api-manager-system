@@ -159,6 +159,9 @@ otel.WithTracing(tracing => tracing
 
 var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
 var useDemoAuth = Environment.GetEnvironmentVariable("USE_DEMO_AUTH") == "true";
+var useInMemoryDatabase = DatabaseProviderConfiguration.ShouldUseInMemoryDatabase(
+    builder.Configuration,
+    isTestMode);
 
 ProductionStartupGuardrails.ValidateForApi(builder.Configuration, builder.Environment);
 
@@ -223,7 +226,7 @@ builder.Services.AddAuthorization(options =>
 });
 
 // Register DbContext (P1-4: Unified — AuditContext removed, AppDbContext handles all entities)
-if (isTestMode)
+if (useInMemoryDatabase)
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseInMemoryDatabase("MilkApiManagerTestDb"));
@@ -351,10 +354,10 @@ using (var scope = app.Services.CreateScope())
     
     try
     {
-        if (isTestMode)
+        if (useInMemoryDatabase)
         {
             db.Database.EnsureCreated();
-            logger.LogInformation("Test database initialized with EnsureCreated.");
+            logger.LogInformation("In-memory database initialized with EnsureCreated.");
         }
         else if (isMigrateOnly || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Development")
         {
@@ -374,10 +377,7 @@ using (var scope = app.Services.CreateScope())
     catch (Exception ex)
     {
         logger.LogCritical(ex, "An error occurred during startup initialization.");
-        if (isMigrateOnly)
-        {
-            Environment.Exit(1);
-        }
+        throw;
     }
 }
 

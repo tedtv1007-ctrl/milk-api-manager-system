@@ -406,7 +406,7 @@ namespace MilkApiManager.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("CreatedAt")
-                        .HasFilter("Status = 'Pending'");
+                        .HasFilter("\"Status\" = 'Pending'");
 
                     b.HasIndex("Status", "NextAttemptAt");
 

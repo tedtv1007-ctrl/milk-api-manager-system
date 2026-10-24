@@ -140,6 +140,8 @@ docker-compose up -d
 *   **Windows**: `./scripts/verify-all.ps1`
 *   **Linux/Zeabur**: `./scripts/verify-all.sh`
 
+CI smoke environment uses `USE_TEST_MODE=true` to mock APISIX and demo authentication while keeping PostgreSQL enabled (`Database__UseInMemory=false`). This exercises real migrations, readiness checks, and shared API/worker persistence; unit tests still default to EF Core InMemory unless the database setting is explicitly overridden.
+
 ### 3. 存取入口
 | 服務 | URL | 說明 |
 |------|-----|------|

@@ -10,6 +10,9 @@ using OpenTelemetry.Metrics;
 var builder = Host.CreateApplicationBuilder(args);
 
 var isTestMode = Environment.GetEnvironmentVariable("USE_TEST_MODE") == "true";
+var useInMemoryDatabase = DatabaseProviderConfiguration.ShouldUseInMemoryDatabase(
+    builder.Configuration,
+    isTestMode);
 
 if (!isTestMode)
 {
@@ -46,7 +49,7 @@ otel.WithTracing(tracing => tracing
     .AddOtlpExporter());
 
 // Register DbContext (P1-4: AuditContext removed — AppDbContext handles all entities)
-if (isTestMode)
+if (useInMemoryDatabase)
 {
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseInMemoryDatabase("MilkApiManagerTestDb"));
